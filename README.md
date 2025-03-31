@@ -26,6 +26,6 @@
 
 ```bash
 git commit -m "feat/web(#31): 사용자 로그인 기능 추가"
-git commit -m "fix/app(#52): API 호출 시 발생하는 오류 수정"
+git commit -m "fix/mobile(#52): API 호출 시 발생하는 오류 수정"
 git commit -m "style/packages(#12): 버튼 hover 스타일 변경"
 ```
