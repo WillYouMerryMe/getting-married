@@ -183,6 +183,12 @@ importers:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
+      '@merried/design-system':
+        specifier: workspace:*
+        version: link:../design-system
+      '@merried/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
