@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode, CSSProperties } from 'react'
 import { ButtonSize, ButtonStyleType } from './button.type'
-import { CSSProperties, styled } from 'styled-components'
+import styled from 'styled-components'
 import { flex } from '@merried/utils'
 import { getButtonSize, getButtonStyle } from './button.style'
 
@@ -27,7 +27,6 @@ const StyledButton = styled.button<{
 }>`
 	${flex({ alignItems: 'center', justifyContent: 'center' })}
 	border-radius: 8px;
-	cursor: pointer;
 	word-break: keep-all;
 
 	${(props) => props && getButtonStyle[props.styleType]};

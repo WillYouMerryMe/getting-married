@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode, CSSProperties } from 'react'
 import { ButtonStyleType, DesktopButtonSize } from './button.type'
-import { CSSProperties, styled } from 'styled-components'
+import styled from 'styled-components'
 import { flex } from '@merried/utils'
 import { getDesktopButtonSize, getButtonStyle } from './button.style'
 import { color } from '@merried/design-system'
@@ -28,11 +28,10 @@ const StyledButton = styled.button<{
 }>`
 	${flex({ alignItems: 'center', justifyContent: 'center' })}
 	border-radius: 8px;
-	cursor: pointer;
 	word-break: keep-all;
 
 	${(props) => props && getButtonStyle[props.styleType]};
 	${(props) => props && getDesktopButtonSize[props.size]};
 
-	${(props) => props.styleType === 'SECOND' && `color: ${color.G900};`}
+	${(props) => props.styleType === 'SECOND' && props.size === 'LARGE' && `color: ${color.G900};`}
 `
