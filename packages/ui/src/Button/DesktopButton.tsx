@@ -12,9 +12,9 @@ type Props = {
 	width?: CSSProperties['width']
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const DesktopButton = ({ onClick, children, styleType = 'DEFAULT', size = 'SMALL', width, style }: Props) => {
+const DesktopButton = ({ onClick, children, styleType = 'DEFAULT', size = 'SMALL', width, style, disabled }: Props) => {
 	return (
-		<StyledButton style={{ width, ...style }} onClick={onClick} styleType={styleType} size={size} disabled={styleType === 'DISABLED'}>
+		<StyledButton style={{ width, ...style }} onClick={onClick} styleType={styleType} size={size} disabled={disabled || styleType === 'DISABLED'}>
 			{children}
 		</StyledButton>
 	)

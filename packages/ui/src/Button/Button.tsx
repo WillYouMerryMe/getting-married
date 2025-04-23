@@ -11,9 +11,9 @@ type Props = {
 	width?: CSSProperties['width']
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({ onClick, children, styleType = 'DEFAULT', size = 'MEDIUM', width, style }: Props) => {
+const Button = ({ onClick, children, styleType = 'DEFAULT', size = 'MEDIUM', width, style, disabled }: Props) => {
 	return (
-		<StyledButton style={{ width, ...style }} onClick={onClick} styleType={styleType} size={size} disabled={styleType === 'DISABLED'}>
+		<StyledButton style={{ width, ...style }} onClick={onClick} styleType={styleType} size={size} disabled={disabled || styleType === 'DISABLED'}>
 			{children}
 		</StyledButton>
 	)
