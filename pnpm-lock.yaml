@@ -86,6 +86,21 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.3.1
+      '@merried/design-system':
+        specifier: workspace:*
+        version: link:../../packages/design-system
+      '@merried/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@merried/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@types/node':
         specifier: ^20
         version: 20.17.28
@@ -95,12 +110,18 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.0.4(@types/react@19.0.10)
+      '@types/styled-components':
+        specifier: ^5.1.26
+        version: 5.1.34
       eslint:
         specifier: ^9
         version: 9.23.0
       eslint-config-next:
         specifier: 15.2.4
         version: 15.2.4(eslint@9.23.0)(typescript@5.8.2)
+      styled-components:
+        specifier: ^6.1.17
+        version: 6.1.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       typescript:
         specifier: ^5
         version: 5.8.2
