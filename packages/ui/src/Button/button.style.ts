@@ -47,3 +47,16 @@ export const getButtonSize = {
 		padding: 19px 137px;
 	`,
 }
+
+export const getDesktopButtonSize = {
+	SMALL: css`
+		width: 105px;
+		height: 42px;
+		padding: 14px 34px;
+	`,
+	LARGE: css`
+		width: 336px;
+		height: 50px;
+		padding: 14px 80px;
+	`,
+}
