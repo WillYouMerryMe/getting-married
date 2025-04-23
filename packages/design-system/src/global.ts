@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import color from "./color";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -47,11 +46,6 @@ button {
   background: none;
   padding: 0;
   cursor: pointer;
-}
-
-.link {
-  color: ${color.maruDefault};
-  text-decoration: underline;
 }
 `;
 
