@@ -14,15 +14,20 @@ type Props = {
 
 const DesktopButton = ({ onClick, children, styleType = 'DEFAULT', size = 'SMALL', width, style, disabled }: Props) => {
 	return (
-		<StyledButton style={{ width, ...style }} onClick={onClick} styleType={styleType} size={size} disabled={disabled || styleType === 'DISABLED'}>
+		<StyledDesktopButton
+			style={{ width, ...style }}
+			onClick={onClick}
+			styleType={styleType}
+			size={size}
+			disabled={disabled || styleType === 'DISABLED'}>
 			{children}
-		</StyledButton>
+		</StyledDesktopButton>
 	)
 }
 
 export default DesktopButton
 
-const StyledButton = styled.button<{
+const StyledDesktopButton = styled.button<{
 	styleType: ButtonStyleType
 	size: DesktopButtonSize
 }>`
