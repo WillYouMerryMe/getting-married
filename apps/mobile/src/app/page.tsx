@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 
+/**
+ * Renders the homepage layout with a main section featuring the Next.js logo, instructional steps, call-to-action links, and a footer with external resource links.
+ *
+ * @returns The React element representing the homepage.
+ */
 export default function Home() {
   return (
     <div className={styles.page}>
