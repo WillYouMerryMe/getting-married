@@ -10,9 +10,9 @@ interface Props {
 const flex = ({ flexDirection, justifyContent, alignItems }: Props) => {
   return css`
     display: flex;
-    flex-direction: ${flexDirection};
-    justify-content: ${justifyContent};
-    align-items: ${alignItems};
+    ${flexDirection && `flex-direction: ${flexDirection};`}
+    ${justifyContent && `justify-content: ${justifyContent};`}
+    ${alignItems && `align-items: ${alignItems};`}
   `;
 };
 
