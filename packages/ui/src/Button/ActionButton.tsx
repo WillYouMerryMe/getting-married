@@ -30,7 +30,9 @@ const ActionButton = ({
 export default ActionButton;
 
 const StyledActionButton = styled.button`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${color.primary};
   gap: 8px;
   border-radius: 999px;
