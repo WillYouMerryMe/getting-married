@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
 import { color } from '@merried/design-system'
+import { isBrightHexColor } from '@merried/utils'
 
 export const getButtonStyle = {
 	DEFAULT: css`
@@ -59,4 +60,13 @@ export const getDesktopButtonSize = {
 		height: 50px;
 		padding: 14px 80px;
 	`,
+}
+
+export const getPointColorStyle = (pointColor?: string) => {
+	if (!pointColor) return ''
+	const textColor = isBrightHexColor(pointColor) ? color.G900 : color.G0
+	return css`
+		background-color: ${pointColor};
+		color: ${textColor};
+	`
 }
