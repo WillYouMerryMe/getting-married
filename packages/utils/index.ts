@@ -1,3 +1,4 @@
 export { default as flex } from './src/styles/flex';
 
-export { default as isBrightHexColor } from './src/functions/isBrightHexColor';
+export { isBrightHexColor } from './src/functions/colorUtils';
+export { darkenHexColor } from './src/functions/colorUtils';

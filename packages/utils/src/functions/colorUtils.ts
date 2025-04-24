@@ -27,3 +27,15 @@ export const isBrightHexColor = (hex: string): boolean => {
 
   return luminance > 0.5;
 };
+
+export const darkenHexColor = (hex: string, percent = 10) => {
+  const { r, g, b } = hexToRgb(hex);
+
+  const newR = Math.max(0, Math.floor(r * (1 - percent / 100)));
+  const newG = Math.max(0, Math.floor(g * (1 - percent / 100)));
+  const newB = Math.max(0, Math.floor(b * (1 - percent / 100)));
+
+  const toHex = (v: number) => v.toString(16).padStart(2, '0');
+
+  return `#${toHex(newR)}${toHex(newG)}${toHex(newB)}`;
+};
