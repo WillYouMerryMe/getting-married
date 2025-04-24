@@ -1,7 +1,7 @@
 const color = {
   red: '#E94848',
-  primary: '#FF9D94',
-  primary2: 'FF9D9426',
+  primary: '#FFC0CF',
+  primary2: '#FF9D9426',
 
   G0: '#FFFFFF',
   G10: '#FAFAFA',
