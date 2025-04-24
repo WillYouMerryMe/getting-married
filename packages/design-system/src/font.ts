@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 const fontGenerator = (
   weight: number,
@@ -6,7 +6,7 @@ const fontGenerator = (
   lineHeight: number,
   letterSpacing: number
 ) => css`
-  font-family: "Pretendard Variable";
+  font-family: 'Pretendard Variable';
   font-weight: ${weight};
   font-size: ${size}px;
   line-height: ${lineHeight}%;
