@@ -89,6 +89,9 @@ importers:
       '@merried/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
+      '@merried/icon':
+        specifier: workspace:*
+        version: link:../../packages/icon
       '@merried/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -193,6 +196,28 @@ importers:
         specifier: ^8.27.0
         version: 8.28.0(eslint@9.23.0)(typescript@5.8.2)
 
+  packages/icon:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.1.0
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/react':
+        specifier: 19.0.10
+        version: 19.0.10
+      eslint:
+        specifier: ^9.23.0
+        version: 9.23.0
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/typescript-config: {}
 
   packages/ui:
@@ -207,6 +232,9 @@ importers:
       '@merried/design-system':
         specifier: workspace:*
         version: link:../design-system
+      '@merried/icon':
+        specifier: workspace:*
+        version: link:../icon
       '@merried/utils':
         specifier: workspace:*
         version: link:../utils
