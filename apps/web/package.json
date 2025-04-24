@@ -11,7 +11,8 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "next": "15.2.4",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -27,7 +28,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "@eslint/eslintrc": "^3",
-    "@types/styled-components": "^5.1.26",
-    "styled-components": "^6.1.17"
+    "@types/styled-components": "^5.1.26"
   }
 }

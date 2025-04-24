@@ -18,12 +18,12 @@
     "@types/react-dom": "19.0.4",
     "@types/styled-components": "^5.1.26",
     "eslint": "^9.23.0",
-    "styled-components": "^6.1.17",
     "styled-reset": "^4.4.7",
     "typescript": "5.8.2"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.1.17"
   }
 }
