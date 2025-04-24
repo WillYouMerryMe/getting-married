@@ -1,20 +1,29 @@
 import { css } from 'styled-components';
 import { color } from '@merried/design-system';
-import { isBrightHexColor } from '@merried/utils';
+import { isBrightHexColor, darkenHexColor } from '@merried/utils';
 
 export const getButtonStyle = {
   DEFAULT: css`
     background-color: ${color.primary};
     color: ${color.G0};
+    &:hover {
+      background-color: #ffadc0;
+    }
   `,
   SECOND: css`
     background-color: ${color.G20};
     color: ${color.G300};
+    &:hover {
+      background-color: #eeeeee;
+    }
   `,
   SELECT: css`
     background-color: ${color.G10};
     border: 1px solid ${color.G50};
     color: ${color.G300};
+    &:hover {
+      background-color: #f5f3f3;
+    }
   `,
   DISABLED: css`
     background-color: ${color.G40};
@@ -23,6 +32,9 @@ export const getButtonStyle = {
   WARNING: css`
     background-color: ${color.red};
     color: ${color.G0};
+    &:hover {
+      background-color: #e43636;
+    }
   `,
 };
 
@@ -65,8 +77,12 @@ export const getDesktopButtonSize = {
 export const getPointColorStyle = (pointColor?: string) => {
   if (!pointColor) return '';
   const textColor = isBrightHexColor(pointColor) ? color.G900 : color.G0;
+  const hoverColor = darkenHexColor(pointColor);
   return css`
     background-color: ${pointColor};
     color: ${textColor};
+    &:hover {
+      background-color: ${hoverColor};
+    }
   `;
 };
