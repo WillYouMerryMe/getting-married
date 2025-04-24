@@ -46,7 +46,4 @@ const StyledDesktopButton = styled.button<{
 
   ${(props) => props && getButtonStyle[props.styleType]};
   ${(props) => props && getDesktopButtonSize[props.size]};
-
-  ${(props) =>
-    props.styleType === 'SECOND' && props.size === 'LARGE' && `color: ${color.G900};`}
 `;
