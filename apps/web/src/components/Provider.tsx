@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import { GlobalStyle } from '@merried/design-system'
-import type { ReactNode } from 'react'
-import { RecoilRoot } from 'recoil'
+import { GlobalStyle } from '@merried/design-system';
+import type { ReactNode } from 'react';
+import { RecoilRoot } from 'recoil';
 
 interface Props {
-	children: ReactNode
+  children: ReactNode;
 }
 
 const Provider = ({ children }: Props) => {
-	return (
-		<RecoilRoot>
-			<GlobalStyle />
-			{children}
-		</RecoilRoot>
-	)
-}
+  return (
+    <RecoilRoot>
+      <GlobalStyle />
+      {children}
+    </RecoilRoot>
+  );
+};
 
-export default Provider
+export default Provider;
