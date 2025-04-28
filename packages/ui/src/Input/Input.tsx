@@ -24,9 +24,16 @@ const Input = ({
   onChange,
   readOnly,
 }: Props) => {
+  const inputSize = platform === 'DESKTOP' ? 'VERY_LARGE' : size;
+
   return (
     <div>
-      {label && <Label>{label}</Label>}
+      {label && (
+        <Label>
+          {label}
+          <span style={{ color: color.red }}>{platform === 'DESKTOP' && ' *'}</span>
+        </Label>
+      )}
       <div style={{ position: 'relative' }}>
         <StyledInput
           onChange={onChange}
@@ -35,7 +42,7 @@ const Input = ({
           name={name}
           value={value}
           readOnly={readOnly}
-          $size={size}
+          $size={inputSize}
           $platform={platform}
           $isError={isError}
         />
