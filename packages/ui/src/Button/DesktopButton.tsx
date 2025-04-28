@@ -3,7 +3,6 @@ import { ButtonStyleType, DesktopButtonSize } from './button.type';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { getDesktopButtonSize, getButtonStyle } from './button.style';
-import { color } from '@merried/design-system';
 
 type Props = {
   children: ReactNode;
@@ -25,8 +24,8 @@ const DesktopButton = ({
     <StyledDesktopButton
       style={{ width, ...style }}
       onClick={onClick}
-      styleType={styleType}
-      size={size}
+      $styleType={styleType}
+      $size={size}
       disabled={disabled || styleType === 'DISABLED'}
     >
       {children}
@@ -37,13 +36,13 @@ const DesktopButton = ({
 export default DesktopButton;
 
 const StyledDesktopButton = styled.button<{
-  styleType: ButtonStyleType;
-  size: DesktopButtonSize;
+  $styleType: ButtonStyleType;
+  $size: DesktopButtonSize;
 }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   border-radius: 8px;
   word-break: keep-all;
 
-  ${(props) => props && getButtonStyle[props.styleType]};
-  ${(props) => props && getDesktopButtonSize[props.size]};
+  ${(props) => props && getButtonStyle[props.$styleType]};
+  ${(props) => props && getDesktopButtonSize[props.$size]};
 `;
