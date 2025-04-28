@@ -3,21 +3,24 @@ import { css, styled } from 'styled-components';
 import type { CSSProperties, InputHTMLAttributes } from 'react';
 import type { InputSize, Platform } from './input.type';
 import { getInputSize } from './input.style';
+import ErrorMessage from './ErrorMessage';
 
 type Props = {
   label?: string | React.ReactNode;
+  width?: CSSProperties['width'];
   size?: InputSize;
   platform?: Platform;
-  errorMessage?: string;
   isError?: boolean;
-  width?: CSSProperties['width'];
+  errorMessage?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 const Input = ({
   label,
-  platform = 'MOBILE',
+  width,
   size = 'SMALL',
+  platform = 'MOBILE',
   isError = false,
+  errorMessage,
   placeholder,
   type,
   name,
@@ -32,22 +35,23 @@ const Input = ({
       {label && (
         <Label>
           {label}
-          <span style={{ color: color.red }}>{platform === 'DESKTOP' && ' *'}</span>
+          <span style={{ color: color.red }}>{platform === 'DESKTOP' && '*'}</span>
         </Label>
       )}
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', width }}>
         <StyledInput
-          onChange={onChange}
-          placeholder={placeholder}
           type={type}
           name={name}
           value={value}
+          placeholder={placeholder}
           readOnly={readOnly}
+          onChange={onChange}
           $size={inputSize}
           $platform={platform}
           $isError={isError}
         />
       </div>
+      {isError && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 };
