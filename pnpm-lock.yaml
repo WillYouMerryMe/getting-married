@@ -266,6 +266,9 @@ importers:
       '@merried/design-system':
         specifier: workspace:*
         version: link:../design-system
+      '@merried/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@merried/icon':
         specifier: workspace:*
         version: link:../icon
