@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import { useBooleanState, useOutsideClick } from '@merried/hooks';
 import { flex } from '@merried/utils';
 import { color, font } from '@merried/design-system';
+import { IconArrow } from '@merried/icon';
 
 type DropdownOption = 'LARGE' | 'COLOR';
 
@@ -38,6 +39,7 @@ const Dropdown = ({
     <div ref={dropdownRef}>
       <StyledDropdown onClick={handleToggleButtonClick} $isOpen={isOpen} $size={size}>
         {value || placeholder}
+        <IconArrow direction={isOpen ? 'top' : 'bottom'} />
       </StyledDropdown>
       <DropdownMenuBox $isOpen={isOpen}>
         <DropdownMenu>
