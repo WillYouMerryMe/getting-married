@@ -50,7 +50,7 @@ const Dropdown = ({
         </StyledDropdown>
       </Row>
       <DropdownMenuBox $isOpen={isOpen}>
-        <DropdownMenu>
+        <DropdownMenu $option={option}>
           {data?.map((item, index) => (
             <DropdownItem
               key={`dropdown ${index}`}
@@ -93,10 +93,11 @@ const DropdownMenuBox = styled.div<{ $isOpen: boolean }>`
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 `;
 
-const DropdownMenu = styled.div`
+const DropdownMenu = styled.div<{ $option: DropdownOption }>`
   position: absolute;
+  right: 0;
   display: grid;
-  width: 100%;
+  width: ${({ $option }) => ($option === 'DEFAULT' ? '384px' : '334px')};
   padding: 12px 0;
   background: ${color.G0};
   box-shadow:
