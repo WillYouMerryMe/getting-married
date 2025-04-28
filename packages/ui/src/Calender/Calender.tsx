@@ -40,14 +40,22 @@ const Calendar = () => {
   return (
     <StyledCalendar>
       <Header>
-        <NavButton onClick={() => changeMonth(-1)}>
+        <NavButton
+          onClick={() => changeMonth(-1)}
+          aria-label="이전 달"
+          title="이전 달로 이동"
+        >
           <IconPrevious width={20} height={20} />
         </NavButton>
         <DateDisplay>
           {selectedDate.getFullYear()}.{selectedDate.getMonth() + 1}.
           {selectedDate.getDate()}
         </DateDisplay>
-        <NavButton onClick={() => changeMonth(1)}>
+        <NavButton
+          onClick={() => changeMonth(1)}
+          aria-label="다음 달"
+          title="다음 달로 이동"
+        >
           <IconNext width={20} height={20} />
         </NavButton>
       </Header>
