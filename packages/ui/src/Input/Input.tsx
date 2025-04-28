@@ -2,6 +2,7 @@ import { color, font } from '@merried/design-system';
 import { css, styled } from 'styled-components';
 import type { CSSProperties, InputHTMLAttributes } from 'react';
 import type { InputSize, Platform } from './input.type';
+import { getInputSize } from './input.style';
 
 type Props = {
   label?: string | React.ReactNode;
@@ -83,6 +84,8 @@ const StyledInput = styled.input<{
         border: 1px solid ${color.red};
       }
     `}
+
+  ${(props) => props && getInputSize[props.$size]};
 `;
 
 const Label = styled.p`
