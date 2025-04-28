@@ -4,9 +4,14 @@ import { flex } from '@merried/utils';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
+interface CalendarProps {
+  initialDate?: Date;
+  onDateSelect?: (date: Date) => void;
+}
+
+const Calendar = ({ initialDate = new Date(), onDateSelect }: CalendarProps) => {
+  const [currentDate, setCurrentDate] = useState(initialDate);
+  const [selectedDate, setSelectedDate] = useState(initialDate);
 
   const getFirstDayOfMonth = (date: { getFullYear(): number; getMonth(): number }) => {
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -64,10 +69,10 @@ const Calendar = () => {
           <StyledDay key={idx}>{day}</StyledDay>
         ))}
       </WeekWrapper>
-      <DateGrid>
+      <DateGrid role="grid">
         {daysInMonth.map((day, idx) => {
           if (day === null) {
-            return <DateCellEmpty key={idx} />;
+            return <DateCellEmpty key={idx} role="presentation" />;
           }
           const cellDate = new Date(
             currentDate.getFullYear(),
@@ -75,6 +80,7 @@ const Calendar = () => {
             day
           );
           const isPast = cellDate < today;
+          const isToday = cellDate.getTime() === today.getTime();
           const isSelected =
             !isPast &&
             day === selectedDate.getDate() &&
@@ -86,9 +92,24 @@ const Calendar = () => {
               key={idx}
               $isSelected={isSelected}
               $isPast={isPast}
+              tabIndex={isPast ? -1 : 0}
+              role="gridcell"
+              aria-selected={isSelected}
+              aria-disabled={isPast}
+              aria-label={`${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${day}일${isPast ? ' (지난 날짜)' : ''}${isToday ? ' (오늘)' : ''}`}
               onClick={() => {
                 if (isPast) return;
                 setSelectedDate(cellDate);
+                onDateSelect?.(cellDate);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  if (!isPast) {
+                    setSelectedDate(cellDate);
+                    onDateSelect?.(cellDate);
+                  }
+                }
               }}
             >
               {day}
@@ -158,7 +179,10 @@ const DateGrid = styled.div`
   width: 100%;
 `;
 
-const DateCell = styled.div<{ $isSelected: boolean; $isPast: boolean }>`
+const DateCell = styled.div<{
+  $isSelected: boolean;
+  $isPast: boolean;
+}>`
   text-align: center;
   padding: 9.41px 6.27px;
   border-radius: 999px;
