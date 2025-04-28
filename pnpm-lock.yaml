@@ -196,6 +196,37 @@ importers:
         specifier: ^8.27.0
         version: 8.28.0(eslint@9.23.0)(typescript@5.8.2)
 
+  packages/hooks:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.1.0(react@19.1.0)
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/react':
+        specifier: 19.0.10
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: 19.0.4
+        version: 19.0.4(@types/react@19.0.10)
+      eslint:
+        specifier: ^9.23.0
+        version: 9.23.0
+      styled-reset:
+        specifier: ^4.4.7
+        version: 4.5.2(styled-components@6.1.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/icon:
     dependencies:
       react:
@@ -228,6 +259,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      styled-components:
+        specifier: ^6.1.17
+        version: 6.1.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@merried/design-system':
         specifier: workspace:*
@@ -262,9 +296,6 @@ importers:
       eslint:
         specifier: ^9.23.0
         version: 9.23.0
-      styled-components:
-        specifier: ^6.1.17
-        version: 6.1.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       styled-reset:
         specifier: ^4.4.7
         version: 4.5.2(styled-components@6.1.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
