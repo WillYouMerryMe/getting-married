@@ -39,7 +39,7 @@ const Dropdown = ({
   return (
     <div ref={dropdownRef}>
       <Row gap={8}>
-        {value && option === 'COLOR' && <DropdownColorBox $color={value} />}
+        {option === 'COLOR' && <DropdownColorBox $color={value || '#FFFFFF'} />}
         <StyledDropdown
           onClick={handleToggleButtonClick}
           $isOpen={isOpen}
