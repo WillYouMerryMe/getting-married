@@ -4,21 +4,21 @@ import { flex } from '@merried/utils';
 import { color, font } from '@merried/design-system';
 import { IconArrow } from '@merried/icon';
 
-type DropdownOption = 'LARGE' | 'COLOR';
+type DropdownOption = 'DEFAULT' | 'COLOR';
 
 interface Props {
   onChange: (value: string, name: string) => void;
   name: string;
   value?: string;
   data?: string[];
-  size?: DropdownOption;
+  option?: DropdownOption;
   placeholder?: string;
 }
 
 const Dropdown = ({
   value,
   data,
-  size = 'LARGE',
+  option = 'DEFAULT',
   onChange,
   name,
   placeholder,
@@ -37,7 +37,7 @@ const Dropdown = ({
 
   return (
     <div ref={dropdownRef}>
-      <StyledDropdown onClick={handleToggleButtonClick} $isOpen={isOpen} $size={size}>
+      <StyledDropdown onClick={handleToggleButtonClick} $isOpen={isOpen} $option={option}>
         {value || placeholder}
         <IconArrow direction={isOpen ? 'top' : 'bottom'} />
       </StyledDropdown>
@@ -59,9 +59,9 @@ const Dropdown = ({
 
 export default Dropdown;
 
-const StyledDropdown = styled.div<{ $isOpen: boolean; $size: DropdownOption }>`
+const StyledDropdown = styled.div<{ $isOpen: boolean; $option: DropdownOption }>`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
-  width: ${({ $size }) => ($size === 'LARGE' ? '384px' : '334px')};
+  width: ${({ $option }) => ($option === 'DEFAULT' ? '384px' : '334px')};
   height: 42px;
   padding: 14px 16px;
   border: 1px solid ${({ $isOpen }) => ($isOpen ? color.G500 : color.G70)};
