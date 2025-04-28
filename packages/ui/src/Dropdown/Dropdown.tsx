@@ -3,6 +3,7 @@ import { useBooleanState, useOutsideClick } from '@merried/hooks';
 import { flex } from '@merried/utils';
 import { color, font } from '@merried/design-system';
 import { IconArrow } from '@merried/icon';
+import Row from '../Flex/Row';
 
 type DropdownOption = 'DEFAULT' | 'COLOR';
 
@@ -37,10 +38,17 @@ const Dropdown = ({
 
   return (
     <div ref={dropdownRef}>
-      <StyledDropdown onClick={handleToggleButtonClick} $isOpen={isOpen} $option={option}>
-        {value || placeholder}
-        <IconArrow direction={isOpen ? 'top' : 'bottom'} />
-      </StyledDropdown>
+      <Row gap={8}>
+        {value && option === 'COLOR' && <DropdownColorBox $color={value} />}
+        <StyledDropdown
+          onClick={handleToggleButtonClick}
+          $isOpen={isOpen}
+          $option={option}
+        >
+          {value || placeholder}
+          <IconArrow direction={isOpen ? 'top' : 'bottom'} />
+        </StyledDropdown>
+      </Row>
       <DropdownMenuBox $isOpen={isOpen}>
         <DropdownMenu>
           {data?.map((item, index) => (
@@ -70,6 +78,14 @@ const StyledDropdown = styled.div<{ $isOpen: boolean; $option: DropdownOption }>
   ${font.P3}
   color: ${color.G900};
   cursor: pointer;
+`;
+
+const DropdownColorBox = styled.div<{ $color: string }>`
+  width: 42px;
+  height: 42px;
+  background: ${({ $color }) => $color};
+  border: 1px solid #a2a2a2;
+  border-radius: 8px;
 `;
 
 const DropdownMenuBox = styled.div<{ $isOpen: boolean }>`
