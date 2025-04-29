@@ -21,4 +21,5 @@ export default TemplateItem;
 const StyledTemplateItem = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'flex-start' })}
   gap: 24px;
+  cursor: pointer;
 `;
