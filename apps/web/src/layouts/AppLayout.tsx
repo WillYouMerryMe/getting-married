@@ -30,4 +30,9 @@ const Section = styled.section`
   flex: 1;
   min-width: fit-content;
   overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
