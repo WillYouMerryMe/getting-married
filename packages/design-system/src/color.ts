@@ -34,6 +34,7 @@ const color = {
   pointGreen: '#74D266',
   pointRed: '#FB4A4A',
   pointOrange: '#FF662A',
+  pointBlue: '#3E8BE3',
 };
 
 export default color;
