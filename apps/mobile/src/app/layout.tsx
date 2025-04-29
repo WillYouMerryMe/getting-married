@@ -15,7 +15,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <head>
         <body>
           <StyledComponentRegistry>
             <QueryClientProvider>
@@ -23,7 +22,6 @@ export default function RootLayout({
             </QueryClientProvider>
           </StyledComponentRegistry>
         </body>
-      </head>
     </html>
   );
 }
