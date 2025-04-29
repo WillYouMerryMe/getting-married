@@ -1,4 +1,6 @@
+import { ROUTES } from '@/constants/common/constant';
 import { flex } from '@merried/utils';
+import { useRouter } from 'next/navigation';
 import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 
@@ -8,8 +10,13 @@ interface Props {
 }
 
 const TemplateItem = ({ filed, title }: Props) => {
+  const router = useRouter();
+  const handleMoveFormPage = () => {
+    router.push(ROUTES.FORM);
+  };
+
   return (
-    <StyledTemplateItem>
+    <StyledTemplateItem onClick={handleMoveFormPage}>
       {filed}
       {title}
     </StyledTemplateItem>
