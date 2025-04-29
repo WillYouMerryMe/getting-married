@@ -1,5 +1,6 @@
 import Provider from '@/components/Provider';
 import StyledComponentRegistry from '@/lib/registry';
+import QueryClientProvider from '@/services/QueryClientProvider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({
       <head>
         <body>
           <StyledComponentRegistry>
-            <Provider>{children}</Provider>
+            <QueryClientProvider>
+              <Provider>{children}</Provider>
+            </QueryClientProvider>
           </StyledComponentRegistry>
         </body>
       </head>
