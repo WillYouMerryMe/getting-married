@@ -5,11 +5,11 @@ import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 interface Props {
-  filed: ReactNode;
+  preview: ReactNode;
   title: string;
 }
 
-const TemplateItem = ({ filed, title }: Props) => {
+const TemplateItem = ({ preview, title }: Props) => {
   const router = useRouter();
   const handleMoveFormPage = () => {
     router.push(ROUTES.FORM);
@@ -17,7 +17,7 @@ const TemplateItem = ({ filed, title }: Props) => {
 
   return (
     <StyledTemplateItem onClick={handleMoveFormPage}>
-      {filed}
+      {preview}
       {title}
     </StyledTemplateItem>
   );
