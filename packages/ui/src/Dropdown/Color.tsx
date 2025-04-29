@@ -1,6 +1,6 @@
 import { useBooleanState, useOutsideClick } from '@merried/hooks';
 import { ChromePicker, ColorResult } from 'react-color';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 interface Props {
   color: string;
@@ -18,6 +18,7 @@ const ColorBoxButton = ({ color, onChange }: Props) => {
 
   return (
     <StyledColorBox ref={ref}>
+      {isOpen && <ColorPickerGlobalStyle />}
       <ColorBox $color={color} onClick={handleToggleButtonClick} />
       {isOpen && (
         <PickerBox>
@@ -33,6 +34,16 @@ const ColorBoxButton = ({ color, onChange }: Props) => {
 };
 
 export default ColorBoxButton;
+
+const ColorPickerGlobalStyle = createGlobalStyle`
+  .chrome-picker input {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+  }
+`;
 
 const StyledColorBox = styled.div`
   position: relative;
