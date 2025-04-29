@@ -1,7 +1,7 @@
-import Provider from '@/components/Provider';
-import StyledComponentRegistry from '@/lib/registry';
-import QueryClientProvider from '@/services/QueryClientProvider';
 import type { Metadata } from 'next';
+import Provider from './providers/Provider';
+import QueryClientProvider from './providers/QueryClientProvider';
+import StyledComponentsProvider from './providers/StyledComponentsProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,13 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-        <body>
-          <StyledComponentRegistry>
-            <QueryClientProvider>
-              <Provider>{children}</Provider>
-            </QueryClientProvider>
-          </StyledComponentRegistry>
-        </body>
+      <body>
+        <StyledComponentsProvider>
+          <QueryClientProvider>
+            <Provider>{children}</Provider>
+          </QueryClientProvider>
+        </StyledComponentsProvider>
+      </body>
     </html>
   );
 }

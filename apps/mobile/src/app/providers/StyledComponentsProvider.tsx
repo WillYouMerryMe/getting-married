@@ -8,7 +8,7 @@ interface RegistryProps {
   children: ReactNode;
 }
 
-const StyledComponentRegistry = ({ children }: RegistryProps) => {
+const StyledComponentsProvider = ({ children }: RegistryProps) => {
   const [styledComponentStyleSheet] = useState(() => new ServerStyleSheet());
 
   useServerInsertedHTML(() => {
@@ -29,4 +29,4 @@ const StyledComponentRegistry = ({ children }: RegistryProps) => {
   );
 };
 
-export default StyledComponentRegistry;
+export default StyledComponentsProvider;
