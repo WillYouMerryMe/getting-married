@@ -1,95 +1,54 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import Footer from '@/components/template/Footer';
+import TemplateGrid from '@/components/template/TemplateGrid';
+import AppLayout from '@/layouts/AppLayout';
+import { color } from '@merried/design-system';
+import { Column, Text } from '@merried/ui';
+import { flex } from '@merried/utils';
+import { styled } from 'styled-components';
+
+const Template = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <AppLayout>
+      <StyledTemplate>
+        <Column gap={8}>
+          <Text fontType="H1" color={color.G900}>
+            청접장 선택하기
+          </Text>
+          <Text fontType="P2" color={color.G80}>
+            다양한 디자인의 청첩장 중 마음에 드는 디자인을 골라보세요
+          </Text>
+        </Column>
+        <TemplateGrid />
+      </StyledTemplate>
+      <Footer />
+    </AppLayout>
   );
-}
+};
+
+export default Template;
+
+const StyledTemplate = styled.div`
+  position: relative;
+  ${flex({ flexDirection: 'column' })}
+  gap: 74px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 120px 0px 120px;
+
+  @media (max-width: 1024px) {
+    padding: 60px 80px 0px 80px;
+    gap: 50px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 40px 0px 40px;
+    gap: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 20px 0px 20px;
+    gap: 30px;
+  }
+`;

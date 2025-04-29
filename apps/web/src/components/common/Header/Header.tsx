@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { flex } from '@merried/utils';
 import { color } from '@merried/design-system';
 import Image from 'next/image';
-import { Button } from '@merried/ui';
+import { DesktopButton } from '@merried/ui';
 
 const Header = () => {
   return (
@@ -14,9 +14,9 @@ const Header = () => {
         height={64}
         alt="logo"
       />
-      <Button styleType="SECOND" size="SMALL">
+      <DesktopButton styleType="SECOND" size="SMALL">
         로그인
-      </Button>
+      </DesktopButton>
     </StyledHeader>
   );
 };
