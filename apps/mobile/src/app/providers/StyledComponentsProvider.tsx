@@ -4,11 +4,11 @@ import { useServerInsertedHTML } from 'next/navigation';
 import { ReactNode, useState } from 'react';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
-interface RegistryProps {
+interface StyledComponentsProviderProps {
   children: ReactNode;
 }
 
-const StyledComponentsProvider = ({ children }: RegistryProps) => {
+const StyledComponentsProvider = ({ children }: StyledComponentsProviderProps) => {
   const [styledComponentStyleSheet] = useState(() => new ServerStyleSheet());
 
   useServerInsertedHTML(() => {
