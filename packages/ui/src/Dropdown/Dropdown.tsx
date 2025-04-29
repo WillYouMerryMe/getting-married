@@ -4,6 +4,7 @@ import { flex } from '@merried/utils';
 import { color, font } from '@merried/design-system';
 import { IconArrow } from '@merried/icon';
 import Row from '../Flex/Row';
+import ColorBoxButton from './Color';
 
 type DropdownOption = 'DEFAULT' | 'COLOR';
 
@@ -31,6 +32,10 @@ const Dropdown = ({
   } = useBooleanState();
   const dropdownRef = useOutsideClick(closeDropdown);
 
+  const handleColorChange = (color: string) => {
+    onChange(color, name);
+  };
+
   const handleDropdownItemButtonClick = (data: string) => {
     onChange(data, name);
     closeDropdown();
@@ -39,7 +44,9 @@ const Dropdown = ({
   return (
     <div ref={dropdownRef}>
       <Row gap={8}>
-        {option === 'COLOR' && <DropdownColorBox $color={value || '#FFFFFF'} />}
+        {option === 'COLOR' && (
+          <ColorBoxButton color={value || '#FFFFFF'} onChange={handleColorChange} />
+        )}
         <StyledDropdown
           onClick={handleToggleButtonClick}
           $isOpen={isOpen}
