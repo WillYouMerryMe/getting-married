@@ -24,7 +24,7 @@ const Header = () => {
 export default Header;
 
 const StyledHeader = styled.div`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
   width: 100vw;
   height: 80px;
   padding: 8px 120px;
