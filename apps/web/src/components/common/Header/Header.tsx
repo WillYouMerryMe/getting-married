@@ -1,0 +1,33 @@
+import { styled } from 'styled-components';
+import { flex } from '@merried/utils';
+import { color } from '@merried/design-system';
+import Image from 'next/image';
+import { Button } from '@merried/ui';
+
+const Header = () => {
+  return (
+    <StyledHeader>
+      <Image
+        src="/LogoFull.svg"
+        style={{ cursor: 'pointer' }}
+        width={64}
+        height={64}
+        alt="logo"
+      />
+      <Button styleType="SECOND" size="SMALL">
+        로그인
+      </Button>
+    </StyledHeader>
+  );
+};
+
+export default Header;
+
+const StyledHeader = styled.div`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  width: 100vw;
+  height: 80px;
+  padding: 8px 120px;
+  border-bottom: 1px solid ${color.G30};
+  background: ${color.G0};
+`;
