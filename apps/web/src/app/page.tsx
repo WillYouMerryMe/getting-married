@@ -36,4 +36,19 @@ const StyledTemplate = styled.div`
   width: 100%;
   min-height: 100vh;
   padding: 80px 120px 0px 120px;
+
+  @media (max-width: 1024px) {
+    padding: 60px 80px 0px 80px;
+    gap: 50px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 40px 0px 40px;
+    gap: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 20px 0px 20px;
+    gap: 30px;
+  }
 `;

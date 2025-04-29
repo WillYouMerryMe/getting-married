@@ -62,4 +62,16 @@ const StyledGrid = styled.div`
   justify-content: space-between;
   gap: 64px 0px;
   margin-bottom: 180px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(0, 284px));
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 284px));
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, minmax(0, 100%));
+  }
 `;
