@@ -8,6 +8,7 @@ import MapoDacapoA from './fonts/MapoDacapoA.woff2';
 import OwnglyphBaekSubin from './fonts/Ownglyph_Baek_Subin-Rg.woff2';
 import NelnaYesam from './fonts/Nelna_Yesam-Rg.woff2';
 import WhiteAngelica from './fonts/WhiteAngelicaRegular.woff2';
+import HeirofLightOTFRegular from './fonts/HeirofLightOTFRegular00.woff2';
 
 const Fonts = {
   BBB0003,
@@ -20,6 +21,7 @@ const Fonts = {
   OwnglyphBaekSubin,
   NelnaYesam,
   WhiteAngelica,
+  HeirofLightOTFRegular,
 } as const;
 
 export default Fonts;
