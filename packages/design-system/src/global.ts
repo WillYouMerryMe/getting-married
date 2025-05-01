@@ -5,37 +5,84 @@ const GlobalStyle = createGlobalStyle`
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 @font-face {
-    font-family: 'BBB0003';
-    src: url(${Fonts.BBB0003}) format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'BBB0003';
+  src: url(${Fonts.BBB0003}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ownglyph Kundo';
+  src: url(${Fonts.OwnglyphKundo}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   }
 
-  @font-face {
-    font-family: 'Ownglyph Kundo';
-    src: url(${Fonts.OwnglyphKundo}) format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: 'Diphylleia';
+  src: url(${Fonts.Diphylleia}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   }
 
-  @font-face {
-    font-family: 'Diphylleia';
-    src: url(${Fonts.Diphylleia}) format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: 'DOSGothic';
+  src: url(${Fonts.DOSGothic}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   }
 
-  @font-face {
-    font-family: 'DOSGothic';
-    src: url(${Fonts.DOSGothic}) format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+@font-face {
+  font-family: 'KoreanCNMM';
+  src: url(${Fonts.KoreanCNMM}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url(${Fonts.LeeSeoyun}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MapoDacapo';
+  src: url(${Fonts.MapoDacapoA}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ownglyph Baek Subin';
+  src: url(${Fonts.OwnglyphBaekSubin}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nelna Yesam';
+  src: url(${Fonts.NelnaYesam}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'White Angelica';
+  src: url(${Fonts.WhiteAngelica}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   box-sizing: border-box;
