@@ -3,6 +3,7 @@ import Fonts from '../assets';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy.css');
 
 @font-face {
   font-family: 'BBB0003';
@@ -79,6 +80,14 @@ const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'White Angelica';
   src: url(${Fonts.WhiteAngelica}) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heir of Light OTF';
+  src: url(${Fonts.HeirofLightOTFRegular}) format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
