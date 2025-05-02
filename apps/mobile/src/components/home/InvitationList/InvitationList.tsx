@@ -49,7 +49,6 @@ export default InvitationList;
 const ListContainer = styled.div`
   ${flex({ flexDirection: 'column' })}
   width: 100%;
-  gap: 14px;
 `;
 
 const EmptyContainer = styled.div`
