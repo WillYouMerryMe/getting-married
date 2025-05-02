@@ -4,3 +4,7 @@ export { default as IconPrevious } from './src/IconPrevious';
 export { default as IconArrow } from './src/IconArrow';
 export { default as IconNaver } from './src/IconNaver';
 export { default as IconKakao } from './src/IconKakao';
+export { default as IconBag } from './src/IconBag';
+export { default as IconList } from './src/IconList';
+export { default as IconLetter } from './src/IconLetter';
+export { default as IconProfile } from './src/IconProfile';
