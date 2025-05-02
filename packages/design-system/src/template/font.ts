@@ -26,7 +26,7 @@ type Templates = {
   };
 };
 
-const getTemplateFontStyleValue = (
+const getTemplateFontValue = (
   templates: Templates,
   templateId: string,
   key?: string
@@ -47,7 +47,7 @@ const getTemplateFontStyleValue = (
 };
 
 export const getTextStyle = (templateId: string, key?: string) => {
-  const style = getTemplateFontStyleValue(fontPresetsJson as Templates, templateId, key);
+  const style = getTemplateFontValue(fontPresetsJson as Templates, templateId, key);
 
   if (!style) return css``;
 
