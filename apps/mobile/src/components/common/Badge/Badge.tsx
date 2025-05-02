@@ -31,10 +31,4 @@ const StyledBadge = styled.button`
   border-radius: 6px;
   padding: 6px 8px;
   gap: 4px;
-
-  svg {
-    flex-shrink: 0;
-    width: 14px !important;
-    height: 14px !important;
-  }
 `;
