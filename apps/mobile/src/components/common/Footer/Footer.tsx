@@ -32,5 +32,5 @@ const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
   z-index: 10;
-  padding: 12px 32px 46px;
+  padding: 12px 32px calc(env(safe-area-inset-bottom) + 46px);
 `;
