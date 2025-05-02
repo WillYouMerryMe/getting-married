@@ -1,3 +1,6 @@
+import { css } from 'styled-components';
+import fontPresetsJson from './presets/fontPresets.json';
+
 type FontStyle = {
   fontFamily?: string;
   fontSize?: number;
@@ -41,4 +44,20 @@ const getTemplateFontStyleValue = (
   }
 
   return fonts[key]?.default ?? global.default;
+};
+
+export const getTextStyle = (templateId: string, key?: string) => {
+  const style = getTemplateFontStyleValue(fontPresetsJson as Templates, templateId, key);
+
+  if (!style) return css``;
+
+  const { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } = style;
+
+  return css`
+    ${fontFamily && `font-family: ${fontFamily};`}
+    ${fontSize && `font-size: ${fontSize}px;`}
+    ${fontWeight && `font-weight: ${fontWeight};`}
+    ${lineHeight && `line-height: ${lineHeight}%;`}
+    ${letterSpacing && `letter-spacing: ${letterSpacing}px;`}
+  `;
 };
