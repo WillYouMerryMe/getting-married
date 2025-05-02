@@ -13,17 +13,22 @@ interface AppLayoutProps {
 
 const AppLayout = ({ children, footer, backgroundColor }: AppLayoutProps) => {
   return (
-    <>
-      <StyledAppLayout style={{ backgroundColor }}>{children}</StyledAppLayout>
+    <StyledAppLayout style={{ backgroundColor }}>
+      <LayoutWrapper>{children}</LayoutWrapper>
       {footer && <Footer />}
-    </>
+    </StyledAppLayout>
   );
 };
 
 export default AppLayout;
 
 const StyledAppLayout = styled.div`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  ${flex({ flexDirection: 'column' })}
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+`;
+
+const LayoutWrapper = styled.main`
+  flex: 1;
+  width: 100%;
 `;
