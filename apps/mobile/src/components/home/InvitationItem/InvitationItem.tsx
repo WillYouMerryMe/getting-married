@@ -15,17 +15,17 @@ const InvitationItem = ({ title, date, hour }: InvitationItemProps) => {
   return (
     <StyledInvitationItem>
       <Background src="images/type01.svg" alt="초대장 배경" />
-      <IconFolder width="100%" height={194.38} />
+      <IconFolder width="100%" height={194.38} stroke={color.G30}/>
       <ItemContent>
         <Column gap={4}>
           <Text fontType="H4" color={color.G900}>
             {title}
           </Text>
           <Row gap={4}>
-            <Text fontType="P3" color="#A2A2A2">
+            <Text fontType="P3" color={color.G80}>
               {date}
             </Text>
-            <Text fontType="P3" color="#A2A2A2">
+            <Text fontType="P3" color={color.G80}>
               {hour}
             </Text>
           </Row>
