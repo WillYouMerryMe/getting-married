@@ -1,15 +1,23 @@
 'use client';
 
+import Footer from '@/components/common/Footer/Footer';
 import { flex } from '@merried/utils';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 interface AppLayoutProps {
   children: ReactNode;
+  footer?: boolean;
+  backgroundColor?: CSSProperties['backgroundColor'];
 }
 
-const AppLayout = ({ children }: AppLayoutProps) => {
-  return <StyledAppLayout>{children}</StyledAppLayout>;
+const AppLayout = ({ children, footer, backgroundColor }: AppLayoutProps) => {
+  return (
+    <>
+      <StyledAppLayout style={{ backgroundColor }}>{children}</StyledAppLayout>
+      {footer && <Footer />}
+    </>
+  );
 };
 
 export default AppLayout;
