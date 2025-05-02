@@ -46,18 +46,22 @@ const getTemplateFontValue = (
   return fonts[key]?.default ?? global.default;
 };
 
-export const getTextStyle = (templateId: string, key?: string) => {
-  const style = getTemplateFontValue(fontPresetsJson as Templates, templateId, key);
+const applyTemplateFontStyle =
+  (templates: Templates) => (templateId: string, key?: string) => {
+    const style = getTemplateFontValue(templates, templateId, key);
+    if (!style) return css``;
 
-  if (!style) return css``;
+    const { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } = style;
 
-  const { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } = style;
+    return css`
+      ${fontFamily && `font-family: ${fontFamily};`}
+      ${fontSize && `font-size: ${fontSize}px;`}
+      ${fontWeight && `font-weight: ${fontWeight};`}
+      ${lineHeight && `line-height: ${lineHeight}%;`}
+      ${letterSpacing && `letter-spacing: ${letterSpacing}px;`}
+    `;
+  };
 
-  return css`
-    ${fontFamily && `font-family: ${fontFamily};`}
-    ${fontSize && `font-size: ${fontSize}px;`}
-    ${fontWeight && `font-weight: ${fontWeight};`}
-    ${lineHeight && `line-height: ${lineHeight}%;`}
-    ${letterSpacing && `letter-spacing: ${letterSpacing}px;`}
-  `;
-};
+const getTemplateFontStyle = applyTemplateFontStyle(fontPresetsJson as Templates);
+
+export default getTemplateFontStyle;
