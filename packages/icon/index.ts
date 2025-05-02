@@ -8,3 +8,6 @@ export { default as IconBag } from './src/IconBag';
 export { default as IconList } from './src/IconList';
 export { default as IconLetter } from './src/IconLetter';
 export { default as IconProfile } from './src/IconProfile';
+export { default as IconFolder } from './src/IconFolder';
+export { default as IconBoldShare } from './src/IconBoldShare';
+export { default as IconBoldLetter } from './src/IconBoldLetter';
