@@ -76,6 +76,92 @@
     }
   },
 
+  "template2": {
+    "global": {
+      "default": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 15,
+        "fontWeight": 300,
+        "lineHeight": 100,
+        "letterSpacing": -0.15
+      }
+    },
+    "fonts": {
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 500,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "LeeSeoyun": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "MapoDacapo": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "Ownglyph Baek Subin": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "Nelna Yesam": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      },
+      "White Angelica": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": -0.32
+        }
+      }
+    }
+  },
+
   "template3": {
     "global": {
       "default": {
@@ -169,6 +255,413 @@
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 140
+        }
+      }
+    }
+  },
+
+  "template4": {
+    "global": {
+      "default": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      },
+      "name": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      },
+      "date": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "lineHeight": 100
+      },
+      "dash": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 300,
+        "lineHeight": 120
+      }
+    },
+    "fonts": {
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 48,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 500,
+          "lineHeight": 120
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "LeeSeoyun": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "MapoDacapo": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "Ownglyph Baek Subin": {
+        "default": {
+          "fontSize": 48,
+          "fontWeight": 400,
+          "lineHeight": 100
+        }
+      },
+      "Nelna Yesam": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      }
+    }
+  },
+
+  "template5": {
+    "global": {
+      "default": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      },
+      "name": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 18,
+        "fontWeight": 400,
+        "lineHeight": 120
+      },
+      "date": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      }
+    },
+    "fonts": {
+      "BBB0003": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 700,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 700,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 500,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "LeeSeoyun": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "MapoDacapo": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "Ownglyph Baek Subin": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      },
+      "White Angelica": {
+        "default": {
+          "fontSize": 52,
+          "fontWeight": 400,
+          "lineHeight": 100,
+          "letterSpacing": 0.52
+        }
+      }
+    }
+  },
+
+  "template6": {
+    "global": {
+      "default": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      },
+      "date": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      }
+    },
+    "fonts": {
+      "BBB0003": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 700,
+          "lineHeight": 110
+        }
+      },
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 500,
+          "lineHeight": 110
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "LeeSeoyun": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "MapoDacapo": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "Ownglyph Baek Subin": {
+        "default": {
+          "fontSize": 40,
+          "fontWeight": 400,
+          "lineHeight": 110
+        }
+      },
+      "Nelna Yesam": {
+        "default": {
+          "fontSize": 44,
+          "fontWeight": 400,
+          "lineHeight": 120
+        }
+      },
+      "White Angelica": {
+        "default": {
+          "fontSize": 32,
+          "fontWeight": 400,
+          "lineHeight": 130
+        }
+      }
+    }
+  },
+
+  "template7": {
+    "global": {
+      "default": {
+        "fontFamily": "Paperlogy",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "lineHeight": 120
+      }
+    },
+    "fonts": {
+      "BBB0003": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 700,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 500,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "LeeSeoyun": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "MapoDacapo": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "Ownglyph Baek Subin": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      },
+      "Nelna Yesam": {
+        "default": {
+          "fontSize": 60,
+          "fontWeight": 400,
+          "lineHeight": 105,
+          "letterSpacing": -1.8
+        }
+      }
+    }
+  },
+
+  "template8": {
+    "global": {
+      "default": {
+        "fontFamily": "Heir of Light OTF",
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 100,
+        "letterSpacing": -0.16
+      }
+    },
+    "fonts": {
+      "BBB0003": {
+        "default": {
+          "fontSize": 110,
+          "fontWeight": 700,
+          "lineHeight": 100
+        }
+      },
+      "Ownglyph Kundo": {
+        "default": {
+          "fontSize": 110,
+          "fontWeight": 400,
+          "lineHeight": 100
+        }
+      },
+      "Diphylleia": {
+        "default": {
+          "fontSize": 110,
+          "fontWeight": 400,
+          "lineHeight": 100
+        }
+      },
+      "DOSGothic": {
+        "default": {
+          "fontSize": 110,
+          "fontWeight": 500,
+          "lineHeight": 100
+        }
+      },
+      "KoreanCNMM": {
+        "default": {
+          "fontSize": 110,
+          "fontWeight": 400,
+          "lineHeight": 100
         }
       }
     }
