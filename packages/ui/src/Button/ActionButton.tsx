@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
   icon?: ButtonIcon;
   width?: CSSProperties['width'];
-  background: string;
+  background?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ActionButton = ({
@@ -19,7 +19,7 @@ const ActionButton = ({
   icon = 'NONE',
   style,
   disabled,
-  background,
+  background = color.primary,
 }: Props) => {
   return (
     <StyledActionButton

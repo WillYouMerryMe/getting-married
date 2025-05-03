@@ -15,7 +15,7 @@ const Manage = () => {
           <Text fontType="H2" color={color.G900}>
             참석자 관리
           </Text>
-          <ActionButton icon="ADD_ICON" background={color.primary} onClick={() => {}}>
+          <ActionButton icon="ADD_ICON" onClick={() => {}}>
             참석자 추가
           </ActionButton>
         </Column>
