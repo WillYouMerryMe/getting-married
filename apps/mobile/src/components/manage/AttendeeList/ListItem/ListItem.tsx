@@ -1,5 +1,5 @@
+import { SIDE } from '@/constants/common/constant';
 import { Side } from '@/types/manage/client';
-import { formatSide } from '@/utils/formatSide';
 import { color } from '@merried/design-system';
 import { IconPencil } from '@merried/icon';
 import { Column, Row, Text } from '@merried/ui';
@@ -26,7 +26,7 @@ const ListItem = ({ name, side, count, attend, money, meal }: ListItemProps) => 
           </Text>
           <Row alignItems="center" gap={4}>
             <Text fontType="P3" color={color.G70}>
-              {formatSide[side]}측
+              {SIDE[side]}측
             </Text>
             <Text fontType="P3" color={color.G70}>
               •
