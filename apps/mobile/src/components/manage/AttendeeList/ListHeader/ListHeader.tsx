@@ -17,7 +17,7 @@ const ListHeader = () => {
           축의금
         </Text>
         <Text fontType="Button3" color={color.G80}>
-          식권
+          식사
         </Text>
       </Row>
     </StyledListHeader>
