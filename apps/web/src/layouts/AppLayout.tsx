@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react';
 import { styled } from 'styled-components';
 import { flex } from '@merried/utils';
-import Header from '@/components/common/Header/Header';
+import { Header } from '@/components/common';
 
 interface Props {
   children: ReactNode;
