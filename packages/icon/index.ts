@@ -11,3 +11,5 @@ export { default as IconProfile } from './src/IconProfile';
 export { default as IconFolder } from './src/IconFolder';
 export { default as IconBoldShare } from './src/IconBoldShare';
 export { default as IconBoldLetter } from './src/IconBoldLetter';
+export { default as IconSearch } from './src/IconSearch';
+export { default as IconPencil } from './src/IconPencil';
