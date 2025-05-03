@@ -25,6 +25,7 @@ const SearchInput = ({
   return (
     <StyledSearchInput onClick={handleClick} style={{ width }}>
       <Input
+        ref={inputRef}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
