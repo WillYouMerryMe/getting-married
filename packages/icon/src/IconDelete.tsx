@@ -12,14 +12,14 @@ const IconDelete = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M1.33398 1.33398L14.6673 14.6673"
-      stroke="currentColor"
+      stroke="#FFF"
       strokeWidth={1.6}
       strokeLinecap="square"
       strokeLinejoin="round"
     />
     <path
       d="M14.6673 1.33398L1.33398 14.6673"
-      stroke="currentColor"
+      stroke="#FFF"
       strokeWidth={1.6}
       strokeLinecap="square"
       strokeLinejoin="round"

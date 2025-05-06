@@ -1,7 +1,7 @@
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
-import { IconCircleAdd } from '@merried/icon';
+import { IconCircleAdd, IconDelete } from '@merried/icon';
 import { useRef, useState } from 'react';
 
 interface Props {
@@ -24,6 +24,11 @@ const InsertPhoto = ({ size = 'SMALL', disabled = false }: Props) => {
     reader.readAsDataURL(file);
   };
 
+  const handleRemove = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImage(null);
+  };
+
   return (
     <StyledInsertPhoto onClick={() => inputRef.current?.click()} $size={size}>
       <input
@@ -34,11 +39,10 @@ const InsertPhoto = ({ size = 'SMALL', disabled = false }: Props) => {
         onChange={handleUpload}
       />
       {image ? (
-        <img
-          src={image}
-          alt="preview"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+        <>
+          <StyledImage src={image} alt="preview" />
+          <IconDelete onClick={handleRemove} style={{ position: 'absolute' }} />
+        </>
       ) : (
         <IconCircleAdd />
       )}
@@ -59,4 +63,12 @@ const StyledInsertPhoto = styled.div<{
   height: 140px;
 
   cursor: pointer;
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 8px;
 `;
