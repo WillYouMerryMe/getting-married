@@ -2,15 +2,16 @@ import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import { IconCircleAdd, IconDelete } from '@merried/icon';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 interface Props {
   size?: 'SMALL' | 'BIG';
+  value: string | null;
+  onChange: (image: string | null) => void;
   disabled?: boolean;
 }
 
-const InsertPhoto = ({ size = 'SMALL', disabled = false }: Props) => {
-  const [image, setImage] = useState<string | null>(null);
+const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,14 +20,15 @@ const InsertPhoto = ({ size = 'SMALL', disabled = false }: Props) => {
 
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result as string);
+      const result = reader.result as string;
+      onChange(result);
     };
     reader.readAsDataURL(file);
   };
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setImage(null);
+    onChange(null);
   };
 
   return (
@@ -38,9 +40,9 @@ const InsertPhoto = ({ size = 'SMALL', disabled = false }: Props) => {
         style={{ display: 'none' }}
         onChange={handleUpload}
       />
-      {image ? (
+      {value ? (
         <>
-          <StyledImage src={image} alt="preview" />
+          <StyledImage src={value} alt="preview" />
           <IconDelete onClick={handleRemove} style={{ position: 'absolute' }} />
         </>
       ) : (
