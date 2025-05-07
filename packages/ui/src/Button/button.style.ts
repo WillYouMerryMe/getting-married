@@ -28,6 +28,7 @@ export const getButtonStyle = {
   DISABLED: css`
     background-color: ${color.G40};
     color: ${color.G100};
+    cursor: not-allowed;
   `,
   WARNING: css`
     background-color: ${color.red};
