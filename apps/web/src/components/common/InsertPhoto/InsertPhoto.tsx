@@ -20,6 +20,16 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
     const files = Array.from(e.target.files ?? []);
     if (files.length === 0) return;
 
+    if (size === 'SMALL') {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        onChange([reader.result as string]);
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+
     const current = value ?? [];
     const validFiles = files.slice(0, MAX_FILES - current.length);
 
@@ -92,8 +102,8 @@ const StyledImageWrapper = styled.div<{ $size: 'SMALL' | 'BIG' }>`
   overflow: hidden;
 
   ${({ $size }) => `
-    width: ${$size === 'SMALL' ? '100%' : '100px'};
-    height: ${$size === 'SMALL' ? '100%' : '100px'};
+    width: ${$size === 'SMALL' ? '140px' : '100px'};
+    height: ${$size === 'SMALL' ? '140px' : '100px'};
     border-radius: ${$size === 'SMALL' ? '8px' : '4px'};
   `}
 `;
