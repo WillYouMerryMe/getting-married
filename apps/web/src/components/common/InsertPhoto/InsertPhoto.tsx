@@ -6,29 +6,46 @@ import { useRef } from 'react';
 
 interface Props {
   size?: 'SMALL' | 'BIG';
-  value: string | null;
-  onChange: (image: string | null) => void;
+  value: string[] | null;
+  onChange: (image: string[] | null) => void;
   disabled?: boolean;
 }
+
+const MAX_FILES = 20;
 
 const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const result = reader.result as string;
-      onChange(result);
-    };
-    reader.readAsDataURL(file);
+    const current = value ?? [];
+    const validFiles = files.slice(0, MAX_FILES - current.length);
+
+    const readers = validFiles.map(
+      (file) =>
+        new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(file);
+        })
+    );
+
+    Promise.all(readers).then((images) => {
+      const updated = [...current, ...images];
+      onChange(updated);
+    });
   };
 
-  const handleRemove = (e: React.MouseEvent) => {
+  const handleRemove = (index: number) => (e: React.MouseEvent) => {
     e.stopPropagation();
-    onChange(null);
+    if (!value) return;
+
+    const updated = [...value];
+    updated.splice(index, 1);
+
+    onChange(updated.length > 0 ? updated : null);
   };
 
   return (
@@ -37,14 +54,17 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
         ref={inputRef}
         type="file"
         accept="image/*"
+        multiple={size === 'BIG'}
         style={{ display: 'none' }}
         onChange={handleUpload}
       />
       {value ? (
-        <>
-          <StyledImage src={value} alt="preview" />
-          <IconDelete onClick={handleRemove} style={{ position: 'absolute' }} />
-        </>
+        value.map((src, index) => (
+          <StyledImageWrapper key={index} $size={size}>
+            <StyledImage src={src} alt={`uploaded-${index}`} />
+            <StyledDeleteIcon onClick={handleRemove(index)} />
+          </StyledImageWrapper>
+        ))
       ) : (
         <IconCircleAdd />
       )}
@@ -61,16 +81,34 @@ const StyledInsertPhoto = styled.div<{
   border-radius: 8px;
   border: 1px dashed ${color.G80};
   background: ${color.G0};
-  width: ${({ $size }) => ($size === 'SMALL' ? '140px' : '384px')};
-  height: 140px;
+  width: ${({ $size }) => ($size === 'SMALL' ? '140px' : '100%')};
+  min-height: 140px;
 
   cursor: pointer;
+`;
+
+const StyledImageWrapper = styled.div<{ $size: 'SMALL' | 'BIG' }>`
+  position: relative;
+  overflow: hidden;
+
+  ${({ $size }) => `
+    width: ${$size === 'SMALL' ? '100%' : '100px'};
+    height: ${$size === 'SMALL' ? '100%' : '100px'};
+    border-radius: ${$size === 'SMALL' ? '8px' : '4px'};
+  `}
 `;
 
 const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: relative;
-  border-radius: 8px;
+`;
+
+const StyledDeleteIcon = styled(IconDelete)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  cursor: pointer;
 `;
