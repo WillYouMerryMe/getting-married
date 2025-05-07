@@ -63,6 +63,7 @@ const StyledInput = styled.input<{
   $platform: Platform;
   $isError: boolean;
 }>`
+  width: 100%;
   ${font.Button3}
   color: ${color.G600};
   height: 46px;
