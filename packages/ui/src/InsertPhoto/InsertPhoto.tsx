@@ -9,11 +9,16 @@ interface Props {
   value: string[] | null;
   onChange: (image: string[] | null) => void;
   disabled?: boolean;
+  maxFiles?: number;
 }
 
-const MAX_FILES = 20;
-
-const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Props) => {
+const InsertPhoto = ({
+  size = 'SMALL',
+  value,
+  onChange,
+  disabled = false,
+  maxFiles = 20,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +36,7 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
     }
 
     const current = value ?? [];
-    const validFiles = files.slice(0, MAX_FILES - current.length);
+    const validFiles = files.slice(0, maxFiles - current.length);
 
     const readers = validFiles.map(
       (file) =>
