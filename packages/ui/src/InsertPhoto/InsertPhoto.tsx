@@ -79,6 +79,7 @@ const InsertPhoto = ({
       {value ? (
         value.map((src, index) => (
           <StyledImageWrapper key={index} $size={size}>
+            <StyledOverlay />
             <StyledImage src={src} alt={`uploaded-${index}`} />
             <StyledDeleteIcon onClick={handleRemove(index)} />
           </StyledImageWrapper>
@@ -133,11 +134,23 @@ const StyledImageWrapper = styled.div<{ $size: 'SMALL' | 'BIG' }>`
       `}
 `;
 
+const StyledOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  pointer-events: none;
+`;
+
 const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.9;
 `;
 
 const centerAbsolute = `
