@@ -3,6 +3,14 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "src/types", "assets"],
+  "include": [
+    "src",
+    "src/types",
+    "assets",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts",
+    "**/*.woff2"
+  ],
   "exclude": ["node_modules", "dist"]
 }
