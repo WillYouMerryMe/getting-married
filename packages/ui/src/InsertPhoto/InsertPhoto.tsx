@@ -21,7 +21,7 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
     if (files.length === 0) return;
 
     if (size === 'SMALL') {
-      const file = files[0];
+      const file = files[0]!;
       const reader = new FileReader();
       reader.onloadend = () => {
         onChange([reader.result as string]);
