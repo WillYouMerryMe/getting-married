@@ -130,7 +130,7 @@ const StyledImage = styled.img`
   object-fit: cover;
 `;
 
-const StyledDeleteIcon = styled(IconDelete)`
+const centerAbsolute = `
   position: absolute;
   top: 50%;
   left: 50%;
@@ -139,11 +139,10 @@ const StyledDeleteIcon = styled(IconDelete)`
   cursor: pointer;
 `;
 
+const StyledDeleteIcon = styled(IconDelete)`
+  ${centerAbsolute}
+`;
+
 const StyledCircleAddIcon = styled(IconCircleAdd)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  cursor: pointer;
+  ${centerAbsolute}
 `;
