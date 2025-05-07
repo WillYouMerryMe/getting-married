@@ -104,6 +104,7 @@ const StyledInsertPhoto = styled.div<{ $size: 'SMALL' | 'BIG' }>`
         grid-template-columns: repeat(3, 100px);
         gap: 16px;
         padding: 20px 26px;
+        cursor: pointer;
       `}
 `;
 
