@@ -2,11 +2,18 @@ import type { SVGProps } from 'react';
 import React from 'react';
 
 type IconArrowProps = SVGProps<SVGSVGElement> & {
-  direction?: 'top' | 'bottom';
+  direction?: 'top' | 'bottom' | 'left' | 'right';
+};
+
+const rotationMap: Record<NonNullable<IconArrowProps['direction']>, string> = {
+  bottom: 'rotate(0 9 8)',
+  top: 'rotate(180 9 8)', 
+  right: 'rotate(90 9 8)',
+  left: 'rotate(270 9 8)'
 };
 
 const IconArrow = ({ direction = 'bottom', ...props }: IconArrowProps) => {
-  const rotation = direction === 'top' ? 'rotate(180 9 8)' : undefined;
+  const transform = rotationMap[direction];
 
   return (
     <svg
@@ -22,7 +29,7 @@ const IconArrow = ({ direction = 'bottom', ...props }: IconArrowProps) => {
         stroke="#B8B8B8"
         strokeWidth={2}
         strokeLinecap="square"
-        transform={rotation}
+        transform={transform}
       />
     </svg>
   );
