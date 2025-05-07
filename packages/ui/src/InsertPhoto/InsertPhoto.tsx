@@ -17,7 +17,7 @@ const InsertPhoto = ({
   value,
   onChange,
   disabled = false,
-  maxFiles = 20,
+  maxFiles = size === 'SMALL' ? 1 : 20,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -63,6 +63,8 @@ const InsertPhoto = ({
     onChange(updated.length > 0 ? updated : null);
   };
 
+  const isMaxFilesReached = (value?.length ?? 0) >= maxFiles;
+
   return (
     <StyledInsertPhoto onClick={() => inputRef.current?.click()} $size={size}>
       <input
@@ -72,6 +74,7 @@ const InsertPhoto = ({
         multiple={size === 'BIG'}
         style={{ display: 'none' }}
         onChange={handleUpload}
+        disabled={isMaxFilesReached || disabled}
       />
       {value ? (
         value.map((src, index) => (
