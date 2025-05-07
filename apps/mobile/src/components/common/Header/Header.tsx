@@ -30,9 +30,7 @@ const Header = ({ routes, name }: HeaderProps) => {
       <Text fontType="H3" color={color.G900}>
         {name}
       </Text>
-      <Text fontType="P3" color={color.G80} width={74.4}>
-        ㅤ
-      </Text>
+      <div style={{ width: 74.4 }} />
     </StyledHeader>
   );
 };
