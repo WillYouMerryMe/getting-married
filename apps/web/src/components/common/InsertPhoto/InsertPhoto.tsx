@@ -76,7 +76,7 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
           </StyledImageWrapper>
         ))
       ) : (
-        <IconCircleAdd />
+        <StyledCircleAddIcon />
       )}
     </StyledInsertPhoto>
   );
@@ -84,28 +84,44 @@ const InsertPhoto = ({ size = 'SMALL', value, onChange, disabled = false }: Prop
 
 export default InsertPhoto;
 
-const StyledInsertPhoto = styled.div<{
-  $size: 'SMALL' | 'BIG';
-}>`
-  ${flex({ justifyContent: 'center', alignItems: 'center' })}
+const StyledInsertPhoto = styled.div<{ $size: 'SMALL' | 'BIG' }>`
+  position: relative;
   border-radius: 8px;
   border: 1px dashed ${color.G80};
   background: ${color.G0};
-  width: ${({ $size }) => ($size === 'SMALL' ? '140px' : '100%')};
   min-height: 140px;
 
-  cursor: pointer;
+  ${({ $size }) =>
+    $size === 'SMALL'
+      ? `
+        ${flex({ justifyContent: 'center', alignItems: 'center' })};
+        width: 140px;
+        height: 140px;
+      `
+      : `
+        display: grid;
+        width: 384px;
+        grid-template-columns: repeat(3, 100px);
+        gap: 16px;
+        padding: 20px 26px;
+      `}
 `;
 
 const StyledImageWrapper = styled.div<{ $size: 'SMALL' | 'BIG' }>`
   position: relative;
   overflow: hidden;
+  width: 100%;
 
-  ${({ $size }) => `
-    width: ${$size === 'SMALL' ? '140px' : '100px'};
-    height: ${$size === 'SMALL' ? '140px' : '100px'};
-    border-radius: ${$size === 'SMALL' ? '8px' : '4px'};
-  `}
+  ${({ $size }) =>
+    $size === 'SMALL'
+      ? `
+        height: 140px;
+        border-radius: 8px;
+      `
+      : `
+        height: 100px;
+        border-radius: 4px;
+      `}
 `;
 
 const StyledImage = styled.img`
@@ -115,6 +131,15 @@ const StyledImage = styled.img`
 `;
 
 const StyledDeleteIcon = styled(IconDelete)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  cursor: pointer;
+`;
+
+const StyledCircleAddIcon = styled(IconCircleAdd)`
   position: absolute;
   top: 50%;
   left: 50%;
