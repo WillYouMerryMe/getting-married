@@ -13,3 +13,5 @@ export { default as IconBoldShare } from './src/IconBoldShare';
 export { default as IconBoldLetter } from './src/IconBoldLetter';
 export { default as IconCircleAdd } from './src/IconCircleAdd';
 export { default as IconDelete } from './src/IconDelete';
+export { default as IconSearch } from './src/IconSearch';
+export { default as IconPencil } from './src/IconPencil';
