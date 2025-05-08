@@ -5,11 +5,11 @@ import { IconDragHandle } from '@merried/icon';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
-const Gallery = () => {
+const GalleryOption = () => {
   const [image, setImage] = useState<string[] | null>(null);
 
   return (
-    <StyledGallery>
+    <StyledGalleryOption>
       <Column gap={28}>
         <Row gap={8}>
           <ToggleButton isOpen={false} />
@@ -36,13 +36,13 @@ const Gallery = () => {
         </Column>
       </Column>
       <IconDragHandle />
-    </StyledGallery>
+    </StyledGalleryOption>
   );
 };
 
-export default Gallery;
+export default GalleryOption;
 
-const StyledGallery = styled.div`
+const StyledGalleryOption = styled.div`
   ${flex({ justifyContent: 'space-between', alignItems: 'flex-start' })}
   padding: 28px 20px;
   border-radius: 8px;
