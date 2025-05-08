@@ -17,3 +17,4 @@ export { default as IconSearch } from './src/IconSearch';
 export { default as IconPencil } from './src/IconPencil';
 export { default as IconHeadset } from './src/IconHeadset';
 export { default as IconMegaphone } from './src/IconMegaphone';
+export { default as IconDragHandle } from './src/IconDragHandle';
