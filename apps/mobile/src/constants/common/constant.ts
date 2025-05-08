@@ -3,7 +3,8 @@ import { Side } from '@/types/manage/client';
 export const ROUTES = {
   LOGIN: '/',
   HOME: '/home',
-  MANAGE: '/manage',
+  MANAGE: '/attendee',
+  INVITE: '/attendee/invite',
   SHOP: '/shop',
   MY: '/my',
 };

@@ -4,21 +4,32 @@ import styled from 'styled-components';
 import FooterItem from './FooterItem/FooterItem';
 import { IconBag, IconLetter, IconList, IconProfile } from '@merried/icon';
 import { ROUTES } from '@/constants/common/constant';
+import { usePathname } from 'next/navigation';
 
 const NAVIGATION_LIST = [
   { icon: IconLetter, name: '청첩장', route: ROUTES.HOME },
   { icon: IconList, name: '참석자 관리', route: ROUTES.MANAGE },
   { icon: IconBag, name: '답례품', route: ROUTES.SHOP },
   { icon: IconProfile, name: '마이페이지', route: ROUTES.MY },
-];
+] as const;
 
-const Footer = () => (
-  <StyledFooter>
-    {NAVIGATION_LIST.map(({ icon, name, route }) => (
-      <FooterItem key={route} icon={icon} name={name} route={route} />
-    ))}
-  </StyledFooter>
-);
+const Footer = () => {
+  const pathname = usePathname();
+
+  return (
+    <StyledFooter>
+      {NAVIGATION_LIST.map(({ icon, name, route }) => (
+        <FooterItem
+          key={route}
+          icon={icon}
+          name={name}
+          route={route}
+          isActive={pathname?.startsWith(route) ?? false}
+        />
+      ))}
+    </StyledFooter>
+  );
+};
 
 export default Footer;
 

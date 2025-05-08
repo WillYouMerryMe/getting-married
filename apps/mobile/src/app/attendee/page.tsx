@@ -1,33 +1,41 @@
 'use client';
 
-import AttendeeList from '@/components/manage/AttendeeList/AttendeeList';
+import AttendeeList from '@/components/attendee/AttendeeList/AttendeeList';
+import { ROUTES } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { color } from '@merried/design-system';
 import { ActionButton, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
-const Manage = () => {
+const Attendee = () => {
+  const router = useRouter();
+
+  const handleMoveInvite = () => {
+    router.push(ROUTES.INVITE);
+  };
+
   return (
     <AppLayout footer backgroundColor={color.G0}>
-      <StyledManage>
+      <StyledAttendee>
         <Column gap={20}>
           <Text fontType="H2" color={color.G900}>
             참석자 관리
           </Text>
-          <ActionButton icon="ADD_ICON" onClick={() => {}}>
+          <ActionButton icon="ADD_ICON" onClick={handleMoveInvite}>
             참석자 추가
           </ActionButton>
         </Column>
         <AttendeeList />
-      </StyledManage>
+      </StyledAttendee>
     </AppLayout>
   );
 };
 
-export default Manage;
+export default Attendee;
 
-const StyledManage = styled.div`
+const StyledAttendee = styled.div`
   ${flex({
     flexDirection: 'column',
     alignItems: 'flex-start',
