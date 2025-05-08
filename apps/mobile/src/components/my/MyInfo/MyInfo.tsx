@@ -1,5 +1,4 @@
 import { color } from '@merried/design-system';
-import { IconArrow } from '@merried/icon';
 import { BrandBadge, Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
@@ -7,9 +6,9 @@ import styled from 'styled-components';
 const MyInfo = () => {
   return (
     <StyledMyInfo onClick={() => {}}>
-      <Column gap={6}>
+      <Column gap={4}>
         <Row gap={8} alignItems="center">
-          <Text fontType="H3_140per" color={color.G900}>
+          <Text fontType="H3" color={color.G900}>
             박강원님
           </Text>
           <BrandBadge type="NAVER" />
@@ -18,7 +17,11 @@ const MyInfo = () => {
           pkw0227@gmail.com
         </Text>
       </Column>
-      <IconArrow width={18} height={18} direction="left" />
+      <div onClick={() => {}}>
+        <Text fontType="P3" color={color.G100}>
+          로그아웃
+        </Text>
+      </div>
     </StyledMyInfo>
   );
 };
