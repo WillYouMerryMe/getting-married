@@ -3,11 +3,11 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import Text from '../Text/Text';
 
-interface BradnBadgeProps {
+interface BrandBadgeProps {
   type: 'KAKAO' | 'NAVER';
 }
 
-const BrandBadge = ({ type }: BradnBadgeProps) => {
+const BrandBadge = ({ type }: BrandBadgeProps) => {
   return (
     <StyledBrandBadge $badgeType={type}>
       <Text fontType="P4" color={type === 'NAVER' ? color.G0 : color.G400}>
@@ -19,7 +19,7 @@ const BrandBadge = ({ type }: BradnBadgeProps) => {
 
 export default BrandBadge;
 
-const StyledBrandBadge = styled.div<{ $badgeType: BradnBadgeProps['type'] }>`
+const StyledBrandBadge = styled.div<{ $badgeType: BrandBadgeProps['type'] }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   width: 60px;
   height: 28px;
