@@ -29,6 +29,6 @@ const StyledMy = styled.div`
     justifyContent: 'flex-start',
   })}
   width: 100%;
-  gap: 49px;
-  padding: 67px 18px 115px;
+  gap: 36px;
+  padding: 71px 18px 115px;
 `;
