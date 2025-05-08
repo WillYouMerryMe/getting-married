@@ -4,6 +4,7 @@ import MyInfo from '../MyInfo/MyInfo';
 import ListItem from '../ListItem/ListItem';
 import { IconHeadset, IconMegaphone } from '@merried/icon';
 import { Column } from '@merried/ui';
+import { flex } from '@merried/utils';
 
 const MyInfoList = () => {
   return (
@@ -21,7 +22,9 @@ const MyInfoList = () => {
 export default MyInfoList;
 
 const StyledMyInfoList = styled.div`
+  ${flex({ flexDirection: 'column', alignItems: 'flex-start' })}
   width: 100%;
+  gap: 16px;
 `;
 
 const Spacer = styled.div`
@@ -30,6 +33,4 @@ const Spacer = styled.div`
   background-color: ${color.G10};
   position: relative;
   left: -18px;
-  margin-top: 24px;
-  margin-bottom: 12px;
 `;
