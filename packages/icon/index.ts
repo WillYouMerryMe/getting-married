@@ -15,3 +15,4 @@ export { default as IconCircleAdd } from './src/IconCircleAdd';
 export { default as IconDelete } from './src/IconDelete';
 export { default as IconSearch } from './src/IconSearch';
 export { default as IconPencil } from './src/IconPencil';
+export { default as IconDragHandle } from './src/IconDragHandle';
