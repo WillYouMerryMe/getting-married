@@ -31,7 +31,7 @@ const StyledToggleButton = styled.div<{ $isOpen: boolean }>`
       justify-content: flex-start;
       background: ${color.G40};
       `}
-  padding: 4px 4px 3px 4px;
+  padding: 4px 4px 4px 4px;
 
   cursor: pointer;
 `;
