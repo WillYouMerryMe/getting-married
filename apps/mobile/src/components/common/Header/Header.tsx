@@ -14,7 +14,11 @@ const Header = ({ routes, name }: HeaderProps) => {
   const router = useRouter();
 
   const handleMoveBack = () => {
-    router.push(routes ?? '');
+    if (routes) {
+      router.push(routes);
+    } else {
+      router.back();
+    }
   };
 
   return (
