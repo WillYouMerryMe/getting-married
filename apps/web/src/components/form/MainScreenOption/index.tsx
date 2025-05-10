@@ -36,7 +36,7 @@ const MainScreenOption = () => {
           </Text>
           <Dropdown
             option="DEFAULT"
-            name="letering"
+            name="letering-text"
             value={letteringText}
             data={['THE START OF OUR FOREVER']}
             onChange={setLetteringText}
@@ -48,7 +48,7 @@ const MainScreenOption = () => {
           </Text>
           <Dropdown
             option="COLOR"
-            name="color"
+            name="letering-color"
             value={letteringColor}
             data={LETTERING_COLORS}
             onChange={setLetteringColor}
