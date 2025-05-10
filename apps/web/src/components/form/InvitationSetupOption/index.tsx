@@ -5,12 +5,12 @@ import { flex } from '@merried/utils';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
-const InvitationSettings = () => {
+const InvitationSetupOption = () => {
   const [invitationFont, setInvitationFont] = useState<string>('Ownglyph kundo');
   const [letteringColor, setLetteringColor] = useState<string>(color.letterYellow);
 
   return (
-    <StyledInvitationSettings>
+    <StyledInvitationSetupOption>
       <Column gap={28}>
         <Text fontType="H3" color={color.G900}>
           청접장 전체 설정
@@ -43,13 +43,13 @@ const InvitationSettings = () => {
           />
         </Column>
       </Column>
-    </StyledInvitationSettings>
+    </StyledInvitationSetupOption>
   );
 };
 
-export default InvitationSettings;
+export default InvitationSetupOption;
 
-const StyledInvitationSettings = styled.div`
+const StyledInvitationSetupOption = styled.div`
   ${flex({ alignItems: 'flex-start' })}
   padding: 28px 20px;
   border-radius: 8px;
