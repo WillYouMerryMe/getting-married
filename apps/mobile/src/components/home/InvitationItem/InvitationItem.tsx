@@ -1,21 +1,33 @@
 import Badge from '@/components/common/Badge/Badge';
+import { ROUTES } from '@/constants/common/constant';
 import { color } from '@merried/design-system';
-import { IconBoldLetter, IconBoldShare, IconFolder } from '@merried/icon';
+import { IconBoldLetter, IconBoldList, IconBoldShare, IconFolder } from '@merried/icon';
 import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import dayjs from 'dayjs';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 interface InvitationItemProps {
+  id: number;
   title: string;
   date: string;
   hour: string;
 }
 
-const InvitationItem = ({ title, date, hour }: InvitationItemProps) => {
+const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
+  const router = useRouter();
+
+  const weddingDate = dayjs().isSame(dayjs(date), 'day');
+
+  const handleMoveGuestBook = () => {
+    router.push(`${ROUTES.GUESTBOOK}/${id}`);
+  };
+
   return (
     <StyledInvitationItem>
       <Background src="images/type01.svg" alt="초대장 배경" />
-      <IconFolder width="100%" height={194.38} stroke={color.G30}/>
+      <IconFolder width="100%" height={194.38} stroke={color.G30} />
       <ItemContent>
         <Column gap={4}>
           <Text fontType="H4" color={color.G900}>
@@ -33,6 +45,13 @@ const InvitationItem = ({ title, date, hour }: InvitationItemProps) => {
         <Row alignItems="center" gap={8}>
           <Badge icon={IconBoldLetter} title="청첩장 확인" onClick={() => {}} />
           <Badge icon={IconBoldShare} title="URL 복사" onClick={() => {}} />
+          {weddingDate && (
+            <Badge
+              icon={IconBoldList}
+              title="방명록 확인"
+              onClick={handleMoveGuestBook}
+            />
+          )}
         </Row>
       </ItemContent>
     </StyledInvitationItem>

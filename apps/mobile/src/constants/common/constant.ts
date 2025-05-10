@@ -5,6 +5,8 @@ export const ROUTES = {
   HOME: '/home',
   MANAGE: '/attendee',
   INVITE: '/attendee/invite',
+  INVITATION: '/invitation',
+  GUESTBOOK: '/guestbook',
   SHOP: '/shop',
   MY: '/my',
 };

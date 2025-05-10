@@ -5,18 +5,19 @@ import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 
 interface InvitationItemProps {
+  id: number;
   title: string;
   date: string;
   hour: string;
 }
 
 const exampleData: InvitationItemProps[] = [
-  { title: '김예진 결혼식에 초대합니다', date: '2025.05.10', hour: '15:00' },
-  { title: '송윤서 웨딩 초대장', date: '2025.06.01', hour: '11:30' },
-  { title: '강민지 & 이준호', date: '2025.06.15', hour: '14:00' },
-  { title: '유진 & 태형 결혼식', date: '2025.07.02', hour: '16:30' },
-  { title: '지원 & 수혁 결혼식', date: '2025.07.20', hour: '13:00' },
-  { title: '소연 & 민재 초대장', date: '2025.08.05', hour: '12:00' },
+  { id: 1, title: '김예진 결혼식에 초대합니다', date: '2025.05.10', hour: '15:00' },
+  { id: 2, title: '송윤서 웨딩 초대장', date: '2025.05.10', hour: '11:30' },
+  { id: 3, title: '강민지 & 이준호', date: '2025.06.15', hour: '14:00' },
+  { id: 4, title: '유진 & 태형 결혼식', date: '2025.07.02', hour: '16:30' },
+  { id: 5, title: '지원 & 수혁 결혼식', date: '2025.07.20', hour: '13:00' },
+  { id: 6, title: '소연 & 민재 초대장', date: '2025.08.05', hour: '12:00' },
 ];
 
 const InvitationList = () => {
@@ -38,7 +39,13 @@ const InvitationList = () => {
   return (
     <ListContainer>
       {exampleData.map((item, idx) => (
-        <InvitationItem key={idx} title={item.title} date={item.date} hour={item.hour} />
+        <InvitationItem
+          key={idx}
+          id={item.id}
+          title={item.title}
+          date={item.date}
+          hour={item.hour}
+        />
       ))}
     </ListContainer>
   );
