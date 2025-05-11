@@ -10,7 +10,7 @@ interface AppLayoutProps {
   children: ReactNode;
   footer?: boolean;
   header?: boolean;
-  routes?: string;
+  onClick?: () => void;
   name?: string;
   backgroundColor?: CSSProperties['backgroundColor'];
 }
@@ -19,13 +19,13 @@ const AppLayout = ({
   children,
   footer,
   header,
-  routes,
+  onClick,
   backgroundColor,
   name,
 }: AppLayoutProps) => {
   return (
     <StyledAppLayout style={{ backgroundColor }}>
-      {header && <Header routes={routes} name={name} />}
+      {header && <Header onClick={onClick} name={name} />}
       <LayoutWrapper>{children}</LayoutWrapper>
       {footer && <Footer />}
     </StyledAppLayout>
