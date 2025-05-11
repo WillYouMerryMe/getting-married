@@ -19,3 +19,4 @@ export { default as IconHeadset } from './src/IconHeadset';
 export { default as IconMegaphone } from './src/IconMegaphone';
 export { default as IconDragHandle } from './src/IconDragHandle';
 export { default as IconCheck } from './src/IconCheck';
+export { default as IconBoldList } from './src/IconBoldList';
