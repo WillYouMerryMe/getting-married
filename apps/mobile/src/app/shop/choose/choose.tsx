@@ -6,17 +6,16 @@ import {
   STATUS,
   STATUS_OPTIONS,
 } from '@/constants/shop/constants';
-import { useSetShopStepStore } from '@/stores/shop/shopStep';
 import { Meal, Paid, Status } from '@/types/shop/client';
 import { color } from '@merried/design-system';
 import { ActionButton, Button, Column, MiniDropdown, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
-import { useFieldChange } from './choose.hooks';
+import { useCTAButton, useFieldChange } from './choose.hooks';
 
 const Choose = () => {
   const { handleChange, attendee } = useFieldChange();
-  const setShopStep = useSetShopStepStore();
+  const { handleMoveSend } = useCTAButton();
 
   return (
     <StyledChoose>
@@ -64,13 +63,7 @@ const Choose = () => {
           <ItemImage />
         </Column>
       </Column>
-      <Button
-        width="100%"
-        size="VERY_LARGE"
-        onClick={() => {
-          setShopStep('답례품전송');
-        }}
-      >
+      <Button width="100%" size="VERY_LARGE" onClick={handleMoveSend}>
         <Text fontType="Button3" color={color.G0}>
           다음으로
         </Text>

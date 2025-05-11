@@ -1,4 +1,5 @@
 import { useAttendeeStore } from '@/stores/shop/attendee';
+import { useSetShopStepStore } from '@/stores/shop/shopStep';
 
 export const useFieldChange = () => {
   const [attendee, setAttendee] = useAttendeeStore();
@@ -8,4 +9,14 @@ export const useFieldChange = () => {
   };
 
   return { handleChange, attendee };
+};
+
+export const useCTAButton = () => {
+  const setShopStep = useSetShopStepStore();
+
+  const handleMoveSend = () => {
+    setShopStep('답례품전송');
+  };
+
+  return { handleMoveSend };
 };
