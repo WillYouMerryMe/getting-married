@@ -24,7 +24,7 @@ interface MiniDropdownProps {
   disabled?: boolean;
 }
 
-const Dropdown = ({
+const MiniDropdown = ({
   label,
   data,
   width = '110px',
@@ -58,7 +58,7 @@ const Dropdown = ({
   return (
     <div ref={dropdownRef} style={{ width }}>
       {label && <Label>{label}</Label>}
-      <StyledDropdown onClick={handleDropdownClick} $isOpen={isOpen}>
+      <StyledMiniDropdown onClick={handleDropdownClick} $isOpen={isOpen}>
         <Text fontType="P3" color={color.G900} ellipsis={true}>
           {value || placeholder}
         </Text>
@@ -67,29 +67,29 @@ const Dropdown = ({
         ) : (
           <IconArrow color={color.G60} direction="bottom" width={14} height={14} />
         )}
-      </StyledDropdown>
-      <DropdownListBox $isOpen={isOpen && !disabled}>
-        <DropdownList $isMultiple={data.length > (doubled ?? 100)}>
+      </StyledMiniDropdown>
+      <MiniDropdownListBox $isOpen={isOpen && !disabled}>
+        <MiniDropdownList $isMultiple={data.length > (doubled ?? 100)}>
           {data?.map((item, index) => {
             const isString = typeof item === 'string';
             const dropdownLabel = isString ? item : item.label;
             const dropdownValue = isString ? item : item.value;
             return (
-              <DropdownItem
+              <MiniDropdownItem
                 key={`dropdown ${index}`}
                 onClick={() => handleDropdownItemButtonClick(dropdownValue)}
               >
                 {dropdownLabel}
-              </DropdownItem>
+              </MiniDropdownItem>
             );
           })}
-        </DropdownList>
-      </DropdownListBox>
+        </MiniDropdownList>
+      </MiniDropdownListBox>
     </div>
   );
 };
 
-export default Dropdown;
+export default MiniDropdown;
 
 const Label = styled.p`
   ${font.P3}
@@ -97,7 +97,7 @@ const Label = styled.p`
   margin-bottom: 4px;
 `;
 
-const StyledDropdown = styled.div<{
+const StyledMiniDropdown = styled.div<{
   $isOpen: boolean;
 }>`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
@@ -108,12 +108,12 @@ const StyledDropdown = styled.div<{
   padding: 14px 16px;
 `;
 
-const DropdownListBox = styled.div<{ $isOpen: boolean }>`
+const MiniDropdownListBox = styled.div<{ $isOpen: boolean }>`
   position: relative;
   display: ${(props) => (props.$isOpen ? 'block' : 'none')};
 `;
 
-const DropdownList = styled.div<{ $isMultiple?: boolean }>`
+const MiniDropdownList = styled.div<{ $isMultiple?: boolean }>`
   display: grid;
   z-index: 1;
   position: absolute;
@@ -130,7 +130,7 @@ const DropdownList = styled.div<{ $isMultiple?: boolean }>`
   border-radius: 8px;
 `;
 
-const DropdownItem = styled.button`
+const MiniDropdownItem = styled.button`
   ${flex({ alignItems: 'center' })}
   padding: 12px 16px;
   width: 100%;
