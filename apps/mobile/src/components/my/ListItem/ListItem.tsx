@@ -2,11 +2,11 @@ import { color } from '@merried/design-system';
 import { IconArrow } from '@merried/icon';
 import { Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { SVGProps } from 'react';
+import { ComponentType } from 'react';
 import styled from 'styled-components';
 
 interface ListItemProps {
-  icon: React.ComponentType<SVGProps<SVGSVGElement>>;
+  icon: ComponentType<{ width: number; height: number }>;
   title: string;
 }
 
