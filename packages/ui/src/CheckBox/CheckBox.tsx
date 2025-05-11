@@ -3,25 +3,32 @@ import { IconCheck } from '@merried/icon';
 import { flex } from '@merried/utils';
 import type { InputHTMLAttributes } from 'react';
 import { styled } from 'styled-components';
+import Row from '../Flex/Row';
+import Text from '../Text/Text';
 
-const CheckBox = ({
-  name,
-  value,
-  onChange,
-  checked = false,
-}: InputHTMLAttributes<HTMLInputElement>) => {
+type Props = {
+  label?: string;
+  checked?: boolean;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+const CheckBox = ({ label, name, value, onChange, checked = false }: Props) => {
   return (
-    <StyledCheckBox $CheckBox={checked}>
-      {checked && <IconCheck width={12} height={12} color="red" />}
-      <input
-        type="checkbox"
-        checked={checked}
-        name={name}
-        value={value}
-        onChange={onChange}
-        style={{ display: 'none' }}
-      />
-    </StyledCheckBox>
+    <Row gap={8} alignItems="center">
+      <StyledCheckBox $CheckBox={checked}>
+        {checked && <IconCheck width={12} height={12} color="red" />}
+        <input
+          type="checkbox"
+          checked={checked}
+          name={name}
+          value={value}
+          onChange={onChange}
+          style={{ display: 'none' }}
+        />
+      </StyledCheckBox>
+      <Text fontType="P3" color={color.G900}>
+        {label}
+      </Text>
+    </Row>
   );
 };
 
