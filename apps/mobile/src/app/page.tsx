@@ -1,7 +1,8 @@
 'use client';
 
 import AppLayout from '@/layouts/AppLayout';
-import { Column, LoginButton, Text } from '@merried/ui';
+import { getTemplateFontStyle } from '@merried/design-system';
+import { Column, LoginButton } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
@@ -9,9 +10,7 @@ const Login = () => {
   return (
     <AppLayout>
       <StyledLogin>
-        <Text fontType="H1" color="#FF9D94">
-          우리 결혼할래요?
-        </Text>
+        <Text>우리 결혼할래요?</Text>
         <Column alignItems="center" width="100%" gap={12}>
           <LoginButton type="KAKAO" onClick={() => {}} />
           <LoginButton type="NAVER" onClick={() => {}} />
@@ -36,4 +35,9 @@ const StyledLogin = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+`;
+
+const Text = styled.div`
+  ${getTemplateFontStyle('template2', 'KoreanCNMM')}
+  color: #FF9D94;
 `;
