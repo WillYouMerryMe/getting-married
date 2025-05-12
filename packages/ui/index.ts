@@ -12,3 +12,4 @@ export { default as LoginButton } from './src/Button/LoginButton';
 export { default as InsertPhoto } from './src/InsertPhoto/InsertPhoto';
 export { default as BrandBadge } from './src/BrandBadge/BrandBadge';
 export { default as CheckBox } from './src/CheckBox/CheckBox';
+export { default as CalenderInput } from './src/Calender/CalenderInput';
