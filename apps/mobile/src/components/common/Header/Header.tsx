@@ -2,28 +2,17 @@ import { color } from '@merried/design-system';
 import { IconArrow } from '@merried/icon';
 import { Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 interface HeaderProps {
-  routes?: string;
+  onClick?: () => void;
   name?: string;
 }
 
-const Header = ({ routes, name }: HeaderProps) => {
-  const router = useRouter();
-
-  const handleMoveBack = () => {
-    if (routes) {
-      router.push(routes);
-    } else {
-      router.back();
-    }
-  };
-
+const Header = ({ onClick, name }: HeaderProps) => {
   return (
     <StyledHeader>
-      <div onClick={handleMoveBack}>
+      <div onClick={onClick}>
         <Row gap={8} alignItems="center">
           <IconArrow direction="right" />
           <Text fontType="P3" color={color.G80}>

@@ -6,13 +6,22 @@ import styled from 'styled-components';
 import Choose from './choose/choose';
 import Send from './send/send';
 import { SwitchCase } from '@toss/react';
-import { useShopStepValueStore } from '@/stores/shop/shopStep';
+import { useShopStepStore } from '@/stores/shop/shopStep';
 
 const Shop = () => {
-  const shopStep = useShopStepValueStore();
+  const [shopStep, setShopStep] = useShopStepStore();
+
+  const handleBackPage = () => {
+    setShopStep('답례품목록');
+  };
 
   return (
-    <AppLayout footer backgroundColor={color.G0}>
+    <AppLayout
+      header={shopStep === '답례품전송'}
+      onClick={handleBackPage}
+      footer
+      backgroundColor={color.G0}
+    >
       <StyledShop>
         <SwitchCase
           value={shopStep}

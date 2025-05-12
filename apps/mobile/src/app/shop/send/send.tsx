@@ -1,5 +1,69 @@
+import { GIFT, MEAL, PAID, STATUS } from '@/constants/shop/constants';
+import { useAttendeeValueStore } from '@/stores/shop/attendee';
+import { Gift, Meal, Paid, Status } from '@/types/shop/client';
+import { color } from '@merried/design-system';
+import { Button, Column, Text } from '@merried/ui';
+import { flex } from '@merried/utils';
+import { styled } from 'styled-components';
+
 const Send = () => {
-  return <>답례품 전송</>;
+  const attendee = useAttendeeValueStore();
+
+  return (
+    <StyledSend>
+      <Column gap={57} width="100%">
+        <Column gap={24}>
+          <Column gap={8}>
+            <Text fontType="H3" color={color.primary}>
+              {STATUS[attendee.status as Status]}•{PAID[attendee.paid as Paid]}•
+              {MEAL[attendee.meal as Meal]}
+            </Text>
+            <Text fontType="H3" color={color.G900}>
+              조건을 만족한{' '}
+              <Text fontType="H3" color={color.primary}>
+                34명
+              </Text>
+              에게
+            </Text>
+          </Column>
+          <Text fontType="H3" color={color.G900}>
+            <Text fontType="H3" color={color.primary}>
+              {GIFT[attendee.gift as Gift]}
+            </Text>
+            을 보낼게요
+          </Text>
+        </Column>
+        <GiftCard />
+      </Column>
+      <Button width="100%" size="VERY_LARGE" onClick={() => {}}>
+        <Text fontType="Button3" color={color.G0}>
+          답례품 보내기
+        </Text>
+      </Button>
+    </StyledSend>
+  );
 };
 
 export default Send;
+
+const StyledSend = styled.div`
+  ${flex({
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  })}
+  width: 100%;
+  padding-top: 64px;
+  height: calc(100vh - 71px - 142px);
+`;
+
+const GiftCard = styled.div`
+  ${flex({
+    alignItems: 'center',
+    justifyContent: 'center',
+  })}
+  width: 241.65px;
+  height: 198px;
+  margin: 0 auto;
+  background: url('/images/giftcard.svg') center / contain no-repeat;
+`;
