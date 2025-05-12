@@ -12,6 +12,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 44,
           "fontWeight": 700,
           "lineHeight": 110
@@ -19,6 +20,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -26,6 +28,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -33,6 +36,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 48,
           "fontWeight": 500,
           "lineHeight": 110
@@ -40,6 +44,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -47,6 +52,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -54,6 +60,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -61,6 +68,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -68,6 +76,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 56,
           "fontWeight": 400,
           "lineHeight": 110
@@ -89,6 +98,7 @@
     "fonts": {
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -97,6 +107,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -105,6 +116,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 32,
           "fontWeight": 500,
           "lineHeight": 100,
@@ -113,6 +125,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -121,6 +134,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -129,6 +143,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -137,6 +152,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -145,6 +161,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -153,6 +170,7 @@
       },
       "White Angelica": {
         "default": {
+          "fontFamily": "WhiteAngelica",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -189,6 +207,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 75,
           "fontWeight": 700,
           "lineHeight": 100
@@ -196,6 +215,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 85,
           "fontWeight": 400,
           "lineHeight": 100
@@ -203,6 +223,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 75,
           "fontWeight": 400,
           "lineHeight": 100
@@ -210,6 +231,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 75,
           "fontWeight": 500,
           "lineHeight": 100
@@ -217,6 +239,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -224,6 +247,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 75,
           "fontWeight": 400,
           "lineHeight": 100
@@ -231,6 +255,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -238,6 +263,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -245,6 +271,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -252,6 +279,7 @@
       },
       "White Angelica": {
         "default": {
+          "fontFamily": "WhiteAngelica",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 140
@@ -290,6 +318,7 @@
     "fonts": {
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 48,
           "fontWeight": 400,
           "lineHeight": 120
@@ -297,6 +326,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -304,6 +334,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 40,
           "fontWeight": 500,
           "lineHeight": 120
@@ -311,6 +342,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -318,6 +350,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -325,6 +358,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -332,6 +366,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 48,
           "fontWeight": 400,
           "lineHeight": 100
@@ -339,6 +374,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -371,6 +407,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 52,
           "fontWeight": 700,
           "lineHeight": 100,
@@ -379,6 +416,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -387,6 +425,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 52,
           "fontWeight": 700,
           "lineHeight": 100,
@@ -395,6 +434,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 52,
           "fontWeight": 500,
           "lineHeight": 100,
@@ -403,6 +443,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -411,6 +452,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -419,6 +461,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -427,6 +470,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -435,6 +479,7 @@
       },
       "White Angelica": {
         "default": {
+          "fontFamily": "WhiteAngelica",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -462,6 +507,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 40,
           "fontWeight": 700,
           "lineHeight": 110
@@ -469,6 +515,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -476,6 +523,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -483,6 +531,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 40,
           "fontWeight": 500,
           "lineHeight": 110
@@ -490,6 +539,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -497,6 +547,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -504,6 +555,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -511,6 +563,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -518,6 +571,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 120
@@ -525,6 +579,7 @@
       },
       "White Angelica": {
         "default": {
+          "fontFamily": "WhiteAngelica",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 130
@@ -545,6 +600,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 60,
           "fontWeight": 700,
           "lineHeight": 105,
@@ -553,6 +609,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -561,6 +618,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -569,6 +627,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 60,
           "fontWeight": 500,
           "lineHeight": 105,
@@ -577,6 +636,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -585,6 +645,7 @@
       },
       "LeeSeoyun": {
         "default": {
+          "fontFamily": "LeeSeoyun",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -593,6 +654,7 @@
       },
       "MapoDacapo": {
         "default": {
+          "fontFamily": "MapoDacapoA",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -601,6 +663,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
+          "fontFamily": "OwnglyphBaekSubin",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -609,6 +672,7 @@
       },
       "Nelna Yesam": {
         "default": {
+          "fontFamily": "NelnaYesam",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -631,6 +695,7 @@
     "fonts": {
       "BBB0003": {
         "default": {
+          "fontFamily": "BBB0003",
           "fontSize": 110,
           "fontWeight": 700,
           "lineHeight": 100
@@ -638,6 +703,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
+          "fontFamily": "OwnglyphKundo",
           "fontSize": 110,
           "fontWeight": 400,
           "lineHeight": 100
@@ -645,6 +711,7 @@
       },
       "Diphylleia": {
         "default": {
+          "fontFamily": "Diphylleia",
           "fontSize": 110,
           "fontWeight": 400,
           "lineHeight": 100
@@ -652,6 +719,7 @@
       },
       "DOSGothic": {
         "default": {
+          "fontFamily": "DOSGothic",
           "fontSize": 110,
           "fontWeight": 500,
           "lineHeight": 100
@@ -659,6 +727,7 @@
       },
       "KoreanCNMM": {
         "default": {
+          "fontFamily": "KoreanCNMM",
           "fontSize": 110,
           "fontWeight": 400,
           "lineHeight": 100
