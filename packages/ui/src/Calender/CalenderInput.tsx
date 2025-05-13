@@ -4,7 +4,7 @@ import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import Text from '../Text/Text';
 import { IconCalendar } from '@merried/icon';
-import Calendar from './Calender';
+import Calender from './Calender';
 
 const CalenderInput = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const CalenderInput = () => {
         </Text>
         <IconCalendar />
       </StyledCalenderInput>
-      {isOpen && <Calendar initialDate={selectedDate} onDateSelect={handleDateSelect} />}
+      {isOpen && <Calender initialDate={selectedDate} onDateSelect={handleDateSelect} />}
     </Wrapper>
   );
 };
