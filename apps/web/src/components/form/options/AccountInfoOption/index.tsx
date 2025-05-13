@@ -4,6 +4,7 @@ import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useReducer } from 'react';
 import { styled } from 'styled-components';
+import type { AccountState, AccountAction, AccountField } from '@/types/form/client';
 
 const reducer = (state: AccountState, action: AccountAction): AccountState => {
   switch (action.type) {
