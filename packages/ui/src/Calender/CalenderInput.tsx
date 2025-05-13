@@ -11,7 +11,7 @@ interface Props {
   onChange: (date: Date) => void;
 }
 
-const CalenderInput = ({ value, onChange }: Props) => {
+const CalenderInput = ({ value = new Date(), onChange }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const formattedDate = `${value.getFullYear()}.${value.getMonth() + 1}.${value.getDate()}`;
@@ -33,7 +33,11 @@ const CalenderInput = ({ value, onChange }: Props) => {
         </Text>
         <IconCalendar />
       </StyledCalenderInput>
-      {isOpen && <Calender initialDate={value} onDateSelect={handleDateSelect} />}
+      {isOpen && (
+        <CalenderWrapper>
+          <Calender initialDate={value} onDateSelect={handleDateSelect} />
+        </CalenderWrapper>
+      )}
     </Wrapper>
   );
 };
@@ -54,4 +58,8 @@ const StyledCalenderInput = styled.div`
   border: 1px solid ${color.G70};
   background: ${color.G0};
   cursor: pointer;
+`;
+
+const CalenderWrapper = styled.div`
+  margin-top: 4px;
 `;
