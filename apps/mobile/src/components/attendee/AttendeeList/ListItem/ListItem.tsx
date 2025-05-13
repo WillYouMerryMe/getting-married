@@ -1,4 +1,3 @@
-import EditModal from '@/components/EditModal/EditModal';
 import { SIDE } from '@/constants/common/constant';
 import { Side } from '@/types/manage/client';
 import { color } from '@merried/design-system';
@@ -7,6 +6,7 @@ import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
+import EditModal from '../../EditModal/EditModal';
 
 interface ListItemProps {
   id: string;

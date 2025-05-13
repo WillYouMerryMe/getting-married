@@ -1,11 +1,11 @@
 'use client';
 
+import ButtonGroup from '@/components/common/ButtonGroup/ButtonGroup';
 import { color } from '@merried/design-system';
 import { IconDelete } from '@merried/icon';
 import { Button, Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
-import ButtonGroup from '../common/ButtonGroup/ButtonGroup';
 
 interface EditModalProps {
   isOpen: boolean;
@@ -13,7 +13,7 @@ interface EditModalProps {
 }
 
 const EditModal = ({ isOpen, onClose }: EditModalProps) => {
-  const removeFileAndCloseModal = () => {
+  const handleCloseModal = () => {
     onClose();
   };
 
@@ -24,7 +24,7 @@ const EditModal = ({ isOpen, onClose }: EditModalProps) => {
           <Text fontType="H3" color={color.G900}>
             박강원
           </Text>
-          <div onClick={removeFileAndCloseModal}>
+          <div onClick={handleCloseModal}>
             <IconDelete width={20} height={20} stroke={color.G900} />
           </div>
         </Row>
