@@ -1,12 +1,15 @@
+import EditModal from '@/components/EditModal/EditModal';
 import { SIDE } from '@/constants/common/constant';
 import { Side } from '@/types/manage/client';
 import { color } from '@merried/design-system';
 import { IconPencil } from '@merried/icon';
 import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
 
 interface ListItemProps {
+  id: string;
   name: string;
   side: Side;
   count: number;
@@ -15,11 +18,19 @@ interface ListItemProps {
   meal: boolean;
 }
 
-const ListItem = ({ name, side, count, attend, money, meal }: ListItemProps) => {
+const ListItem = ({ id, name, side, count, attend, money, meal }: ListItemProps) => {
+  const overlay = useOverlay();
+
+  const handleOverlayEditModal = () => {
+    overlay.open(({ isOpen, close }) => <EditModal isOpen={isOpen} onClose={close} />);
+  };
+
   return (
-    <StyledListItem onClick={() => {}}>
+    <StyledListItem id={id}>
       <Row alignItems="center" gap={10}>
-        <IconPencil width={16} height={16} />
+        <div onClick={handleOverlayEditModal}>
+          <IconPencil width={16} height={16} />
+        </div>
         <Column alignItems="flex-start">
           <Text fontType="P3" color={color.G900}>
             {name}
