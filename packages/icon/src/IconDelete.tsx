@@ -1,7 +1,10 @@
 import type { SVGProps } from 'react';
 import React from 'react';
 
-const IconDelete = (props: SVGProps<SVGSVGElement>) => (
+const IconDelete = ({
+  stroke = '#FFF',
+  ...props
+}: SVGProps<SVGSVGElement> & { stroke?: string }) => (
   <svg
     viewBox="0 0 16 16"
     width={16}
@@ -12,14 +15,14 @@ const IconDelete = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M1.33398 1.33398L14.6673 14.6673"
-      stroke="#FFF"
+      stroke={stroke}
       strokeWidth={1.6}
       strokeLinecap="square"
       strokeLinejoin="round"
     />
     <path
       d="M14.6673 1.33398L1.33398 14.6673"
-      stroke="#FFF"
+      stroke={stroke}
       strokeWidth={1.6}
       strokeLinecap="square"
       strokeLinejoin="round"
