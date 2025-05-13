@@ -27,13 +27,14 @@ const ButtonGroup = ({ title, buttons }: ButtonGroupProps) => {
           <Button
             key={index}
             styleType={selectedButton === index ? 'DEFAULT' : 'SELECT'}
+            size='SMALL'
             width="100%"
             onClick={() => {
-                setSelectedButton(index);
+              setSelectedButton(index);
               button.onClick();
             }}
           >
-            {button.label}
+            <Text fontType="Button2">{button.label}</Text>
           </Button>
         ))}
       </Row>
