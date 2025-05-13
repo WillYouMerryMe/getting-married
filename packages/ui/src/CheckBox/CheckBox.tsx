@@ -1,7 +1,7 @@
 import { color } from '@merried/design-system';
 import { IconCheck } from '@merried/icon';
 import { flex } from '@merried/utils';
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes, ChangeEvent } from 'react';
 import { styled } from 'styled-components';
 import Row from '../Flex/Row';
 import Text from '../Text/Text';
@@ -9,19 +9,24 @@ import Text from '../Text/Text';
 type Props = {
   label?: string;
   checked?: boolean;
-} & InputHTMLAttributes<HTMLInputElement>;
+  onChange?: (checked: boolean) => void;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
-const CheckBox = ({ label, name, value, onChange, checked = false }: Props) => {
+const CheckBox = ({ label, name, value, checked = false, onChange }: Props) => {
+  const handleClick = () => {
+    onChange?.(!checked);
+  };
+
   return (
     <Row gap={8} alignItems="center">
-      <StyledCheckBox $CheckBox={checked}>
+      <StyledCheckBox $CheckBox={checked} onClick={handleClick}>
         {checked && <IconCheck width={12} height={12} color="red" />}
         <input
           type="checkbox"
           checked={checked}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange?.(e.target.checked)}
           style={{ display: 'none' }}
         />
       </StyledCheckBox>
@@ -41,4 +46,6 @@ const StyledCheckBox = styled.div<{ $CheckBox: boolean }>`
   height: 16px;
   border: 1px solid ${color.G80};
   border-radius: 2px;
+
+  cursor: pointer;
 `;
