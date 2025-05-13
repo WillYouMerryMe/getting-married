@@ -1,7 +1,6 @@
 import { color } from '@merried/design-system';
 import { IconDragHandle } from '@merried/icon';
 import {
-  Calender,
   CalenderInput,
   CheckBox,
   Column,
@@ -16,6 +15,7 @@ import { styled } from 'styled-components';
 
 const CeremonyInfoOption = () => {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [calenderDate, setCalenderDate] = useState<Date>(new Date());
 
   return (
     <StyledCeremonyInfoOption>
@@ -30,7 +30,7 @@ const CeremonyInfoOption = () => {
           <Text fontType="P3" color={color.G900}>
             예식 날짜<RequiredMark>*</RequiredMark>
           </Text>
-          <CalenderInput />
+          <CalenderInput value={calenderDate} onChange={setCalenderDate} />
         </Column>
         <Column gap={8}>
           <Text fontType="P3" color={color.G900}>
