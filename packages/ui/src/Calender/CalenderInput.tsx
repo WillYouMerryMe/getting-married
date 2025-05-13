@@ -1,23 +1,28 @@
-import { useState } from 'react';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import Text from '../Text/Text';
 import { IconCalendar } from '@merried/icon';
 import Calender from './Calender';
+import { useState } from 'react';
 
-const CalenderInput = () => {
+interface Props {
+  value: Date;
+  onChange: (date: Date) => void;
+}
+
+const CalenderInput = ({ value, onChange }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  const formattedDate = `${selectedDate.getFullYear()}.${selectedDate.getMonth() + 1}.${selectedDate.getDate()}`;
+  const formattedDate = `${value.getFullYear()}.${value.getMonth() + 1}.${value.getDate()}`;
 
   const toggleCalendar = () => {
     setIsOpen((prev) => !prev);
   };
 
   const handleDateSelect = (date: Date) => {
-    setSelectedDate(date);
+    onChange(date);
+    setIsOpen(false);
   };
 
   return (
@@ -28,7 +33,7 @@ const CalenderInput = () => {
         </Text>
         <IconCalendar />
       </StyledCalenderInput>
-      {isOpen && <Calender initialDate={selectedDate} onDateSelect={handleDateSelect} />}
+      {isOpen && <Calender initialDate={value} onDateSelect={handleDateSelect} />}
     </Wrapper>
   );
 };
