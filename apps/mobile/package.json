@@ -12,11 +12,12 @@
     "@tanstack/react-query": "^5.71.0",
     "@tanstack/react-query-devtools": "^5.74.7",
     "@toss/react": "^1.8.1",
+    "@toss/use-overlay": "^1.4.2",
     "@types/styled-components": "^5.1.26",
+    "dayjs": "^1.11.13",
     "next": "14.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "dayjs": "^1.11.13",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.17"
   },
