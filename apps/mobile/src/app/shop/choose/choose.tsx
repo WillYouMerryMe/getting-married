@@ -1,4 +1,5 @@
 import {
+  GIFT,
   MEAL,
   MEAL_OPTIONS,
   PAID,
@@ -6,16 +7,25 @@ import {
   STATUS,
   STATUS_OPTIONS,
 } from '@/constants/shop/constants';
-import { Meal, Paid, Status } from '@/types/shop/client';
+import { Gift, Meal, Paid, Status } from '@/types/shop/client';
 import { color } from '@merried/design-system';
 import { ActionButton, Button, Column, MiniDropdown, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import { useCTAButton, useFieldChange } from './choose.hooks';
+import { useOverlay } from '@toss/use-overlay';
+import GiftPickerBottomSheet from '@/components/shop/GiftPickerBottomSheet/GiftPickerBottomSheet';
 
 const Choose = () => {
+  const overlay = useOverlay();
   const { handleChange, attendee } = useFieldChange();
   const { handleMoveSend } = useCTAButton();
+
+  const handleOpenBottomSheet = () => {
+    overlay.open(({ isOpen, close }) => (
+      <GiftPickerBottomSheet isOpen={isOpen} onClose={close} />
+    ));
+  };
 
   return (
     <StyledChoose>
@@ -55,12 +65,12 @@ const Choose = () => {
                 선택한 답례품
               </Text>
               <Text fontType="H3" color="#1A1A1A">
-                선택한 답례품
+                {GIFT[attendee.gift as Gift]}
               </Text>
             </Column>
-            <ActionButton onClick={() => {}}>변경</ActionButton>
+            <ActionButton onClick={handleOpenBottomSheet}>변경</ActionButton>
           </Row>
-          <ItemImage />
+          <ItemImage src={`/images/${attendee.gift}.svg`} />
         </Column>
       </Column>
       <Button width="100%" size="VERY_LARGE" onClick={handleMoveSend}>
@@ -84,8 +94,8 @@ const StyledChoose = styled.div`
   height: calc(100vh - 71px - 142px);
 `;
 
-const ItemImage = styled.div`
+const ItemImage = styled.div<{ src: string }>`
   width: 100%;
   aspect-ratio: 351 / 155;
-  background: url('/images/ssg.svg') center / contain no-repeat;
+  background: url(${(p) => p.src}) center/contain no-repeat;
 `;
