@@ -9,6 +9,7 @@ import { color } from '@merried/design-system';
 import { useState } from 'react';
 
 export const listData: {
+  id: string;
   name: string;
   side: Side;
   count: number;
@@ -17,6 +18,7 @@ export const listData: {
   meal: boolean;
 }[] = [
   {
+    id: '1',
     name: '홍길동',
     side: 'GROOM',
     count: 3,
@@ -25,6 +27,7 @@ export const listData: {
     meal: false,
   },
   {
+    id: '2',
     name: '홍이장군',
     side: 'GROOM',
     count: 3,
@@ -33,6 +36,7 @@ export const listData: {
     meal: false,
   },
   {
+    id: '3',
     name: '김영희',
     side: 'BRIDE',
     count: 2,
@@ -41,6 +45,7 @@ export const listData: {
     meal: true,
   },
   {
+    id: '4',
     name: '박철수',
     side: 'GROOM',
     count: 1,
@@ -49,6 +54,7 @@ export const listData: {
     meal: false,
   },
   {
+    id: '5',
     name: '이민호',
     side: 'BRIDE',
     count: 4,
@@ -57,6 +63,7 @@ export const listData: {
     meal: true,
   },
   {
+    id: '6',
     name: '최지우',
     side: 'GROOM',
     count: 2,
@@ -65,6 +72,7 @@ export const listData: {
     meal: false,
   },
   {
+    id: '7',
     name: '장보리',
     side: 'BRIDE',
     count: 5,
@@ -73,6 +81,7 @@ export const listData: {
     meal: false,
   },
   {
+    id: '8',
     name: '오세훈',
     side: 'GROOM',
     count: 1,
@@ -81,6 +90,7 @@ export const listData: {
     meal: true,
   },
   {
+    id: '9',
     name: '오세훈2',
     side: 'GROOM',
     count: 1,
