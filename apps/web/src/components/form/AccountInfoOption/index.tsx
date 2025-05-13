@@ -34,70 +34,106 @@ const AccountInfoOption = () => {
           </Text>
           <Input width={384} platform="DESKTOP" placeholder="내용을 입력해주세요" />
         </Column>
-        <CheckBox label="신랑" checked={showGroom} onChange={setShowGroom} />
-        {showGroom && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
-        <CheckBox label="신부" checked={showBride} onChange={setShowBride} />
-        {showBride && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
-        <CheckBox
-          label="신랑 아버지"
-          checked={showGroomFather}
-          onChange={setShowGroomFather}
-        />
-        {showGroomFather && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
-        <CheckBox
-          label="신랑 어머니"
-          checked={showGroomMother}
-          onChange={setShowGroomMother}
-        />
-        {showGroomMother && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
-        <CheckBox
-          label="신부 아버지"
-          checked={showBrideFather}
-          onChange={setShowBrideFather}
-        />
-        {showBrideFather && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
-        <CheckBox
-          label="신부 어머니"
-          checked={showBrideMother}
-          onChange={setShowBrideMother}
-        />
-        {showBrideMother && (
-          <Column gap={8}>
-            <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="계좌번호를 입력해주세요" />
-            <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
-          </Column>
-        )}
+        <Column gap={8}>
+          <CheckBox label="신랑" checked={showGroom} onChange={setShowGroom} />
+          {showGroom && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
+        <Column gap={8}>
+          <CheckBox label="신부" checked={showBride} onChange={setShowBride} />
+          {showBride && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
+        <Column gap={8}>
+          <CheckBox
+            label="신랑 아버지"
+            checked={showGroomFather}
+            onChange={setShowGroomFather}
+          />
+          {showGroomFather && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
+        <Column gap={8}>
+          <CheckBox
+            label="신랑 어머니"
+            checked={showGroomMother}
+            onChange={setShowGroomMother}
+          />
+          {showGroomMother && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
+        <Column gap={8}>
+          <CheckBox
+            label="신부 아버지"
+            checked={showBrideFather}
+            onChange={setShowBrideFather}
+          />
+          {showBrideFather && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
+        <Column gap={8}>
+          <CheckBox
+            label="신부 어머니"
+            checked={showBrideMother}
+            onChange={setShowBrideMother}
+          />
+          {showBrideMother && (
+            <Column gap={8}>
+              <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
+              <Input
+                width={384}
+                platform="DESKTOP"
+                placeholder="계좌번호를 입력해주세요"
+              />
+              <Input width={384} platform="DESKTOP" placeholder="예금주를 입력해주세요" />
+            </Column>
+          )}
+        </Column>
       </Column>
       <IconDragHandle />
     </StyledAccountInfoOption>
