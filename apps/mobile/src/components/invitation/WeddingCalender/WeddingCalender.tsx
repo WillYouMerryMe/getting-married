@@ -1,14 +1,17 @@
 'use client';
 
 import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 import { color } from '@merried/design-system';
 import { IconOval } from '@merried/icon';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { Column } from '@merried/ui';
 
+dayjs.locale('ko');
+
 interface WeddingCalenderProps {
-  date: string; // YYYYMMDD
+  date: string;
 }
 
 const WeddingCalender = ({ date }: WeddingCalenderProps) => {
@@ -20,7 +23,6 @@ const WeddingCalender = ({ date }: WeddingCalenderProps) => {
   const firstDay = d.startOf('month').day();
   const totalDays = d.endOf('month').date();
 
-  // null 채워서 7의 배수로
   const cells = [
     ...Array(firstDay).fill(null),
     ...Array.from({ length: totalDays }, (_, i) => i + 1),
