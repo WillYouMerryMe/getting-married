@@ -22,6 +22,7 @@ interface CustomTextProps {
   size: number;
   line: number;
   weight: number;
+  align?: string;
 }
 
 const CustomText = ({
@@ -31,6 +32,7 @@ const CustomText = ({
   size,
   line,
   weight,
+  align = 'center',
 }: CustomTextProps) => {
   return (
     <StyledCustomText
@@ -39,6 +41,7 @@ const CustomText = ({
       size={size}
       line={line}
       weight={weight}
+      align={align}
     >
       {children}
     </StyledCustomText>
@@ -53,11 +56,12 @@ const StyledCustomText = styled.div<{
   size: number;
   line: number;
   weight: number;
+  align: string;
 }>`
   font-family: ${(p) => p.font};
   font-size: ${(p) => p.size}px;
   font-weight: ${(p) => p.weight};
   line-height: ${(p) => p.line}%;
   color: ${(p) => p.color};
-  text-align: center;
+  text-align: ${(p) => p.align};
 `;
