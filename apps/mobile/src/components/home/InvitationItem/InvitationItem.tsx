@@ -24,6 +24,10 @@ const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
     router.push(`${ROUTES.GUESTBOOK}/${id}`);
   };
 
+  const handleMoveInvitation = () => {
+    router.push(`${ROUTES.INVITATION}/${id}`);
+  };
+
   return (
     <StyledInvitationItem>
       <Background src="images/type01.svg" alt="초대장 배경" />
@@ -43,7 +47,11 @@ const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
           </Row>
         </Column>
         <Row alignItems="center" gap={8}>
-          <Badge icon={IconBoldLetter} title="청첩장 확인" onClick={() => {}} />
+          <Badge
+            icon={IconBoldLetter}
+            title="청첩장 확인"
+            onClick={handleMoveInvitation}
+          />
           <Badge icon={IconBoldShare} title="URL 복사" onClick={() => {}} />
           {weddingDate && (
             <Badge
