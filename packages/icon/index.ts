@@ -20,4 +20,5 @@ export { default as IconMegaphone } from './src/IconMegaphone';
 export { default as IconDragHandle } from './src/IconDragHandle';
 export { default as IconCheck } from './src/IconCheck';
 export { default as IconBoldList } from './src/IconBoldList';
-export { default as IconCalendar } from './src/IconCalendar'
+export { default as IconCalendar } from './src/IconCalendar';
+export { default as IconOval } from './src/IconOval';
