@@ -22,7 +22,7 @@ interface CustomTextProps {
   size: number;
   line: number;
   weight: number;
-  align?: string;
+  align?: 'left' | 'right' | 'center' | 'justify';
 }
 
 const CustomText = ({
@@ -61,7 +61,7 @@ const StyledCustomText = styled.div<{
   font-family: ${(p) => p.font};
   font-size: ${(p) => p.size}px;
   font-weight: ${(p) => p.weight};
-  line-height: ${(p) => p.line}%;
+  line-height: ${(p) => p.line / 100};
   color: ${(p) => p.color};
   text-align: ${(p) => p.align};
 `;
