@@ -93,6 +93,13 @@ const GlobalStyle = createGlobalStyle`
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'YUniverse-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_yuniverse@1.0/YUniverse-B.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
