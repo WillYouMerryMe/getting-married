@@ -5,6 +5,7 @@ import Greeting from '@/components/invitation/Greeting/Greeting';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
 import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
+import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
 import AppLayout from '@/layouts/AppLayout';
 import { color } from '@merried/design-system';
 import { Column, Text } from '@merried/ui';
@@ -27,6 +28,11 @@ const InvitationDetail = () => {
           <WeddingCalender date="20250515" />
           <WeddingAlbum
             albumList={['/guestbook.png', '/images/album.svg', '/images/type01.svg']}
+          />
+          <WeddingIntro
+            vedioURL={
+              'https://www.youtube.com/embed/-LtlYB6Iws8?rel=0&autoplay=1&mute=1&loop=1&playlist=-LtlYB6Iws8'
+            }
           />
           <Text fontType="P4" color={color.G80}>
             COPYRIGHT Kangwon Park. All rights reserved.
