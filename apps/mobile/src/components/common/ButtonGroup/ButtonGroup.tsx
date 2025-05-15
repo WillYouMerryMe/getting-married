@@ -10,25 +10,30 @@ interface ButtonItem {
 }
 
 interface ButtonGroupProps {
-  title: string;
+  title?: string;
   buttons: ButtonItem[];
+  pointColor?: string;
 }
 
-const ButtonGroup = ({ title, buttons }: ButtonGroupProps) => {
+const ButtonGroup = ({ title, buttons, pointColor }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0);
 
   return (
     <StyledButtonGroup>
-      <Text fontType="P2" color={color.G900}>
-        {title}
-      </Text>
+      {title && (
+        <Text fontType="P2" color={color.G900}>
+          {title}
+        </Text>
+      )}
       <Row alignItems="center" gap={19} width="100%">
         {buttons.map((button, index) => (
           <Button
             key={index}
-            styleType={selectedButton === index ? 'DEFAULT' : 'SELECT'}
-            size='SMALL'
+            styleType={selectedButton === index ? 'DEFAULT' : 'SECOND'}
+            pointColor={pointColor}
+            size="SMALL"
             width="100%"
+            style={{ flex: 1, minWidth: 0 }}
             onClick={() => {
               setSelectedButton(index);
               button.onClick();
