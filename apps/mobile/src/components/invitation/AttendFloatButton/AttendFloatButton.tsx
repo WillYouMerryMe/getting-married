@@ -1,11 +1,21 @@
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
+import AttendBottomSheet from '../AttendBottomSheet/AttendBottomSheet';
 
 const AttendFloatButton = () => {
+  const overlay = useOverlay();
+
+  const handleOpenBottomSheet = () => {
+    overlay.open(({ isOpen, close }) => (
+      <AttendBottomSheet isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
-    <StyledAttendFloatButton onClick={() => {}}>
+    <StyledAttendFloatButton onClick={handleOpenBottomSheet}>
       <ActionButton>
         <Text fontType="Button3" color={color.G900}>
           참석 의사 전달하기
