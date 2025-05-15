@@ -32,7 +32,7 @@ const WeddingCalender = ({ date }: WeddingCalenderProps) => {
   return (
     <Wrapper>
       <IconOval width={145} height={43}>
-        <Label>{`${year}년 ${month}월`}</Label>
+        <Label>{date}</Label>
       </IconOval>
 
       <Grid>
