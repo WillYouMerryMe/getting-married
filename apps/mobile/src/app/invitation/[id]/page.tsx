@@ -3,6 +3,8 @@
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
 import Greeting from '@/components/invitation/Greeting/Greeting';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
+import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
+import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
 import AppLayout from '@/layouts/AppLayout';
 import { color } from '@merried/design-system';
 import { Column, Text } from '@merried/ui';
@@ -21,6 +23,10 @@ const InvitationDetail = () => {
               { father: '박OO', mother: '이OO', gender: 'SON', name: '박아들' },
               { father: '최OO', mother: '이OO', gender: 'DAUGHTER', name: '최딸' },
             ]}
+          />
+          <WeddingCalender date="20250515" />
+          <WeddingAlbum
+            albumList={['/guestbook.png', '/images/album.svg', '/images/type01.svg']}
           />
           <Text fontType="P4" color={color.G80}>
             COPYRIGHT Kangwon Park. All rights reserved.
