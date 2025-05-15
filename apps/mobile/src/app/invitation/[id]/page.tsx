@@ -1,5 +1,6 @@
 'use client';
 
+import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
 import Greeting from '@/components/invitation/Greeting/Greeting';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
@@ -9,13 +10,29 @@ import AppLayout from '@/layouts/AppLayout';
 import { color } from '@merried/design-system';
 import { Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const InvitationDetail = () => {
+  const startRef = useRef<HTMLDivElement>(null);
+  const [showAttend, setShowAttend] = useState(false);
+
+  useEffect(() => {
+    if (!startRef.current) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setShowAttend(!entry.isIntersecting),
+      { rootMargin: '-20% 0px 0px 0px', threshold: 0 }
+    );
+    obs.observe(startRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <AppLayout backgroundColor={color.G0}>
       <Column width="100%" alignItems="center">
-        <StartBackground man="JAEHO" woman="YUBIN" date="2025. 03. 20 SUN" />
+        <div ref={startRef} style={{ width: '100%' }}>
+          <StartBackground man="JAEHO" woman="YUBIN" date="2025. 03. 20 SUN" />
+        </div>
         <StyledInvitation>
           <Greeting />
           <CoupleInfo
@@ -33,6 +50,7 @@ const InvitationDetail = () => {
           </Text>
         </StyledInvitation>
       </Column>
+      {showAttend && <AttendFloatButton />}
     </AppLayout>
   );
 };
