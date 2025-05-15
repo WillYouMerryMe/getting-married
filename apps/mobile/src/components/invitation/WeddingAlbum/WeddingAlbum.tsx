@@ -14,12 +14,12 @@ interface WeddingAlbumProps {
 
 const WeddingAlbum = ({ albumList }: WeddingAlbumProps) => {
   const [current, setCurrent] = useState(0);
-  const total = albumList?.length;
+  const total = albumList?.length || 0;
 
   const prev = () => total > 0 && setCurrent((c) => (c - 1 + total) % total);
   const next = () => total > 0 && setCurrent((c) => (c + 1) % total);
 
-  if (total === 0) return null;
+  if (!albumList || total === 0) return null;
 
   return (
     <StyledWeddingAlbum>
