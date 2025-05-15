@@ -16,8 +16,8 @@ const WeddingAlbum = ({ albumList }: WeddingAlbumProps) => {
   const [current, setCurrent] = useState(0);
   const total = albumList?.length;
 
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
+  const prev = () => total > 0 && setCurrent((c) => (c - 1 + total) % total);
+  const next = () => total > 0 && setCurrent((c) => (c + 1) % total);
 
   if (total === 0) return null;
 
@@ -66,5 +66,5 @@ const StyledWeddingAlbum = styled.div`
 const AlbumImage = styled.div<{ src: string }>`
   width: 100%;
   height: 100%;
-  background:  url(${(p) => p.src}) center/cover no-repeat;
+  background: url(${(p) => p.src}) center/cover no-repeat;
 `;
