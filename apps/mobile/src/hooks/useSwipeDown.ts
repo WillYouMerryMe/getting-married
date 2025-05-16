@@ -4,6 +4,7 @@ interface SwipeHandlers {
   onPointerDown: React.PointerEventHandler;
   onPointerMove: React.PointerEventHandler;
   onPointerUp: React.PointerEventHandler;
+  onPointerLeave: React.PointerEventHandler;
 }
 
 export default function useSwipeDown(
@@ -23,16 +24,27 @@ export default function useSwipeDown(
     startY.current = e.clientY;
     setDragging(true);
   };
+
   const onPointerMove: SwipeHandlers['onPointerMove'] = (e) => {
     if (!dragging) return;
     const delta = e.clientY - startY.current;
     if (delta > 0) setDragY(delta);
   };
+
   const onPointerUp: SwipeHandlers['onPointerUp'] = () => {
     setDragging(false);
     if (dragY > threshold) onClose();
     else setDragY(0);
   };
 
-  return { dragY, dragging, handlers: { onPointerDown, onPointerMove, onPointerUp } };
+  const onPointerLeave: SwipeHandlers['onPointerLeave'] = () => {
+    setDragging(false);
+    setDragY(0);
+  };
+
+  return {
+    dragY,
+    dragging,
+    handlers: { onPointerDown, onPointerMove, onPointerUp, onPointerLeave },
+  };
 }
