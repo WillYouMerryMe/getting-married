@@ -64,4 +64,5 @@ const StyledCustomText = styled.div<{
   line-height: ${(p) => p.line / 100};
   color: ${(p) => p.color};
   text-align: ${(p) => p.align};
+  white-space: pre-wrap;
 `;
