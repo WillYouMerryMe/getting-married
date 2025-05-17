@@ -36,7 +36,7 @@ const KakaoMap = ({ address }: KakaoMapProps) => {
         isPanto={true}
       >
         <CustomOverlayMap position={coordinates} yAnchor={0.9}>
-          <Image src={'/maker.svg'} width={24} height={36} alt="maker" />
+          <Image src={'/marker.svg'} width={24} height={36} alt="maker" />
         </CustomOverlayMap>
       </StyledMap>
     </StyledKakaoMap>
