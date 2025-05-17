@@ -1,5 +1,6 @@
 'use client';
 
+import Account from '@/components/invitation/Account/Account';
 import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
 import Direction from '@/components/invitation/Direction/Direction';
@@ -63,6 +64,16 @@ const InvitationDetail = () => {
               자가용:
                 '신세계 센트럴 주차장을 이용하시고, 직원에게 주차 인증을 받으시기 바랍니다. 자세한 사항은 유선번호\n(02-6282-6262)로 문의하시기 바랍니다.',
             }}
+          />
+          <Account
+            groomAccounts={[
+              { bank: '농협', account: '123 1234 1234 12', name: '박신랑' },
+              { bank: '농협', account: '123 1234 1234 12', name: '박아빠' },
+            ]}
+            brideAccounts={[
+              { bank: '농협', account: '123 1234 1234 12', name: '이신부' },
+              { bank: '농협', account: '123 1234 1234 12', name: '이엄마' },
+            ]}
           />
           <Guide
             content={`저희에게 축하해주신 마음을 더 큰 마음으로\n베풀고자 축의금의 일부는 기부합니다.\n선행에 함께 해주셔서 감사합니다.`}
