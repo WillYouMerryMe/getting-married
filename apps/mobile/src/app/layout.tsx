@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import type { Metadata } from 'next';
 import Provider from './providers/Provider';
 import QueryClientProvider from './providers/QueryClientProvider';
@@ -21,6 +22,10 @@ export default function RootLayout({
             <Provider>{children}</Provider>
           </QueryClientProvider>
         </StyledComponentsProvider>
+        <script
+          type="text/javascript"
+          src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&libraries=services,clusterer`}
+        />
       </body>
     </html>
   );
