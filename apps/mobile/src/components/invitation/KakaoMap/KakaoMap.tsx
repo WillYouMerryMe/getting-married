@@ -19,8 +19,6 @@ const KakaoMap = ({ address }: KakaoMapProps) => {
       if (status === kakao.maps.services.Status.OK) {
         const { x, y } = result[0];
         setCoordinates({ lat: parseFloat(y), lng: parseFloat(x) });
-      } else {
-        console.error(address);
       }
     });
   }, [address]);
