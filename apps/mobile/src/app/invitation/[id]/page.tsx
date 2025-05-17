@@ -66,11 +66,11 @@ const InvitationDetail = () => {
             }}
           />
           <Account
-            brideAccounts={[
+            groomAccounts={[
               { bank: '농협', account: '123 1234 1234 12', name: '박신랑' },
               { bank: '농협', account: '123 1234 1234 12', name: '박아빠' },
             ]}
-            groomAccounts={[
+            brideAccounts={[
               { bank: '농협', account: '123 1234 1234 12', name: '이신부' },
               { bank: '농협', account: '123 1234 1234 12', name: '이엄마' },
             ]}

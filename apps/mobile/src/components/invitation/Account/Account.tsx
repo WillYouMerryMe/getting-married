@@ -44,8 +44,8 @@ const Account = ({ groomAccounts, brideAccounts }: AccountProps) => {
         </CustomText>
       </Column>
       <Column gap={24} width="100%">
-        <AccountItem type="신랑" accounts={brideAccounts}/>
-        <AccountItem type="신부" accounts={groomAccounts} />
+        <AccountItem type="신랑" accounts={groomAccounts}/>
+        <AccountItem type="신부" accounts={brideAccounts} />
       </Column>
     </StyledAccount>
   );
