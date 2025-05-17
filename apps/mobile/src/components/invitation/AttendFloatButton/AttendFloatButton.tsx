@@ -27,6 +27,7 @@ const StyledAttendFloatButton = styled.div`
   justify-content: center;
   height: 42px;
   border-radius: 28px;
+  z-index: 10;
 `;
 
 const ActionButton = styled.div`
