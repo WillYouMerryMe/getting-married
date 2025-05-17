@@ -4,6 +4,7 @@ import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendF
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
 import Direction from '@/components/invitation/Direction/Direction';
 import Greeting from '@/components/invitation/Greeting/Greeting';
+import Guide from '@/components/invitation/Guide/Guide';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
 import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
@@ -62,6 +63,9 @@ const InvitationDetail = () => {
               자가용:
                 '신세계 센트럴 주차장을 이용하시고, 직원에게 주차 인증을 받으시기 바랍니다. 자세한 사항은 유선번호\n(02-6282-6262)로 문의하시기 바랍니다.',
             }}
+          />
+          <Guide
+            content={`저희에게 축하해주신 마음을 더 큰 마음으로\n베풀고자 축의금의 일부는 기부합니다.\n선행에 함께 해주셔서 감사합니다.`}
           />
           <Text fontType="P4" color={color.G80}>
             COPYRIGHT Kangwon Park. All rights reserved.
