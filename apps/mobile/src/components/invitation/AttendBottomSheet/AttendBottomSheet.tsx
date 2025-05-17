@@ -5,6 +5,7 @@ import { color } from '@merried/design-system';
 import { Button, Column, Input, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
+import { useInput } from './AttendBottomSheet.hooks';
 
 interface AttendBottomSheetProps {
   isOpen: boolean;
@@ -12,6 +13,8 @@ interface AttendBottomSheetProps {
 }
 
 const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
+  const { handleCountChange, handleCountBlur, count } = useInput();
+
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
       <StyledAttendBottomSheet>
@@ -40,7 +43,18 @@ const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
                 width="100%"
                 onChange={() => {}}
               />
-              <Input label="참석인원" size="LARGE" onChange={() => {}} />
+              <Input
+                label="참석인원"
+                size="LARGE"
+                type="number"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                min={1}
+                step={1}
+                value={count}
+                onChange={handleCountChange}
+                onBlur={handleCountBlur}
+              />
               <DesktopButtonGroup
                 title="식사 여부"
                 buttons={[
