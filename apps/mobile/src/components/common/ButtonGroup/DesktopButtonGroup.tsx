@@ -1,5 +1,5 @@
 import { color } from '@merried/design-system';
-import { Button, Row, Text } from '@merried/ui';
+import { DesktopButton, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -9,25 +9,25 @@ interface ButtonItem {
   onClick: () => void;
 }
 
-interface ButtonGroupProps {
+interface DesktopButtonGroupProps {
   title?: string;
   buttons: ButtonItem[];
   pointColor?: string;
 }
 
-const ButtonGroup = ({ title, buttons, pointColor }: ButtonGroupProps) => {
+const DesktopButtonGroup = ({ title, buttons, pointColor }: DesktopButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0);
 
   return (
     <StyledButtonGroup>
       {title && (
-        <Text fontType="P2" color={color.G900}>
+        <Text fontType="P3" color={color.G900}>
           {title}
         </Text>
       )}
       <Row alignItems="center" gap={19} width="100%">
         {buttons.map((button, index) => (
-          <Button
+          <DesktopButton
             key={index}
             styleType={selectedButton === index ? 'DEFAULT' : 'SECOND'}
             pointColor={pointColor}
@@ -39,15 +39,15 @@ const ButtonGroup = ({ title, buttons, pointColor }: ButtonGroupProps) => {
               button.onClick();
             }}
           >
-            <Text fontType="Button2">{button.label}</Text>
-          </Button>
+            <Text fontType="Button3" color={color.G900}>{button.label}</Text>
+          </DesktopButton>
         ))}
       </Row>
     </StyledButtonGroup>
   );
 };
 
-export default ButtonGroup;
+export default DesktopButtonGroup;
 
 const StyledButtonGroup = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'flex-start' })}

@@ -54,6 +54,6 @@ const StyledGiftPickerBottomSheet = styled.div`
     alignItems: 'flex-start',
   })}
   width: 100%;
-  margin-top: 32px;
+  margin-top: 36px;
   gap: 56px;
 `;

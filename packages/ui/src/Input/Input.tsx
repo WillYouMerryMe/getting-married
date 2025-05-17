@@ -73,6 +73,7 @@ const StyledInput = styled.input<{
   background: ${color.G0};
 
   &::placeholder {
+    ${font.P3}
     color: ${color.G80};
   }
 
