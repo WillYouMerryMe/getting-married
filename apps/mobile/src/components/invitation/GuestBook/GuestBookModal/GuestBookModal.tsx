@@ -1,43 +1,37 @@
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
-import { color, font } from '@merried/design-system';
-import { IconDelete } from '@merried/icon';
-import { Button, Column, Row, Text } from '@merried/ui';
+import { useGuestBookStepValueStore } from '@/stores/invitation/guestbookStep';
+import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
+import { SwitchCase } from '@toss/react';
 import styled from 'styled-components';
+import ViewGuestBook from './ViewGuestBook/ViewGuestBook';
+import MasterPassword from './MasterPassword/MasterPassword';
 
 interface GuestBookModalProps {
   isOpen: boolean;
   onClose: () => void;
   name: string;
   content: string;
+  password: string;
 }
 
-const GuestBookModal = ({ isOpen, onClose, name, content }: GuestBookModalProps) => {
-  useBodyScrollLock(isOpen);
+const GuestBookModal = ({ isOpen, onClose, name, content, password }: GuestBookModalProps) => {
+  const guestbook = useGuestBookStepValueStore();
 
-  const handleCloseModal = () => {
-    onClose();
-  };
+  useBodyScrollLock(isOpen);
 
   return (
     <BlurBackground $isOpen={isOpen}>
       <StyledGuestBookModal>
-        <Row width="100%" alignItems="center" justifyContent="space-between">
-          <Text fontType="H3" color={color.G900}>
-            {name}님의 방명록
-          </Text>
-          <div onClick={handleCloseModal}>
-            <IconDelete width={20} height={20} stroke={color.G80} />
-          </div>
-        </Row>
-        <Column gap={32} width="100%">
-          <StyledContent>{content}</StyledContent>
-          <Button onClick={handleCloseModal} size="LARGE" styleType="SECOND">
-            <Text fontType="Button3" color={color.G300}>
-              닫기
-            </Text>
-          </Button>
-        </Column>
+        <SwitchCase
+          value={guestbook}
+          caseBy={{
+            '비밀번호 입력': <MasterPassword onClose={onClose} password={password} />,
+            '방명록 확인': (
+              <ViewGuestBook onClose={onClose} name={name} content={content} />
+            ),
+          }}
+        />
       </StyledGuestBookModal>
     </BlurBackground>
   );
@@ -64,24 +58,8 @@ const StyledGuestBookModal = styled.div`
     justifyContent: 'flex-start',
   })}
   width: 100%;
-  height: 334px;
+  height: auto;
   background-color: ${color.G0};
   border-radius: 16px;
   padding: 24px 16px;
-  gap: 20px;
-`;
-
-const StyledContent = styled.div`
-  ${font.P3_160per}
-  color: ${color.G100};
-  width: 100%;
-  height: 160px;
-  overflow-y: auto;
-  white-space: pre-wrap;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
