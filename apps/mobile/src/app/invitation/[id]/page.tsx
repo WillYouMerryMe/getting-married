@@ -13,7 +13,7 @@ import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCale
 import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
 import AppLayout from '@/layouts/AppLayout';
 import { color } from '@merried/design-system';
-import { Column, Text } from '@merried/ui';
+import { Button, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
@@ -80,6 +80,19 @@ const InvitationDetail = () => {
             content={`저희에게 축하해주신 마음을 더 큰 마음으로\n베풀고자 축의금의 일부는 기부합니다.\n선행에 함께 해주셔서 감사합니다.`}
           />
           <GuestBook />
+          <Column gap={8} alignItems="center">
+            <Button
+              onClick={() => {}}
+              size="MEDIUM"
+              pointColor={color.pointYellow}
+              width={185}
+            >
+              <Text fontType="Button2">카카오톡으로 공유</Text>
+            </Button>
+            <Button onClick={() => {}} size="MEDIUM" styleType="SECOND" width={185}>
+              <Text fontType="Button2" color={color.G300}>청첩장 링크 복사</Text>
+            </Button>
+          </Column>
           <Text fontType="P4" color={color.G80}>
             COPYRIGHT Kangwon Park. All rights reserved.
           </Text>
