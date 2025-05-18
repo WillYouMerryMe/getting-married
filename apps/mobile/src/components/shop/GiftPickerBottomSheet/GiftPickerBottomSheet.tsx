@@ -36,7 +36,7 @@ const GiftPickerBottomSheet = ({ isOpen, onClose }: GiftPickerBottomSheetProps) 
             </Text>
             <GiftList id={id} setId={setId} />
           </Column>
-          <Button size="VERY_LARGE" onClick={handleConfirm}>
+          <Button size="VERY_LARGE" onClick={handleConfirm} width="100%">
             <Text fontType="Button3" color={color.G10}>
               선택 완료
             </Text>
