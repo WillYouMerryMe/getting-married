@@ -2,44 +2,59 @@ import { Account } from '@/types/invitation/client';
 import { color } from '@merried/design-system';
 import { ActionButton, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
+import AccountModal from '../AccountModal/AccountModal';
 
 interface AccountItemProps {
   type: string;
   accounts: Account[];
 }
 
-const AccountItem = ({ type, accounts }: AccountItemProps) => (
-  <StyledAccountItem>
-    <Column gap={10} width="100%">
-      <Text fontType="H4" color={color.G900}>
-        {type}측 계좌번호
-      </Text>
-      <Line />
-    </Column>
-    <StyledAccountContent>
-      <BlurArea>
-        {accounts.map(({ bank, account, name }, i) => (
-          <Column key={i} gap={8} width="100%">
-            <Text fontType="P2" color={color.G900}>
-              {bank} {account}
+const AccountItem = ({ type, accounts }: AccountItemProps) => {
+  const overlay = useOverlay();
+
+  const handleOverlayAccountModal = () => {
+    overlay.open(({ isOpen, close }) => (
+      <AccountModal isOpen={isOpen} onClose={close} accounts={accounts} type={type} />
+    ));
+  };
+
+  return (
+    <StyledAccountItem>
+      <Column gap={10} width="100%">
+        <Text fontType="H4" color={color.G900}>
+          {type}측 계좌번호
+        </Text>
+        <Line />
+      </Column>
+      <StyledAccountContent>
+        <BlurArea>
+          {accounts.map(({ bank, account, name }, i) => (
+            <Column key={i} gap={8} width="100%">
+              <Text fontType="P2" color={color.G900}>
+                {bank} {account}
+              </Text>
+              <Text fontType="P2" color={color.G900}>
+                {name}
+              </Text>
+            </Column>
+          ))}
+        </BlurArea>
+        <ButtonWrapper>
+          <ActionButton
+            background={color.pointYellow}
+            onClick={handleOverlayAccountModal}
+          >
+            <Text fontType="Button3" color={color.G900}>
+              계좌번호 보기
             </Text>
-            <Text fontType="P2" color={color.G900}>
-              {name}
-            </Text>
-          </Column>
-        ))}
-      </BlurArea>
-      <ButtonWrapper>
-        <ActionButton background={color.pointYellow} onClick={() => {}}>
-          <Text fontType="Button3" color={color.G900}>
-            계좌번호 보기
-          </Text>
-        </ActionButton>
-      </ButtonWrapper>
-    </StyledAccountContent>
-  </StyledAccountItem>
-);
+          </ActionButton>
+        </ButtonWrapper>
+      </StyledAccountContent>
+    </StyledAccountItem>
+  );
+};
 
 export default AccountItem;
 
