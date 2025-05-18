@@ -14,7 +14,7 @@ const GuestBookListItem = ({ name, content }: GuestBookListItemProps) => {
 
   const handleOpenGuestBookModal = () => {
     overlay.open(({ isOpen, close }) => (
-      <GuestBookModal isOpen={isOpen} onClose={close} name={name} content={content} />
+      <GuestBookModal isOpen={isOpen} onClose={close} name={name} content={content} password='1234' />
     ));
   };
 
