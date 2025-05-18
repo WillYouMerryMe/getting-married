@@ -34,7 +34,7 @@ const GuestBookList = () => {
       {listToRender.map((item, idx) => (
         <GuestBookListItem key={idx} name={item.name} content={item.content} />
       ))}
-      {!showAll && (
+      {dummyGuestbooks.length > 3 && !showAll && (
         <div onClick={handleAllGuestBookItem}>
           <Row gap={6} alignItems="center" justifyContent="center" width="100%">
             <CustomText
