@@ -13,3 +13,4 @@ export { default as NoticeOption } from './options/NoticeOption';
 export { default as GuestbookOption } from './options/GuestbookOption';
 export { default as GuestSnapOption } from './options/GuestSnapOption';
 export { default as UrlShareStyleOption } from './options/UrlShareStyleOption';
+export { default as Options } from './options';
