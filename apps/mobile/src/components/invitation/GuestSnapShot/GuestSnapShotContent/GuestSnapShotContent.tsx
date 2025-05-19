@@ -12,7 +12,7 @@ const GuestSnapShotContent = () => {
   return (
     <StyledGuestSnapShotContent>
       <Column gap={14} alignItems="stretch" width="100%">
-        <InsertPhoto size="BIG" value={image} onChange={setImage} />
+        <InsertPhoto size="BIG" value={image} onChange={setImage} maxFiles={20} />
         <Column gap={4}>
           <Text fontType="P3" color={color.G80}>
             · 1장당 100MB까지 업로드 가능합니다.
