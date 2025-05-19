@@ -6,6 +6,7 @@ import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
 import Direction from '@/components/invitation/Direction/Direction';
 import Greeting from '@/components/invitation/Greeting/Greeting';
 import GuestBook from '@/components/invitation/GuestBook/GuestBook';
+import GuestSnapShot from '@/components/invitation/GuestSnapShot/GuestSnapShot';
 import Guide from '@/components/invitation/Guide/Guide';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
@@ -80,6 +81,7 @@ const InvitationDetail = () => {
             content={`저희에게 축하해주신 마음을 더 큰 마음으로\n베풀고자 축의금의 일부는 기부합니다.\n선행에 함께 해주셔서 감사합니다.`}
           />
           <GuestBook />
+          <GuestSnapShot />
           <Column gap={8} alignItems="center">
             <Button
               onClick={() => {}}
