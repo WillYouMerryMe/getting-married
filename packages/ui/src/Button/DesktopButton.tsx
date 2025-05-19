@@ -2,13 +2,14 @@ import { ButtonHTMLAttributes, ReactNode, CSSProperties } from 'react';
 import { ButtonStyleType, DesktopButtonSize } from './button.type';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
-import { getDesktopButtonSize, getButtonStyle } from './button.style';
+import { getDesktopButtonSize, getButtonStyle, getPointColorStyle } from './button.style';
 
 type Props = {
   children: ReactNode;
   styleType?: ButtonStyleType;
   size?: DesktopButtonSize;
   width?: CSSProperties['width'];
+  pointColor?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const DesktopButton = ({
@@ -19,6 +20,7 @@ const DesktopButton = ({
   width,
   style,
   disabled,
+  pointColor,
 }: Props) => {
   return (
     <StyledDesktopButton
@@ -26,6 +28,7 @@ const DesktopButton = ({
       onClick={onClick}
       $styleType={styleType}
       $size={size}
+      pointColor={pointColor}
       disabled={disabled || styleType === 'DISABLED'}
     >
       {children}
@@ -38,6 +41,7 @@ export default DesktopButton;
 const StyledDesktopButton = styled.button<{
   $styleType: ButtonStyleType;
   $size: DesktopButtonSize;
+  pointColor?: string;
 }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   border-radius: 8px;
@@ -45,4 +49,7 @@ const StyledDesktopButton = styled.button<{
 
   ${(props) => props && getButtonStyle[props.$styleType]};
   ${(props) => props && getDesktopButtonSize[props.$size]};
+
+  ${({ $styleType, pointColor }) =>
+    $styleType === 'DEFAULT' && getPointColorStyle(pointColor)}
 `;

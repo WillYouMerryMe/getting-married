@@ -46,6 +46,7 @@ const StyledButton = styled.button<{
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   border-radius: 8px;
   word-break: keep-all;
+  box-sizing: border-box;
 
   ${(props) => props && getButtonStyle[props.styleType]};
   ${(props) => props && getButtonSize[props.size]};

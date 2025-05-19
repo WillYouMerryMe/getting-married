@@ -36,3 +36,5 @@ export const GIFT: Record<Gift, string> = {
   현대백화점상품권: '현대백화점 상품권 1만원권',
   올리브영: '올리브영 모바일 금액권 1만원권',
 };
+
+export const GIFT_KEYS = Object.keys(GIFT) as (keyof typeof GIFT)[];
