@@ -26,6 +26,8 @@ import {
   UrlShareStyleOption,
 } from '@/components/form';
 import { useState } from 'react';
+import { IconDragHandle } from '@merried/icon';
+import { color } from '@merried/design-system';
 
 const OPTION_COMPONENTS = [
   { id: 'InvitationMessageOption', Component: InvitationMessageOption },
@@ -53,9 +55,10 @@ const SortableItem = ({ id, children }: { id: string; children: React.ReactNode 
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <StyledOptionItem ref={setNodeRef} style={style} {...attributes}>
       {children}
-    </div>
+      <IconDragHandle {...listeners} />
+    </StyledOptionItem>
   );
 };
 
@@ -100,4 +103,12 @@ const StyledOptions = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'flex-start' })}
   padding-bottom: 100px;
   gap: 18px;
+`;
+
+const StyledOptionItem = styled.div`
+  ${flex({ justifyContent: 'space-between', alignItems: 'flex-start' })}
+  padding: 28px 20px;
+  width: 548px;
+  border-radius: 8px;
+  background: ${color.G0};
 `;
