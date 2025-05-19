@@ -1,4 +1,5 @@
 import { color } from '@merried/design-system';
+import { IconShortArrow } from '@merried/icon';
 import { Column, Row, Text, ToggleButton } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
@@ -10,7 +11,11 @@ interface Props {
 const Preview = ({ id }: Props) => {
   return (
     <StyledPreview>
-      <ImageLayer />
+      <ImageLayer>
+        <Circle>
+          <IconShortArrow width={16} height={16} />
+        </Circle>
+      </ImageLayer>
       <Row gap={8} alignItems="center">
         <ToggleButton isOpen={true} />
         <Column gap={4}>
@@ -41,4 +46,16 @@ const ImageLayer = styled.div`
   overflow: hidden;
   width: 100%;
   height: 812px;
+`;
+
+const Circle = styled.div`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  width: 44px;
+  height: 44px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.21);
+  backdrop-filter: blur(14.699999809265137px);
+  margin-bottom: 24px;
+  cursor: pointer;
 `;
