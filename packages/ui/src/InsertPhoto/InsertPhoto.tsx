@@ -1,6 +1,6 @@
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
-import { styled } from 'styled-components';
+import { CSSProperties, styled } from 'styled-components';
 import { IconCircleAdd, IconDelete } from '@merried/icon';
 import { useRef } from 'react';
 
@@ -10,6 +10,7 @@ interface Props {
   onChange: (image: string[] | null) => void;
   disabled?: boolean;
   maxFiles?: number;
+  width?: CSSProperties['width'];
 }
 
 const InsertPhoto = ({
@@ -18,6 +19,7 @@ const InsertPhoto = ({
   onChange,
   disabled = false,
   maxFiles = size === 'SMALL' ? 1 : 20,
+  width,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -66,7 +68,11 @@ const InsertPhoto = ({
   const isMaxFilesReached = (value?.length ?? 0) >= maxFiles;
 
   return (
-    <StyledInsertPhoto onClick={() => inputRef.current?.click()} $size={size}>
+    <StyledInsertPhoto
+      onClick={() => inputRef.current?.click()}
+      $size={size}
+      style={{ width }}
+    >
       <input
         ref={inputRef}
         type="file"
@@ -99,17 +105,16 @@ const StyledInsertPhoto = styled.div<{ $size: 'SMALL' | 'BIG' }>`
   border: 1px dashed ${color.G80};
   background: ${color.G0};
   min-height: 140px;
+  width: 100%;
 
   ${({ $size }) =>
     $size === 'SMALL'
       ? `
         ${flex({ justifyContent: 'center', alignItems: 'center' })};
-        width: 140px;
         height: 140px;
       `
       : `
         display: grid;
-        width: 384px;
         grid-template-columns: repeat(3, 100px);
         gap: 16px;
         padding: 20px 26px;
