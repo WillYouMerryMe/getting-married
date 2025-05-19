@@ -52,6 +52,7 @@ export default InvitationSetupOption;
 const StyledInvitationSetupOption = styled.div`
   ${flex({ alignItems: 'flex-start' })}
   padding: 28px 20px;
+  width: 548px;
   border-radius: 8px;
   background: ${color.G0};
 `;

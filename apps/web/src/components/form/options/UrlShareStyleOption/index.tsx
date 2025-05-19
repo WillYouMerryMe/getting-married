@@ -60,6 +60,7 @@ export default UrlShareStyleOption;
 const StyledUrlShareStyleOption = styled.div`
   ${flex({ justifyContent: 'space-between', alignItems: 'flex-start' })}
   padding: 28px 20px;
+  width: 548px;
   border-radius: 8px;
   background: ${color.G0};
 `;
