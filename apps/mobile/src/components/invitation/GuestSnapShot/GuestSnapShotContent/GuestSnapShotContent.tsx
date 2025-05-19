@@ -29,7 +29,7 @@ const GuestSnapShotContent = () => {
         disabled={count === 0}
         pointColor={count ? color.pointYellow : color.G40}
       >
-        <Text fontType="P4" color={count ? color.G900 : color.G100}>
+        <Text fontType="Button3" color={count ? color.G900 : color.G100}>
           스냅 사진 보내기
         </Text>
       </Button>
