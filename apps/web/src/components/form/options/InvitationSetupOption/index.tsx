@@ -1,4 +1,4 @@
-import { LETTERING_COLORS } from '@/constants/form/constants';
+import { POINT_COLOR_OPTIONS } from '@/constants/form/constants';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -7,7 +7,7 @@ import { styled } from 'styled-components';
 
 const InvitationSetupOption = () => {
   const [invitationFont, setInvitationFont] = useState<string>('Ownglyph kundo');
-  const [letteringColor, setLetteringColor] = useState<string>(color.letterYellow);
+  const [pointColor, setPointColor] = useState<string>(color.pointYellow);
 
   return (
     <StyledInvitationSetupOption>
@@ -25,9 +25,9 @@ const InvitationSetupOption = () => {
           <Dropdown
             option="COLOR"
             name="invitation-point-color"
-            value={letteringColor}
-            data={LETTERING_COLORS}
-            onChange={setLetteringColor}
+            value={pointColor}
+            data={POINT_COLOR_OPTIONS}
+            onChange={setPointColor}
           />
         </Column>
         <Column gap={8}>
