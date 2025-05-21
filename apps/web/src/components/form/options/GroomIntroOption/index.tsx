@@ -1,4 +1,4 @@
-import { useWeddingIntroStore } from '@/app/store/form/CoupleIntro';
+import { useWeddingIntroStore } from '@/store/form/CoupleIntro';
 import { color } from '@merried/design-system';
 import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { styled } from 'styled-components';
