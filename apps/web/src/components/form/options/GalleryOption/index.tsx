@@ -1,9 +1,9 @@
 import { color } from '@merried/design-system';
 import { Column, Row, ToggleButton, Text, Input, InsertPhoto } from '@merried/ui';
-import { useState } from 'react';
+import { useGalleryImageStore } from '@/store/form/galleryImage';
 
 const GalleryOption = () => {
-  const [image, setImage] = useState<string[] | null>(null);
+  const [galleryImage, setGalleryImage] = useGalleryImageStore();
 
   return (
     <Column gap={28}>
@@ -17,10 +17,22 @@ const GalleryOption = () => {
         <Text fontType="P3" color={color.G900}>
           제목
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="제목을 입력해주세요" />
+        <Input
+          width={384}
+          platform="DESKTOP"
+          placeholder="제목을 입력해주세요"
+          value={galleryImage.title}
+          onChange={(e) => setGalleryImage({ ...galleryImage, title: e.target.value })}
+        />
       </Column>
       <Column gap={16}>
-        <InsertPhoto size="BIG" value={image} onChange={setImage} />
+        <InsertPhoto
+          size="BIG"
+          value={galleryImage.imageList}
+          onChange={(newImages) =>
+            setGalleryImage({ ...galleryImage, imageList: newImages })
+          }
+        />
         <Column gap={4}>
           <Text fontType="P3" color={color.G80}>
             · 1장당 100MB까지 업로드 가능합니다.
