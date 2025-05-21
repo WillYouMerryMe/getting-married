@@ -10,6 +10,6 @@ export const LETTERING_COLORS = [
 ];
 
 export const GENDER_MAP = {
-  SON: '아들',
-  DAUGHTER: '딸',
+  GROOM: '아들',
+  BRIDE: '딸',
 } as const;

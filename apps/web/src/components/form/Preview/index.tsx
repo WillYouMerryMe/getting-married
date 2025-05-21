@@ -1,10 +1,11 @@
 import { color } from '@merried/design-system';
 import { IconShortArrow } from '@merried/icon';
-import { Button, Column, Row, Text, ToggleButton } from '@merried/ui';
+import { Column, Row, Text, ToggleButton } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import Greeting from './Greeting';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import CoupleInfo from './CoupleInfo';
 
 interface Props {
   id?: string;
@@ -34,6 +35,7 @@ const Preview = ({ id }: Props) => {
 
         <ContentSection ref={contentRef}>
           <Greeting />
+          <CoupleInfo />
         </ContentSection>
       </ScrollableArea>
 
