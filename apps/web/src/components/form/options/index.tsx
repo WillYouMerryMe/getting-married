@@ -101,6 +101,15 @@ const StyledOptions = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'flex-start' })}
   padding-bottom: 100px;
   gap: 18px;
+
+  height: 874px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
 `;
 
 const StyledOptionItem = styled.div`
