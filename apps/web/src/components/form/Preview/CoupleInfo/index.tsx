@@ -1,10 +1,10 @@
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import CoupleInfoItem from './CoupleInfoItem';
-import { useWeddingIntroValueStore } from '@/store/form/CoupleIntro';
+import { useCoupleIntroValueStore } from '@/store/form/CoupleIntro';
 
 const CoupleInfo = () => {
-  const coupleIntro = useWeddingIntroValueStore();
+  const coupleIntro = useCoupleIntroValueStore();
 
   const coupleList = [
     {

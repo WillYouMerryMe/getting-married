@@ -13,8 +13,7 @@ import {
   InvitationSetupOption,
   MainScreenOption,
   InvitationMessageOption,
-  GroomIntroOption,
-  BrideIntroOption,
+  CoupleIntroOption,
   CeremonyInfoOption,
   GalleryOption,
   VideoOption,
@@ -31,8 +30,7 @@ import { color } from '@merried/design-system';
 
 const OPTION_COMPONENTS = [
   { id: 'InvitationMessageOption', Component: InvitationMessageOption },
-  { id: 'GroomIntroOption', Component: GroomIntroOption },
-  { id: 'BrideIntroOption', Component: BrideIntroOption },
+  { id: 'CoupleIntroOption', Component: CoupleIntroOption },
   { id: 'CeremonyInfoOption', Component: CeremonyInfoOption },
   { id: 'GalleryOption', Component: GalleryOption },
   { id: 'VideoOption', Component: VideoOption },
