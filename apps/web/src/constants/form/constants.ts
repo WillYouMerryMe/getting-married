@@ -8,3 +8,8 @@ export const LETTERING_COLORS = [
   color.letterRed,
   color.letterYellow,
 ];
+
+export const GENDER_MAP = {
+  SON: '아들',
+  DAUGHTER: '딸',
+} as const;
