@@ -49,7 +49,7 @@ const PasswordModal = ({ isOpen, onClose, password, id }: PasswordModalProps) =>
           <Button
             width="100%"
             onClick={handlePasswordSubmit}
-            pointColor={color.pointYellow}
+            pointColor={color.primary}
           >
             <Text fontType="Button3" color={color.G0}>
               방명록 보기
