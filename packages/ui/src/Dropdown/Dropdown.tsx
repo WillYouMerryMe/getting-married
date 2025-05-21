@@ -8,11 +8,16 @@ import ColorBoxButton from './Color';
 
 type DropdownOption = 'DEFAULT' | 'COLOR';
 
+interface Data {
+  label: string;
+  value: string;
+}
+
 interface Props {
   onChange: (value: string, name: string) => void;
   name: string;
   value?: string;
-  data?: string[];
+  data?: Data[] | string[];
   option?: DropdownOption;
   placeholder?: string;
 }
@@ -58,14 +63,19 @@ const Dropdown = ({
       </Row>
       <DropdownMenuBox $isOpen={isOpen}>
         <DropdownMenu $option={option}>
-          {data?.map((item, index) => (
-            <DropdownItem
-              key={`dropdown ${index}`}
-              onClick={() => handleDropdownItemButtonClick(item)}
-            >
-              {item}
-            </DropdownItem>
-          ))}
+          {data?.map((item, index) => {
+            const isString = typeof item === 'string';
+            const dropdownLabel = isString ? item : item.label;
+            const dropdownValue = isString ? item : item.value;
+            return (
+              <DropdownItem
+                key={`dropdown ${index}`}
+                onClick={() => handleDropdownItemButtonClick(dropdownValue)}
+              >
+                {dropdownLabel}
+              </DropdownItem>
+            );
+          })}
         </DropdownMenu>
       </DropdownMenuBox>
     </div>
