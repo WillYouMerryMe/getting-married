@@ -8,12 +8,11 @@ import {
   Text,
   ToggleButton,
 } from '@merried/ui';
-import { useState } from 'react';
 import { styled } from 'styled-components';
+import { useCeremonyInfoStore } from '@/store/form/ceremonyInfo';
 
 const CeremonyInfoOption = () => {
-  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [calenderDate, setCalenderDate] = useState<Date>(new Date());
+  const [ceremonyInfo, setCeremonyInfo] = useCeremonyInfoStore();
 
   return (
     <Column gap={28}>
@@ -23,20 +22,35 @@ const CeremonyInfoOption = () => {
           예식 정보
         </Text>
       </Row>
+
       <Column gap={8}>
         <Text fontType="P3" color={color.G900}>
           예식 날짜<RequiredMark>*</RequiredMark>
         </Text>
-        <CalenderInput value={calenderDate} onChange={setCalenderDate} />
+        <CalenderInput
+          value={ceremonyInfo.calenderDate}
+          onChange={(newDate) =>
+            setCeremonyInfo((prev) => ({ ...prev, calenderDate: newDate }))
+          }
+        />
       </Column>
+
       <Column gap={8}>
         <Text fontType="P3" color={color.G900}>
           예식장 이름<RequiredMark>*</RequiredMark>
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="예식장 이름을 입력해주세요" />
+        <Input
+          width={384}
+          platform="DESKTOP"
+          placeholder="예식장 이름을 입력해주세요"
+          value={ceremonyInfo.name}
+          onChange={(e) => setCeremonyInfo((prev) => ({ ...prev, name: e.target.value }))}
+        />
         <CheckBox
-          checked={isCalendarVisible}
-          onChange={setIsCalendarVisible}
+          checked={ceremonyInfo.isCalendarVisible}
+          onChange={(checked) =>
+            setCeremonyInfo((prev) => ({ ...prev, isCalendarVisible: checked }))
+          }
           label="캘린더 보임"
         />
       </Column>
