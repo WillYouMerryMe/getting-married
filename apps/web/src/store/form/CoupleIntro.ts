@@ -31,6 +31,6 @@ const coupleIntroAtomState = atom<CoupleIntroState>({
   default: defaultCoupleIntro,
 });
 
-export const useWeddingIntroStore = () => useRecoilState(coupleIntroAtomState);
-export const useSetWeddingIntroStore = () => useSetRecoilState(coupleIntroAtomState);
-export const useWeddingIntroValueStore = () => useRecoilValue(coupleIntroAtomState);
+export const useCoupleIntroStore = () => useRecoilState(coupleIntroAtomState);
+export const useSetCoupleIntroStore = () => useSetRecoilState(coupleIntroAtomState);
+export const useCoupleIntroValueStore = () => useRecoilValue(coupleIntroAtomState);
