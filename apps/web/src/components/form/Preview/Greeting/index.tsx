@@ -1,5 +1,5 @@
 import { CustomText } from '@/components/common';
-import { useInvitationMessageValueStore } from '@/store/form/InvitationMessage';
+import { useInvitationMessageValueStore } from '@/store/form/invitationMessage';
 import { color } from '@merried/design-system';
 import { Column } from '@merried/ui';
 

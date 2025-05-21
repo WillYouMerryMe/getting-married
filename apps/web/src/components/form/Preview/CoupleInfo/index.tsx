@@ -1,7 +1,7 @@
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import CoupleInfoItem from './CoupleInfoItem';
-import { useCoupleIntroValueStore } from '@/store/form/CoupleIntro';
+import { useCoupleIntroValueStore } from '@/store/form/coupleIntro';
 
 const CoupleInfo = () => {
   const coupleIntro = useCoupleIntroValueStore();

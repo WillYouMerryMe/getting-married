@@ -1,7 +1,7 @@
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { styled } from 'styled-components';
-import { useInvitationMessageStore } from '@/store/form/InvitationMessage';
+import { useInvitationMessageStore } from '@/store/form/invitationMessage';
 
 const InvitationMessageOption = () => {
   const [invitationMessage, setInvitationMessage] = useInvitationMessageStore();
