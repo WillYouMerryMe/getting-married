@@ -4,9 +4,11 @@ import { color } from '@merried/design-system';
 import { IconBoldLetter, IconBoldList, IconBoldShare, IconFolder } from '@merried/icon';
 import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useOverlay } from '@toss/use-overlay';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
+import PasswordModal from '../PasswordModal/PasswordModal';
 
 interface InvitationItemProps {
   id: number;
@@ -17,11 +19,14 @@ interface InvitationItemProps {
 
 const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
   const router = useRouter();
+  const overlay = useOverlay();
 
   const weddingDate = dayjs().isSame(dayjs(date), 'day');
 
   const handleMoveGuestBook = () => {
-    router.push(`${ROUTES.GUESTBOOK}/${id}`);
+    overlay.open(({ isOpen, close }) => (
+      <PasswordModal isOpen={isOpen} onClose={close} password="1234" id={id}/>
+    ));
   };
 
   const handleMoveInvitation = () => {
