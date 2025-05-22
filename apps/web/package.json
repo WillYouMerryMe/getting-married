@@ -30,6 +30,7 @@
     "@merried/icon": "workspace:*",
     "@merried/ui": "workspace:*",
     "@merried/utils": "workspace:*",
+    "@merried/hooks": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tanstack/react-query-devtools": "^5.74.7",
