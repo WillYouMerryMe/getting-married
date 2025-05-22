@@ -11,6 +11,7 @@ import WeddingAlbum from './WeddingAlbum';
 import WeddingIntro from './WeddingIntro';
 import Direction from './Direction';
 import Account from './Account';
+import Guide from './Guide';
 
 interface Props {
   id?: string;
@@ -46,6 +47,7 @@ const Preview = ({ id }: Props) => {
           <WeddingIntro />
           <Direction />
           <Account />
+          <Guide />
         </ContentSection>
       </ScrollableArea>
 
