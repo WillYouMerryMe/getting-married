@@ -1,8 +1,16 @@
+import { useWeddingIntroStore } from '@/store/form/weddingIntro';
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { styled } from 'styled-components';
 
 const VideoOption = () => {
+  const [weddingIntro, setWeddingIntro] = useWeddingIntroStore();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setWeddingIntro((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <Column gap={28}>
       <Row gap={8}>
@@ -15,13 +23,27 @@ const VideoOption = () => {
         <Text fontType="P3" color={color.G900}>
           영상 제목
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="제목을 입력해주세요" />
+        <Input
+          name="title"
+          width={384}
+          platform="DESKTOP"
+          placeholder="제목을 입력해주세요"
+          value={weddingIntro.title}
+          onChange={handleChange}
+        />
       </Column>
       <Column gap={8}>
         <Text fontType="P3" color={color.G900}>
           유튜브 URL<RequiredMark>*</RequiredMark>
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="URL을 입력해주세요" />
+        <Input
+          name="vedioURL"
+          width={384}
+          platform="DESKTOP"
+          placeholder="URL을 입력해주세요"
+          value={weddingIntro.vedioURL}
+          onChange={handleChange}
+        />
       </Column>
     </Column>
   );
