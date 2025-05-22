@@ -9,6 +9,7 @@ import CoupleInfo from './CoupleInfo';
 import WeddingCalender from './WeddingCalender';
 import WeddingAlbum from './WeddingAlbum';
 import WeddingIntro from './WeddingIntro';
+import Direction from './Direction';
 
 interface Props {
   id?: string;
@@ -42,6 +43,7 @@ const Preview = ({ id }: Props) => {
           <WeddingCalender />
           <WeddingAlbum />
           <WeddingIntro />
+          <Direction />
         </ContentSection>
       </ScrollableArea>
 

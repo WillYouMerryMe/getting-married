@@ -28,6 +28,12 @@ export const BRAND = [
   { src: '/IconKakaoMap.svg', name: '카카오맵' },
 ];
 
-export const TRANSPORT_TYPES = ['버스', '지하철', '자가용'] as const;
+export const TRANSPORT_TYPES = ['bus', 'subway', 'car'] as const;
+
+export const TRANSPORT_MAP: Record<string, string> = {
+  bus: '버스',
+  subway: '지하철',
+  car: '자가용',
+};
 
 export type TransportType = (typeof TRANSPORT_TYPES)[number];

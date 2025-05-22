@@ -6,16 +6,17 @@ import KakaoMap from './KakaoMap';
 import { ActionButton, Column, Row, Text } from '@merried/ui';
 import BrandButton from './BrandButton';
 import Transportation from './Transportation';
-import { TRANSPORT_TYPES, TransportType, BRAND } from '@/constants/form/constants';
+import { TRANSPORT_TYPES, BRAND } from '@/constants/form/constants';
+import { useDirectionsValueStore } from '@/store/form/directions';
 
-interface DirectionProps {
-  address: string;
-  detailAddress: string;
-  methods?: Partial<Record<TransportType, string>>;
-}
+const Direction = () => {
+  const { address, show, methods } = useDirectionsValueStore();
 
-const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => {
-  const entries = TRANSPORT_TYPES.filter((type) => !!methods[type]).map((type) => ({
+  const entries = TRANSPORT_TYPES.filter((type) => {
+    const hasMethod = !!methods?.[type];
+    const shouldShow = show?.[type] !== false;
+    return hasMethod && shouldShow;
+  }).map((type) => ({
     type,
     method: methods[type]!,
   }));
@@ -23,6 +24,8 @@ const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(address);
   };
+
+  if (!address) return null;
 
   return (
     <StyledDirection>
@@ -44,7 +47,7 @@ const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => 
             {address}
           </Text>
           <Text fontType="H4" color={color.G900}>
-            {detailAddress}
+            지금은 없어용...
           </Text>
         </Column>
         <ActionButton onClick={handleCopyAddress} background={color.pointYellow}>
