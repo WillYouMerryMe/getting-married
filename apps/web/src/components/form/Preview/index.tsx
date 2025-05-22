@@ -111,4 +111,5 @@ const ContentSection = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   gap: 100px;
   flex-shrink: 0;
+  background: ${color.G0};
 `;
