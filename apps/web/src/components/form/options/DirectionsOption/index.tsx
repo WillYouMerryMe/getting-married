@@ -1,12 +1,28 @@
+import { FindAddressModal } from '@/components/common';
 import { color } from '@merried/design-system';
 import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { useState } from 'react';
 import { styled } from 'styled-components';
+import { useOverlay } from '@toss/use-overlay';
 
 const DirectionsOption = () => {
+  const overlay = useOverlay();
+
   const [showSubway, setShowSubway] = useState(false);
   const [showBus, setShowBus] = useState(false);
   const [showParkingLot, setShowParkingLot] = useState(false);
+  const [address, setAddress] = useState('');
+
+  const openFindAddressModal = () => {
+    overlay.open(({ isOpen, close }) => (
+      <FindAddressModal
+        isOpen={isOpen}
+        onClose={close}
+        value={address}
+        setValue={setAddress}
+      />
+    ));
+  };
 
   return (
     <Column gap={28}>
@@ -21,7 +37,14 @@ const DirectionsOption = () => {
         <Text fontType="P3" color={color.G900}>
           예식장 주소<RequiredMark>*</RequiredMark>
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="예식장 주소를 입력해주세요" />
+        <Input
+          width={384}
+          platform="DESKTOP"
+          placeholder="예식장 주소를 입력해주세요"
+          value={address}
+          onClick={openFindAddressModal}
+          readOnly
+        />
       </Column>
       <Column gap={8}>
         <CheckBox label="지하철" checked={showSubway} onChange={setShowSubway} />
