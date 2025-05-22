@@ -11,7 +11,7 @@ const defaultNotice: NoticeState = {
 };
 
 const noticeAtomState = atom<NoticeState>({
-  key: 'wedding-intro-state',
+  key: 'notice-state',
   default: defaultNotice,
 });
 

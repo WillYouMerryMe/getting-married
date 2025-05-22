@@ -1,8 +1,16 @@
+import { useNoticeStore } from '@/store/form/notice';
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { styled } from 'styled-components';
 
 const NoticeOption = () => {
+  const [notice, setNotice] = useNoticeStore();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setNotice((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <Column gap={28}>
       <Column gap={8}>
@@ -20,13 +28,27 @@ const NoticeOption = () => {
         <Text fontType="P3" color={color.G900}>
           제목
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="제목을 입력해주세요" />
+        <Input
+          name="title"
+          width={384}
+          platform="DESKTOP"
+          placeholder="제목을 입력해주세요"
+          value={notice.title}
+          onChange={handleChange}
+        />
       </Column>
       <Column gap={8}>
         <Text fontType="P3" color={color.G900}>
           안내 문구<RequiredMark>*</RequiredMark>
         </Text>
-        <Input width={384} platform="DESKTOP" placeholder="안내 문구를 입력해주세요" />
+        <Input
+          name="message"
+          width={384}
+          platform="DESKTOP"
+          placeholder="안내 문구를 입력해주세요"
+          value={notice.message}
+          onChange={handleChange}
+        />
       </Column>
     </Column>
   );
