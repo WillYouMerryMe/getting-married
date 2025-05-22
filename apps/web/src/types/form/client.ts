@@ -26,3 +26,5 @@ export interface AccountInfoState {
   brideFather: AccountDetail;
   brideMother: AccountDetail;
 }
+
+export type GuestBook = '비밀번호 입력' | '방명록 확인';
