@@ -6,6 +6,23 @@ export type AccountField =
   | 'brideFather'
   | 'brideMother';
 
-export type AccountState = Record<AccountField, boolean>;
+export interface Account {
+  bank: string;
+  accountNumber: string;
+  accountHolder: string;
+}
 
-export type AccountAction = { type: 'TOGGLE'; payload: AccountField };
+export type AccountDetail = Account & {
+  isVisible: boolean;
+};
+
+export interface AccountInfoState {
+  title: string;
+  message: string;
+  groom: AccountDetail;
+  groomFather: AccountDetail;
+  groomMother: AccountDetail;
+  bride: AccountDetail;
+  brideFather: AccountDetail;
+  brideMother: AccountDetail;
+}

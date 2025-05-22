@@ -1,14 +1,7 @@
 import { useAccountInfoStore } from '@/store/form/account';
+import { AccountField } from '@/types/form/client';
 import { color } from '@merried/design-system';
 import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
-
-type AccountField =
-  | 'groom'
-  | 'groomFather'
-  | 'groomMother'
-  | 'bride'
-  | 'brideFather'
-  | 'brideMother';
 
 const accountOptions: {
   label: string;
@@ -91,7 +84,6 @@ const AccountInfoOption = () => {
       </Column>
       {accountOptions.map(({ label, key }) => {
         const person = accountInfo[key];
-        console.log(accountInfo);
         return (
           <Column key={key} gap={8}>
             <CheckBox
