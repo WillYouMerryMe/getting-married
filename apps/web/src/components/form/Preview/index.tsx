@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import CoupleInfo from './CoupleInfo';
 import WeddingCalender from './WeddingCalender';
 import WeddingAlbum from './WeddingAlbum';
+import WeddingIntro from './WeddingIntro';
 
 interface Props {
   id?: string;
@@ -40,6 +41,7 @@ const Preview = ({ id }: Props) => {
           <CoupleInfo />
           <WeddingCalender />
           <WeddingAlbum />
+          <WeddingIntro />
         </ContentSection>
       </ScrollableArea>
 
