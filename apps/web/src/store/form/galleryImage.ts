@@ -7,7 +7,7 @@ interface GalleryImageState {
 
 const defaultCeremonyInfo: GalleryImageState = {
   title: '',
-  imageList: [],
+  imageList: null,
 };
 
 const galleryImageAtomState = atom<GalleryImageState>({
