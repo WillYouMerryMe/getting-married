@@ -1,27 +1,44 @@
 import { FindAddressModal } from '@/components/common';
 import { color } from '@merried/design-system';
 import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
-import { useState } from 'react';
-import { styled } from 'styled-components';
 import { useOverlay } from '@toss/use-overlay';
+import { styled } from 'styled-components';
+import { useDirectionsStore } from '@/store/form/directions';
 
 const DirectionsOption = () => {
   const overlay = useOverlay();
-
-  const [showSubway, setShowSubway] = useState(false);
-  const [showBus, setShowBus] = useState(false);
-  const [showParkingLot, setShowParkingLot] = useState(false);
-  const [address, setAddress] = useState('');
+  const [directions, setDirections] = useDirectionsStore();
 
   const openFindAddressModal = () => {
     overlay.open(({ isOpen, close }) => (
       <FindAddressModal
         isOpen={isOpen}
         onClose={close}
-        value={address}
-        setValue={setAddress}
+        value={directions.address}
+        setValue={(value) => setDirections((prev) => ({ ...prev, address: value }))}
       />
     ));
+  };
+
+  const handleShowChange = (type: keyof typeof directions.show) => (value: boolean) => {
+    setDirections((prev) => ({
+      ...prev,
+      show: {
+        ...prev.show,
+        [type]: value,
+      },
+    }));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setDirections((prev) => ({
+      ...prev,
+      methods: {
+        ...prev.methods,
+        [name]: value,
+      },
+    }));
   };
 
   return (
@@ -41,42 +58,62 @@ const DirectionsOption = () => {
           width={384}
           platform="DESKTOP"
           placeholder="예식장 주소를 입력해주세요"
-          value={address}
+          value={directions.address}
           onClick={openFindAddressModal}
           readOnly
         />
       </Column>
+
       <Column gap={8}>
-        <CheckBox label="지하철" checked={showSubway} onChange={setShowSubway} />
-        {showSubway && (
+        <CheckBox
+          label="지하철"
+          checked={directions.show.subway}
+          onChange={handleShowChange('subway')}
+        />
+        {directions.show.subway && (
           <Input
+            name="subway"
             width={384}
             platform="DESKTOP"
             placeholder="식장과 가까운 지하철 역에서 오는 법을 설명해주세요"
+            value={directions.methods.subway}
+            onChange={handleInputChange}
           />
         )}
       </Column>
+
       <Column gap={8}>
-        <CheckBox label="버스" checked={showBus} onChange={setShowBus} />
-        {showBus && (
+        <CheckBox
+          label="버스"
+          checked={directions.show.bus}
+          onChange={handleShowChange('bus')}
+        />
+        {directions.show.bus && (
           <Input
+            name="bus"
             width={384}
             platform="DESKTOP"
             placeholder="식장과 가까운 정류장에서 오는 법을 설명해주세요"
+            value={directions.methods.bus}
+            onChange={handleInputChange}
           />
         )}
       </Column>
+
       <Column gap={8}>
         <CheckBox
           label="주차 공간"
-          checked={showParkingLot}
-          onChange={setShowParkingLot}
+          checked={directions.show.car}
+          onChange={handleShowChange('car')}
         />
-        {showParkingLot && (
+        {directions.show.car && (
           <Input
+            name="car"
             width={384}
             platform="DESKTOP"
             placeholder="주차 공간에 대해 설명해주세요"
+            value={directions.methods.car}
+            onChange={handleInputChange}
           />
         )}
       </Column>
