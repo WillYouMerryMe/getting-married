@@ -11,7 +11,7 @@ const defaultGuestbook: GuestbookState = {
 };
 
 const guestbookAtomState = atom<GuestbookState>({
-  key: 'notice-state',
+  key: 'guestbook-state',
   default: defaultGuestbook,
 });
 
