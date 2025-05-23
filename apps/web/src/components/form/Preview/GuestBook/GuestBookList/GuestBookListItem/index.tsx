@@ -3,6 +3,7 @@ import { Text } from '@merried/ui';
 import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
 import GuestBookModal from '../../GuestBookModal';
+import { useGuestbookValueStore } from '@/store/form/guestbook';
 
 interface GuestBookListItemProps {
   name: string;
@@ -11,10 +12,17 @@ interface GuestBookListItemProps {
 
 const GuestBookListItem = ({ name, content }: GuestBookListItemProps) => {
   const overlay = useOverlay();
+  const { password } = useGuestbookValueStore();
 
   const handleOpenGuestBookModal = () => {
     overlay.open(({ isOpen, close }) => (
-      <GuestBookModal isOpen={isOpen} onClose={close} name={name} content={content} password='1234' />
+      <GuestBookModal
+        isOpen={isOpen}
+        onClose={close}
+        name={name}
+        content={content}
+        password={password}
+      />
     ));
   };
 
