@@ -13,6 +13,7 @@ import Direction from './Direction';
 import Account from './Account';
 import Guide from './Guide';
 import GuestBook from './GuestBook';
+import GuestSnapShot from './GuestSnapShot';
 
 interface Props {
   id?: string;
@@ -50,6 +51,7 @@ const Preview = ({ id }: Props) => {
           <Account />
           <Guide />
           <GuestBook />
+          <GuestSnapShot />
         </ContentSection>
       </ScrollableArea>
 
