@@ -4,25 +4,71 @@ import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
-interface CoupleInfoItme {
-  mother: string;
-  father: string;
+interface Parent {
+  name: string;
+  isDeceased: boolean;
+}
+
+interface CoupleInfoItemProps {
+  mother: Parent;
+  father: Parent;
   gender: 'BRIDE' | 'GROOM';
   name: string;
 }
 
-const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItme) => {
+const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) => {
+  const renderParentName = (parent: Parent) => {
+    return (
+      <>
+        {parent.isDeceased && (
+          <CustomText
+            fontType="Ownglyph Kundo"
+            color={color.G100}
+            size={20}
+            weight={400}
+            line={100}
+          >
+            고
+          </CustomText>
+        )}
+        <CustomText
+          fontType="Ownglyph Kundo"
+          color={color.G900}
+          size={20}
+          weight={400}
+          line={100}
+        >
+          {parent.name}
+        </CustomText>
+      </>
+    );
+  };
+
   return (
     <StyledCoupleInfoItem>
-      <CustomText
-        fontType="Ownglyph Kundo"
-        color={color.G900}
-        size={20}
-        weight={400}
-        line={100}
-      >
-        {father} • {mother}의 {GENDER_MAP[gender]}
-      </CustomText>
+      <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+        {renderParentName(father)}
+        <CustomText
+          fontType="Ownglyph Kundo"
+          color={color.G900}
+          size={20}
+          weight={400}
+          line={100}
+        >
+          •
+        </CustomText>
+        {renderParentName(mother)}
+        <CustomText
+          fontType="Ownglyph Kundo"
+          color={color.G900}
+          size={20}
+          weight={400}
+          line={100}
+        >
+          의 {GENDER_MAP[gender]}
+        </CustomText>
+      </div>
+
       <CustomText
         fontType="Ownglyph Kundo"
         color={color.pointYellow}
