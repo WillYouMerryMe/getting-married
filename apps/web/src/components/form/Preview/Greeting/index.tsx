@@ -6,6 +6,8 @@ import { Column } from '@merried/ui';
 const Greeting = () => {
   const invitationMessage = useInvitationMessageValueStore();
 
+  if (!invitationMessage.isToggle) return null;
+
   return (
     <Column gap={32} alignItems="center">
       <CustomText

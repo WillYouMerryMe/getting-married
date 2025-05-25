@@ -2,20 +2,26 @@ import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { styled } from 'styled-components';
 import { useInvitationMessageStore } from '@/store/form/invitationMessage';
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 
 const InvitationMessageOption = () => {
   const [invitationMessage, setInvitationMessage] = useInvitationMessageStore();
 
-  const handleChange =
-    (field: 'title' | 'message') => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInvitationMessage((prev) => ({ ...prev, [field]: e.target.value }));
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInvitationMessage((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleToggleChange = useIsToggleHandler(setInvitationMessage);
 
   return (
     <Column gap={28}>
       <Column gap={8}>
         <Row gap={8}>
-          <ToggleButton isOpen={false} />
+          <ToggleButton
+            isOpen={invitationMessage.isToggle}
+            onToggle={handleToggleChange}
+          />
           <Text fontType="H3" color={color.G900}>
             초대 글귀
           </Text>
@@ -30,11 +36,12 @@ const InvitationMessageOption = () => {
           제목<RequiredMark>*</RequiredMark>
         </Text>
         <Input
+          name="title"
           width={384}
           platform="DESKTOP"
           placeholder="제목을 입력해주세요"
           value={invitationMessage.title}
-          onChange={handleChange('title')}
+          onChange={handleChange}
         />
       </Column>
 
@@ -43,11 +50,12 @@ const InvitationMessageOption = () => {
           내용<RequiredMark>*</RequiredMark>
         </Text>
         <Input
+          name="message"
           width={384}
           platform="DESKTOP"
           placeholder="내용을 입력해주세요"
           value={invitationMessage.message}
-          onChange={handleChange('message')}
+          onChange={handleChange}
         />
       </Column>
     </Column>
