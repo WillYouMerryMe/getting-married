@@ -17,6 +17,7 @@ export type AccountDetail = Account & {
 };
 
 export interface AccountInfoState {
+  isToggle: boolean;
   title: string;
   message: string;
   groom: AccountDetail;

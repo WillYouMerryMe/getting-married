@@ -9,6 +9,7 @@ const defaultAccountDetail: AccountDetail = {
 };
 
 const defaultAccountInfoState: AccountInfoState = {
+  isToggle: false,
   title: '',
   message: '',
   groom: { ...defaultAccountDetail },

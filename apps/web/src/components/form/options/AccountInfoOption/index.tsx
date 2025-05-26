@@ -1,3 +1,4 @@
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 import { useAccountInfoStore } from '@/store/form/account';
 import { AccountField } from '@/types/form/client';
 import { color } from '@merried/design-system';
@@ -48,10 +49,12 @@ const AccountInfoOption = () => {
     }));
   };
 
+  const handleToggleChange = useIsToggleHandler(setAccountInfo);
+
   return (
     <Column gap={28}>
       <Row gap={8}>
-        <ToggleButton isOpen={false} />
+        <ToggleButton isOpen={accountInfo.isToggle} onToggle={handleToggleChange} />
         <Text fontType="H3" color={color.G900}>
           계좌 번호
         </Text>

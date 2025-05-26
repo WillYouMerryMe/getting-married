@@ -8,6 +8,7 @@ import { useAccountInfoValueStore } from '@/store/form/account';
 
 const Account = () => {
   const {
+    isToggle,
     title,
     message,
     groom,
@@ -20,6 +21,8 @@ const Account = () => {
 
   const groomAccounts = [groom, groomFather, groomMother];
   const brideAccounts = [bride, brideFather, brideMother];
+
+  if (!isToggle) return null;
 
   return (
     <StyledAccount>
