@@ -1,11 +1,13 @@
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 interface WeddingIntroState {
+  isToggle: boolean;
   title: string;
   vedioURL: string;
 }
 
 const defaultWeddingIntro: WeddingIntroState = {
+  isToggle: false,
   title: '',
   vedioURL: '',
 };

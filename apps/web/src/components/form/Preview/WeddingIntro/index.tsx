@@ -5,8 +5,8 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 const WeddingIntro = () => {
-  const { vedioURL } = useWeddingIntroValueStore();
-  if (!vedioURL) return null;
+  const { vedioURL, title, isToggle } = useWeddingIntroValueStore();
+  if (!vedioURL || !isToggle) return null;
   return (
     <StyledWeddingIntro>
       <CustomText
@@ -16,7 +16,7 @@ const WeddingIntro = () => {
         line={100}
         weight={400}
       >
-        식전 영상
+        {title || '식전 영상'}
       </CustomText>
       <WeddingVideo src={vedioURL} />
     </StyledWeddingIntro>
