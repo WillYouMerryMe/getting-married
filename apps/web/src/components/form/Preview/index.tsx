@@ -14,6 +14,7 @@ import Account from './Account';
 import Guide from './Guide';
 import GuestBook from './GuestBook';
 import GuestSnapShot from './GuestSnapShot';
+import UrlShareStyle from './UrlShareStyle';
 
 interface Props {
   id?: string;
@@ -52,6 +53,10 @@ const Preview = ({ id }: Props) => {
           <Guide />
           <GuestBook />
           <GuestSnapShot />
+          <UrlShareStyle />
+          <Text fontType="P4" color={color.G80}>
+            COPYRIGHT Kangwon Park. All rights reserved.
+          </Text>
         </ContentSection>
       </ScrollableArea>
 
