@@ -1,11 +1,13 @@
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 interface NoticeState {
+  isToggle: boolean;
   title: string;
   message: string;
 }
 
 const defaultNotice: NoticeState = {
+  isToggle: false,
   title: '',
   message: '',
 };

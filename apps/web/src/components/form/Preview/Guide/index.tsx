@@ -5,7 +5,9 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 const Guide = () => {
-  const { title, message } = useNoticeValueStore();
+  const { isToggle, title, message } = useNoticeValueStore();
+
+  if (!isToggle) return null;
 
   return (
     <StyledGuide>

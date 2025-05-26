@@ -1,3 +1,4 @@
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 import { useNoticeStore } from '@/store/form/notice';
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
@@ -11,11 +12,13 @@ const NoticeOption = () => {
     setNotice((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleToggleChange = useIsToggleHandler(setNotice);
+
   return (
     <Column gap={28}>
       <Column gap={8}>
         <Row gap={8}>
-          <ToggleButton isOpen={false} />
+          <ToggleButton isOpen={notice.isToggle} onToggle={handleToggleChange} />
           <Text fontType="H3" color={color.G900}>
             안내사항
           </Text>
