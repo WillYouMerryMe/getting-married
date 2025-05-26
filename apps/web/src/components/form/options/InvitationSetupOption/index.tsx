@@ -1,5 +1,6 @@
 import { POINT_COLOR_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
 import { useInvitationSetupStore } from '@/store/form/invitationSetup';
+import { CustomFontType } from '@/types/form/client';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -41,7 +42,10 @@ const InvitationSetupOption = () => {
             value={invitationSetup.invitationFont}
             data={SETUP_FONT_OPTIONS}
             onChange={(value) =>
-              setInvitationSetup((prev) => ({ ...prev, invitationFont: value }))
+              setInvitationSetup((prev) => ({
+                ...prev,
+                invitationFont: value as CustomFontType,
+              }))
             }
           />
         </Column>

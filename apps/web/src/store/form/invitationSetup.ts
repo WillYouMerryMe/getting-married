@@ -1,9 +1,10 @@
 import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { color } from '@merried/design-system';
+import { CustomFontType } from '@/types/form/client';
 
 interface InvitationSetupState {
   pointColor: string;
-  invitationFont: string;
+  invitationFont: CustomFontType;
 }
 
 const defaultInvitationSetup: InvitationSetupState = {

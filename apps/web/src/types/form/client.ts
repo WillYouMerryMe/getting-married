@@ -29,3 +29,19 @@ export interface AccountInfoState {
 }
 
 export type GuestBook = '비밀번호 입력' | '방명록 확인';
+
+export type CustomFontType =
+  | 'Ownglyph Kundo'
+  | 'Pretendard'
+  | 'YUniverse-B'
+  | 'BBB0003'
+  | 'Paperlogy'
+  | 'Diphylleia'
+  | 'DOSGothic'
+  | 'KoreanCNMM'
+  | 'LeeSeoyun'
+  | 'MapoDacapo'
+  | 'Ownglyph Baek Subin'
+  | 'Nelna Yesam'
+  | 'White Angelica'
+  | 'Heir of Light OTF';
