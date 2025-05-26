@@ -4,8 +4,13 @@ import { Column } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import GuestSnapShotContent from './GuestSnapShotContent';
+import { useGuestSnapValueStore } from '@/store/form/guestSnap';
 
 const GuestSnapShot = () => {
+  const { isToggle, title } = useGuestSnapValueStore();
+
+  if (!isToggle) return null;
+
   return (
     <StyledGuestSnapShot>
       <Column gap={12} alignItems="center">
@@ -16,7 +21,7 @@ const GuestSnapShot = () => {
           line={100}
           color={color.G900}
         >
-          게스트 스냅
+          {title || '게스트 스냅'}
         </CustomText>
         <CustomText
           fontType="Ownglyph Kundo"

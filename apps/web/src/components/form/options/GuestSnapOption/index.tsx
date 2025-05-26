@@ -1,3 +1,4 @@
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 import { useGuestSnapStore } from '@/store/form/guestSnap';
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
@@ -11,11 +12,13 @@ const GuestSnapOption = () => {
     setGuestSnap((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleToggleChange = useIsToggleHandler(setGuestSnap);
+
   return (
     <Column gap={28}>
       <Column gap={8}>
         <Row gap={8}>
-          <ToggleButton isOpen={false} />
+          <ToggleButton isOpen={guestSnap.isToggle} onToggle={handleToggleChange} />
           <Text fontType="H3" color={color.G900}>
             게스트 스냅
           </Text>

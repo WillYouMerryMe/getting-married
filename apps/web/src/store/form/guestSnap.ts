@@ -1,11 +1,13 @@
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 interface GuestSnapState {
+  isToggle: boolean;
   title: string;
   password: string;
 }
 
 const defaultGuestSnap: GuestSnapState = {
+  isToggle: false,
   title: '',
   password: '',
 };
