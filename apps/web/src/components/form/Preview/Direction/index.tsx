@@ -10,7 +10,7 @@ import { TRANSPORT_TYPES, BRAND } from '@/constants/form/constants';
 import { useDirectionsValueStore } from '@/store/form/directions';
 
 const Direction = () => {
-  const { address, show, methods } = useDirectionsValueStore();
+  const { address, show, methods, isToggle } = useDirectionsValueStore();
 
   const entries = TRANSPORT_TYPES.filter((type) => {
     const hasMethod = !!methods?.[type];
@@ -25,7 +25,7 @@ const Direction = () => {
     navigator.clipboard.writeText(address);
   };
 
-  if (!address) return null;
+  if (!address || !isToggle) return null;
 
   return (
     <StyledDirection>

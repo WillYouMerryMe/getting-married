@@ -4,6 +4,7 @@ import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
 import { useOverlay } from '@toss/use-overlay';
 import { styled } from 'styled-components';
 import { useDirectionsStore } from '@/store/form/directions';
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 
 const DirectionsOption = () => {
   const overlay = useOverlay();
@@ -40,11 +41,12 @@ const DirectionsOption = () => {
       },
     }));
   };
+  const handleToggleChange = useIsToggleHandler(setDirections);
 
   return (
     <Column gap={28}>
       <Row gap={8}>
-        <ToggleButton isOpen={false} />
+        <ToggleButton isOpen={directions.isToggle} onToggle={handleToggleChange} />
         <Text fontType="H3" color={color.G900}>
           오시는 길
         </Text>

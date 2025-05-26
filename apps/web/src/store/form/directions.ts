@@ -3,12 +3,14 @@ import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 type TransportType = 'subway' | 'bus' | 'car';
 
 interface DirectionsState {
+  isToggle: boolean;
   address: string;
   methods: Partial<Record<TransportType, string>>;
   show: Record<TransportType, boolean>;
 }
 
 const defaultDirections: DirectionsState = {
+  isToggle: false,
   address: '',
   methods: {
     subway: '',
