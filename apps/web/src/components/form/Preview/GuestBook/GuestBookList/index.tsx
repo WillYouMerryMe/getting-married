@@ -6,6 +6,7 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import GuestBookListItem from './GuestBookListItem';
 import { useState } from 'react';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const dummyGuestbooks = [
   { name: '홍길동', content: '결혼 축하드려요! 행복한 가정 이루세요 😊' },
@@ -22,6 +23,7 @@ const dummyGuestbooks = [
 
 const GuestBookList = () => {
   const [showAll, setShowAll] = useState(false);
+  const { invitationFont } = useInvitationSetupValueStore();
 
   const listToRender = showAll ? dummyGuestbooks : dummyGuestbooks.slice(0, 3);
 
@@ -38,7 +40,7 @@ const GuestBookList = () => {
         <div onClick={handleAllGuestBookItem}>
           <Row gap={6} alignItems="center" justifyContent="center" width="100%">
             <CustomText
-              fontType="Ownglyph Kundo"
+              fontType={invitationFont}
               color={color.G80}
               size={20}
               weight={400}

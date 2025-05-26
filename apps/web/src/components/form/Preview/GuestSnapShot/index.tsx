@@ -5,9 +5,11 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import GuestSnapShotContent from './GuestSnapShotContent';
 import { useGuestSnapValueStore } from '@/store/form/guestSnap';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const GuestSnapShot = () => {
   const { isToggle, title } = useGuestSnapValueStore();
+  const { invitationFont } = useInvitationSetupValueStore();
 
   if (!isToggle) return null;
 
@@ -15,7 +17,7 @@ const GuestSnapShot = () => {
     <StyledGuestSnapShot>
       <Column gap={12} alignItems="center">
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           size={24}
           weight={400}
           line={100}
@@ -24,7 +26,7 @@ const GuestSnapShot = () => {
           {title || '게스트 스냅'}
         </CustomText>
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           size={18}
           weight={400}
           line={140}

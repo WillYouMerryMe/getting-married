@@ -5,6 +5,7 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import AccountItem from './AccountItem';
 import { useAccountInfoValueStore } from '@/store/form/account';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const Account = () => {
   const {
@@ -19,6 +20,8 @@ const Account = () => {
     brideMother,
   } = useAccountInfoValueStore();
 
+  const { invitationFont } = useInvitationSetupValueStore();
+
   const groomAccounts = [groom, groomFather, groomMother];
   const brideAccounts = [bride, brideFather, brideMother];
 
@@ -28,7 +31,7 @@ const Account = () => {
     <StyledAccount>
       <Column gap={12}>
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           size={24}
           weight={400}
           line={100}
@@ -37,7 +40,7 @@ const Account = () => {
           {title}
         </CustomText>
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           size={18}
           weight={400}
           line={140}

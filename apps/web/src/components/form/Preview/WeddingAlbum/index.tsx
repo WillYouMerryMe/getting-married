@@ -8,9 +8,11 @@ import { Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import { useGalleryImageValueStore } from '@/store/form/galleryImage';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const WeddingAlbum = () => {
   const { title, imageList, isToggle } = useGalleryImageValueStore();
+  const { pointColor, invitationFont } = useInvitationSetupValueStore();
 
   const [current, setCurrent] = useState(0);
   const total = imageList?.length || 0;
@@ -23,8 +25,8 @@ const WeddingAlbum = () => {
   return (
     <StyledWeddingAlbum>
       <CustomText
-        fontType="Ownglyph Kundo"
-        color={color.pointYellow}
+        fontType={invitationFont}
+        color={pointColor}
         size={24}
         weight={400}
         line={140}

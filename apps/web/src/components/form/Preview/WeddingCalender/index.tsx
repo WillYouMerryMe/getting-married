@@ -8,11 +8,13 @@ import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { Column } from '@merried/ui';
 import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 dayjs.locale('ko');
 
 const WeddingCalender = () => {
   const { calenderDate, isCalendarVisible, name, isToggle } = useCeremonyInfoValueStore();
+  const { pointColor, invitationFont } = useInvitationSetupValueStore();
 
   const d = dayjs(calenderDate);
   const year = d.year();
@@ -35,8 +37,12 @@ const WeddingCalender = () => {
     <Wrapper>
       {isCalendarVisible && (
         <>
-          <IconOval width={145} height={43}>
-            <Label>
+          <IconOval width={145} height={43} fill={pointColor}>
+            <Label
+              style={{
+                fontFamily: invitationFont,
+              }}
+            >
               {year}
               {month}
               {today}
@@ -44,10 +50,24 @@ const WeddingCalender = () => {
           </IconOval>
           <Grid>
             {['일', '월', '화', '수', '목', '금', '토'].map((wd) => (
-              <Cell key={wd}>{wd}</Cell>
+              <Cell
+                style={{
+                  fontFamily: invitationFont,
+                }}
+                key={wd}
+              >
+                {wd}
+              </Cell>
             ))}
             {cells.map((num, i) => (
-              <Cell key={i} $active={num === today}>
+              <Cell
+                key={i}
+                $active={num === today}
+                style={{
+                  fontFamily: invitationFont,
+                }}
+                $pointColor={pointColor}
+              >
                 {num || ''}
               </Cell>
             ))}
@@ -56,8 +76,15 @@ const WeddingCalender = () => {
       )}
 
       <Column>
-        <Info>{`${year}년 ${month}월 ${today}일 ${weekday}요일`}</Info>
-        <Info>{name}</Info>
+        <Info
+          style={{
+            fontFamily: invitationFont,
+          }}
+        >
+          {`${year}년 ${month}월 ${today}일 ${weekday}요일`}
+          <br />
+          {name}
+        </Info>
       </Column>
     </Wrapper>
   );
@@ -86,14 +113,14 @@ const Grid = styled.div`
   align-items: center;
 `;
 
-const Cell = styled.div<{ $active?: boolean }>`
+const Cell = styled.div<{ $active?: boolean; $pointColor?: string }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   font-family: 'Ownglyph Kundo';
   font-size: 16px;
   width: ${(p) => (p.$active ? '40px' : '46.71px')};
   height: ${(p) => (p.$active ? '40px' : '48px')};
   color: ${(p) => (p.$active ? color.G0 : color.G900)};
-  background: ${(p) => (p.$active ? color.pointYellow : 'transparent')};
+  background: ${(p) => (p.$active ? p.$pointColor : 'transparent')};
   border-radius: ${(p) => (p.$active ? '50%' : '0')};
 `;
 

@@ -1,15 +1,17 @@
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 import { useUrlShareStyleValueStore } from '@/store/form/urlShareStyle';
 import { color } from '@merried/design-system';
 import { Button, Column, Text } from '@merried/ui';
 
 const UrlShareStyle = () => {
   const { isToggle } = useUrlShareStyleValueStore();
+  const { pointColor } = useInvitationSetupValueStore();
 
   if (!isToggle) return null;
 
   return (
     <Column gap={8} alignItems="center">
-      <Button onClick={() => {}} size="MEDIUM" pointColor={color.pointYellow} width={185}>
+      <Button onClick={() => {}} size="MEDIUM" pointColor={pointColor} width={185}>
         <Text fontType="Button2">카카오톡으로 공유</Text>
       </Button>
       <Button onClick={() => {}} size="MEDIUM" styleType="SECOND" width={185}>

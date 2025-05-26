@@ -8,9 +8,11 @@ import BrandButton from './BrandButton';
 import Transportation from './Transportation';
 import { TRANSPORT_TYPES, BRAND } from '@/constants/form/constants';
 import { useDirectionsValueStore } from '@/store/form/directions';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const Direction = () => {
   const { address, show, methods, isToggle } = useDirectionsValueStore();
+  const { pointColor, invitationFont } = useInvitationSetupValueStore();
 
   const entries = TRANSPORT_TYPES.filter((type) => {
     const hasMethod = !!methods?.[type];
@@ -31,7 +33,7 @@ const Direction = () => {
     <StyledDirection>
       <Column gap={16} width="100%">
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={24}
           line={100}
@@ -50,7 +52,7 @@ const Direction = () => {
             지금은 없어용...
           </Text>
         </Column>
-        <ActionButton onClick={handleCopyAddress} background={color.pointYellow}>
+        <ActionButton onClick={handleCopyAddress} background={pointColor}>
           <Text fontType="Button3" color={color.G900}>
             복사하기
           </Text>

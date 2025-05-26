@@ -6,9 +6,11 @@ import WriteGuestBook from './WriteGuestBook';
 import { Column } from '@merried/ui';
 import GuestBookList from './GuestBookList';
 import { useGuestbookValueStore } from '@/store/form/guestbook';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 const GuestBook = () => {
   const { isToggle, title } = useGuestbookValueStore();
+  const { invitationFont } = useInvitationSetupValueStore();
 
   if (!isToggle) return null;
 
@@ -16,7 +18,7 @@ const GuestBook = () => {
     <StyledGuestBook>
       <Column width="100%" alignItems="center" gap={12}>
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={24}
           weight={400}

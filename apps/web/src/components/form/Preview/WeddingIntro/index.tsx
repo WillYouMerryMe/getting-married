@@ -1,4 +1,5 @@
 import CustomText from '@/components/common/CustomText/CustomText';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 import { useWeddingIntroValueStore } from '@/store/form/weddingIntro';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
@@ -6,11 +7,13 @@ import styled from 'styled-components';
 
 const WeddingIntro = () => {
   const { vedioURL, title, isToggle } = useWeddingIntroValueStore();
+  const { invitationFont } = useInvitationSetupValueStore();
+
   if (!vedioURL || !isToggle) return null;
   return (
     <StyledWeddingIntro>
       <CustomText
-        fontType="Ownglyph Kundo"
+        fontType={invitationFont}
         color={color.G900}
         size={24}
         line={100}

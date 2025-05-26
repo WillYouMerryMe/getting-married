@@ -1,5 +1,6 @@
 import { CustomText } from '@/components/common';
 import { GENDER_MAP } from '@/constants/form/constants';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
@@ -17,12 +18,14 @@ interface CoupleInfoItemProps {
 }
 
 const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) => {
+  const { pointColor, invitationFont } = useInvitationSetupValueStore();
+
   const renderParentName = (parent: Parent) => {
     return (
       <>
         {parent.isDeceased && (
           <CustomText
-            fontType="Ownglyph Kundo"
+            fontType={invitationFont}
             color={color.G100}
             size={20}
             weight={400}
@@ -32,7 +35,7 @@ const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) =
           </CustomText>
         )}
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={20}
           weight={400}
@@ -49,7 +52,7 @@ const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) =
       <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
         {renderParentName(father)}
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={20}
           weight={400}
@@ -59,7 +62,7 @@ const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) =
         </CustomText>
         {renderParentName(mother)}
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={20}
           weight={400}
@@ -70,8 +73,8 @@ const CoupleInfoItem = ({ mother, father, gender, name }: CoupleInfoItemProps) =
       </div>
 
       <CustomText
-        fontType="Ownglyph Kundo"
-        color={color.pointYellow}
+        fontType={invitationFont}
+        color={pointColor}
         size={20}
         weight={400}
         line={100}

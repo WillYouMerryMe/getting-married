@@ -4,6 +4,7 @@ import { color } from '@merried/design-system';
 import { ActionButton, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled, { css } from 'styled-components';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 
 interface AccountItemProps {
   type: string;
@@ -11,6 +12,7 @@ interface AccountItemProps {
 }
 
 const AccountItem = ({ type, accounts }: AccountItemProps) => {
+  const { pointColor } = useInvitationSetupValueStore();
   const [isBlurred, setIsBlurred] = useState(true);
   const hasVisibleAccount = accounts.some((account) => account.isVisible);
 
@@ -43,10 +45,7 @@ const AccountItem = ({ type, accounts }: AccountItemProps) => {
         </BlurArea>
         {isBlurred && (
           <ButtonWrapper>
-            <ActionButton
-              background={color.pointYellow}
-              onClick={() => setIsBlurred(false)}
-            >
+            <ActionButton background={pointColor} onClick={() => setIsBlurred(false)}>
               <Text fontType="Button3" color={color.G900}>
                 계좌번호 보기
               </Text>

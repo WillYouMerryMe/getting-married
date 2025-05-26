@@ -1,18 +1,20 @@
 import { CustomText } from '@/components/common';
 import { useInvitationMessageValueStore } from '@/store/form/invitationMessage';
+import { useInvitationSetupValueStore } from '@/store/form/invitationSetup';
 import { color } from '@merried/design-system';
 import { Column } from '@merried/ui';
 
 const Greeting = () => {
-  const invitationMessage = useInvitationMessageValueStore();
+  const { isToggle, title, message } = useInvitationMessageValueStore();
+  const { pointColor, invitationFont } = useInvitationSetupValueStore();
 
-  if (!invitationMessage.isToggle) return null;
+  if (!isToggle) return null;
 
   return (
     <Column gap={32} alignItems="center">
       <CustomText
         fontType="YUniverse-B"
-        color={color.pointYellow}
+        color={pointColor}
         size={32}
         weight={700}
         line={100}
@@ -21,22 +23,22 @@ const Greeting = () => {
       </CustomText>
       <Column gap={16} alignItems="center">
         <CustomText
-          fontType="Ownglyph Kundo"
-          color={color.pointYellow}
+          fontType={invitationFont}
+          color={pointColor}
           size={24}
           weight={400}
           line={100}
         >
-          {invitationMessage.title}
+          {title || '초대글귀'}
         </CustomText>
         <CustomText
-          fontType="Ownglyph Kundo"
+          fontType={invitationFont}
           color={color.G900}
           size={18}
           weight={400}
           line={140}
         >
-          {invitationMessage.message}
+          {message}
         </CustomText>
       </Column>
     </Column>
