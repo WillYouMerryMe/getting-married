@@ -3,9 +3,8 @@
 import { color, getTemplateFontStyle } from '@merried/design-system';
 import { styled } from 'styled-components';
 import { flex } from '@merried/utils';
-import { Options } from '@/components/form';
+import { Options, Preview } from '@/components/form';
 import AppLayout from '@/layouts/AppLayout';
-import Preview from '@/components/form/Preview';
 
 const Form = () => {
   return (

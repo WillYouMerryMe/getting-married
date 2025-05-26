@@ -5,16 +5,18 @@ import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import Greeting from './Greeting';
 import { useRef } from 'react';
-import CoupleInfo from './CoupleInfo';
-import WeddingCalender from './WeddingCalender';
-import WeddingAlbum from './WeddingAlbum';
-import WeddingIntro from './WeddingIntro';
-import Direction from './Direction';
-import Account from './Account';
-import Guide from './Guide';
-import GuestBook from './GuestBook';
-import GuestSnapShot from './GuestSnapShot';
-import UrlShareStyle from './UrlShareStyle';
+import {
+  CoupleInfo,
+  WeddingCalender,
+  WeddingAlbum,
+  WeddingIntro,
+  Direction,
+  Account,
+  Guide,
+  GuestBook,
+  GuestSnapShot,
+  UrlShareStyle,
+} from '@/components/form';
 
 interface Props {
   id?: string;

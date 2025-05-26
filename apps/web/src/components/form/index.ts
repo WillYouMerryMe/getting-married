@@ -13,3 +13,15 @@ export { default as GuestbookOption } from './options/GuestbookOption';
 export { default as GuestSnapOption } from './options/GuestSnapOption';
 export { default as UrlShareStyleOption } from './options/UrlShareStyleOption';
 export { default as Options } from './options';
+
+export { default as CoupleInfo } from './Preview/CoupleInfo';
+export { default as WeddingCalender } from './Preview/WeddingCalender';
+export { default as WeddingAlbum } from './Preview/WeddingAlbum';
+export { default as WeddingIntro } from './Preview/WeddingIntro';
+export { default as Direction } from './Preview/Direction';
+export { default as Account } from './Preview/Account';
+export { default as Guide } from './Preview/Guide';
+export { default as GuestBook } from './Preview/GuestBook';
+export { default as GuestSnapShot } from './Preview/GuestSnapShot';
+export { default as UrlShareStyle } from './Preview/UrlShareStyle';
+export { default as Preview } from './Preview';
