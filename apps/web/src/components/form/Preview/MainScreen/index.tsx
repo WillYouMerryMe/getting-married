@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 import { IconShortArrow } from '@merried/icon';
 import { flex } from '@merried/utils';
+import TextOverlay from './TextOverlay';
+import { useMainScreenValueStore } from '@/store/form/mainScreen';
 
 interface Props {
   id: string;
@@ -8,8 +10,16 @@ interface Props {
 }
 
 const MainScreen = ({ id, onScrollClick }: Props) => {
+  const { letteringColor, letteringFont, letteringText } = useMainScreenValueStore();
+
   return (
     <StyledMainScreen $id={id}>
+      <TextOverlay
+        id={id}
+        text={letteringText}
+        color={letteringColor}
+        font={letteringFont}
+      />
       <ScrollTriggerButton onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />
       </ScrollTriggerButton>
@@ -20,6 +30,7 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 export default MainScreen;
 
 const StyledMainScreen = styled.div<{ $id: string }>`
+  position: relative;
   width: 100%;
   height: 812px;
   background-image: ${({ $id }) => `url('/templateFull${$id}.png')`};
