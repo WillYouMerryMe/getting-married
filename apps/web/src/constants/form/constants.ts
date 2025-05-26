@@ -18,6 +18,15 @@ export const POINT_COLOR_OPTIONS = [
   { value: color.pointBlue, label: 'Tufts Blue' },
 ];
 
+export const LETTERING_COLORS_OPTIONS = [
+  { value: color.letterYellow, label: 'Yellow Sun' },
+  { value: color.letterGreen, label: 'Screaming Green' },
+  { value: color.letterRed, label: 'Candy Apple Red' },
+  { value: color.letterOrange, label: 'Orange-Red' },
+  { value: color.letterPurple, label: 'Blue-Violet' },
+  { value: color.letterBlue, label: 'Dodger Blue' },
+];
+
 export const SETUP_FONT_OPTIONS = [
   { label: 'Ownglyph Kundo', value: 'Ownglyph Kundo' },
   { label: 'Pretendard', value: 'Pretendard' },
