@@ -6,6 +6,7 @@ import { styled } from 'styled-components';
 import Greeting from './Greeting';
 import { useRef } from 'react';
 import {
+  MainScreen,
   CoupleInfo,
   WeddingCalender,
   WeddingAlbum,
@@ -38,11 +39,7 @@ const Preview = ({ id }: Props) => {
   return (
     <StyledPreview>
       <ScrollableArea ref={scrollRef}>
-        <HeroSection>
-          <ScrollTriggerButton onClick={scrollToContent}>
-            <IconShortArrow width={16} height={16} />
-          </ScrollTriggerButton>
-        </HeroSection>
+        <MainScreen onScrollClick={scrollToContent} />
 
         <ContentSection ref={contentRef}>
           <Greeting />
