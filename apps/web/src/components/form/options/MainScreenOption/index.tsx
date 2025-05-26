@@ -1,9 +1,10 @@
 import { LETTERING_COLORS_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
+import { useMainScreenStore } from '@/store/form/mainScreen';
 import { getLetteringTextsById } from '@/utils';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, InsertPhoto, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { styled } from 'styled-components';
 
 interface Props {
@@ -11,15 +12,19 @@ interface Props {
 }
 
 const MainScreenOption = ({ id }: Props) => {
+  const [mainScreenOption, setMainScreenOption] = useMainScreenStore();
   const letteringOptions = useMemo(() => getLetteringTextsById(id), [id]);
-  const [image, setImage] = useState<string[] | null>(null);
-  const [letteringColor, setLetteringColor] = useState<string>(color.letterYellow);
-  const [letteringFont, setLetteringFont] = useState<string>('Ownglyph Kundo');
-  const [letteringText, setLetteringText] = useState<string>(letteringOptions[0] || '');
 
   useEffect(() => {
-    setLetteringText(letteringOptions[0] || '');
+    setMainScreenOption((prev) => ({
+      ...prev,
+      letteringText: letteringOptions[0] || '',
+    }));
   }, [letteringOptions]);
+
+  const handleChange = (key: string) => (value: string | string[] | null) => {
+    setMainScreenOption((prev) => ({ ...prev, [key]: value }));
+  };
 
   return (
     <StyledMainScreenOption>
@@ -35,7 +40,11 @@ const MainScreenOption = ({ id }: Props) => {
             <Text fontType="P3" color={color.G900}>
               사진
             </Text>
-            <InsertPhoto size="SMALL" value={image} onChange={setImage} />
+            <InsertPhoto
+              size="SMALL"
+              value={mainScreenOption.image}
+              onChange={handleChange('image')}
+            />
           </Column>
           <Text fontType="P3" color={color.G80}>
             · 썸네일은 100MB이내로 첨부바랍니다.
@@ -48,9 +57,9 @@ const MainScreenOption = ({ id }: Props) => {
           <Dropdown
             option="FONT"
             name="letering-font"
-            value={letteringFont}
+            value={mainScreenOption.letteringFont}
             data={SETUP_FONT_OPTIONS}
-            onChange={setLetteringFont}
+            onChange={handleChange('letteringFont')}
           />
         </Column>
         <Column gap={8}>
@@ -60,9 +69,9 @@ const MainScreenOption = ({ id }: Props) => {
           <Dropdown
             option="DEFAULT"
             name="letering-text"
-            value={letteringText}
+            value={mainScreenOption.letteringText}
             data={letteringOptions}
-            onChange={setLetteringText}
+            onChange={handleChange('letteringText')}
           />
         </Column>
         <Column gap={8}>
@@ -72,9 +81,9 @@ const MainScreenOption = ({ id }: Props) => {
           <Dropdown
             option="COLOR"
             name="letering-color"
-            value={letteringColor}
+            value={mainScreenOption.letteringColor}
             data={LETTERING_COLORS_OPTIONS}
-            onChange={setLetteringColor}
+            onChange={handleChange('letteringColor')}
           />
         </Column>
         <Column gap={4}>
