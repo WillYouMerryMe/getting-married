@@ -1,5 +1,5 @@
 const getLetteringTextsById = (id: string): string[] => {
-  const letteringMap: Record<string, string[]> = {
+  const letteringTextMap: Record<string, string[]> = {
     '1': [
       'THE START OF OUR FORERVER',
       'WHERE OUR STORY BEGINS',
@@ -30,7 +30,7 @@ const getLetteringTextsById = (id: string): string[] => {
     '8': ['Wedding'],
   };
 
-  return letteringMap[id] ?? ['THE START OF OUR FOREVER'];
+  return letteringTextMap[id] ?? ['THE START OF OUR FOREVER'];
 };
 
 export default getLetteringTextsById;
