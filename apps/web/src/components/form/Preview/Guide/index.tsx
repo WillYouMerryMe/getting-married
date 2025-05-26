@@ -20,7 +20,7 @@ const Guide = () => {
         line={100}
         color={color.G900}
       >
-        {title}
+        {title || '안내사항'}
       </CustomText>
       <CustomText
         fontType={invitationFont}
@@ -40,6 +40,5 @@ export default Guide;
 const StyledGuide = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
-  height: 100%;
   gap: 12px;
 `;

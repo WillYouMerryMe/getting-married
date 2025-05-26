@@ -47,6 +47,5 @@ export default GuestSnapShot;
 const StyledGuestSnapShot = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
-  height: 100%;
   gap: 20px;
 `;

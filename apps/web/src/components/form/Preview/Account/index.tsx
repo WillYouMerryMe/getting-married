@@ -37,7 +37,7 @@ const Account = () => {
           line={100}
           color={color.G900}
         >
-          {title}
+          {title || '마음 전하실 곳'}
         </CustomText>
         <CustomText
           fontType={invitationFont}
@@ -62,6 +62,5 @@ export default Account;
 const StyledAccount = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
-  height: 100%;
   gap: 80px;
 `;

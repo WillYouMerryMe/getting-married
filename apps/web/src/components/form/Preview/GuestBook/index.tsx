@@ -38,6 +38,5 @@ export default GuestBook;
 const StyledGuestBook = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
-  height: 100%;
   gap: 32px;
 `;

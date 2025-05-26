@@ -78,7 +78,6 @@ export default Direction;
 const StyledDirection = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
-  height: auto;
   gap: 32px;
 `;
 
