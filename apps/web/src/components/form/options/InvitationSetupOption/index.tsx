@@ -1,4 +1,4 @@
-import { POINT_COLOR_OPTIONS } from '@/constants/form/constants';
+import { POINT_COLOR_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -35,10 +35,10 @@ const InvitationSetupOption = () => {
             폰트(메인 화면 적용 X)
           </Text>
           <Dropdown
-            option="DEFAULT"
+            option="FONT"
             name="invitation-font"
             value={invitationFont}
-            data={['Ownglyph kundo']}
+            data={SETUP_FONT_OPTIONS}
             onChange={setInvitationFont}
           />
         </Column>
