@@ -1,11 +1,13 @@
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 interface GuestbookState {
+  isToggle: boolean;
   title: string;
   password: string;
 }
 
 const defaultGuestbook: GuestbookState = {
+  isToggle: false,
   title: '',
   password: '',
 };

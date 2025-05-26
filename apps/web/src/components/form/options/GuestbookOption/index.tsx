@@ -1,3 +1,4 @@
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 import { useGuestbookStore } from '@/store/form/guestbook';
 import { color } from '@merried/design-system';
 import { Column, Input, Row, Text, ToggleButton } from '@merried/ui';
@@ -11,10 +12,12 @@ const GuestbookOption = () => {
     setGuestbook((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleToggleChange = useIsToggleHandler(setGuestbook);
+
   return (
     <Column gap={28}>
       <Row gap={8}>
-        <ToggleButton isOpen={false} />
+        <ToggleButton isOpen={guestbook.isToggle} onToggle={handleToggleChange} />
         <Text fontType="H3" color={color.G900}>
           방명록
         </Text>

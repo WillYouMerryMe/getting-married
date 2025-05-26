@@ -5,8 +5,13 @@ import styled from 'styled-components';
 import WriteGuestBook from './WriteGuestBook';
 import { Column } from '@merried/ui';
 import GuestBookList from './GuestBookList';
+import { useGuestbookValueStore } from '@/store/form/guestbook';
 
 const GuestBook = () => {
+  const { isToggle, title } = useGuestbookValueStore();
+
+  if (!isToggle) return null;
+
   return (
     <StyledGuestBook>
       <Column width="100%" alignItems="center" gap={12}>
@@ -17,7 +22,7 @@ const GuestBook = () => {
           weight={400}
           line={100}
         >
-          방명록
+          {title || '방명록'}
         </CustomText>
         <GuestBookList />
       </Column>
