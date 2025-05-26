@@ -3,12 +3,13 @@ import { IconShortArrow } from '@merried/icon';
 import { flex } from '@merried/utils';
 
 interface Props {
+  id: string;
   onScrollClick: () => void;
 }
 
-const MainScreen = ({ onScrollClick }: Props) => {
+const MainScreen = ({ id, onScrollClick }: Props) => {
   return (
-    <StyledMainScreen>
+    <StyledMainScreen $id={id}>
       <ScrollTriggerButton onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />
       </ScrollTriggerButton>
@@ -18,10 +19,10 @@ const MainScreen = ({ onScrollClick }: Props) => {
 
 export default MainScreen;
 
-const StyledMainScreen = styled.div`
+const StyledMainScreen = styled.div<{ $id: string }>`
   width: 100%;
   height: 812px;
-  background-image: url('/templateFull1.png');
+  background-image: ${({ $id }) => `url('/templateFull${$id}.png')`};
   background-size: cover;
   background-position: center;
   ${flex({ flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' })}

@@ -20,10 +20,10 @@ import {
 } from '@/components/form';
 
 interface Props {
-  id?: string;
+  templateId: string;
 }
 
-const Preview = ({ id }: Props) => {
+const Preview = ({ templateId }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +39,7 @@ const Preview = ({ id }: Props) => {
   return (
     <StyledPreview>
       <ScrollableArea ref={scrollRef}>
-        <MainScreen onScrollClick={scrollToContent} />
+        <MainScreen id={templateId} onScrollClick={scrollToContent} />
 
         <ContentSection ref={contentRef}>
           <Greeting />

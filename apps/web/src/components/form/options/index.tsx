@@ -60,7 +60,11 @@ const SortableItem = ({ id, children }: { id: string; children: React.ReactNode 
   );
 };
 
-const Options = () => {
+interface Props {
+  templateId: string;
+}
+
+const Options = ({ templateId }: Props) => {
   const [items, setItems] = useState(OPTION_COMPONENTS.map((item) => item.id));
 
   const handleDragEnd = (event: any) => {
@@ -78,7 +82,7 @@ const Options = () => {
     <StyledOptions>
       <InvitationNameOption />
       <InvitationSetupOption />
-      <MainScreenOption />
+      <MainScreenOption id={templateId} />
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           {items.map((id: string) => {

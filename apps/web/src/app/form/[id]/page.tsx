@@ -1,17 +1,19 @@
 'use client';
 
-import { color, getTemplateFontStyle } from '@merried/design-system';
+import { color } from '@merried/design-system';
 import { styled } from 'styled-components';
 import { flex } from '@merried/utils';
 import { Options, Preview } from '@/components/form';
 import AppLayout from '@/layouts/AppLayout';
 
-const Form = () => {
+const Form = ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+
   return (
     <AppLayout>
       <StyledForm>
-        <Preview />
-        <Options />
+        <Preview templateId={id} />
+        <Options templateId={id} />
       </StyledForm>
     </AppLayout>
   );
