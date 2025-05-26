@@ -33,13 +33,15 @@ const CoupleInfo = () => {
     },
   ];
 
+  if (!coupleIntro.isToggle) return null;
+
   return (
     <StyledCoupleInfo>
       {coupleList.map(({ father, mother, gender, name }, idx) => (
         <CoupleInfoItem
           key={idx}
-          father={father.name}
-          mother={mother.name}
+          father={father}
+          mother={mother}
           gender={gender}
           name={name}
         />
