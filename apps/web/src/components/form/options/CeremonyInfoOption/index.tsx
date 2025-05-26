@@ -10,14 +10,17 @@ import {
 } from '@merried/ui';
 import { styled } from 'styled-components';
 import { useCeremonyInfoStore } from '@/store/form/ceremonyInfo';
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 
 const CeremonyInfoOption = () => {
   const [ceremonyInfo, setCeremonyInfo] = useCeremonyInfoStore();
 
+  const handleToggleChange = useIsToggleHandler(setCeremonyInfo);
+
   return (
     <Column gap={28}>
       <Row gap={8}>
-        <ToggleButton isOpen={false} />
+        <ToggleButton isOpen={ceremonyInfo.isToggle} onToggle={handleToggleChange} />
         <Text fontType="H3" color={color.G900}>
           예식 정보
         </Text>

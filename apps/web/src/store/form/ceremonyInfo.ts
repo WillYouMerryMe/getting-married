@@ -1,12 +1,14 @@
 import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 interface CeremonyInfoState {
+  isToggle: boolean;
   calenderDate: Date;
   isCalendarVisible: boolean;
   name: string;
 }
 
 const defaultCeremonyInfo: CeremonyInfoState = {
+  isToggle: false,
   calenderDate: new Date(),
   isCalendarVisible: false,
   name: '',

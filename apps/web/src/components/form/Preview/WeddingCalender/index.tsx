@@ -7,14 +7,12 @@ import { IconOval } from '@merried/icon';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { Column } from '@merried/ui';
-import { useCeremonyInfoStore } from '@/store/form/ceremonyInfo'; // 경로는 프로젝트에 맞게 수정
+import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
 
 dayjs.locale('ko');
 
 const WeddingCalender = () => {
-  const [ceremonyInfo] = useCeremonyInfoStore();
-
-  const { calenderDate, isCalendarVisible, name } = ceremonyInfo;
+  const { calenderDate, isCalendarVisible, name, isToggle } = useCeremonyInfoValueStore();
 
   const d = dayjs(calenderDate);
   const year = d.year();
@@ -30,6 +28,8 @@ const WeddingCalender = () => {
     ...Array.from({ length: totalDays }, (_, i) => i + 1),
   ];
   while (cells.length % 7) cells.push(null);
+
+  if (!isToggle) return null;
 
   return (
     <Wrapper>
