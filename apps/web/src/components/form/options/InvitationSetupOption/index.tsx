@@ -1,13 +1,12 @@
 import { POINT_COLOR_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
+import { useInvitationSetupStore } from '@/store/form/invitationSetup';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useState } from 'react';
 import { styled } from 'styled-components';
 
 const InvitationSetupOption = () => {
-  const [invitationFont, setInvitationFont] = useState<string>('Ownglyph kundo');
-  const [pointColor, setPointColor] = useState<string>(color.pointYellow);
+  const [invitationSetup, setInvitationSetup] = useInvitationSetupStore();
 
   return (
     <StyledInvitationSetupOption>
@@ -25,9 +24,11 @@ const InvitationSetupOption = () => {
           <Dropdown
             option="COLOR"
             name="invitation-point-color"
-            value={pointColor}
+            value={invitationSetup.pointColor}
             data={POINT_COLOR_OPTIONS}
-            onChange={setPointColor}
+            onChange={(value) =>
+              setInvitationSetup((prev) => ({ ...prev, pointColor: value }))
+            }
           />
         </Column>
         <Column gap={8}>
@@ -37,9 +38,11 @@ const InvitationSetupOption = () => {
           <Dropdown
             option="FONT"
             name="invitation-font"
-            value={invitationFont}
+            value={invitationSetup.invitationFont}
             data={SETUP_FONT_OPTIONS}
-            onChange={setInvitationFont}
+            onChange={(value) =>
+              setInvitationSetup((prev) => ({ ...prev, invitationFont: value }))
+            }
           />
         </Column>
       </Column>
