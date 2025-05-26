@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { useGalleryImageValueStore } from '@/store/form/galleryImage';
 
 const WeddingAlbum = () => {
-  const { title, imageList } = useGalleryImageValueStore();
+  const { title, imageList, isToggle } = useGalleryImageValueStore();
 
   const [current, setCurrent] = useState(0);
   const total = imageList?.length || 0;
@@ -18,7 +18,7 @@ const WeddingAlbum = () => {
   const prev = () => total > 0 && setCurrent((c) => (c - 1 + total) % total);
   const next = () => total > 0 && setCurrent((c) => (c + 1) % total);
 
-  if (!imageList || total === 0) return null;
+  if (!imageList || total === 0 || !isToggle) return null;
 
   return (
     <StyledWeddingAlbum>

@@ -1,14 +1,17 @@
 import { color } from '@merried/design-system';
 import { Column, Row, ToggleButton, Text, Input, InsertPhoto } from '@merried/ui';
 import { useGalleryImageStore } from '@/store/form/galleryImage';
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 
 const GalleryOption = () => {
   const [galleryImage, setGalleryImage] = useGalleryImageStore();
 
+  const handleToggleChange = useIsToggleHandler(setGalleryImage);
+
   return (
     <Column gap={28}>
       <Row gap={8}>
-        <ToggleButton isOpen={false} />
+        <ToggleButton isOpen={galleryImage.isToggle} onToggle={handleToggleChange} />
         <Text fontType="H3" color={color.G900}>
           갤러리
         </Text>
