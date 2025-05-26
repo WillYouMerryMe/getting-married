@@ -1,14 +1,25 @@
-import { LETTERING_COLORS } from '@/constants/form/constants';
+import { LETTERING_COLORS_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
+import { getLetteringTextsById } from '@/utils';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, InsertPhoto, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { styled } from 'styled-components';
 
-const MainScreenOption = () => {
+interface Props {
+  id: string;
+}
+
+const MainScreenOption = ({ id }: Props) => {
+  const letteringOptions = useMemo(() => getLetteringTextsById(id), [id]);
   const [image, setImage] = useState<string[] | null>(null);
-  const [letteringText, setLetteringText] = useState<string>('THE START OF OUR FOREVER');
   const [letteringColor, setLetteringColor] = useState<string>(color.letterYellow);
+  const [letteringFont, setLetteringFont] = useState<string>('Ownglyph Kundo');
+  const [letteringText, setLetteringText] = useState<string>(letteringOptions[0] || '');
+
+  useEffect(() => {
+    setLetteringText(letteringOptions[0] || '');
+  }, [letteringOptions]);
 
   return (
     <StyledMainScreenOption>
@@ -32,13 +43,25 @@ const MainScreenOption = () => {
         </Column>
         <Column gap={8}>
           <Text fontType="P3" color={color.G900}>
+            폰트(메인 화면 적용)
+          </Text>
+          <Dropdown
+            option="FONT"
+            name="letering-font"
+            value={letteringFont}
+            data={SETUP_FONT_OPTIONS}
+            onChange={setLetteringFont}
+          />
+        </Column>
+        <Column gap={8}>
+          <Text fontType="P3" color={color.G900}>
             레터링 문구(화면 중앙에 위치한 문구입니다)
           </Text>
           <Dropdown
             option="DEFAULT"
             name="letering-text"
             value={letteringText}
-            data={['THE START OF OUR FOREVER']}
+            data={letteringOptions}
             onChange={setLetteringText}
           />
         </Column>
@@ -50,16 +73,16 @@ const MainScreenOption = () => {
             option="COLOR"
             name="letering-color"
             value={letteringColor}
-            data={LETTERING_COLORS}
+            data={LETTERING_COLORS_OPTIONS}
             onChange={setLetteringColor}
           />
         </Column>
         <Column gap={4}>
           <Text fontType="P3" color={color.G80}>
-            · 1장당 100MB까지 업로드 가능합니다.
+            · 예식 날짜는 예식 정보에서 입력됩니다.
           </Text>
           <Text fontType="P3" color={color.G80}>
-            · 최대 20장 업로드 가능합니다.
+            · 신랑•신부의 이름은 신랑•신부측 소개에서 입력됩니다.
           </Text>
         </Column>
       </Column>
