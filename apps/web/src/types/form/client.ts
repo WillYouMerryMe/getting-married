@@ -45,3 +45,21 @@ export type CustomFontType =
   | 'Nelna Yesam'
   | 'White Angelica'
   | 'Heir of Light OTF';
+
+export type Position = 'left' | 'right' | 'center';
+
+export interface StyleConfig {
+  top: string;
+  left?: string;
+  right?: string;
+  center?: boolean;
+  font: string;
+}
+
+export interface CaseConfig {
+  groom?: StyleConfig;
+  bride?: StyleConfig;
+  groom_bride?: StyleConfig;
+  subtitle?: StyleConfig;
+  date?: StyleConfig;
+}

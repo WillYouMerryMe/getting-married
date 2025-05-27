@@ -2,6 +2,8 @@ const formatWeddingDate = (id: string, dateStr: string): string => {
   if (!dateStr) return '';
   const date = new Date(dateStr);
 
+  if (isNaN(date.getTime())) return '';
+
   const weekKOR = ['일', '월', '화', '수', '목', '금', '토'];
   const weekENG = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
