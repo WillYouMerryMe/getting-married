@@ -10,10 +10,11 @@ interface Props {
 }
 
 const MainScreen = ({ id, onScrollClick }: Props) => {
-  const { letteringColor, letteringFont, letteringText } = useMainScreenValueStore();
+  const { image, letteringColor, letteringFont, letteringText } =
+    useMainScreenValueStore();
 
   return (
-    <StyledMainScreen $id={id}>
+    <StyledMainScreen $id={id} $image={image}>
       <TextOverlay
         id={id}
         text={letteringText}
@@ -29,11 +30,12 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
 export default MainScreen;
 
-const StyledMainScreen = styled.div<{ $id: string }>`
+const StyledMainScreen = styled.div<{ $id: string; $image: string[] | null }>`
   position: relative;
   width: 100%;
   height: 812px;
-  background-image: ${({ $id }) => `url('/templateFull${$id}.png')`};
+  background-image: ${({ $image, $id }) =>
+    $image && $image.length > 0 ? `url(${$image[0]})` : `url('/templateFull${$id}.png')`};
   background-size: cover;
   background-position: center;
   ${flex({ flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' })}
