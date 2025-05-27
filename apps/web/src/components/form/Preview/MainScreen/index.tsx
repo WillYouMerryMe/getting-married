@@ -3,6 +3,9 @@ import { IconShortArrow } from '@merried/icon';
 import { flex } from '@merried/utils';
 import TextOverlay from './TextOverlay';
 import { useMainScreenValueStore } from '@/store/form/mainScreen';
+import SubTextOverlay from './SubTextOverlay';
+import { useCoupleIntroValueStore } from '@/store/form/coupleIntro';
+import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
 
 interface Props {
   id: string;
@@ -13,6 +16,10 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
   const { image, letteringColor, letteringFont, letteringText } =
     useMainScreenValueStore();
 
+  const { bride, groom } = useCoupleIntroValueStore();
+
+  const { calenderDate } = useCeremonyInfoValueStore();
+
   return (
     <StyledMainScreen $id={id} $image={image}>
       <TextOverlay
@@ -20,6 +27,12 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
         text={letteringText}
         color={letteringColor}
         font={letteringFont}
+      />
+      <SubTextOverlay
+        id={id}
+        groomName={groom.name}
+        brideName={bride.name}
+        dateStr={`${calenderDate}`}
       />
       <ScrollTriggerButton onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />
