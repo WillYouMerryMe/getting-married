@@ -1,7 +1,7 @@
 const getLetteringFontsById = (id: string): string[] => {
   const letteringFontMap: Record<string, string[]> = {
     '1': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',
@@ -23,7 +23,7 @@ const getLetteringFontsById = (id: string): string[] => {
       'White Angelica',
     ],
     '3': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',
@@ -45,7 +45,7 @@ const getLetteringFontsById = (id: string): string[] => {
       'Nelna Yesam',
     ],
     '5': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',
@@ -56,7 +56,7 @@ const getLetteringFontsById = (id: string): string[] => {
       'White Angelica',
     ],
     '6': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',
@@ -68,7 +68,7 @@ const getLetteringFontsById = (id: string): string[] => {
       'White Angelica',
     ],
     '7': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',
@@ -79,7 +79,7 @@ const getLetteringFontsById = (id: string): string[] => {
       'Nelna Yesam',
     ],
     '8': [
-      'BBB003',
+      'BBB0003',
       'Ownglyph Kundo',
       'Diphylleia',
       'DOSGothic',

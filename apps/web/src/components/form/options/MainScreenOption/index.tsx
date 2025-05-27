@@ -1,6 +1,6 @@
 import { LETTERING_COLORS_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
 import { useMainScreenStore } from '@/store/form/mainScreen';
-import { getLetteringTextsById } from '@/utils';
+import { getLetteringFontsById, getLetteringTextsById } from '@/utils';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, InsertPhoto, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -13,14 +13,16 @@ interface Props {
 
 const MainScreenOption = ({ id }: Props) => {
   const [mainScreenOption, setMainScreenOption] = useMainScreenStore();
-  const letteringOptions = useMemo(() => getLetteringTextsById(id), [id]);
+  const letteringTextOptions = useMemo(() => getLetteringTextsById(id), [id]);
+  const letteringFontOptions = useMemo(() => getLetteringFontsById(id), [id]);
 
   useEffect(() => {
     setMainScreenOption((prev) => ({
       ...prev,
-      letteringText: letteringOptions[0] || '',
+      letteringText: letteringTextOptions[0] || '',
+      letteringFont: letteringFontOptions[0] || '',
     }));
-  }, [letteringOptions]);
+  }, [letteringTextOptions, letteringFontOptions]);
 
   const handleChange = (key: string) => (value: string | string[] | null) => {
     setMainScreenOption((prev) => ({ ...prev, [key]: value }));
@@ -58,7 +60,7 @@ const MainScreenOption = ({ id }: Props) => {
             option="FONT"
             name="letering-font"
             value={mainScreenOption.letteringFont}
-            data={SETUP_FONT_OPTIONS}
+            data={letteringFontOptions}
             onChange={handleChange('letteringFont')}
           />
         </Column>
@@ -70,7 +72,7 @@ const MainScreenOption = ({ id }: Props) => {
             option="DEFAULT"
             name="letering-text"
             value={mainScreenOption.letteringText}
-            data={letteringOptions}
+            data={letteringTextOptions}
             onChange={handleChange('letteringText')}
           />
         </Column>
