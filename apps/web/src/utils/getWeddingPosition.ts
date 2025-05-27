@@ -34,7 +34,7 @@ const MAPPING: Record<string, CaseConfig> = {
 };
 
 const getWeddingPosition = (id: string): (StyleConfig | null)[] => {
-  const result: (StyleConfig | null)[] = [null, null, null];
+  const result: (StyleConfig | null)[] = [null, null, null, null];
   const config = MAPPING[id];
 
   if (!config) return result;
@@ -60,6 +60,10 @@ const getWeddingPosition = (id: string): (StyleConfig | null)[] => {
 
   if (config.date) {
     result[2] = config.date;
+  }
+
+  if (config.subtitle) {
+    result[3] = config.subtitle;
   }
 
   return result;

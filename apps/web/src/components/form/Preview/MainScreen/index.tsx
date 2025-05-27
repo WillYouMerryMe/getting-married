@@ -6,6 +6,7 @@ import { useMainScreenValueStore } from '@/store/form/mainScreen';
 import SubTextOverlay from './SubTextOverlay';
 import { useCoupleIntroValueStore } from '@/store/form/coupleIntro';
 import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
+import { color } from '@merried/design-system';
 
 interface Props {
   id: string;
@@ -33,6 +34,7 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
         groomName={groom.name}
         brideName={bride.name}
         dateStr={`${calenderDate}`}
+        color={id === '5' || id === '6' ? letteringColor : color.G0}
       />
       <ScrollTriggerButton onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />

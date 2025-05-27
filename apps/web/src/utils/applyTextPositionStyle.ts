@@ -10,7 +10,7 @@ const textPositionMap: Record<string, TextPosition> = {
   '2': { top: '116px', left: '50%' },
   '3': { top: '565px', left: '50%' },
   '4': { top: '611px', left: '50%' },
-  '5': { top: '695px', left: '50%' },
+  '5': { top: '560px', left: '50%' },
   '6': { top: '362px', left: '50%' },
   '7': { top: '559px', left: '50%' },
   '8': { top: '38px', left: '50%' },
