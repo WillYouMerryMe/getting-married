@@ -1,55 +1,54 @@
-import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import TemplateItem from '../TemplateItem';
 
 const items = [
   {
-    preview: (
-      <Image src="/template1.png" width={284} height={615} alt="영원한 우리의 시작" />
-    ),
+    id: 1,
+    path: '/template1.png',
     title: '영원한 우리의 시작',
   },
   {
-    preview: <Image src="/template2.png" width={284} height={615} alt="결혼의 초안" />,
-    title: '결혼의 초안',
+    id: 2,
+    path: '/template8.png',
+    title: '단정미',
   },
   {
-    preview: (
-      <Image src="/template3.png" width={284} height={615} alt="나의 소울메이트에게" />
-    ),
+    id: 3,
+    path: '/template3.png',
     title: '나의 소울메이트에게',
   },
   {
-    preview: (
-      <Image src="/template4.png" width={284} height={615} alt="끝나지 않을 행복" />
-    ),
+    id: 4,
+    path: '/template4.png',
     title: '끝나지 않을 행복',
   },
   {
-    preview: <Image src="/template5.png" width={284} height={615} alt="엔드리스 러브" />,
+    id: 5,
+    path: '/template5.png',
     title: '엔드리스 러브',
   },
   {
-    preview: <Image src="/template6.png" width={284} height={615} alt="와인빛 결혼" />,
+    id: 6,
+    path: '/template6.png',
     title: '와인빛 결혼',
   },
   {
-    preview: (
-      <Image src="/template7.png" width={284} height={615} alt="오늘도 사랑스럽게" />
-    ),
+    id: 7,
+    path: '/template7.png',
     title: '오늘도 사랑스럽게',
   },
   {
-    preview: <Image src="/template8.png" width={284} height={615} alt="단정미" />,
-    title: '단정미',
+    id: 8,
+    path: '/template2.png',
+    title: '결혼의 초안',
   },
 ];
 
 const TemplateGrid = () => (
   <StyledGrid>
-    {items.map((item, idx) => (
-      <TemplateItem key={idx} preview={item.preview} title={item.title} />
+    {items.map((item) => (
+      <TemplateItem key={item.id} id={item.id} path={item.path} title={item.title} />
     ))}
   </StyledGrid>
 );
