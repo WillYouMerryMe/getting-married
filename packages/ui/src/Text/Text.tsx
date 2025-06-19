@@ -30,6 +30,7 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   whiteSpace?: CSSProperties['whiteSpace'];
   tag?: 'span' | 'p';
   fontFamily?: FontFamily;
+  underline?: boolean;
 }
 
 const Text = ({
@@ -42,6 +43,7 @@ const Text = ({
   whiteSpace = 'nowrap',
   tag = 'span',
   fontFamily = 'Pretendard',
+  underline = false,
 }: TextProps) => {
   return (
     <StyledText
@@ -50,6 +52,7 @@ const Text = ({
       as={tag}
       ellipsis={ellipsis}
       fontFamily={fontFamily}
+      underline={underline}
     >
       {children}
     </StyledText>
@@ -64,14 +67,23 @@ const StyledText = styled.span.withConfig({
   fontType: Font;
   ellipsis: boolean;
   fontFamily: FontFamily;
+  underline: boolean;
 }>`
   ${({ fontType }) => font[fontType]};
   ${({ fontFamily }) => `font-family: '${fontFamily}';`}
-  ${(props) =>
-    props.ellipsis &&
+  ${({ ellipsis }) =>
+    ellipsis &&
     css`
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
+    `}
+
+    ${({ underline }) =>
+    underline &&
+    css`
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+      display: inline-block;
     `}
 `;
