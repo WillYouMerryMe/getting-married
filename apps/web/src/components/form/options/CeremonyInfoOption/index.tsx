@@ -1,5 +1,4 @@
 import { color } from '@merried/design-system';
-import { IconDragHandle } from '@merried/icon';
 import {
   CalenderInput,
   CheckBox,
@@ -9,58 +8,60 @@ import {
   Text,
   ToggleButton,
 } from '@merried/ui';
-import { flex } from '@merried/utils';
-import { useState } from 'react';
 import { styled } from 'styled-components';
+import { useCeremonyInfoStore } from '@/store/form/ceremonyInfo';
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
 
 const CeremonyInfoOption = () => {
-  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [calenderDate, setCalenderDate] = useState<Date>(new Date());
+  const [ceremonyInfo, setCeremonyInfo] = useCeremonyInfoStore();
+
+  const handleToggleChange = useIsToggleHandler(setCeremonyInfo);
 
   return (
-    <StyledCeremonyInfoOption>
-      <Column gap={28}>
-        <Row gap={8}>
-          <ToggleButton isOpen={false} />
-          <Text fontType="H3" color={color.G900}>
-            예식 정보
-          </Text>
-        </Row>
-        <Column gap={8}>
-          <Text fontType="P3" color={color.G900}>
-            예식 날짜<RequiredMark>*</RequiredMark>
-          </Text>
-          <CalenderInput value={calenderDate} onChange={setCalenderDate} />
-        </Column>
-        <Column gap={8}>
-          <Text fontType="P3" color={color.G900}>
-            예식장 이름<RequiredMark>*</RequiredMark>
-          </Text>
-          <Input
-            width={384}
-            platform="DESKTOP"
-            placeholder="예식장 이름을 입력해주세요"
-          />
-          <CheckBox
-            checked={isCalendarVisible}
-            onChange={setIsCalendarVisible}
-            label="캘린더 보임"
-          />
-        </Column>
+    <Column gap={28}>
+      <Row gap={8}>
+        <ToggleButton isOpen={ceremonyInfo.isToggle} onToggle={handleToggleChange} />
+        <Text fontType="H3" color={color.G900}>
+          예식 정보
+        </Text>
+      </Row>
+
+      <Column gap={8}>
+        <Text fontType="P3" color={color.G900}>
+          예식 날짜<RequiredMark>*</RequiredMark>
+        </Text>
+        <CalenderInput
+          value={ceremonyInfo.calenderDate}
+          onChange={(newDate) =>
+            setCeremonyInfo((prev) => ({ ...prev, calenderDate: newDate }))
+          }
+        />
       </Column>
-      <IconDragHandle />
-    </StyledCeremonyInfoOption>
+
+      <Column gap={8}>
+        <Text fontType="P3" color={color.G900}>
+          예식장 이름<RequiredMark>*</RequiredMark>
+        </Text>
+        <Input
+          width={384}
+          platform="DESKTOP"
+          placeholder="예식장 이름을 입력해주세요"
+          value={ceremonyInfo.name}
+          onChange={(e) => setCeremonyInfo((prev) => ({ ...prev, name: e.target.value }))}
+        />
+        <CheckBox
+          checked={ceremonyInfo.isCalendarVisible}
+          onChange={(checked) =>
+            setCeremonyInfo((prev) => ({ ...prev, isCalendarVisible: checked }))
+          }
+          label="캘린더 보임"
+        />
+      </Column>
+    </Column>
   );
 };
 
 export default CeremonyInfoOption;
-
-const StyledCeremonyInfoOption = styled.div`
-  ${flex({ justifyContent: 'space-between', alignItems: 'flex-start' })}
-  padding: 28px 20px;
-  border-radius: 8px;
-  background: ${color.G0};
-`;
 
 const RequiredMark = styled.span`
   color: ${color.red};

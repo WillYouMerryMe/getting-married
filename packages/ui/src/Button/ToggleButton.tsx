@@ -3,11 +3,12 @@ import { styled } from 'styled-components';
 
 interface Props {
   isOpen: boolean;
+  onToggle?: () => void;
 }
 
-const ToggleButton = ({ isOpen }: Props) => {
+const ToggleButton = ({ isOpen, onToggle }: Props) => {
   return (
-    <StyledToggleButton $isOpen={isOpen}>
+    <StyledToggleButton $isOpen={isOpen} onClick={onToggle}>
       <ToggleObject />
     </StyledToggleButton>
   );

@@ -26,6 +26,7 @@ const Input = ({
   name,
   value,
   onChange,
+  onClick,
   readOnly,
 }: Props) => {
   const inputSize = platform === 'DESKTOP' ? 'VERY_LARGE' : size;
@@ -46,6 +47,7 @@ const Input = ({
           placeholder={placeholder}
           readOnly={readOnly}
           onChange={onChange}
+          onClick={onClick}
           $size={inputSize}
           $platform={platform}
           $isError={isError}

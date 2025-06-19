@@ -20,7 +20,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -60,7 +60,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -68,7 +68,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 110
@@ -76,7 +76,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 56,
           "fontWeight": 400,
           "lineHeight": 110
@@ -98,7 +98,7 @@
     "fonts": {
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -143,7 +143,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -152,7 +152,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -161,7 +161,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -170,7 +170,7 @@
       },
       "White Angelica": {
         "default": {
-          "fontFamily": "WhiteAngelica",
+          "fontFamily": "White Angelica",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -215,7 +215,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 85,
           "fontWeight": 400,
           "lineHeight": 100
@@ -255,7 +255,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -263,7 +263,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -271,7 +271,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
@@ -279,7 +279,7 @@
       },
       "White Angelica": {
         "default": {
-          "fontFamily": "WhiteAngelica",
+          "fontFamily": "White Angelica",
           "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 140
@@ -318,7 +318,7 @@
     "fonts": {
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 48,
           "fontWeight": 400,
           "lineHeight": 120
@@ -358,7 +358,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -366,7 +366,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 48,
           "fontWeight": 400,
           "lineHeight": 100
@@ -374,7 +374,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 120
@@ -416,7 +416,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -461,7 +461,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -470,7 +470,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -479,7 +479,7 @@
       },
       "White Angelica": {
         "default": {
-          "fontFamily": "WhiteAngelica",
+          "fontFamily": "White Angelica",
           "fontSize": 52,
           "fontWeight": 400,
           "lineHeight": 100,
@@ -515,7 +515,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -555,7 +555,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -563,7 +563,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 40,
           "fontWeight": 400,
           "lineHeight": 110
@@ -571,7 +571,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 44,
           "fontWeight": 400,
           "lineHeight": 120
@@ -579,7 +579,7 @@
       },
       "White Angelica": {
         "default": {
-          "fontFamily": "WhiteAngelica",
+          "fontFamily": "White Angelica",
           "fontSize": 32,
           "fontWeight": 400,
           "lineHeight": 130
@@ -609,7 +609,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -654,7 +654,7 @@
       },
       "MapoDacapo": {
         "default": {
-          "fontFamily": "MapoDacapoA",
+          "fontFamily": "MapoDacapo",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -663,7 +663,7 @@
       },
       "Ownglyph Baek Subin": {
         "default": {
-          "fontFamily": "OwnglyphBaekSubin",
+          "fontFamily": "Ownglyph Baek Subin",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -672,7 +672,7 @@
       },
       "Nelna Yesam": {
         "default": {
-          "fontFamily": "NelnaYesam",
+          "fontFamily": "Nelna Yesam",
           "fontSize": 60,
           "fontWeight": 400,
           "lineHeight": 105,
@@ -703,7 +703,7 @@
       },
       "Ownglyph Kundo": {
         "default": {
-          "fontFamily": "OwnglyphKundo",
+          "fontFamily": "Ownglyph Kundo",
           "fontSize": 110,
           "fontWeight": 400,
           "lineHeight": 100
@@ -729,6 +729,14 @@
         "default": {
           "fontFamily": "KoreanCNMM",
           "fontSize": 110,
+          "fontWeight": 400,
+          "lineHeight": 100
+        }
+      },
+      "White Angelica": {
+        "default": {
+          "fontFamily": "White Angelica",
+          "fontSize": 80,
           "fontWeight": 400,
           "lineHeight": 100
         }

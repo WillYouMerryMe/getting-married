@@ -6,13 +6,18 @@ import { IconArrow } from '@merried/icon';
 import Row from '../Flex/Row';
 import ColorBoxButton from './Color';
 
-type DropdownOption = 'DEFAULT' | 'COLOR';
+type DropdownOption = 'DEFAULT' | 'COLOR' | 'FONT';
+
+interface Data {
+  label: string;
+  value: string;
+}
 
 interface Props {
   onChange: (value: string, name: string) => void;
   name: string;
   value?: string;
-  data?: string[];
+  data?: Data[] | string[];
   option?: DropdownOption;
   placeholder?: string;
 }
@@ -58,14 +63,20 @@ const Dropdown = ({
       </Row>
       <DropdownMenuBox $isOpen={isOpen}>
         <DropdownMenu $option={option}>
-          {data?.map((item, index) => (
-            <DropdownItem
-              key={`dropdown ${index}`}
-              onClick={() => handleDropdownItemButtonClick(item)}
-            >
-              {item}
-            </DropdownItem>
-          ))}
+          {data?.map((item, index) => {
+            const isString = typeof item === 'string';
+            const dropdownLabel = isString ? item : item.label;
+            const dropdownValue = isString ? item : item.value;
+            return (
+              <DropdownItem
+                key={`dropdown ${index}`}
+                onClick={() => handleDropdownItemButtonClick(dropdownValue)}
+                $fontFamily={option === 'FONT' ? dropdownValue : undefined}
+              >
+                {dropdownLabel}
+              </DropdownItem>
+            );
+          })}
         </DropdownMenu>
       </DropdownMenuBox>
     </div>
@@ -76,7 +87,7 @@ export default Dropdown;
 
 const StyledDropdown = styled.div<{ $isOpen: boolean; $option: DropdownOption }>`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
-  width: ${({ $option }) => ($option === 'DEFAULT' ? '384px' : '334px')};
+  width: ${({ $option }) => ($option === 'COLOR' ? '334px' : '384px')};
   height: 42px;
   padding: 14px 16px;
   border: 1px solid ${({ $isOpen }) => ($isOpen ? color.G500 : color.G70)};
@@ -85,14 +96,6 @@ const StyledDropdown = styled.div<{ $isOpen: boolean; $option: DropdownOption }>
   ${font.P3}
   color: ${color.G900};
   cursor: pointer;
-`;
-
-const DropdownColorBox = styled.div<{ $color: string }>`
-  width: 42px;
-  height: 42px;
-  background: ${({ $color }) => $color};
-  border: 1px solid #a2a2a2;
-  border-radius: 8px;
 `;
 
 const DropdownMenuBox = styled.div<{ $isOpen: boolean }>`
@@ -104,7 +107,7 @@ const DropdownMenu = styled.div<{ $option: DropdownOption }>`
   position: absolute;
   right: 0;
   display: grid;
-  width: ${({ $option }) => ($option === 'DEFAULT' ? '384px' : '334px')};
+  width: ${({ $option }) => ($option === 'COLOR' ? '334px' : '384px')};
   padding: 12px 0;
   background: ${color.G0};
   box-shadow:
@@ -115,10 +118,10 @@ const DropdownMenu = styled.div<{ $option: DropdownOption }>`
     0px 1px 3px 0px rgba(99, 99, 99, 0.1);
   grid-template-columns: 1fr;
   border-radius: 8px;
-  z-index: 1;
+  z-index: 3;
 `;
 
-const DropdownItem = styled.button`
+const DropdownItem = styled.button<{ $fontFamily?: string }>`
   ${flex({ alignItems: 'center' })}
   width: 100%;
   height: 42px;
@@ -128,6 +131,7 @@ const DropdownItem = styled.button`
   ${font.P3}
   color: ${color.G900};
   cursor: pointer;
+  font-family: ${({ $fontFamily }) => $fontFamily};
 
   &:hover {
     background-color: ${color.G20};

@@ -1,18 +1,21 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { GlobalStyle } from '@merried/design-system';
-import type { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
+import { OverlayProvider } from '@toss/use-overlay';
 
-interface Props {
+interface ProviderProps {
   children: ReactNode;
 }
 
-const Provider = ({ children }: Props) => {
+const Provider = ({ children }: ProviderProps) => {
   return (
     <RecoilRoot>
-      <GlobalStyle />
-      {children}
+      <OverlayProvider>
+        <GlobalStyle />
+        {children}
+      </OverlayProvider>
     </RecoilRoot>
   );
 };

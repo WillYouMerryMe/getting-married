@@ -30,10 +30,11 @@ const color = {
   letterPurple: '#8D3BFF',
   letterBlue: '#258BFE',
 
-  pointYellow: '#FFD644',
+  pointYellow: '#FFDF3E',
   pointGreen: '#74D266',
-  pointRed: '#FB4A4A',
+  pointRed: '#7B4A4A',
   pointOrange: '#FF662A',
+  pointPurple: '#9158E2',
   pointBlue: '#3E8BE3',
 };
 

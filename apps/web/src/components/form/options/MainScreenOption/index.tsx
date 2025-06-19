@@ -1,14 +1,32 @@
-import { LETTERING_COLORS } from '@/constants/form/constants';
+import { LETTERING_COLORS_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
+import { useMainScreenStore } from '@/store/form/mainScreen';
+import { getLetteringFontsById, getLetteringTextsById } from '@/utils';
 import { color } from '@merried/design-system';
 import { Column, Dropdown, InsertPhoto, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { styled } from 'styled-components';
 
-const MainScreenOption = () => {
-  const [image, setImage] = useState<string[] | null>(null);
-  const [letteringText, setLetteringText] = useState<string>('THE START OF OUR FOREVER');
-  const [letteringColor, setLetteringColor] = useState<string>(color.letterYellow);
+interface Props {
+  id: string;
+}
+
+const MainScreenOption = ({ id }: Props) => {
+  const [mainScreenOption, setMainScreenOption] = useMainScreenStore();
+  const letteringTextOptions = useMemo(() => getLetteringTextsById(id), [id]);
+  const letteringFontOptions = useMemo(() => getLetteringFontsById(id), [id]);
+
+  useEffect(() => {
+    setMainScreenOption((prev) => ({
+      ...prev,
+      letteringText: letteringTextOptions[0] || '',
+      letteringFont: letteringFontOptions[0] || '',
+    }));
+  }, [letteringTextOptions, letteringFontOptions]);
+
+  const handleChange = (key: string) => (value: string | string[] | null) => {
+    setMainScreenOption((prev) => ({ ...prev, [key]: value }));
+  };
 
   return (
     <StyledMainScreenOption>
@@ -24,11 +42,27 @@ const MainScreenOption = () => {
             <Text fontType="P3" color={color.G900}>
               사진
             </Text>
-            <InsertPhoto size="SMALL" value={image} onChange={setImage} />
+            <InsertPhoto
+              size="SMALL"
+              value={mainScreenOption.image}
+              onChange={handleChange('image')}
+            />
           </Column>
           <Text fontType="P3" color={color.G80}>
             · 썸네일은 100MB이내로 첨부바랍니다.
           </Text>
+        </Column>
+        <Column gap={8}>
+          <Text fontType="P3" color={color.G900}>
+            폰트(메인 화면 적용)
+          </Text>
+          <Dropdown
+            option="FONT"
+            name="letering-font"
+            value={mainScreenOption.letteringFont}
+            data={letteringFontOptions}
+            onChange={handleChange('letteringFont')}
+          />
         </Column>
         <Column gap={8}>
           <Text fontType="P3" color={color.G900}>
@@ -37,9 +71,9 @@ const MainScreenOption = () => {
           <Dropdown
             option="DEFAULT"
             name="letering-text"
-            value={letteringText}
-            data={['THE START OF OUR FOREVER']}
-            onChange={setLetteringText}
+            value={mainScreenOption.letteringText}
+            data={letteringTextOptions}
+            onChange={handleChange('letteringText')}
           />
         </Column>
         <Column gap={8}>
@@ -49,17 +83,17 @@ const MainScreenOption = () => {
           <Dropdown
             option="COLOR"
             name="letering-color"
-            value={letteringColor}
-            data={LETTERING_COLORS}
-            onChange={setLetteringColor}
+            value={mainScreenOption.letteringColor}
+            data={LETTERING_COLORS_OPTIONS}
+            onChange={handleChange('letteringColor')}
           />
         </Column>
         <Column gap={4}>
           <Text fontType="P3" color={color.G80}>
-            · 1장당 100MB까지 업로드 가능합니다.
+            · 예식 날짜는 예식 정보에서 입력됩니다.
           </Text>
           <Text fontType="P3" color={color.G80}>
-            · 최대 20장 업로드 가능합니다.
+            · 신랑•신부의 이름은 신랑•신부측 소개에서 입력됩니다.
           </Text>
         </Column>
       </Column>
@@ -72,6 +106,7 @@ export default MainScreenOption;
 const StyledMainScreenOption = styled.div`
   ${flex({ alignItems: 'flex-start' })}
   padding: 28px 20px;
+  width: 548px;
   border-radius: 8px;
   background: ${color.G0};
 `;

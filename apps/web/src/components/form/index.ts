@@ -2,8 +2,7 @@ export { default as InvitationNameOption } from './options/InvitationNameOption'
 export { default as InvitationSetupOption } from './options/InvitationSetupOption';
 export { default as MainScreenOption } from './options/MainScreenOption';
 export { default as InvitationMessageOption } from './options/InvitationMessageOption';
-export { default as GroomIntroOption } from './options/GroomIntroOption';
-export { default as BrideIntroOption } from './options/BrideIntroOption';
+export { default as CoupleIntroOption } from './options/CoupleIntroOption';
 export { default as CeremonyInfoOption } from './options/CeremonyInfoOption';
 export { default as GalleryOption } from './options/GalleryOption';
 export { default as VideoOption } from './options/VideoOption';
@@ -13,3 +12,17 @@ export { default as NoticeOption } from './options/NoticeOption';
 export { default as GuestbookOption } from './options/GuestbookOption';
 export { default as GuestSnapOption } from './options/GuestSnapOption';
 export { default as UrlShareStyleOption } from './options/UrlShareStyleOption';
+export { default as Options } from './options';
+
+export { default as MainScreen } from './Preview/MainScreen'
+export { default as CoupleInfo } from './Preview/CoupleInfo';
+export { default as WeddingCalender } from './Preview/WeddingCalender';
+export { default as WeddingAlbum } from './Preview/WeddingAlbum';
+export { default as WeddingIntro } from './Preview/WeddingIntro';
+export { default as Direction } from './Preview/Direction';
+export { default as Account } from './Preview/Account';
+export { default as Guide } from './Preview/Guide';
+export { default as GuestBook } from './Preview/GuestBook';
+export { default as GuestSnapShot } from './Preview/GuestSnapShot';
+export { default as UrlShareStyle } from './Preview/UrlShareStyle';
+export { default as Preview } from './Preview';

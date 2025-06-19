@@ -1,33 +1,13 @@
+import { useIsToggleHandler } from '@/hooks/useIsToggleHandler';
+import { useAccountInfoStore } from '@/store/form/account';
+import { AccountField } from '@/types/form/client';
 import { color } from '@merried/design-system';
-import { IconDragHandle } from '@merried/icon';
 import { CheckBox, Column, Input, Row, Text, ToggleButton } from '@merried/ui';
-import { flex } from '@merried/utils';
-import { useReducer } from 'react';
-import { styled } from 'styled-components';
-import type { AccountState, AccountAction, AccountField } from '@/types/form/client';
 
-const reducer = (state: AccountState, action: AccountAction): AccountState => {
-  switch (action.type) {
-    case 'TOGGLE':
-      return {
-        ...state,
-        [action.payload]: !state[action.payload],
-      };
-    default:
-      return state;
-  }
-};
-
-const initialState: AccountState = {
-  groom: false,
-  bride: false,
-  groomFather: false,
-  groomMother: false,
-  brideFather: false,
-  brideMother: false,
-};
-
-const accountOptions: { label: string; key: AccountField }[] = [
+const accountOptions: {
+  label: string;
+  key: AccountField;
+}[] = [
   { label: '신랑', key: 'groom' },
   { label: '신부', key: 'bride' },
   { label: '신랑 아버지', key: 'groomFather' },
@@ -37,64 +17,116 @@ const accountOptions: { label: string; key: AccountField }[] = [
 ];
 
 const AccountInfoOption = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [accountInfo, setAccountInfo] = useAccountInfoStore();
+
+  const handleTitleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setAccountInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handlePersonInputChange =
+    (personKey: AccountField) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setAccountInfo((prev) => ({
+        ...prev,
+        [personKey]: {
+          ...prev[personKey],
+          [name]: value,
+        },
+      }));
+    };
+
+  const handleShowChange = (personKey: AccountField) => (value: boolean) => {
+    setAccountInfo((prev) => ({
+      ...prev,
+      [personKey]: {
+        ...prev[personKey],
+        isVisible: value,
+      },
+    }));
+  };
+
+  const handleToggleChange = useIsToggleHandler(setAccountInfo);
 
   return (
-    <StyledAccountInfoOption>
-      <Column gap={28}>
-        <Row gap={8}>
-          <ToggleButton isOpen={false} />
-          <Text fontType="H3" color={color.G900}>
-            계좌 번호
-          </Text>
-        </Row>
-        <Column gap={8}>
-          <Text fontType="P3" color={color.G900}>
-            제목
-          </Text>
-          <Input width={384} platform="DESKTOP" placeholder="제목을 입력해주세요" />
-        </Column>
-        <Column gap={8}>
-          <Text fontType="P3" color={color.G900}>
-            내용
-          </Text>
-          <Input width={384} platform="DESKTOP" placeholder="내용을 입력해주세요" />
-        </Column>
-        {accountOptions.map(({ label, key }) => (
+    <Column gap={28}>
+      <Row gap={8}>
+        <ToggleButton isOpen={accountInfo.isToggle} onToggle={handleToggleChange} />
+        <Text fontType="H3" color={color.G900}>
+          계좌 번호
+        </Text>
+      </Row>
+      <Column gap={8}>
+        <Text fontType="P3" color={color.G900}>
+          제목
+        </Text>
+        <Input
+          name="title"
+          width={384}
+          platform="DESKTOP"
+          placeholder="제목을 입력해주세요"
+          value={accountInfo.title}
+          onChange={handleTitleMessageChange}
+        />
+      </Column>
+      <Column gap={8}>
+        <Text fontType="P3" color={color.G900}>
+          내용
+        </Text>
+        <Input
+          name="message"
+          width={384}
+          platform="DESKTOP"
+          placeholder="내용을 입력해주세요"
+          value={accountInfo.message}
+          onChange={handleTitleMessageChange}
+        />
+      </Column>
+      {accountOptions.map(({ label, key }) => {
+        const person = accountInfo[key];
+        return (
           <Column key={key} gap={8}>
             <CheckBox
               label={label}
-              checked={state[key]}
-              onChange={() => dispatch({ type: 'TOGGLE', payload: key })}
+              checked={person.isVisible}
+              onChange={handleShowChange(key)}
             />
-            {state[key] && (
+            {person.isVisible && (
               <Column gap={8}>
-                <Input width={384} platform="DESKTOP" placeholder="은행을 입력해주세요" />
                 <Input
+                  name="bank"
+                  width={384}
+                  platform="DESKTOP"
+                  placeholder="은행을 입력해주세요"
+                  value={person.bank}
+                  onChange={handlePersonInputChange(key)}
+                />
+                <Input
+                  name="accountNumber"
                   width={384}
                   platform="DESKTOP"
                   placeholder="계좌번호를 입력해주세요"
+                  value={person.accountNumber}
+                  onChange={handlePersonInputChange(key)}
                 />
                 <Input
+                  name="accountHolder"
                   width={384}
                   platform="DESKTOP"
                   placeholder="예금주를 입력해주세요"
+                  value={person.accountHolder}
+                  onChange={handlePersonInputChange(key)}
                 />
               </Column>
             )}
           </Column>
-        ))}
-      </Column>
-      <IconDragHandle />
-    </StyledAccountInfoOption>
+        );
+      })}
+    </Column>
   );
 };
 
 export default AccountInfoOption;
-
-const StyledAccountInfoOption = styled.div`
-  ${flex({ justifyContent: 'space-between', alignItems: 'flex-start' })}
-  padding: 28px 20px;
-  border-radius: 8px;
-  background: ${color.G0};
-`;
