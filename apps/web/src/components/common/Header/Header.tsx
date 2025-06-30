@@ -25,9 +25,13 @@ export default Header;
 
 const StyledHeader = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 80px;
   padding: 8px 120px;
   border-bottom: 1px solid ${color.G30};
   background: ${color.G0};
+  z-index: 1000;
 `;
