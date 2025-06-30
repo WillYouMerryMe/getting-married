@@ -17,7 +17,7 @@ const exampleData: InvitationItemProps[] = [
   { id: 3, title: '강민지 & 이준호', date: '2025.06.15', hour: '14:00' },
   { id: 4, title: '유진 & 태형 결혼식', date: '2025.07.02', hour: '16:30' },
   { id: 5, title: '지원 & 수혁 결혼식', date: '2025.07.20', hour: '13:00' },
-  { id: 6, title: '소연 & 민재 초대장', date: '2025.08.05', hour: '12:00' },
+  { id: 6, title: '소연 & 민재 초대장', date: '2025.06.19', hour: '12:00' },
 ];
 
 const InvitationList = () => {

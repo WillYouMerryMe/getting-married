@@ -1,18 +1,27 @@
 'use client';
 
+import { ROUTES } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { getTemplateFontStyle } from '@merried/design-system';
 import { Column, LoginButton } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const Login = () => {
+  const router = useRouter();
+
   return (
     <AppLayout>
       <StyledLogin>
         <Text>우리 결혼할래요?</Text>
         <Column alignItems="center" width="100%" gap={12}>
-          <LoginButton type="KAKAO" onClick={() => {}} />
+          <LoginButton
+            type="KAKAO"
+            onClick={() => {
+              router.push(ROUTES.HOME);
+            }}
+          />
           <LoginButton type="NAVER" onClick={() => {}} />
         </Column>
       </StyledLogin>

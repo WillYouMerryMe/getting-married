@@ -11,7 +11,7 @@ const MyInfoList = () => {
     <StyledMyInfoList>
       <MyInfo />
       <Spacer />
-      <Column gap={4}>
+      <Column gap={4} width="100%">
         <ListItem icon={IconHeadset} title="고객지원" />
         <ListItem icon={IconMegaphone} title="공지사항" />
       </Column>
