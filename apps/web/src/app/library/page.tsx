@@ -29,7 +29,7 @@ const StyledLibrary = styled.div`
   gap: 34px;
   width: 100%;
   height: 100vh;
-  padding: 160px 120px 80px 120px;
+  padding: 160px 120px 0px 120px;
   background: #fafafa;
 `;
 
