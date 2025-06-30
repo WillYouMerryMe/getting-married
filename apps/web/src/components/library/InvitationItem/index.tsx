@@ -9,6 +9,8 @@ import {
 import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
+import DeleteModal from '../DeleteModal';
+import { useOverlay } from '@toss/use-overlay';
 
 interface Props {
   id: string;
@@ -17,16 +19,17 @@ interface Props {
 }
 
 const InvitationItem = ({ id, title, updateAt }: Props) => {
+  const overlay = useOverlay();
+
+  const handleOverlayDeleteModal = () => {
+    overlay.open(({ isOpen, close }) => <DeleteModal isOpen={isOpen} onClose={close} />);
+  };
   const handlePreviewButtonClick = () => {
     //관련 모달
   };
 
   const handleEditButtonClick = () => {
     //수정 페이지
-  };
-
-  const handleDeleteButtonClick = () => {
-    //삭제 모달
   };
 
   const handleMailClick = () => {
@@ -59,7 +62,7 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
               style={{ cursor: 'pointer' }}
               onClick={handleEditButtonClick}
             />
-            <IconTrash style={{ cursor: 'pointer' }} onClick={handleDeleteButtonClick} />
+            <IconTrash style={{ cursor: 'pointer' }} onClick={handleOverlayDeleteModal} />
           </Row>
         </Row>
         <Column gap={12}>
