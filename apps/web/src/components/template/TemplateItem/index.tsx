@@ -1,7 +1,5 @@
 import { ROUTES } from '@/constants/common/constant';
 import { color } from '@merried/design-system';
-import { useBooleanState } from '@merried/hooks';
-import { useOutsideClick } from '@merried/hooks';
 import { DesktopButton, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import Image from 'next/image';
@@ -16,11 +14,6 @@ interface Props {
 
 const TemplateItem = ({ id, path, title }: Props) => {
   const router = useRouter();
-  const { value: isActive, setTrue, setFalse } = useBooleanState(false);
-
-  const ref = useOutsideClick(() => {
-    if (isActive) setFalse();
-  });
 
   const handleMoveFormPage = () => {
     router.push(`${ROUTES.FORM}/${id}`);
@@ -28,26 +21,24 @@ const TemplateItem = ({ id, path, title }: Props) => {
 
   return (
     <StyledTemplateItem>
-      <ImageWrapper ref={ref} $blur={isActive} onClick={setTrue}>
+      <ImageWrapper>
         <Image src={path} width={284} height={615} alt={title} />
-        {isActive && (
-          <Overlay>
-            <DesktopButton
-              styleType="DEFAULT"
-              size="SMALL"
-              width={136}
-              onClick={handleMoveFormPage}
-            >
-              템플릿 선택
-            </DesktopButton>
-            <Text fontType="P3" color={color.G0}>
-              또는
-            </Text>
-            <Text fontType="P3" color={color.G0} underline={true}>
-              청첩장 미리보기
-            </Text>
-          </Overlay>
-        )}
+        <Overlay>
+          <DesktopButton
+            styleType="DEFAULT"
+            size="SMALL"
+            width={136}
+            onClick={handleMoveFormPage}
+          >
+            템플릿 선택
+          </DesktopButton>
+          <Text fontType="P3" color={color.G0}>
+            또는
+          </Text>
+          <Text fontType="P3" color={color.G0} underline={true}>
+            청첩장 미리보기
+          </Text>
+        </Overlay>
       </ImageWrapper>
       {title}
     </StyledTemplateItem>
@@ -61,14 +52,11 @@ const StyledTemplateItem = styled.div`
   gap: 24px;
 `;
 
-const ImageWrapper = styled.div<{ $blur: boolean }>`
+const ImageWrapper = styled.div`
   position: relative;
+  width: 284px;
+  height: 615px;
   cursor: pointer;
-
-  img {
-    transition: filter 0.3s ease;
-    filter: ${({ $blur }) => ($blur ? 'blur(25px)' : 'none')};
-  }
 `;
 
 const Overlay = styled.div`
@@ -79,4 +67,16 @@ const Overlay = styled.div`
   width: 284px;
   height: 615px;
   gap: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(25px);
+
+  ${ImageWrapper}:hover & {
+    opacity: 1;
+    pointer-events: auto;
+  }
 `;
