@@ -24,3 +24,6 @@ export { default as IconCalendar } from './src/IconCalendar';
 export { default as IconOval } from './src/IconOval';
 export { default as IconShortArrow } from './src/IconShortArrow';
 export { default as IconLongArrow } from './src/IconLongArrow';
+export { default as IconTrash } from './src/IconTrash';
+export { default as IconCamera } from './src/IconCamera';
+export { default as IconEditPencil } from './src/IconEditPencil';
