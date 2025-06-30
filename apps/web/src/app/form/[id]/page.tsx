@@ -27,6 +27,6 @@ const StyledForm = styled.div`
   gap: 130px;
   width: 100%;
   min-height: 100vh;
-  padding: 40px 120px 0px 230px;
+  padding: 120px 120px 0px 230px;
   background: ${color.G10};
 `;
