@@ -14,7 +14,9 @@ const Library = () => {
         <Text fontType="H1" color={color.G900}>
           저장된 청접장
         </Text>
-        <InvitationList />
+        <InvitationListWrapper>
+          <InvitationList />
+        </InvitationListWrapper>
       </StyledLibrary>
     </AppLayout>
   );
@@ -26,8 +28,14 @@ const StyledLibrary = styled.div`
   ${flex({ flexDirection: 'column' })}
   gap: 34px;
   width: 100%;
-  min-height: 100vh;
-  padding: 80px 120px 0px 120px;
-
+  height: 100vh;
+  padding: 160px 120px 80px 120px;
   background: #fafafa;
+`;
+
+const InvitationListWrapper = styled.div`
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
