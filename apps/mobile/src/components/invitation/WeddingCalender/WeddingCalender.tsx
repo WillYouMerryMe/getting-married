@@ -31,9 +31,10 @@ const WeddingCalender = ({ date }: WeddingCalenderProps) => {
 
   return (
     <Wrapper>
-      <IconOval width={145} height={43}>
-        <Label>{date}</Label>
-      </IconOval>
+      <div style={{ position: 'relative', width: 145, height: 43 }}>
+        <IconOval width={145} height={43} />
+        <LabelOverlay>{date}</LabelOverlay>
+      </div>
 
       <Grid>
         {['일', '월', '화', '수', '목', '금', '토'].map((wd) => (
@@ -61,10 +62,19 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Label = styled.div`
+const LabelOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 145px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Ownglyph Kundo';
   font-size: 22px;
   color: ${color.G0};
+  pointer-events: none;
 `;
 
 const Grid = styled.div`

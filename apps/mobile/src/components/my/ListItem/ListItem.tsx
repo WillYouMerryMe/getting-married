@@ -17,7 +17,7 @@ const ListItem = ({ icon: Icon, title }: ListItemProps) => {
 
   return (
     <StyledListItem onClick={handleItemClick}>
-      <Row gap={8} alignItems="center">
+      <Row gap={8} alignItems="center" width="100%">
         <Icon width={22} height={22} />
         <Text fontType="P3" color={color.G300}>
           {title}

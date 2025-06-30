@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from 'styled-components';
 import DaumPostcode from 'react-daum-postcode';
 import { useEffect } from 'react';
