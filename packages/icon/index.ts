@@ -27,3 +27,5 @@ export { default as IconLongArrow } from './src/IconLongArrow';
 export { default as IconTrash } from './src/IconTrash';
 export { default as IconCamera } from './src/IconCamera';
 export { default as IconEditPencil } from './src/IconEditPencil';
+export { default as IconShare } from './src/IconShare';
+export { default as IconMail } from './src/IconMail';
