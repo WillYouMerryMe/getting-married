@@ -11,6 +11,7 @@ import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import DeleteModal from '../DeleteModal';
 import { useOverlay } from '@toss/use-overlay';
+import GuestSnapModal from '../GuestSnapModal';
 
 interface Props {
   id: string;
@@ -24,8 +25,10 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
   const handleOverlayDeleteModal = () => {
     overlay.open(({ isOpen, close }) => <DeleteModal isOpen={isOpen} onClose={close} />);
   };
-  const handlePreviewButtonClick = () => {
-    //관련 모달
+  const handleGuestSnapButtonClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <GuestSnapModal isOpen={isOpen} onClose={close} />
+    ));
   };
 
   const handleEditButtonClick = () => {
@@ -56,7 +59,7 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
           <Row gap={18} alignItems="center">
             <IconCamera
               style={{ cursor: 'pointer' }}
-              onClick={handlePreviewButtonClick}
+              onClick={handleGuestSnapButtonClick}
             />
             <IconEditPencil
               style={{ cursor: 'pointer' }}
