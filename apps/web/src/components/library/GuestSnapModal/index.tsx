@@ -1,5 +1,5 @@
 import { color } from '@merried/design-system';
-import { IconArrow, IconDelete, IconShortArrow } from '@merried/icon';
+import { IconArrow, IconDelete, IconLongArrow, IconShortArrow } from '@merried/icon';
 import { Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import Image from 'next/image';
@@ -12,21 +12,39 @@ interface Props {
 }
 
 const images = [
-  'template1.png',
-  'template2.png',
-  'template3.png',
-  'template1.png',
-  'template2.png',
-  'template3.png',
-  'template1.png',
-  'template2.png',
-  'template3.png',
-  'template1.png',
-  'template2.png',
-  'template3.png',
-  'template1.png',
-  'template2.png',
-  'template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
+  '/template1.png',
+  '/template2.png',
+  '/template3.png',
 ];
 
 const GuestSnapModal = ({ isOpen, onClose }: Props) => {
@@ -88,17 +106,29 @@ const GuestSnapModal = ({ isOpen, onClose }: Props) => {
         </StyledGuestSnapModal>
       ) : (
         <StyledGuestSnapDetailModal>
-          <IconArrow
-            direction="left"
+          <IconLongArrow
+            stroke={color.G600}
+            width={30}
+            height={30}
             style={{ position: 'absolute', top: 45, left: 52 }}
             onClick={handleBackClick}
           />
-          <IconShortArrow
+          <IconArrow
+            direction="right"
+            width={40}
+            height={40}
             style={{ position: 'absolute', top: 272, left: 235 }}
             onClick={handlePrev}
           />
-          <Column width={470} alignItems="center" gap={28}>
-            <Image src={'/marker.svg'} height={584} alt="safd" />
+          <Column width="100%" justifyContent="center" alignItems="center" gap={28}>
+            <ImageWrapper>
+              <Image
+                src={images[selectedIndex!]}
+                alt={`선택된 이미지 ${selectedIndex! + 1}`}
+                fill
+                style={{ objectFit: 'cover', borderRadius: '8px' }}
+              />
+            </ImageWrapper>
             <Text fontType="P2" color={color.G900}>
               {selectedIndex! + 1} / {images.length}
             </Text>
@@ -114,8 +144,10 @@ const GuestSnapModal = ({ isOpen, onClose }: Props) => {
               ))}
             </Row>
           </Column>
-
-          <IconShortArrow
+          <IconArrow
+            direction="left"
+            width={40}
+            height={40}
             style={{ position: 'absolute', top: 272, right: 235 }}
             onClick={handleNext}
           />
@@ -153,8 +185,17 @@ const StyledGuestSnapModal = styled.div`
 const ImageContainer = styled.div`
   display: grid;
   width: 100%;
+  max-height: 580px;
+  overflow-y: auto;
   grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
-  gap: 12px;
+  gap: 11px 10px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const MiniImage = styled.div`
@@ -169,11 +210,20 @@ const MiniImage = styled.div`
 `;
 
 const StyledGuestSnapDetailModal = styled.div`
+  position: relative;
   width: 1100px;
   height: 780px;
 
   border-radius: 16px;
   background: #fff;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 470px;
+  height: 584px;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
 const MiniThumb = styled.img<{ $active: boolean }>`
