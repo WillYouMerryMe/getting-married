@@ -29,3 +29,4 @@ export { default as IconCamera } from './src/IconCamera';
 export { default as IconEditPencil } from './src/IconEditPencil';
 export { default as IconShare } from './src/IconShare';
 export { default as IconMail } from './src/IconMail';
+export { default as IconDownload } from './src/IconDownload';
