@@ -18,4 +18,12 @@ export class Cookie {
 
     cookie.remove(key);
   }
+
+  static removeAll() {
+    if (typeof window === 'undefined') return;
+
+    Object.keys(cookie.getAll()).forEach((key) => {
+      cookie.remove(key, { path: '/' });
+    });
+  }
 }
