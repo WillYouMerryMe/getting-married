@@ -15,3 +15,8 @@ export const SIDE: Record<Side, string> = {
   GROOM: '신랑',
   BRIDE: '신부',
 };
+
+export const TOKEN = {
+  ACCESS: 'access-token',
+  REFRESH: 'refresh-token',
+};
