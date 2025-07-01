@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Provider from './providers/Provider';
 import QueryClientProvider from './providers/QueryClientProvider';
 import StyledComponentsProvider from './providers/StyledComponentsProvider';
+import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,6 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no"
+        />
+      </Head>
       <body>
         <StyledComponentsProvider>
           <QueryClientProvider>
