@@ -9,6 +9,14 @@ const WeddingIntro = () => {
   const { vedioURL, title, isToggle } = useWeddingIntroValueStore();
   const { invitationFont } = useInvitationSetupValueStore();
 
+  const convertYouTubeUrlToEmbed = (url: string): string => {
+    const match = url.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/);
+    if (match && match[1]) {
+      return `https://www.youtube.com/embed/${match[1]}`;
+    }
+    return url;
+  };
+
   if (!vedioURL || !isToggle) return null;
   return (
     <StyledWeddingIntro>
@@ -21,7 +29,7 @@ const WeddingIntro = () => {
       >
         {title || '식전 영상'}
       </CustomText>
-      <WeddingVideo src={vedioURL} />
+      <WeddingVideo src={convertYouTubeUrlToEmbed(vedioURL)} />
     </StyledWeddingIntro>
   );
 };
