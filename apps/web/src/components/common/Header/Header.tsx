@@ -3,8 +3,16 @@ import { flex } from '@merried/utils';
 import { color } from '@merried/design-system';
 import Image from 'next/image';
 import { DesktopButton } from '@merried/ui';
+import { useOverlay } from '@toss/use-overlay';
+import LoginModal from '../LoginModal';
 
 const Header = () => {
+  const overlay = useOverlay();
+
+  const handleOverlayLoginModal = () => {
+    overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
+  };
+
   return (
     <StyledHeader>
       <Image
@@ -14,7 +22,7 @@ const Header = () => {
         height={64}
         alt="logo"
       />
-      <DesktopButton styleType="SECOND" size="SMALL">
+      <DesktopButton styleType="SECOND" size="SMALL" onClick={handleOverlayLoginModal}>
         로그인
       </DesktopButton>
     </StyledHeader>
