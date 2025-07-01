@@ -37,17 +37,15 @@ const WeddingCalender = () => {
     <Wrapper>
       {isCalendarVisible && (
         <>
-          <IconOval width={145} height={43} fill={pointColor}>
-            <Label
-              style={{
-                fontFamily: invitationFont,
-              }}
-            >
+          <div style={{ position: 'relative', width: 145, height: 43 }}>
+            <IconOval width={145} height={43} fill={pointColor} />
+            <LabelOverlay>
               {year}
               {month}
               {today}
-            </Label>
-          </IconOval>
+            </LabelOverlay>
+          </div>
+
           <Grid>
             {['일', '월', '화', '수', '목', '금', '토'].map((wd) => (
               <Cell
@@ -98,10 +96,19 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Label = styled.div`
+const LabelOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 145px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Ownglyph Kundo';
   font-size: 22px;
   color: ${color.G0};
+  pointer-events: none;
 `;
 
 const Grid = styled.div`
