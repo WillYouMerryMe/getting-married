@@ -195,7 +195,7 @@ const StyledGuestSnapModal = styled.div`
 const ImageContainer = styled.div`
   display: grid;
   width: 100%;
-  max-height: 580px;
+  height: 100%;
   overflow-y: auto;
   grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
   gap: 11px 10px;
