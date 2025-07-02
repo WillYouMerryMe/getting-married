@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { DesktopButton } from '@merried/ui';
 import { useOverlay } from '@toss/use-overlay';
 import LoginModal from '../LoginModal';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '@/constants/common/constant';
 
 const Header = () => {
   const overlay = useOverlay();
+  const router = useRouter();
 
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
@@ -21,6 +24,9 @@ const Header = () => {
         width={64}
         height={64}
         alt="logo"
+        onClick={() => {
+          router.push(ROUTES.MAIN);
+        }}
       />
       <DesktopButton styleType="SECOND" size="SMALL" onClick={handleOverlayLoginModal}>
         로그인
