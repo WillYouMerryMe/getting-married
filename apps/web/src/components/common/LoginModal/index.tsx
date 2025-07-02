@@ -2,6 +2,7 @@ import { color } from '@merried/design-system';
 import { IconDelete } from '@merried/icon';
 import { Column, LoginButton, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
 
 interface Props {
@@ -10,6 +11,25 @@ interface Props {
 }
 
 const LoginModal = ({ isOpen, onClose }: Props) => {
+  const router = useRouter();
+  const kakao = process.env.NEXT_PUBLIC_KAKAO_LOGIN_URL;
+  const naver = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL;
+
+  const handleNaverLogin = () => {
+    if (naver) {
+      router.push(naver);
+    } else {
+      alert('네이버 로그인 URL이 설정되어 있지 않습니다.');
+    }
+  };
+
+  const handleKakaoLogin = () => {
+    if (kakao) {
+      router.push(kakao);
+    } else {
+      alert('카카오 로그인 URL이 설정되어 있지 않습니다.');
+    }
+  };
   const handleCloseModal = () => {
     onClose();
   };
@@ -35,8 +55,8 @@ const LoginModal = ({ isOpen, onClose }: Props) => {
           />
         </Row>
         <Column width="100%" gap={12}>
-          <LoginButton type="NAVER" onClick={() => {}}></LoginButton>
-          <LoginButton type="KAKAO" onClick={() => {}}></LoginButton>
+          <LoginButton type="NAVER" onClick={handleNaverLogin}></LoginButton>
+          <LoginButton type="KAKAO" onClick={handleKakaoLogin}></LoginButton>
         </Column>
       </StyledLoginModal>
     </BlurBackground>
