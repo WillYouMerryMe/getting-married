@@ -3,3 +3,8 @@ export const ROUTES = {
   FORM: '/form',
   LIBRARY: '/library',
 } as const;
+
+export const TOKEN = {
+  ACCESS: 'access-token',
+  REFRESH: 'refresh-token',
+};
