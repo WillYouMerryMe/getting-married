@@ -5,6 +5,6 @@ export const ROUTES = {
 } as const;
 
 export const TOKEN = {
-  ACCESS: 'access-token',
-  REFRESH: 'refresh-token',
+  ACCESS: 'accessToken',
+  REFRESH: 'refreshToken',
 };
