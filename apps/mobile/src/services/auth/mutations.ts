@@ -11,10 +11,9 @@ export const useLoginMutation = () => {
   const { mutate: loginMutate, ...restMutation } = useMutation({
     mutationFn: ({ code, provider }: PostLoginReq) => postLogin({ code, provider }),
     onSuccess: (res) => {
-      const { accessToken, refreshToken, provider } = res;
+      const { accessToken, refreshToken } = res;
       Storage.setItem(TOKEN.ACCESS, accessToken);
       Storage.setItem(TOKEN.REFRESH, refreshToken);
-      Storage.setItem('type', provider);
       router.replace(ROUTES.HOME);
     },
     onError: () => {
