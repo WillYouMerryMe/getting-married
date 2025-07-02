@@ -7,9 +7,7 @@ const Footer = () => {
     <StyledFooter>
       <Row justifyContent="space-between">
         <Column gap={100}>
-          <Text fontType="H2" color={color.G900}>
-            우리 결혼할래요?
-          </Text>
+          <SymbolText>우리 결혼할래요?</SymbolText>
           <Text fontType="P3" color={color.G80}>
             메리위드마이바디 대표 : 박강원
             <br />
@@ -46,4 +44,13 @@ const StyledFooter = styled.div`
   padding: 36px 203px 40px 120px;
   background: ${color.G10};
   margin-top: auto;
+`;
+
+const SymbolText = styled.div`
+  color: ${color.G900};
+  font-family: 'Ownglyph Kundo';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
 `;
