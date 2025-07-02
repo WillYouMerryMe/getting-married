@@ -1,11 +1,11 @@
 import { Provider } from './client';
 
-export interface PostLoginRes {
+export interface PostLoginReq {
   code: string;
   provider: Provider;
 }
 
-export interface PostLoginReq {
+export interface PostLoginRes {
   accessToken: string;
   refreshToken: string;
   provider: Provider;
