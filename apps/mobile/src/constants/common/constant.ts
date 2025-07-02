@@ -20,3 +20,7 @@ export const TOKEN = {
   ACCESS: 'access-token',
   REFRESH: 'refresh-token',
 };
+
+export const KEY = {
+  CARD_LIST: 'card-list',
+};

@@ -3,25 +3,12 @@ import InvitationItem from '../InvitationItem/InvitationItem';
 import { styled } from 'styled-components';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
-
-interface InvitationItemProps {
-  id: number;
-  title: string;
-  date: string;
-  hour: string;
-}
-
-const exampleData: InvitationItemProps[] = [
-  { id: 1, title: '김예진 결혼식에 초대합니다', date: '2025.05.10', hour: '15:00' },
-  { id: 2, title: '송윤서 웨딩 초대장', date: '2025.05.10', hour: '11:30' },
-  { id: 3, title: '강민지 & 이준호', date: '2025.06.15', hour: '14:00' },
-  { id: 4, title: '유진 & 태형 결혼식', date: '2025.07.02', hour: '16:30' },
-  { id: 5, title: '지원 & 수혁 결혼식', date: '2025.07.20', hour: '13:00' },
-  { id: 6, title: '소연 & 민재 초대장', date: '2025.06.19', hour: '12:00' },
-];
+import { useCardListQuery } from '@/services/card/queries';
 
 const InvitationList = () => {
-  if (exampleData.length === 0) {
+  const { data } = useCardListQuery();
+
+  if (data?.length === 0) {
     return (
       <EmptyContainer>
         <Column gap={10} alignItems="center">
@@ -38,13 +25,12 @@ const InvitationList = () => {
 
   return (
     <ListContainer>
-      {exampleData.map((item, idx) => (
+      {data?.map((item, idx) => (
         <InvitationItem
           key={idx}
-          id={item.id}
+          id={Number(item.id)}
           title={item.title}
-          date={item.date}
-          hour={item.hour}
+          updateAt={item.updateAt}
         />
       ))}
     </ListContainer>

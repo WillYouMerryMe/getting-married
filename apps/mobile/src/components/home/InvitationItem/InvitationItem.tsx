@@ -9,23 +9,24 @@ import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 import PasswordModal from '../PasswordModal/PasswordModal';
+import { getDate } from '@/utils/getDate';
+import { getHour } from '@/utils/getHour';
 
 interface InvitationItemProps {
   id: number;
   title: string;
-  date: string;
-  hour: string;
+  updateAt: string;
 }
 
-const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
+const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
   const router = useRouter();
   const overlay = useOverlay();
 
-  const weddingDate = dayjs().isSame(dayjs(date), 'day');
+  const weddingDate = dayjs().isSame(dayjs(updateAt), 'day');
 
   const handleMoveGuestBook = () => {
     overlay.open(({ isOpen, close }) => (
-      <PasswordModal isOpen={isOpen} onClose={close} password="1234" id={id}/>
+      <PasswordModal isOpen={isOpen} onClose={close} password="1234" id={id} />
     ));
   };
 
@@ -44,10 +45,10 @@ const InvitationItem = ({ id, title, date, hour }: InvitationItemProps) => {
           </Text>
           <Row gap={4}>
             <Text fontType="P3" color={color.G80}>
-              {date}
+              {getDate(updateAt)}
             </Text>
             <Text fontType="P3" color={color.G80}>
-              {hour}
+              {getHour(updateAt)}
             </Text>
           </Row>
         </Column>
