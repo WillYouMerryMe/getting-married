@@ -35,9 +35,10 @@ export const useLogoutMutation = () => {
       router.replace(ROUTES.LOGIN);
     },
     onError: () => {
+      localStorage.clear();
       alert('잠시후 다시 시도해주세요.');
     },
   });
 
-  return { logoutMutate, restMutation };
+  return { logoutMutate, ...restMutation };
 };
