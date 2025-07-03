@@ -1,23 +1,15 @@
 'use client';
+export const dynamic = 'force-dynamic';
 
-import { useLoginMutation } from '@/services/auth/mutations';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { CallbackKakaoContent } from '@/components/login';
+import { Suspense } from 'react';
 
 const CallbackKakao = () => {
-  const searchParams = useSearchParams();
-  const { loginMutate } = useLoginMutation();
-  const alreadyRun = useRef(false);
-
-  useEffect(() => {
-    const code = searchParams.get('code');
-    if (code && !alreadyRun.current) {
-      alreadyRun.current = true;
-      loginMutate({ code, provider: 'KAKAO' });
-    }
-  }, [searchParams, loginMutate]);
-
-  return <></>;
+  return (
+    <Suspense>
+      <CallbackKakaoContent />
+    </Suspense>
+  );
 };
 
 export default CallbackKakao;
