@@ -8,3 +8,7 @@ export const TOKEN = {
   ACCESS: 'accessToken',
   REFRESH: 'refreshToken',
 };
+
+export const KEY = {
+  USERS: 'useUsers',
+};
