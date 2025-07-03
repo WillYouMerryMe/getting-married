@@ -1,6 +1,6 @@
 'use client';
 
-import { useLoginMutation } from '@/services/auth/mutation';
+import { useLoginMutation } from '@/services/auth/mutations';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 

@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { postLogin } from './api';
+import { postLogin } from './apis';
 import { Storage } from '@/apis/storage/storage';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
