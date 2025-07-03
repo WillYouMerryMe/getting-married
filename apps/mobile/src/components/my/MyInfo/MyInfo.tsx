@@ -1,3 +1,6 @@
+import { Storage } from '@/apis/storage/storage';
+import { TOKEN } from '@/constants/common/constant';
+import { useLogoutMutation } from '@/services/auth/mutations';
 import { useUser } from '@/services/user/queries';
 import { color } from '@merried/design-system';
 import { BrandBadge, Column, Row, Text } from '@merried/ui';
@@ -6,6 +9,11 @@ import styled from 'styled-components';
 
 const MyInfo = () => {
   const { data } = useUser();
+  const { logoutMutate } = useLogoutMutation();
+
+  const handleLogout = () => {
+    logoutMutate(Storage.getItem(TOKEN.REFRESH) ?? '');
+  };
 
   return (
     <StyledMyInfo>
@@ -20,7 +28,7 @@ const MyInfo = () => {
           {data?.email}
         </Text>
       </Column>
-      <div onClick={() => {}}>
+      <div onClick={handleLogout}>
         <Text fontType="P3" color={color.G100}>
           로그아웃
         </Text>
