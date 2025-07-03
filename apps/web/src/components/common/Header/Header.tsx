@@ -29,12 +29,10 @@ const Header = () => {
   };
 
   const handleSaveForm = () => {
-    console.log('청접장 저장');
+    //청접장 저장
   };
 
   const { data: userData } = useUsers();
-
-  console.log(userData);
 
   return (
     <StyledHeader>
