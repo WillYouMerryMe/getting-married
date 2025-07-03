@@ -5,13 +5,16 @@ import Image from 'next/image';
 import { DesktopButton, Row } from '@merried/ui';
 import { useOverlay } from '@toss/use-overlay';
 import LoginModal from '../LoginModal';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants/common/constant';
 import { useUsers } from '@/services/user/queries';
 
 const Header = () => {
   const overlay = useOverlay();
   const router = useRouter();
+  const pathname = usePathname();
+
+  const isFormPage = pathname?.startsWith('/form');
 
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
@@ -23,6 +26,10 @@ const Header = () => {
 
   const handleMoveMain = () => {
     router.push(ROUTES.MAIN);
+  };
+
+  const handleSaveForm = () => {
+    console.log('청접장 저장');
   };
 
   const { data: userData } = useUsers();
@@ -53,14 +60,25 @@ const Header = () => {
               >
                 저장된 청접장
               </DesktopButton>
-              <DesktopButton
-                width={133}
-                styleType="DEFAULT"
-                size="SMALL"
-                onClick={handleMoveMain}
-              >
-                청접장 제작
-              </DesktopButton>
+              {isFormPage ? (
+                <DesktopButton
+                  width={117}
+                  styleType="DEFAULT"
+                  size="SMALL"
+                  onClick={handleSaveForm}
+                >
+                  저장하기
+                </DesktopButton>
+              ) : (
+                <DesktopButton
+                  width={133}
+                  styleType="DEFAULT"
+                  size="SMALL"
+                  onClick={handleMoveMain}
+                >
+                  청접장 제작
+                </DesktopButton>
+              )}
             </Row>
             <Image
               src={userData.profileImg}
