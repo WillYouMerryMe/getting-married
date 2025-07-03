@@ -2,11 +2,12 @@ import { styled } from 'styled-components';
 import { flex } from '@merried/utils';
 import { color } from '@merried/design-system';
 import Image from 'next/image';
-import { DesktopButton } from '@merried/ui';
+import { DesktopButton, Row } from '@merried/ui';
 import { useOverlay } from '@toss/use-overlay';
 import LoginModal from '../LoginModal';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants/common/constant';
+import { useUsers } from '@/services/user/queries';
 
 const Header = () => {
   const overlay = useOverlay();
@@ -15,6 +16,18 @@ const Header = () => {
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
   };
+
+  const handleMoveLibrary = () => {
+    router.push(ROUTES.LIBRARY);
+  };
+
+  const handleMoveMain = () => {
+    router.push(ROUTES.MAIN);
+  };
+
+  const { data: userData } = useUsers();
+
+  console.log(userData);
 
   return (
     <StyledHeader>
@@ -28,9 +41,45 @@ const Header = () => {
           router.push(ROUTES.MAIN);
         }}
       />
-      <DesktopButton styleType="SECOND" size="SMALL" onClick={handleOverlayLoginModal}>
-        로그인
-      </DesktopButton>
+      <Row gap={32}>
+        {userData ? (
+          <>
+            <Row gap={8}>
+              <DesktopButton
+                width={146}
+                styleType="SECOND"
+                size="SMALL"
+                onClick={handleMoveLibrary}
+              >
+                저장된 청접장
+              </DesktopButton>
+              <DesktopButton
+                width={133}
+                styleType="DEFAULT"
+                size="SMALL"
+                onClick={handleMoveMain}
+              >
+                청접장 제작
+              </DesktopButton>
+            </Row>
+            <Image
+              src={userData.profileImg}
+              width={46}
+              height={46}
+              alt="profile"
+              style={{ borderRadius: '99px', objectFit: 'cover', cursor: 'pointer' }}
+            />
+          </>
+        ) : (
+          <DesktopButton
+            styleType="SECOND"
+            size="SMALL"
+            onClick={handleOverlayLoginModal}
+          >
+            로그인
+          </DesktopButton>
+        )}
+      </Row>
     </StyledHeader>
   );
 };
