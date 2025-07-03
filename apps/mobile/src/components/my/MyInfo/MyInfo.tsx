@@ -1,20 +1,23 @@
+import { useUser } from '@/services/user/queries';
 import { color } from '@merried/design-system';
 import { BrandBadge, Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 const MyInfo = () => {
+  const { data } = useUser();
+
   return (
-    <StyledMyInfo onClick={() => {}}>
+    <StyledMyInfo>
       <Column gap={4}>
         <Row gap={8} alignItems="center">
           <Text fontType="H3" color={color.G900}>
-            박강원님
+            {data?.nickname}님
           </Text>
-          <BrandBadge type="NAVER" />
+          <BrandBadge type={data?.provider ?? 'KAKAO'} />
         </Row>
         <Text fontType="P3" color={color.G60}>
-          pkw0227@gmail.com
+          {data?.email}
         </Text>
       </Column>
       <div onClick={() => {}}>
