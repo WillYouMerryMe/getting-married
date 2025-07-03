@@ -13,6 +13,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  images: {
+    domains: ['ssl.pstatic.net'],
+  },
 };
 
 export default nextConfig;
