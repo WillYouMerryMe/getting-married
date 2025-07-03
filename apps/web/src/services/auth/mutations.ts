@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { postLogin } from './apis';
+import { postLogin, postLogout } from './apis';
 import { Storage } from '@/apis/storage/storage';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
@@ -22,4 +22,21 @@ export const useLoginMutation = () => {
   });
 
   return { loginMutate, ...restMutation };
+};
+
+export const useLogoutMutation = () => {
+  const router = useRouter();
+
+  const { mutate: logoutMutate, ...restMutation } = useMutation({
+    mutationFn: postLogout,
+    onSuccess: () => {
+      router.replace(ROUTES.MAIN);
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+      localStorage.clear();
+    },
+  });
+
+  return { logoutMutate, ...restMutation };
 };
