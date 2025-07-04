@@ -4,26 +4,32 @@ import { BrandBadge, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 
-const ProfileInfo = () => {
+interface Props {
+  nickname: string;
+  email: string;
+  provider: 'KAKAO' | 'NAVER';
+}
+
+const ProfileInfo = ({ nickname, email, provider }: Props) => {
   return (
     <StyledProfileInfo>
       <ProfileBox>
-        <Row gap={64}>
-          <Row gap={8}>
+        <Row gap={64} alignItems="center">
+          <Row gap={8} alignItems="center">
             <Text fontType="H3" color={color.G900}>
-              박강원님
+              {nickname}님
             </Text>
-            <BrandBadge type="KAKAO" />
+            <BrandBadge type={provider} />
           </Row>
           <LogoutButton>
             <Text fontType="Button4" color={color.G400}>
               로그아웃
             </Text>
-            <IconLongArrow stroke={color.G400} width={14} height={14} />
+            <IconLongArrow direction="right" stroke={color.G400} width={14} height={14} />
           </LogoutButton>
         </Row>
         <Text fontType="P3" color={color.G80}>
-          이미엘@gmail.com
+          {email}
         </Text>
       </ProfileBox>
       <WithdrawButton>
@@ -63,7 +69,7 @@ const ProfileBox = styled.div`
 `;
 
 const LogoutButton = styled.div`
-  ${flex({ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' })}
+  ${flex({ justifyContent: 'center', alignItems: 'center' })}
   height: 32px;
   padding: 9px 12px 9px 14px;
   gap: 4px;
@@ -72,6 +78,7 @@ const LogoutButton = styled.div`
 
   border: 1px solid ${color.G40};
   background: ${color.G0};
+  cursor: pointer;
 `;
 
 const WithdrawButton = styled.div`

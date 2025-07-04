@@ -40,83 +40,85 @@ const Header = () => {
   const { data: userData } = useUsers();
 
   return (
-    <>
-      <StyledHeader>
-        <Image
-          src="/LogoFull.svg"
-          style={{ cursor: 'pointer' }}
-          width={64}
-          height={64}
-          alt="logo"
-          onClick={() => {
-            router.push(ROUTES.MAIN);
-          }}
-        />
-        <Row gap={32}>
-          {userData ? (
-            <>
-              <Row gap={8}>
+    <StyledHeader>
+      <Image
+        src="/LogoFull.svg"
+        style={{ cursor: 'pointer' }}
+        width={64}
+        height={64}
+        alt="logo"
+        onClick={() => {
+          router.push(ROUTES.MAIN);
+        }}
+      />
+      <Row gap={32}>
+        {userData ? (
+          <>
+            <Row gap={8}>
+              <DesktopButton
+                width={146}
+                styleType="SECOND"
+                size="SMALL"
+                onClick={handleMoveLibrary}
+              >
+                저장된 청접장
+              </DesktopButton>
+              {isFormPage ? (
                 <DesktopButton
-                  width={146}
-                  styleType="SECOND"
+                  width={117}
+                  styleType="DEFAULT"
                   size="SMALL"
-                  onClick={handleMoveLibrary}
+                  onClick={handleSaveForm}
                 >
-                  저장된 청접장
+                  저장하기
                 </DesktopButton>
-                {isFormPage ? (
-                  <DesktopButton
-                    width={117}
-                    styleType="DEFAULT"
-                    size="SMALL"
-                    onClick={handleSaveForm}
-                  >
-                    저장하기
-                  </DesktopButton>
-                ) : (
-                  <DesktopButton
-                    width={133}
-                    styleType="DEFAULT"
-                    size="SMALL"
-                    onClick={handleMoveMain}
-                  >
-                    청접장 제작
-                  </DesktopButton>
-                )}
-              </Row>
-              <div ref={profileRef}>
-                <Image
-                  src={userData.profileImg}
-                  width={46}
-                  height={46}
-                  alt="profile"
-                  style={{
-                    borderRadius: '99px',
-                    objectFit: 'cover',
-                    cursor: 'pointer',
-                    position: 'relative',
-                  }}
-                  onClick={profileDropdown.toggle}
+              ) : (
+                <DesktopButton
+                  width={133}
+                  styleType="DEFAULT"
+                  size="SMALL"
+                  onClick={handleMoveMain}
+                >
+                  청접장 제작
+                </DesktopButton>
+              )}
+            </Row>
+            <div ref={profileRef}>
+              <Image
+                src={userData.profileImg}
+                width={46}
+                height={46}
+                alt="profile"
+                style={{
+                  borderRadius: '99px',
+                  objectFit: 'cover',
+                  cursor: 'pointer',
+                  position: 'relative',
+                }}
+                onClick={profileDropdown.toggle}
+              />
+            </div>
+            {profileDropdown.value && (
+              <ProfileInfoWrapper>
+                <ProfileInfo
+                  nickname={userData.nickname}
+                  email={userData.email}
+                  provider={userData.provider}
                 />
-              </div>
-            </>
-          ) : (
-            <DesktopButton
-              styleType="SECOND"
-              size="SMALL"
-              onClick={handleOverlayLoginModal}
-            >
-              로그인
-            </DesktopButton>
-          )}
-        </Row>
-      </StyledHeader>
-      {profileDropdown.value && (
-        <ProfileInfoWrapper>
-          <ProfileInfo />
-        </ProfileInfoWrapper>
-      )}
-    </>
+              </ProfileInfoWrapper>
+            )}
+          </>
+        ) : (
+          <DesktopButton
+            styleType="SECOND"
+            size="SMALL"
+            onClick={handleOverlayLoginModal}
+          >
+            로그인
+          </DesktopButton>
+        )}
+      </Row>
+    </StyledHeader>
   );
 };
 
