@@ -8,6 +8,8 @@ import LoginModal from '../LoginModal';
 import { usePathname, useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants/common/constant';
 import { useUsers } from '@/services/user/queries';
+import { useBooleanState, useOutsideClick } from '@merried/hooks';
+import ProfileInfo from '../ProfileInfo';
 
 const Header = () => {
   const overlay = useOverlay();
@@ -15,6 +17,9 @@ const Header = () => {
   const pathname = usePathname();
 
   const isFormPage = pathname?.startsWith('/form');
+
+  const profileDropdown = useBooleanState(false);
+  const profileRef = useOutsideClick(profileDropdown.setFalse);
 
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
@@ -78,13 +83,30 @@ const Header = () => {
                 </DesktopButton>
               )}
             </Row>
-            <Image
-              src={userData.profileImg}
-              width={46}
-              height={46}
-              alt="profile"
-              style={{ borderRadius: '99px', objectFit: 'cover', cursor: 'pointer' }}
-            />
+            <div ref={profileRef}>
+              <Image
+                src={userData.profileImg}
+                width={46}
+                height={46}
+                alt="profile"
+                style={{
+                  borderRadius: '99px',
+                  objectFit: 'cover',
+                  cursor: 'pointer',
+                  position: 'relative',
+                }}
+                onClick={profileDropdown.toggle}
+              />
+              {profileDropdown.value && (
+                <ProfileInfoWrapper>
+                  <ProfileInfo
+                    nickname={userData.nickname}
+                    email={userData.email}
+                    provider={userData.provider}
+                  />
+                </ProfileInfoWrapper>
+              )}
+            </div>
           </>
         ) : (
           <DesktopButton
@@ -113,4 +135,11 @@ const StyledHeader = styled.div`
   border-bottom: 1px solid ${color.G30};
   background: ${color.G0};
   z-index: 1000;
+`;
+
+const ProfileInfoWrapper = styled.div`
+  position: absolute;
+  top: 66px;
+  right: 120px;
+  z-index: 1010;
 `;

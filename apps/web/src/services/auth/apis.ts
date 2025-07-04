@@ -1,4 +1,5 @@
 import { married } from '@/apis/instance/instance';
+import { authorization } from '@/apis/token';
 import { PostLoginReq, PostLoginRes } from '@/types/auth/remote';
 
 export const postLogin = async ({ code, provider }: PostLoginReq) => {
@@ -7,18 +8,24 @@ export const postLogin = async ({ code, provider }: PostLoginReq) => {
   return data;
 };
 
-export const postReissue = async (refreshToken: string) => {
+export const postReissue = async (token: string) => {
   const { data } = await married.post('/auth/reissue', {
-    refreshToken,
+    token,
   });
 
   return data;
 };
 
-export const postLogout = async (refreshToken: string) => {
+export const postLogout = async (token: string) => {
   const { data } = await married.post('/auth/logout', {
-    refreshToken,
+    token,
   });
+
+  return data;
+};
+
+export const deleteWithdraw = async () => {
+  const { data } = await married.delete('/auth', authorization());
 
   return data;
 };
