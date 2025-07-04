@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { postLogin, postLogout } from './apis';
+import { deleteWithdraw, postLogin, postLogout } from './apis';
 import { Storage } from '@/apis/storage/storage';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
@@ -46,4 +46,21 @@ export const useLogoutMutation = () => {
   };
 
   return { logoutMutate: handleLogout, ...restMutation };
+};
+
+export const useWithdrawMutation = () => {
+  const router = useRouter();
+
+  const { mutate: withdrawMutate, ...restMutation } = useMutation({
+    mutationFn: deleteWithdraw,
+    onSuccess: () => {
+      router.replace(ROUTES.MAIN);
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+      localStorage.clear();
+    },
+  });
+
+  return { withdrawMutate, ...restMutation };
 };

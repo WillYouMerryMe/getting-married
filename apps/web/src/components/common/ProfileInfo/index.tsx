@@ -1,4 +1,4 @@
-import { useLogoutMutation } from '@/services/auth/mutations';
+import { useLogoutMutation, useWithdrawMutation } from '@/services/auth/mutations';
 import { color } from '@merried/design-system';
 import { IconLongArrow } from '@merried/icon';
 import { BrandBadge, Row, Text } from '@merried/ui';
@@ -13,9 +13,14 @@ interface Props {
 
 const ProfileInfo = ({ nickname, email, provider }: Props) => {
   const { logoutMutate } = useLogoutMutation();
+  const { withdrawMutate } = useWithdrawMutation();
 
   const handleLogoutButtonClick = () => {
     logoutMutate();
+  };
+
+  const handleWithdrawButtonClick = () => {
+    withdrawMutate();
   };
 
   return (
@@ -39,7 +44,7 @@ const ProfileInfo = ({ nickname, email, provider }: Props) => {
           {email}
         </Text>
       </ProfileBox>
-      <WithdrawButton>
+      <WithdrawButton onClick={handleWithdrawButtonClick}>
         <Text fontType="Button3" color={color.red}>
           회원탈퇴
         </Text>
