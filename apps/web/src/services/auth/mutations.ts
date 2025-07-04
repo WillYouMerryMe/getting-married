@@ -38,5 +38,12 @@ export const useLogoutMutation = () => {
     },
   });
 
-  return { logoutMutate, ...restMutation };
+  const handleLogout = () => {
+    const refreshToken = Storage.getItem(TOKEN.REFRESH);
+    if (refreshToken) {
+      logoutMutate(refreshToken);
+    }
+  };
+
+  return { logoutMutate: handleLogout, ...restMutation };
 };
