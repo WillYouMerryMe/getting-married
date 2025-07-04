@@ -97,16 +97,16 @@ const Header = () => {
                 }}
                 onClick={profileDropdown.toggle}
               />
+              {profileDropdown.value && (
+                <ProfileInfoWrapper>
+                  <ProfileInfo
+                    nickname={userData.nickname}
+                    email={userData.email}
+                    provider={userData.provider}
+                  />
+                </ProfileInfoWrapper>
+              )}
             </div>
-            {profileDropdown.value && (
-              <ProfileInfoWrapper>
-                <ProfileInfo
-                  nickname={userData.nickname}
-                  email={userData.email}
-                  provider={userData.provider}
-                />
-              </ProfileInfoWrapper>
-            )}
           </>
         ) : (
           <DesktopButton
