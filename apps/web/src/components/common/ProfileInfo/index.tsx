@@ -1,3 +1,4 @@
+import { useLogoutMutation } from '@/services/auth/mutations';
 import { color } from '@merried/design-system';
 import { IconLongArrow } from '@merried/icon';
 import { BrandBadge, Row, Text } from '@merried/ui';
@@ -11,6 +12,12 @@ interface Props {
 }
 
 const ProfileInfo = ({ nickname, email, provider }: Props) => {
+  const { logoutMutate } = useLogoutMutation();
+
+  const handleLogoutButtonClick = () => {
+    logoutMutate();
+  };
+
   return (
     <StyledProfileInfo>
       <ProfileBox>
@@ -21,7 +28,7 @@ const ProfileInfo = ({ nickname, email, provider }: Props) => {
             </Text>
             <BrandBadge type={provider} />
           </Row>
-          <LogoutButton>
+          <LogoutButton onClick={handleLogoutButtonClick}>
             <Text fontType="Button4" color={color.G400}>
               로그아웃
             </Text>
