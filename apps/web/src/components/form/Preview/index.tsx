@@ -18,6 +18,21 @@ import {
   GuestSnapShot,
   UrlShareStyle,
 } from '@/components/form';
+import { useComponentOrderValueStore } from '@/store/form/orderState';
+
+const PREVIEW_COMPONENTS: Record<string, React.FC> = {
+  INVITATION_MESSAGE: Greeting,
+  GROOM_BRIDE_PROFILE: CoupleInfo,
+  WEDDING_DATE: WeddingCalender,
+  PHOTO_GALLERY: WeddingAlbum,
+  VIDEO_GALLERY: WeddingIntro,
+  LOCATION_GUIDE: Direction,
+  ACCOUNT_INFO: Account,
+  GUEST_NOTICE: Guide,
+  GUEST_BOOK: GuestBook,
+  GUEST_SNAPSHOTS: GuestSnapShot,
+  SHARE_URL_STYLE: UrlShareStyle,
+};
 
 interface Props {
   templateId: string;
@@ -26,6 +41,7 @@ interface Props {
 const Preview = ({ templateId }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const componentOrder = useComponentOrderValueStore();
 
   const scrollToContent = () => {
     if (scrollRef.current && contentRef.current) {
@@ -42,17 +58,10 @@ const Preview = ({ templateId }: Props) => {
         <MainScreen id={templateId} onScrollClick={scrollToContent} />
 
         <ContentSection ref={contentRef}>
-          <Greeting />
-          <CoupleInfo />
-          <WeddingCalender />
-          <WeddingAlbum />
-          <WeddingIntro />
-          <Direction />
-          <Account />
-          <Guide />
-          <GuestBook />
-          <GuestSnapShot />
-          <UrlShareStyle />
+          {componentOrder.map((id) => {
+            const Component = PREVIEW_COMPONENTS[id];
+            return Component ? <Component key={id} /> : null;
+          })}
           <Text fontType="P4" color={color.G80}>
             COPYRIGHT Kangwon Park. All rights reserved.
           </Text>
