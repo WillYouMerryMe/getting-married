@@ -4,7 +4,7 @@ import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
-interface CoupleInfoItme {
+interface CoupleInfoItemProps {
   motherName?: string;
   isMotherDeceased?: boolean;
   fatherName?: string;
@@ -24,7 +24,7 @@ const CoupleInfoItem = ({
   name,
   font,
   pointColor,
-}: CoupleInfoItme) => {
+}: CoupleInfoItemProps) => {
   return (
     <StyledCoupleInfoItem>
       <CustomText fontType={font} color={color.G900} size={20} weight={400} line={100}>
