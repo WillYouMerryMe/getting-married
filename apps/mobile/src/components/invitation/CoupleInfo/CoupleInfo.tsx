@@ -19,12 +19,16 @@ const CoupleInfo = ({ coupleList, pointColor, font }: CoupleInfoProps) => {
   return (
     <StyledCoupleInfo>
       {coupleList.map(
-        (
-          { fatherName, isFatherDeceased, motherName, isMotherDeceased, gender, name },
-          idx
-        ) => (
+        ({
+          fatherName,
+          isFatherDeceased,
+          motherName,
+          isMotherDeceased,
+          gender,
+          name,
+        }) => (
           <CoupleInfoItem
-            key={idx}
+            key={`${gender}-${name}-${fatherName}-${motherName}`}
             fatherName={fatherName}
             isFatherDeceased={isFatherDeceased}
             motherName={motherName}
