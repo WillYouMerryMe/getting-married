@@ -5,26 +5,19 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import GuestSnapShotContent from './GuestSnapShotContent/GuestSnapShotContent';
 
-const GuestSnapShot = () => {
+interface GuestSnapShotProps {
+  font: string;
+  title: string;
+}
+
+const GuestSnapShot = ({ font, title }: GuestSnapShotProps) => {
   return (
     <StyledGuestSnapShot>
       <Column gap={12} alignItems="center">
-        <CustomText
-          fontType="Ownglyph Kundo"
-          size={24}
-          weight={400}
-          line={100}
-          color={color.G900}
-        >
-          게스트 스냅
+        <CustomText fontType={font} size={24} weight={400} line={100} color={color.G900}>
+          {title}
         </CustomText>
-        <CustomText
-          fontType="Ownglyph Kundo"
-          size={18}
-          weight={400}
-          line={140}
-          color={color.G80}
-        >
+        <CustomText fontType={font} size={18} weight={400} line={140} color={color.G80}>
           하나뿐일 특별한 사진을 남겨주세요!
           <br />
           많은 참여 부탁드립니다.

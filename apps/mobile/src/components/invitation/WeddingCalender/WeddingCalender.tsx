@@ -7,21 +7,33 @@ import { IconOval } from '@merried/icon';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { Column } from '@merried/ui';
+import { getWeddingCalenderDate } from '@/utils/getWeddingCalenderDate';
+import { formatKoreanWeddingDate } from '@/utils/formatKoreanWeddingDate';
 
 dayjs.locale('ko');
 
 interface WeddingCalenderProps {
   date: string;
+  font: string;
+  pointColor: string;
+  weddingHallName: string;
+  isCalendarVisible: boolean;
 }
 
-const WeddingCalender = ({ date }: WeddingCalenderProps) => {
-  const d = dayjs(date, 'YYYYMMDD');
-  const year = d.year();
-  const month = d.month() + 1;
+const WeddingCalender = ({
+  date,
+  font,
+  pointColor,
+  weddingHallName,
+  isCalendarVisible,
+}: WeddingCalenderProps) => {
+  const d = dayjs(date);
   const today = d.date();
 
   const firstDay = d.startOf('month').day();
   const totalDays = d.endOf('month').date();
+
+  if (!d.isValid()) return;
 
   const cells = [
     ...Array(firstDay).fill(null),
@@ -31,24 +43,29 @@ const WeddingCalender = ({ date }: WeddingCalenderProps) => {
 
   return (
     <Wrapper>
-      <div style={{ position: 'relative', width: 145, height: 43 }}>
-        <IconOval width={145} height={43} />
-        <LabelOverlay>{date}</LabelOverlay>
-      </div>
-
-      <Grid>
-        {['일', '월', '화', '수', '목', '금', '토'].map((wd) => (
-          <Cell key={wd}>{wd}</Cell>
-        ))}
-        {cells.map((num, i) => (
-          <Cell key={i} $active={num === today}>
-            {num || ''}
-          </Cell>
-        ))}
-      </Grid>
+      {isCalendarVisible && (
+        <>
+          <div style={{ position: 'relative', width: 145, height: 43 }}>
+            <IconOval width={145} height={43} fill={pointColor} />
+            <LabelOverlay>{getWeddingCalenderDate(date)}</LabelOverlay>
+          </div>
+          <Grid>
+            {['일', '월', '화', '수', '목', '금', '토'].map((wd) => (
+              <Cell key={wd} pointColor={pointColor} font={font}>
+                {wd}
+              </Cell>
+            ))}
+            {cells.map((num, i) => (
+              <Cell key={i} $active={num === today} pointColor={pointColor} font={font}>
+                {num || ''}
+              </Cell>
+            ))}
+          </Grid>
+        </>
+      )}
       <Column>
-        <Info>{`${year}년 ${month}월 ${today}일 토요일 오후 1시`}</Info>
-        <Info>JW 메리어트 호텔 서울 그랜드 볼룸</Info>
+        <Info font={font}>{formatKoreanWeddingDate(date)}</Info>
+        <Info font={font}>{weddingHallName}</Info>
       </Column>
     </Wrapper>
   );
@@ -86,19 +103,19 @@ const Grid = styled.div`
   align-items: center;
 `;
 
-const Cell = styled.div<{ $active?: boolean }>`
+const Cell = styled.div<{ $active?: boolean; pointColor: string; font: string }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  font-family: 'Ownglyph Kundo';
+  font-family: ${(p) => p.font};
   font-size: 16px;
   width: ${(p) => (p.$active ? '40px' : '46.71px')};
   height: ${(p) => (p.$active ? '40px' : '48px')};
   color: ${(p) => (p.$active ? color.G0 : color.G900)};
-  background: ${(p) => (p.$active ? color.pointYellow : 'transparent')};
+  background: ${(p) => (p.$active ? `${p.pointColor}` : 'transparent')};
   border-radius: ${(p) => (p.$active ? '50%' : '0')};
 `;
 
-const Info = styled.div`
-  font-family: 'Ownglyph Kundo';
+const Info = styled.div<{ font: string }>`
+  font-family: ${(p) => p.font};
   font-size: 18px;
   color: ${color.G900};
   text-align: center;

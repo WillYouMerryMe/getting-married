@@ -9,9 +9,10 @@ import AccountModal from '../AccountModal/AccountModal';
 interface AccountItemProps {
   type: string;
   accounts: Account[];
+  pointColor: string;
 }
 
-const AccountItem = ({ type, accounts }: AccountItemProps) => {
+const AccountItem = ({ type, accounts, pointColor }: AccountItemProps) => {
   const overlay = useOverlay();
 
   const handleOverlayAccountModal = () => {
@@ -43,7 +44,7 @@ const AccountItem = ({ type, accounts }: AccountItemProps) => {
         </BlurArea>
         <ButtonWrapper>
           <ActionButton
-            background={color.pointYellow}
+            background={pointColor}
             onClick={handleOverlayAccountModal}
           >
             <Text fontType="Button3" color={color.G900}>

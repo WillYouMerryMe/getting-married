@@ -20,7 +20,7 @@ const AccountContent = ({ onClose, accounts, type }: AccountContentProps) => {
     setAccountStep('의사여부');
   };
 
-  const handleCopyAccount = (bank: string, account: string) => {
+  const handleCopyAccount = (bank?: string, account?: string) => {
     const textToCopy = `${account} ${bank}`;
     navigator.clipboard.writeText(textToCopy);
   };

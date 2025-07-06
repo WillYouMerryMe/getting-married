@@ -1,9 +1,12 @@
-import { color } from '@merried/design-system';
 import { Button, Column, Input, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
-const WriteGuestBook = () => {
+interface WriteGuestBookProps {
+  pointColor: string;
+}
+
+const WriteGuestBook = ({ pointColor }: WriteGuestBookProps) => {
   return (
     <StyledWriteGuestBook>
       <Column gap={12} width="100%">
@@ -14,7 +17,7 @@ const WriteGuestBook = () => {
         onClick={() => {}}
         width="100%"
         size="VERY_LARGE"
-        pointColor={color.pointYellow}
+        pointColor={pointColor}
       >
         <Text fontType="Button3">작성완료</Text>
       </Button>
