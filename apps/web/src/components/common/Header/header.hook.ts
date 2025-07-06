@@ -71,7 +71,7 @@ export const usePostCardParams = (): PostCardReq => {
     videoGallery: weddingIntro.isToggle
       ? {
           title: weddingIntro.title,
-          url: weddingIntro.vedioURL,
+          url: weddingIntro.videoURL,
         }
       : null,
     locationGuide: directions.isToggle

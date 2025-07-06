@@ -40,11 +40,11 @@ const VideoOption = () => {
           유튜브 URL<RequiredMark>*</RequiredMark>
         </Text>
         <Input
-          name="vedioURL"
+          name="videoURL"
           width={384}
           platform="DESKTOP"
           placeholder="URL을 입력해주세요"
-          value={weddingIntro.vedioURL}
+          value={weddingIntro.videoURL}
           onChange={handleChange}
         />
       </Column>
