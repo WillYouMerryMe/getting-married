@@ -116,36 +116,36 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
         <Account
           groomAccounts={[
             {
-              bank: data?.accountInfo?.groom?.bankName,
-              account: data?.accountInfo?.groom?.accountNumber,
-              name: data?.accountInfo?.groom?.accountHolderName,
+              bank: data?.accountInfo?.groom?.bankName ?? '',
+              account: data?.accountInfo?.groom?.accountNumber ?? '',
+              name: data?.accountInfo?.groom?.accountHolderName ?? '',
             },
             {
-              bank: data?.accountInfo?.groomFather?.bankName,
-              account: data?.accountInfo?.groomFather?.accountNumber,
-              name: data?.accountInfo?.groomFather?.accountHolderName,
+              bank: data?.accountInfo?.groomFather?.bankName ?? '',
+              account: data?.accountInfo?.groomFather?.accountNumber ?? '',
+              name: data?.accountInfo?.groomFather?.accountHolderName ?? '',
             },
             {
-              bank: data?.accountInfo?.groomMother?.bankName,
-              account: data?.accountInfo?.groomMother?.accountNumber,
-              name: data?.accountInfo?.groomMother?.accountHolderName,
+              bank: data?.accountInfo?.groomMother?.bankName ?? '',
+              account: data?.accountInfo?.groomMother?.accountNumber ?? '',
+              name: data?.accountInfo?.groomMother?.accountHolderName ?? '',
             },
           ]}
           brideAccounts={[
             {
-              bank: data?.accountInfo?.bride?.bankName,
-              account: data?.accountInfo?.bride?.accountNumber,
-              name: data?.accountInfo?.bride?.accountHolderName,
+              bank: data?.accountInfo?.bride?.bankName ?? '',
+              account: data?.accountInfo?.bride?.accountNumber ?? '',
+              name: data?.accountInfo?.bride?.accountHolderName ?? '',
             },
             {
-              bank: data?.accountInfo?.brideFather?.bankName,
-              account: data?.accountInfo?.brideFather?.accountNumber,
-              name: data?.accountInfo?.brideFather?.accountHolderName,
+              bank: data?.accountInfo?.brideFather?.bankName ?? '',
+              account: data?.accountInfo?.brideFather?.accountNumber ?? '',
+              name: data?.accountInfo?.brideFather?.accountHolderName ?? '',
             },
             {
-              bank: data?.accountInfo?.brideMother?.bankName,
-              account: data?.accountInfo?.brideMother?.accountNumber,
-              name: data?.accountInfo?.brideMother?.accountHolderName,
+              bank: data?.accountInfo?.brideMother?.bankName ?? '',
+              account: data?.accountInfo?.brideMother?.accountNumber ?? '',
+              name: data?.accountInfo?.brideMother?.accountHolderName ?? '',
             },
           ]}
           pointColor={data?.invitationSetting.pointColor ?? ''}
