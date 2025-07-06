@@ -11,7 +11,7 @@ interface Template07Props {
 
 const Template07 = ({ letteringColor, lettering, font }: Template07Props) => {
   return (
-    <StyledTemplate08>
+    <StyledTemplate07>
       <TextBox>
         <CustomText
           fontType={font}
@@ -26,13 +26,13 @@ const Template07 = ({ letteringColor, lettering, font }: Template07Props) => {
       <Circle>
         <IconShortArrow width={16} height={16} />
       </Circle>
-    </StyledTemplate08>
+    </StyledTemplate07>
   );
 };
 
 export default Template07;
 
-const StyledTemplate08 = styled.div`
+const StyledTemplate07 = styled.div`
   ${flex({
     flexDirection: 'column',
     alignItems: 'center',
