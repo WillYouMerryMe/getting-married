@@ -4,23 +4,25 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 interface GuideProps {
+  title?: string;
   content: string;
+  font: string;
 }
 
-const Guide = ({ content }: GuideProps) => {
+const Guide = ({ title, content, font }: GuideProps) => {
   return (
     <StyledGuide>
       <CustomText
-        fontType="Ownglyph Kundo"
+        fontType={font}
         size={24}
         weight={400}
         line={100}
         color={color.G900}
       >
-        안내사항
+        {title}
       </CustomText>
       <CustomText
-        fontType="Ownglyph Kundo"
+        fontType={font}
         size={18}
         weight={400}
         line={140}

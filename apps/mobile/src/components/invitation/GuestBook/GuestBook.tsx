@@ -6,22 +6,23 @@ import WriteGuestBook from './WriteGuestBook/WriteGuestBook';
 import { Column } from '@merried/ui';
 import GuestBookList from './GuestBookList/GuestBookList';
 
-const GuestBook = () => {
+interface GuestBookProps {
+  pointColor: string;
+  font: string;
+  title: string;
+  masterPassword: string;
+}
+
+const GuestBook = ({ pointColor, font, title, masterPassword }: GuestBookProps) => {
   return (
     <StyledGuestBook>
       <Column width="100%" alignItems="center" gap={12}>
-        <CustomText
-          fontType="Ownglyph Kundo"
-          color={color.G900}
-          size={24}
-          weight={400}
-          line={100}
-        >
-          방명록
+        <CustomText fontType={font} color={color.G900} size={24} weight={400} line={100}>
+          {title}
         </CustomText>
-        <GuestBookList />
+        <GuestBookList font={font} password={masterPassword} />
       </Column>
-      <WriteGuestBook />
+      <WriteGuestBook pointColor={pointColor} />
     </StyledGuestBook>
   );
 };

@@ -20,7 +20,12 @@ const dummyGuestbooks = [
   },
 ];
 
-const GuestBookList = () => {
+interface GuestBookListProps {
+  font: string;
+  password: string;
+}
+
+const GuestBookList = ({ font, password }: GuestBookListProps) => {
   const [showAll, setShowAll] = useState(false);
 
   const listToRender = showAll ? dummyGuestbooks : dummyGuestbooks.slice(0, 3);
@@ -32,13 +37,18 @@ const GuestBookList = () => {
   return (
     <StyledGuestBookList>
       {listToRender.map((item, idx) => (
-        <GuestBookListItem key={idx} name={item.name} content={item.content} />
+        <GuestBookListItem
+          key={idx}
+          name={item.name}
+          content={item.content}
+          password={password}
+        />
       ))}
       {dummyGuestbooks.length > 3 && !showAll && (
         <div onClick={handleAllGuestBookItem}>
           <Row gap={6} alignItems="center" justifyContent="center" width="100%">
             <CustomText
-              fontType="Ownglyph Kundo"
+              fontType={font}
               color={color.G80}
               size={20}
               weight={400}

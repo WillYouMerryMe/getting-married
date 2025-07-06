@@ -7,45 +7,39 @@ import AccountItem from './AccountItem/AccountItem';
 import { Account as AccountList } from '@/types/invitation/client';
 
 interface AccountProps {
-  groomAccounts: AccountList[];
-  brideAccounts: AccountList[];
+  groomAccounts?: AccountList[];
+  brideAccounts?: AccountList[];
+  title: string;
+  content: string;
+  pointColor: string;
+  font: string;
 }
 
-const Account = ({ groomAccounts, brideAccounts }: AccountProps) => {
+const Account = ({
+  groomAccounts,
+  brideAccounts,
+  title,
+  content,
+  font,
+  pointColor,
+}: AccountProps) => {
   return (
     <StyledAccount>
       <Column gap={12}>
-        <CustomText
-          fontType="Ownglyph Kundo"
-          size={24}
-          weight={400}
-          line={100}
-          color={color.G900}
-        >
-          마음 전하실 곳
+        <CustomText fontType={font} size={24} weight={400} line={100} color={color.G900}>
+          {title}
         </CustomText>
-        <CustomText
-          fontType="Ownglyph Kundo"
-          size={18}
-          weight={400}
-          line={140}
-          color={color.G80}
-        >
-          멀리서도 축하의 마음을
-          <br />
-          전하고 싶으신 분들을 위해
-          <br />
-          계좌번호를 안내드립니다.
-          <br />
-          <br />
-          소중한 축하를 보내주셔서 감사드리며,
-          <br />
-          따뜻한 마음에 깊이 감사드립니다
+        <CustomText fontType={font} size={18} weight={400} line={140} color={color.G80}>
+          {content}
         </CustomText>
       </Column>
       <Column gap={24} width="100%">
-        <AccountItem type="신랑" accounts={groomAccounts}/>
-        <AccountItem type="신부" accounts={brideAccounts} />
+        {groomAccounts && groomAccounts.some((a) => a.bank || a.account || a.name) && (
+          <AccountItem type="신랑" accounts={groomAccounts} pointColor={pointColor} />
+        )}
+        {brideAccounts && brideAccounts.some((a) => a.bank || a.account || a.name) && (
+          <AccountItem type="신부" accounts={brideAccounts} pointColor={pointColor} />
+        )}
       </Column>
     </StyledAccount>
   );

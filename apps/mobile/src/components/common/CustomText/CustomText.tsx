@@ -3,21 +3,7 @@ import styled from 'styled-components';
 
 interface CustomTextProps {
   children: ReactNode;
-  fontType:
-    | 'Ownglyph Kundo'
-    | 'Pretendard'
-    | 'YUniverse-B'
-    | 'BBB0003'
-    | 'Paperlogy'
-    | 'Diphylleia'
-    | 'DOSGothic'
-    | 'KoreanCNMM'
-    | 'LeeSeoyun'
-    | 'MapoDacapo'
-    | 'Ownglyph Baek Subin'
-    | 'Nelna Yesam'
-    | 'White Angelica'
-    | 'Heir of Light OTF';
+  fontType: string;
   color: string;
   size: number;
   line: number;

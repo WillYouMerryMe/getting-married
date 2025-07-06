@@ -7,14 +7,21 @@ import GuestBookModal from '../../GuestBookModal/GuestBookModal';
 interface GuestBookListItemProps {
   name: string;
   content: string;
+  password: string;
 }
 
-const GuestBookListItem = ({ name, content }: GuestBookListItemProps) => {
+const GuestBookListItem = ({ name, content, password }: GuestBookListItemProps) => {
   const overlay = useOverlay();
 
   const handleOpenGuestBookModal = () => {
     overlay.open(({ isOpen, close }) => (
-      <GuestBookModal isOpen={isOpen} onClose={close} name={name} content={content} password='1234' />
+      <GuestBookModal
+        isOpen={isOpen}
+        onClose={close}
+        name={name}
+        content={content}
+        password={password}
+      />
     ));
   };
 

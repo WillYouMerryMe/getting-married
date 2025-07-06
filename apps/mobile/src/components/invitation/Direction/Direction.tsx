@@ -60,7 +60,7 @@ const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => 
         ))}
       </Row>
       <Line />
-      <Column gap={20}>
+      <Column gap={20} alignItems="flex-start" width="100%">
         {entries.map(({ type, method }) => (
           <Transportation key={type} type={type} method={method} />
         ))}

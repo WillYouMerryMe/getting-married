@@ -4,20 +4,16 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 interface WeddingIntroProps {
-  vedioURL: string;
+  url: string;
+  title?: string;
+  font: string;
 }
-const WeddingIntro = ({ vedioURL }: WeddingIntroProps) => (
+const WeddingIntro = ({ url, title, font }: WeddingIntroProps) => (
   <StyledWeddingIntro>
-    <CustomText
-      fontType="Ownglyph Kundo"
-      color={color.G900}
-      size={24}
-      line={100}
-      weight={400}
-    >
-      식전 영상
+    <CustomText fontType={font} color={color.G900} size={24} line={100} weight={400}>
+      {title}
     </CustomText>
-    <WeddingVideo src={vedioURL} />
+    <WeddingVideo src={url} />
   </StyledWeddingIntro>
 );
 

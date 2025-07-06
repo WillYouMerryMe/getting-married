@@ -10,9 +10,12 @@ import styled from 'styled-components';
 
 interface WeddingAlbumProps {
   albumList: string[];
+  font: string;
+  pointColor: string;
+  title: string;
 }
 
-const WeddingAlbum = ({ albumList }: WeddingAlbumProps) => {
+const WeddingAlbum = ({ albumList, title, pointColor, font }: WeddingAlbumProps) => {
   const [current, setCurrent] = useState(0);
   const total = albumList?.length || 0;
 
@@ -23,14 +26,8 @@ const WeddingAlbum = ({ albumList }: WeddingAlbumProps) => {
 
   return (
     <StyledWeddingAlbum>
-      <CustomText
-        fontType="Ownglyph Kundo"
-        color={color.pointYellow}
-        size={24}
-        weight={400}
-        line={140}
-      >
-        Our moments
+      <CustomText fontType={font} color={pointColor} size={24} weight={400} line={140}>
+        {title}
       </CustomText>
       <AlbumImage src={albumList[current]} />
       <Row width="100%" alignItems="center" justifyContent="space-between">
