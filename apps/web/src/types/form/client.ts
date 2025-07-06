@@ -7,9 +7,9 @@ export type AccountField =
   | 'brideMother';
 
 export interface Account {
-  bank: string;
+  bankName: string;
   accountNumber: string;
-  accountHolder: string;
+  accountHolderName: string;
 }
 
 export type AccountDetail = Account & {

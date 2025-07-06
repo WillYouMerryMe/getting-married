@@ -15,9 +15,9 @@ interface AccountInfoState {
 
 const defaultAccountDetail: AccountDetail = {
   isVisible: false,
-  bank: '',
+  bankName: '',
   accountNumber: '',
-  accountHolder: '',
+  accountHolderName: '',
 };
 
 const defaultAccountInfoState: AccountInfoState = {

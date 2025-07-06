@@ -28,20 +28,22 @@ const AccountItem = ({ type, accounts }: AccountItemProps) => {
       </Column>
       <StyledAccountContent>
         <BlurArea $isBlurred={isBlurred}>
-          {accounts.map(({ isVisible, bank, accountHolder, accountNumber }, i) => {
-            if (!isVisible) return null;
+          {accounts.map(
+            ({ isVisible, bankName, accountHolderName, accountNumber }, i) => {
+              if (!isVisible) return null;
 
-            return (
-              <Column key={i} gap={8} width="100%">
-                <Text fontType="P2" color={color.G900}>
-                  {bank} {accountNumber}
-                </Text>
-                <Text fontType="P2" color={color.G900}>
-                  {accountHolder}
-                </Text>
-              </Column>
-            );
-          })}
+              return (
+                <Column key={i} gap={8} width="100%">
+                  <Text fontType="P2" color={color.G900}>
+                    {bankName} {accountNumber}
+                  </Text>
+                  <Text fontType="P2" color={color.G900}>
+                    {accountHolderName}
+                  </Text>
+                </Column>
+              );
+            }
+          )}
         </BlurArea>
         {isBlurred && (
           <ButtonWrapper>
