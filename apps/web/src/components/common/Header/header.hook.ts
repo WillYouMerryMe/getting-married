@@ -13,8 +13,10 @@ import { useNoticeValueStore } from '@/store/form/notice';
 import { useGuestbookValueStore } from '@/store/form/guestbook';
 import { useGuestSnapValueStore } from '@/store/form/guestSnap';
 import { useUrlShareStyleValueStore } from '@/store/form/urlShareStyle';
+import { useMainValueStore } from '@/store/form/main';
 
 export const usePostCardParams = (): PostCardReq => {
+  const main = useMainValueStore();
   const invitationSetup = useInvitationSetupValueStore();
   const mainScreen = useMainScreenValueStore();
   const invitationMessage = useInvitationMessageValueStore();
@@ -33,8 +35,8 @@ export const usePostCardParams = (): PostCardReq => {
   const componentOrder = useComponentOrderValueStore();
 
   return {
-    title: '체크용',
-    templateId: '3',
+    title: main.title,
+    templateId: main.templateId,
     invitationSetting: {
       pointColor: invitationSetup.pointColor,
       font: invitationSetup.invitationFont,

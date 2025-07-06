@@ -83,7 +83,7 @@ const Options = ({ templateId }: Props) => {
 
   return (
     <StyledOptions>
-      <InvitationNameOption />
+      <InvitationNameOption id={templateId} />
       <InvitationSetupOption />
       <MainScreenOption id={templateId} />
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
