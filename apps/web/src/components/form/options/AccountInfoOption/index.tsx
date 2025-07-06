@@ -97,11 +97,11 @@ const AccountInfoOption = () => {
             {person.isVisible && (
               <Column gap={8}>
                 <Input
-                  name="bank"
+                  name="bankName"
                   width={384}
                   platform="DESKTOP"
                   placeholder="은행을 입력해주세요"
-                  value={person.bank}
+                  value={person.bankName}
                   onChange={handlePersonInputChange(key)}
                 />
                 <Input
@@ -113,11 +113,11 @@ const AccountInfoOption = () => {
                   onChange={handlePersonInputChange(key)}
                 />
                 <Input
-                  name="accountHolder"
+                  name="accountHolderName"
                   width={384}
                   platform="DESKTOP"
                   placeholder="예금주를 입력해주세요"
-                  value={person.accountHolder}
+                  value={person.accountHolderName}
                   onChange={handlePersonInputChange(key)}
                 />
               </Column>

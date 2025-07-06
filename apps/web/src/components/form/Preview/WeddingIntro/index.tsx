@@ -6,7 +6,7 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 const WeddingIntro = () => {
-  const { vedioURL, title, isToggle } = useWeddingIntroValueStore();
+  const { videoURL, title, isToggle } = useWeddingIntroValueStore();
   const { invitationFont } = useInvitationSetupValueStore();
 
   const convertYouTubeUrlToEmbed = (url: string): string => {
@@ -17,7 +17,7 @@ const WeddingIntro = () => {
     return url;
   };
 
-  if (!vedioURL || !isToggle) return null;
+  if (!videoURL || !isToggle) return null;
   return (
     <StyledWeddingIntro>
       <CustomText
@@ -29,7 +29,7 @@ const WeddingIntro = () => {
       >
         {title || '식전 영상'}
       </CustomText>
-      <WeddingVideo src={convertYouTubeUrlToEmbed(vedioURL)} />
+      <WeddingVideo src={convertYouTubeUrlToEmbed(videoURL)} />
     </StyledWeddingIntro>
   );
 };

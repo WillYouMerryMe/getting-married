@@ -7,26 +7,14 @@ export type AccountField =
   | 'brideMother';
 
 export interface Account {
-  bank: string;
+  bankName: string;
   accountNumber: string;
-  accountHolder: string;
+  accountHolderName: string;
 }
 
 export type AccountDetail = Account & {
   isVisible: boolean;
 };
-
-export interface AccountInfoState {
-  isToggle: boolean;
-  title: string;
-  message: string;
-  groom: AccountDetail;
-  groomFather: AccountDetail;
-  groomMother: AccountDetail;
-  bride: AccountDetail;
-  brideFather: AccountDetail;
-  brideMother: AccountDetail;
-}
 
 export type GuestBook = '비밀번호 입력' | '방명록 확인';
 
@@ -63,3 +51,8 @@ export interface CaseConfig {
   subtitle?: StyleConfig;
   date?: StyleConfig;
 }
+
+export type InvitationSetting = {
+  pointColor: string;
+  font: string;
+};

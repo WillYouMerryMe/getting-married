@@ -10,6 +10,9 @@ import { ROUTES } from '@/constants/common/constant';
 import { useUsers } from '@/services/user/queries';
 import { useBooleanState, useOutsideClick } from '@merried/hooks';
 import ProfileInfo from '../ProfileInfo';
+import { useCreateCardMutation } from '@/services/form/mutations';
+import { usePostCardParams } from './header.hook';
+import { useCallback } from 'react';
 
 const Header = () => {
   const overlay = useOverlay();
@@ -20,6 +23,10 @@ const Header = () => {
 
   const profileDropdown = useBooleanState(false);
   const profileRef = useOutsideClick(profileDropdown.setFalse);
+
+  const { createCardMutate } = useCreateCardMutation();
+
+  const param = usePostCardParams();
 
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
@@ -33,9 +40,9 @@ const Header = () => {
     router.push(ROUTES.MAIN);
   };
 
-  const handleSaveForm = () => {
-    //청접장 저장
-  };
+  const handleSaveForm = useCallback(() => {
+    createCardMutate(param);
+  }, [param]);
 
   const { data: userData } = useUsers();
 

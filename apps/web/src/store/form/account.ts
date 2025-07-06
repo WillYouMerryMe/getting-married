@@ -1,11 +1,23 @@
-import { AccountDetail, AccountInfoState } from '@/types/form/client';
+import { AccountDetail } from '@/types/form/client';
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+
+interface AccountInfoState {
+  isToggle: boolean;
+  title: string;
+  message: string;
+  groom: AccountDetail;
+  groomFather: AccountDetail;
+  groomMother: AccountDetail;
+  bride: AccountDetail;
+  brideFather: AccountDetail;
+  brideMother: AccountDetail;
+}
 
 const defaultAccountDetail: AccountDetail = {
   isVisible: false,
-  bank: '',
+  bankName: '',
   accountNumber: '',
-  accountHolder: '',
+  accountHolderName: '',
 };
 
 const defaultAccountInfoState: AccountInfoState = {
