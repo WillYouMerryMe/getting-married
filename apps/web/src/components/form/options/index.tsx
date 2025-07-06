@@ -27,19 +27,20 @@ import {
 import { useState } from 'react';
 import { IconDragHandle } from '@merried/icon';
 import { color } from '@merried/design-system';
+import { useComponentOrderStore } from '@/store/form/orderState';
 
 const OPTION_COMPONENTS = [
-  { id: 'InvitationMessageOption', Component: InvitationMessageOption },
-  { id: 'CoupleIntroOption', Component: CoupleIntroOption },
-  { id: 'CeremonyInfoOption', Component: CeremonyInfoOption },
-  { id: 'GalleryOption', Component: GalleryOption },
-  { id: 'VideoOption', Component: VideoOption },
-  { id: 'DirectionsOption', Component: DirectionsOption },
-  { id: 'AccountInfoOption', Component: AccountInfoOption },
-  { id: 'NoticeOption', Component: NoticeOption },
-  { id: 'GuestbookOption', Component: GuestbookOption },
-  { id: 'GuestSnapOption', Component: GuestSnapOption },
-  { id: 'UrlShareStyleOption', Component: UrlShareStyleOption },
+  { id: 'INVITATION_MESSAGE', Component: InvitationMessageOption },
+  { id: 'GROOM_BRIDE_PROFILE', Component: CoupleIntroOption },
+  { id: 'WEDDING_DATE', Component: CeremonyInfoOption },
+  { id: 'PHOTO_GALLERY', Component: GalleryOption },
+  { id: 'VIDEO_GALLERY', Component: VideoOption },
+  { id: 'LOCATION_GUIDE', Component: DirectionsOption },
+  { id: 'ACCOUNT_INFO', Component: AccountInfoOption },
+  { id: 'GUEST_NOTICE', Component: NoticeOption },
+  { id: 'GUEST_BOOK', Component: GuestbookOption },
+  { id: 'GUEST_SNAPSHOTS', Component: GuestSnapOption },
+  { id: 'SHARE_URL_STYLE', Component: UrlShareStyleOption },
 ];
 
 const SortableItem = ({ id, children }: { id: string; children: React.ReactNode }) => {
@@ -66,16 +67,18 @@ interface Props {
 
 const Options = ({ templateId }: Props) => {
   const [items, setItems] = useState(OPTION_COMPONENTS.map((item) => item.id));
+  const [componentOrder, setComponentOrder] = useComponentOrderStore();
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
-    if (!over) return;
+    if (!over || active.id === over.id) return;
 
-    if (active.id !== over.id) {
-      const oldIndex = items.indexOf(active.id);
-      const newIndex = items.indexOf(over.id);
-      setItems(arrayMove(items, oldIndex, newIndex));
-    }
+    const oldIndex = items.indexOf(active.id);
+    const newIndex = items.indexOf(over.id);
+    const newItems = arrayMove(items, oldIndex, newIndex);
+
+    setItems(newItems);
+    setComponentOrder(newItems);
   };
 
   return (
