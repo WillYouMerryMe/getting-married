@@ -17,10 +17,10 @@ export type InvitationMessage = {
 
 export type Profile = {
   name: string;
-  fatherName: string;
-  isFatherDeceased: boolean;
-  motherName: string;
-  isMotherDeceased: boolean;
+  fatherName: string | null;
+  isFatherDeceased: boolean | null;
+  motherName: string | null;
+  isMotherDeceased: boolean | null;
 };
 
 export type WeddingInfo = {
@@ -35,18 +35,18 @@ export type PhotoGallery = {
 };
 
 export type VideoGallery = {
-  title: string;
+  title: string | null;
   url: string;
 };
 
 export type LocationGuide = {
   address: string;
   isSubway: boolean;
-  subwayDetail: string;
+  subwayDetail: string | null;
   isBus: boolean;
-  busDetail: string;
+  busDetail: string | null;
   hasParking: boolean;
-  parkingDetail: string;
+  parkingDetail: string | null;
 };
 
 export type BankInfo = {
@@ -58,33 +58,33 @@ export type BankInfo = {
 export type AccountInfo = {
   title: string;
   content: string;
-  groom: BankInfo;
-  bride: BankInfo;
-  groomFather: BankInfo;
-  groomMother: BankInfo;
-  brideFather: BankInfo;
-  brideMother: BankInfo;
+  groom: BankInfo | null;
+  bride: BankInfo | null;
+  groomFather: BankInfo | null;
+  groomMother: BankInfo | null;
+  brideFather: BankInfo | null;
+  brideMother: BankInfo | null;
 };
 
 export type GuestNotice = {
-  title: string;
+  title: string | null;
   content: string;
 };
 
 export type GuestBook = {
-  title: string;
+  title: string | null;
   masterPassword: string;
 };
 
 export type GuestSnapshots = {
-  title: string;
+  title: string | null;
   masterPassword: string;
 };
 
 export type ShareUrlStyle = {
   thumbnailUrl: string;
-  title: string;
-  content: string;
+  title: string | null;
+  content: string | null;
 };
 
 export enum ComponentType {
@@ -102,7 +102,7 @@ export enum ComponentType {
 }
 
 export type ComponentOrder = {
-  componentType: ComponentType;
+  componentType: string;
   order: number;
 };
 
@@ -111,17 +111,17 @@ export type PostCardReq = {
   templateId: string;
   invitationSetting: InvitationSetting;
   mainPageSetting: MainPageSetting;
-  invitationMessage: InvitationMessage;
-  groomProfile: Profile;
-  brideProfile: Profile;
-  weddingInfo: WeddingInfo;
-  photoGallery: PhotoGallery;
-  videoGallery: VideoGallery;
-  locationGuide: LocationGuide;
-  accountInfo: AccountInfo;
-  guestNotice: GuestNotice;
-  guestBook: GuestBook;
-  guestSnapshots: GuestSnapshots;
-  shareUrlStyle: ShareUrlStyle;
+  invitationMessage: InvitationMessage | null;
+  groomProfile: Profile | null;
+  brideProfile: Profile | null;
+  weddingInfo: WeddingInfo | null;
+  photoGallery: PhotoGallery | null;
+  videoGallery: VideoGallery | null;
+  locationGuide: LocationGuide | null;
+  accountInfo: AccountInfo | null;
+  guestNotice: GuestNotice | null;
+  guestBook: GuestBook | null;
+  guestSnapshots: GuestSnapshots | null;
+  shareUrlStyle: ShareUrlStyle | null;
   componentOrders: ComponentOrder[];
 };
