@@ -23,7 +23,9 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
   const overlay = useOverlay();
 
   const handleOverlayDeleteModal = () => {
-    overlay.open(({ isOpen, close }) => <DeleteModal isOpen={isOpen} onClose={close} />);
+    overlay.open(({ isOpen, close }) => (
+      <DeleteModal id={id} isOpen={isOpen} onClose={close} />
+    ));
   };
   const handleGuestSnapButtonClick = () => {
     overlay.open(({ isOpen, close }) => (
