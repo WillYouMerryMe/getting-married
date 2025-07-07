@@ -17,6 +17,12 @@ export const getCardsList = async () => {
   return data;
 };
 
+export const deleteCards = async (id: string) => {
+  const { data } = await married.delete(`/cards/${id}`, { ...authorization() });
+
+  return data;
+};
+
 export const getPresigned = async (fileName: string) => {
   const { data } = await married.get('/files/presigned', {
     params: { fileName },
