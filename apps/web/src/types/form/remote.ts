@@ -125,3 +125,9 @@ export type PostCardReq = {
   shareUrlStyle: ShareUrlStyle | null;
   componentOrders: ComponentOrder[];
 };
+
+export type GetCardListRes = {
+  id: string;
+  title: string;
+  updateAt: string;
+};
