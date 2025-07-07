@@ -15,7 +15,7 @@ export const listData: {
   count: number;
   attend: boolean;
   money: boolean;
-  meal: boolean;
+  meal: 'PLANNED' | 'SKIP' | 'UNDECIDED';
 }[] = [
   {
     id: '1',
@@ -24,7 +24,7 @@ export const listData: {
     count: 3,
     attend: true,
     money: true,
-    meal: false,
+    meal: 'SKIP',
   },
   {
     id: '2',
@@ -33,7 +33,7 @@ export const listData: {
     count: 3,
     attend: true,
     money: true,
-    meal: false,
+    meal: 'UNDECIDED',
   },
   {
     id: '3',
@@ -42,7 +42,7 @@ export const listData: {
     count: 2,
     attend: true,
     money: false,
-    meal: true,
+    meal: 'PLANNED',
   },
   {
     id: '4',
@@ -51,7 +51,7 @@ export const listData: {
     count: 1,
     attend: false,
     money: false,
-    meal: false,
+    meal: 'PLANNED',
   },
   {
     id: '5',
@@ -60,7 +60,7 @@ export const listData: {
     count: 4,
     attend: true,
     money: true,
-    meal: true,
+    meal: 'PLANNED',
   },
   {
     id: '6',
@@ -69,7 +69,7 @@ export const listData: {
     count: 2,
     attend: false,
     money: true,
-    meal: false,
+    meal: 'SKIP',
   },
   {
     id: '7',
@@ -78,7 +78,7 @@ export const listData: {
     count: 5,
     attend: true,
     money: false,
-    meal: false,
+    meal: 'UNDECIDED',
   },
   {
     id: '8',
@@ -87,7 +87,7 @@ export const listData: {
     count: 1,
     attend: false,
     money: true,
-    meal: true,
+    meal: 'UNDECIDED',
   },
   {
     id: '9',
@@ -96,7 +96,7 @@ export const listData: {
     count: 1,
     attend: false,
     money: true,
-    meal: true,
+    meal: 'PLANNED',
   },
 ];
 

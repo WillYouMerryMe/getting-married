@@ -15,7 +15,7 @@ interface ListItemProps {
   count: number;
   attend: boolean;
   money: boolean;
-  meal: boolean;
+  meal: 'PLANNED' | 'SKIP' | 'UNDECIDED';
 }
 
 const ListItem = ({ id, name, side, count, attend, money, meal }: ListItemProps) => {
@@ -56,7 +56,7 @@ const ListItem = ({ id, name, side, count, attend, money, meal }: ListItemProps)
           {money === true ? 'O' : 'X'}
         </Text>
         <Text fontType="P3" color={color.G900} width={25} textAlign="center">
-          {meal === true ? 'O' : 'X'}
+          {meal === 'PLANNED' ? 'O' : meal === 'SKIP' ? '안함' : '미정'}
         </Text>
       </Row>
     </StyledListItem>

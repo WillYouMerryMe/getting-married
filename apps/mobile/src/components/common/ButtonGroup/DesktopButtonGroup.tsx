@@ -13,9 +13,15 @@ interface DesktopButtonGroupProps {
   title?: string;
   buttons: ButtonItem[];
   pointColor?: string;
+  height?: string;
 }
 
-const DesktopButtonGroup = ({ title, buttons, pointColor }: DesktopButtonGroupProps) => {
+const DesktopButtonGroup = ({
+  title,
+  buttons,
+  pointColor,
+  height = '42px',
+}: DesktopButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0);
 
   return (
@@ -33,13 +39,13 @@ const DesktopButtonGroup = ({ title, buttons, pointColor }: DesktopButtonGroupPr
             pointColor={pointColor}
             size="SMALL"
             width="100%"
-            style={{ flex: 1, minWidth: 0 }}
+            style={{ flex: 1, minWidth: 0, height: `${height}` }}
             onClick={() => {
               setSelectedButton(index);
               button.onClick();
             }}
           >
-            <Text fontType="Button3" color={color.G900}>{button.label}</Text>
+            <Text fontType="Button3">{button.label}</Text>
           </DesktopButton>
         ))}
       </Row>
