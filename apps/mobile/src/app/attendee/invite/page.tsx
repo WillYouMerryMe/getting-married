@@ -33,5 +33,7 @@ export default Invite;
 
 const StyledInvite = styled.div`
   width: 100%;
+  height: 100%;
   padding: 136px 12px 142px;
+  overflow-y: auto;
 `;
