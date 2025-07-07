@@ -9,6 +9,12 @@ export const postCards = async (params: PostCardReq) => {
   return data;
 };
 
+export const getCardsList = async () => {
+  const { data } = await married.get('/cards/list', { ...authorization() });
+
+  return data;
+};
+
 export const getPresigned = async (fileName: string) => {
   const { data } = await married.get('/files/presigned', {
     params: { fileName },
