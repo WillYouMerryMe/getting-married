@@ -23,6 +23,12 @@ export const deleteCards = async (id: string) => {
   return data;
 };
 
+export const getCards = async (id: string) => {
+  const { data } = await married.get(`/cards/${id}`, { ...authorization() });
+
+  return data;
+};
+
 export const getPresigned = async (fileName: string) => {
   const { data } = await married.get('/files/presigned', {
     params: { fileName },
