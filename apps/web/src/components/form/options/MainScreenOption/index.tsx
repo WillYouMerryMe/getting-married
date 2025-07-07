@@ -1,4 +1,4 @@
-import { LETTERING_COLORS_OPTIONS, SETUP_FONT_OPTIONS } from '@/constants/form/constants';
+import { LETTERING_COLORS_OPTIONS } from '@/constants/form/constants';
 import { useMainScreenStore } from '@/store/form/mainScreen';
 import { getLetteringFontsById, getLetteringTextsById } from '@/utils';
 import { color } from '@merried/design-system';
@@ -24,7 +24,7 @@ const MainScreenOption = ({ id }: Props) => {
     }));
   }, [letteringTextOptions, letteringFontOptions]);
 
-  const handleChange = (key: string) => (value: string | string[] | null) => {
+  const handleChange = (key: string) => (value: string | File[] | null) => {
     setMainScreenOption((prev) => ({ ...prev, [key]: value }));
   };
 

@@ -3,7 +3,7 @@ import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 interface GalleryImageState {
   isToggle: boolean;
   title: string;
-  imageList: string[] | null;
+  imageList: File[] | null;
 }
 
 const defaultCeremonyInfo: GalleryImageState = {

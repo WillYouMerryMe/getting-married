@@ -2,12 +2,12 @@ import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import { CSSProperties, styled } from 'styled-components';
 import { IconCircleAdd, IconDelete } from '@merried/icon';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Props {
   size?: 'SMALL' | 'BIG';
-  value: string[] | null;
-  onChange: (image: string[] | null) => void;
+  value: File[] | null;
+  onChange: (files: File[] | null) => void;
   disabled?: boolean;
   maxFiles?: number;
   width?: CSSProperties['width'];
@@ -22,25 +22,15 @@ const InsertPhoto = ({
   width,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [previews, setPreviews] = useState<string[]>([]);
 
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files ?? []);
-    if (files.length === 0) return;
-
-    if (size === 'SMALL') {
-      const file = files[0]!;
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        onChange([reader.result as string]);
-      };
-      reader.readAsDataURL(file);
+  useEffect(() => {
+    if (!value || value.length === 0) {
+      setPreviews([]);
       return;
     }
 
-    const current = value ?? [];
-    const validFiles = files.slice(0, maxFiles - current.length);
-
-    const readers = validFiles.map(
+    const readers = value.map(
       (file) =>
         new Promise<string>((resolve) => {
           const reader = new FileReader();
@@ -49,10 +39,23 @@ const InsertPhoto = ({
         })
     );
 
-    Promise.all(readers).then((images) => {
-      const updated = [...current, ...images];
-      onChange(updated);
-    });
+    Promise.all(readers).then(setPreviews);
+  }, [value]);
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
+
+    if (size === 'SMALL') {
+      onChange([files[0]!]);
+      return;
+    }
+
+    const current = value ?? [];
+    const validFiles = files.slice(0, maxFiles - current.length);
+    const updated = [...current, ...validFiles];
+
+    onChange(updated);
   };
 
   const handleRemove = (index: number) => (e: React.MouseEvent) => {
@@ -61,7 +64,6 @@ const InsertPhoto = ({
 
     const updated = [...value];
     updated.splice(index, 1);
-
     onChange(updated.length > 0 ? updated : null);
   };
 
@@ -82,11 +84,11 @@ const InsertPhoto = ({
         onChange={handleUpload}
         disabled={isMaxFilesReached || disabled}
       />
-      {value ? (
-        value.map((src, index) => (
+      {previews.length > 0 ? (
+        previews.map((src, index) => (
           <StyledImageWrapper key={index} $size={size}>
             <StyledOverlay />
-            <StyledImage src={src} alt={`uploaded-${index}`} />
+            <StyledImage src={src} alt={`preview-${index}`} />
             <StyledDeleteIcon onClick={handleRemove(index)} />
           </StyledImageWrapper>
         ))

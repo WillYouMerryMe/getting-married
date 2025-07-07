@@ -2,7 +2,7 @@ import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { color } from '@merried/design-system';
 
 interface MainScreenState {
-  image: string[] | null;
+  image: File[] | null;
   letteringColor: string;
   letteringFont: string;
   letteringText: string;

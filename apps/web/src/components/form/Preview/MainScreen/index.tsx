@@ -7,6 +7,7 @@ import SubTextOverlay from './SubTextOverlay';
 import { useCoupleIntroValueStore } from '@/store/form/coupleIntro';
 import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
 import { color } from '@merried/design-system';
+import { useEffect, useMemo } from 'react';
 
 interface Props {
   id: string;
@@ -21,8 +22,29 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
   const { calenderDate } = useCeremonyInfoValueStore();
 
+  const backgroundUrl = useMemo(() => {
+    if (!image || image.length === 0) return `/templateFull${id}.png`;
+
+    const first = image[0];
+    if (typeof first === 'string') return first;
+
+    return URL.createObjectURL(first);
+  }, [image, id]);
+
+  useEffect(() => {
+    if (!image || image.length === 0) return;
+
+    const first = image[0];
+    if (first instanceof File) {
+      const url = URL.createObjectURL(first);
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [image]);
+
   return (
-    <StyledMainScreen $id={id} $image={image}>
+    <StyledMainScreen $id={id} $imageUrl={backgroundUrl}>
       <TextOverlay
         id={id}
         text={letteringText}
@@ -45,12 +67,11 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
 export default MainScreen;
 
-const StyledMainScreen = styled.div<{ $id: string; $image: string[] | null }>`
+const StyledMainScreen = styled.div<{ $id: string; $imageUrl: string }>`
   position: relative;
   width: 100%;
   height: 812px;
-  background-image: ${({ $image, $id }) =>
-    $image && $image.length > 0 ? `url(${$image[0]})` : `url('/templateFull${$id}.png')`};
+  background-image: ${({ $imageUrl }) => `url(${$imageUrl})`};
   background-size: cover;
   background-position: center;
   ${flex({ flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' })}
