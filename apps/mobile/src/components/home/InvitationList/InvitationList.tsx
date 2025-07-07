@@ -28,7 +28,7 @@ const InvitationList = () => {
       {data?.map((item, idx) => (
         <InvitationItem
           key={idx}
-          id={Number(item.id)}
+          id={item.id}
           title={item.title}
           updateAt={item.updateAt}
         />
