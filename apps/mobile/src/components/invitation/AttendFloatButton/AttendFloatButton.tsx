@@ -5,18 +5,22 @@ import { useOverlay } from '@toss/use-overlay';
 import styled from 'styled-components';
 import AttendBottomSheet from '../AttendBottomSheet/AttendBottomSheet';
 
-const AttendFloatButton = () => {
+interface AttendFloatButtonProps {
+  pointColor: string;
+}
+
+const AttendFloatButton = ({ pointColor }: AttendFloatButtonProps) => {
   const overlay = useOverlay();
 
   const handleOpenBottomSheet = () => {
     overlay.open(({ isOpen, close }) => (
-      <AttendBottomSheet isOpen={isOpen} onClose={close} />
+      <AttendBottomSheet isOpen={isOpen} onClose={close} pointColor={pointColor} />
     ));
   };
 
   return (
     <StyledAttendFloatButton onClick={handleOpenBottomSheet}>
-      <ActionButton>
+      <ActionButton $poinColor={pointColor}>
         <Text fontType="Button3" color={color.G900}>
           참석 의사 전달하기
         </Text>
@@ -40,13 +44,13 @@ const StyledAttendFloatButton = styled.div`
   z-index: 10;
 `;
 
-const ActionButton = styled.div`
+const ActionButton = styled.div<{ $poinColor: string }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   height: 42px;
   box-shadow:
     -2px 0px 6px 0px rgba(200, 200, 200, 0.25),
     3px 3px 6px 0px rgba(200, 200, 200, 0.25);
-  background-color: ${color.pointYellow};
+  background-color: ${(p) => p.$poinColor};
   padding: 14px 24px;
   border-radius: 999px;
 `;
