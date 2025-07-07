@@ -10,14 +10,22 @@ interface AccountItemProps {
   type: string;
   accounts: Account[];
   pointColor: string;
+  id: string;
 }
 
-const AccountItem = ({ type, accounts, pointColor }: AccountItemProps) => {
+const AccountItem = ({ type, accounts, pointColor, id }: AccountItemProps) => {
   const overlay = useOverlay();
 
   const handleOverlayAccountModal = () => {
     overlay.open(({ isOpen, close }) => (
-      <AccountModal isOpen={isOpen} onClose={close} accounts={accounts} type={type} />
+      <AccountModal
+        isOpen={isOpen}
+        onClose={close}
+        accounts={accounts}
+        type={type}
+        pointColor={pointColor}
+        id={id}
+      />
     ));
   };
 
@@ -43,10 +51,7 @@ const AccountItem = ({ type, accounts, pointColor }: AccountItemProps) => {
           ))}
         </BlurArea>
         <ButtonWrapper>
-          <ActionButton
-            background={pointColor}
-            onClick={handleOverlayAccountModal}
-          >
+          <ActionButton background={pointColor} onClick={handleOverlayAccountModal}>
             <Text fontType="Button3" color={color.G900}>
               계좌번호 보기
             </Text>

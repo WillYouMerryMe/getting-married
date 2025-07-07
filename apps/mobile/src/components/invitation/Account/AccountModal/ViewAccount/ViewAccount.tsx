@@ -7,11 +7,13 @@ import { flex } from '@merried/utils';
 
 interface ViewAccountProps {
   onClose: () => void;
+  pointColor: string;
+  id: string;
 }
 
-const ViewAccount = ({ onClose }: ViewAccountProps) => {
+const ViewAccount = ({ onClose, pointColor, id }: ViewAccountProps) => {
   const { handleCloseModal, handleInputChange, handleSubmit, errors, formData } =
-    useViewAccount(onClose);
+    useViewAccount(onClose, id);
 
   const hasError = Boolean(errors.name || errors.phoneNumber);
   const errorMessage = errors.name ?? errors.phoneNumber;
@@ -57,12 +59,7 @@ const ViewAccount = ({ onClose }: ViewAccountProps) => {
             </Text>
           )}
         </ErrorContainer>
-        <Button
-          onClick={handleSubmit}
-          size="LARGE"
-          width="100%"
-          pointColor={color.pointYellow}
-        >
+        <Button onClick={handleSubmit} size="LARGE" width="100%" pointColor={pointColor}>
           <Text fontType="Button3" color={color.G0}>
             계좌번호 보기
           </Text>

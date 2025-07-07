@@ -1,8 +1,9 @@
 import { AccountSchema } from '@/schemas/AccountSchema';
-import { useSetAccountStepStore } from '@/stores/invitation/accountStep';
+import { useAccount } from '@/services/attendee/mutations';
 import { useState } from 'react';
 
-export const useViewAccount = (onClose: () => void) => {
+export const useViewAccount = (onClose: () => void, id: string) => {
+  const { accountMutate } = useAccount();
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
@@ -11,7 +12,6 @@ export const useViewAccount = (onClose: () => void) => {
     name?: string;
     phoneNumber?: string;
   }>({});
-  const setAccountStep = useSetAccountStepStore();
 
   const handleCloseModal = () => {
     onClose();
@@ -32,7 +32,11 @@ export const useViewAccount = (onClose: () => void) => {
         phoneNumber: fieldErrors.phoneNumber?.[0],
       });
     } else {
-      setAccountStep('계좌번호');
+      accountMutate({
+        cardId: id,
+        name: formData.name,
+        phoneNumber: formData.phoneNumber,
+      });
     }
   };
 

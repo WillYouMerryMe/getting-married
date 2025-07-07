@@ -167,6 +167,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
           font={data?.invitationSetting.font ?? ''}
           title={data?.accountInfo?.title ?? ''}
           content={data?.accountInfo?.content ?? ''}
+          id={params.id}
         />
       ),
     GUEST_NOTICE: () =>

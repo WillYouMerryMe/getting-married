@@ -10,9 +10,10 @@ interface AccountContentProps {
   onClose: () => void;
   accounts: Account[];
   type: string;
+  pointColor: string;
 }
 
-const AccountContent = ({ onClose, accounts, type }: AccountContentProps) => {
+const AccountContent = ({ onClose, accounts, type, pointColor }: AccountContentProps) => {
   const setAccountStep = useSetAccountStepStore();
 
   const handleCloseModal = () => {
@@ -49,7 +50,7 @@ const AccountContent = ({ onClose, accounts, type }: AccountContentProps) => {
               </Column>
               <ActionButton
                 onClick={() => handleCopyAccount(bank, account)}
-                background={color.pointYellow}
+                background={pointColor}
               >
                 복사하기
               </ActionButton>
