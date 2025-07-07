@@ -126,6 +126,8 @@ export type PostCardReq = {
   componentOrders: ComponentOrder[];
 };
 
+export type PutCardReq = PostCardReq & { id: string };
+
 export type GetCardListRes = {
   id: string;
   title: string;
