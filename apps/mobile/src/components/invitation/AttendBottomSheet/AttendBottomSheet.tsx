@@ -44,6 +44,13 @@ const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
                 onChange={() => {}}
               />
               <Input
+                label="전화번호"
+                placeholder="전화번호를 입력해주세요"
+                size="LARGE"
+                width="100%"
+                onChange={() => {}}
+              />
+              <Input
                 label="참석인원"
                 size="LARGE"
                 type="number"
