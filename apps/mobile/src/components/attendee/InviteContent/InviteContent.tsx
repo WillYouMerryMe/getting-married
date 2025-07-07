@@ -35,7 +35,7 @@ const InviteContent = () => {
           type="text"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          name="name"
+          name="phoneNumber"
         />
         <Input
           label="참석인원"
