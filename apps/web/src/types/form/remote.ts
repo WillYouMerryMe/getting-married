@@ -131,5 +131,6 @@ export type PutCardReq = PostCardReq & { id: string };
 export type GetCardListRes = {
   id: string;
   title: string;
+  picture: string;
   updateAt: string;
 };
