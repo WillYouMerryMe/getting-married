@@ -6,15 +6,44 @@ import { Button, Column, Input, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 import { useInput } from './AttendBottomSheet.hooks';
+import { useIntention } from '@/services/attendee/mutations';
+import { useState } from 'react';
+import { PostIntentionReq } from '@/types/invitation/remote';
 
 interface AttendBottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
   pointColor: string;
+  id: string;
 }
 
-const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetProps) => {
+const AttendBottomSheet = ({
+  isOpen,
+  onClose,
+  pointColor,
+  id,
+}: AttendBottomSheetProps) => {
   const { handleCountChange, handleCountBlur, count } = useInput();
+  const { intentionMutate } = useIntention();
+  const [intention, setIntention] = useState<PostIntentionReq>({
+    cardId: id,
+    side: 'GROOM',
+    name: '',
+    phoneNumber: '',
+    numberOfAttendees: 1,
+    mealPreference: 'PLANNED',
+  });
+
+  const handleSubmitIntention = () => {
+    intentionMutate(intention, {
+      onSuccess: () => {
+        onClose();
+      },
+      onError: () => {
+        alert('잠시후 다시 시도해주세요.');
+      },
+    });
+  };
 
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
@@ -31,8 +60,14 @@ const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetPro
             </Column>
             <ButtonGroup
               buttons={[
-                { label: '신랑측', onClick: () => {} },
-                { label: '신부측', onClick: () => {} },
+                {
+                  label: '신랑측',
+                  onClick: () => setIntention((prev) => ({ ...prev, side: 'GROOM' })),
+                },
+                {
+                  label: '신부측',
+                  onClick: () => setIntention((prev) => ({ ...prev, side: 'BRIDE' })),
+                },
               ]}
               pointColor={pointColor}
             />
@@ -42,14 +77,22 @@ const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetPro
                 placeholder="이름을 입력해주세요"
                 size="LARGE"
                 width="100%"
-                onChange={() => {}}
+                name="name"
+                value={intention.name}
+                onChange={(e) =>
+                  setIntention((prev) => ({ ...prev, name: e.target.value }))
+                }
               />
               <Input
                 label="전화번호"
                 placeholder="전화번호를 입력해주세요"
                 size="LARGE"
                 width="100%"
-                onChange={() => {}}
+                name="phoneNumber"
+                value={intention.phoneNumber}
+                onChange={(e) =>
+                  setIntention((prev) => ({ ...prev, phoneNumber: e.target.value }))
+                }
               />
               <Input
                 label="참석인원"
@@ -60,15 +103,34 @@ const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetPro
                 min={1}
                 step={1}
                 value={count}
-                onChange={handleCountChange}
+                onChange={(e) => {
+                  handleCountChange(e);
+                  const val = e.target.value === '' ? 1 : Number(e.target.value);
+                  setIntention((prev) => ({
+                    ...prev,
+                    numberOfAttendees: val < 1 ? 1 : val,
+                  }));
+                }}
                 onBlur={handleCountBlur}
               />
               <DesktopButtonGroup
                 title="식사 여부"
                 buttons={[
-                  { label: '예정', onClick: () => {} },
-                  { label: '안함', onClick: () => {} },
-                  { label: '미정', onClick: () => {} },
+                  {
+                    label: '예정',
+                    onClick: () =>
+                      setIntention((prev) => ({ ...prev, mealPreference: 'PLANNED' })),
+                  },
+                  {
+                    label: '안함',
+                    onClick: () =>
+                      setIntention((prev) => ({ ...prev, mealPreference: 'SKIP' })),
+                  },
+                  {
+                    label: '미정',
+                    onClick: () =>
+                      setIntention((prev) => ({ ...prev, mealPreference: 'UNDECIDED' })),
+                  },
                 ]}
                 pointColor={pointColor}
               />
@@ -76,7 +138,7 @@ const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetPro
           </Column>
           <Button
             size="VERY_LARGE"
-            onClick={() => {}}
+            onClick={handleSubmitIntention}
             pointColor={pointColor}
             width="100%"
           >

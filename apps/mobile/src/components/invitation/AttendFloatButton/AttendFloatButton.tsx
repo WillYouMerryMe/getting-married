@@ -7,14 +7,15 @@ import AttendBottomSheet from '../AttendBottomSheet/AttendBottomSheet';
 
 interface AttendFloatButtonProps {
   pointColor: string;
+  id: string;
 }
 
-const AttendFloatButton = ({ pointColor }: AttendFloatButtonProps) => {
+const AttendFloatButton = ({ pointColor, id }: AttendFloatButtonProps) => {
   const overlay = useOverlay();
 
   const handleOpenBottomSheet = () => {
     overlay.open(({ isOpen, close }) => (
-      <AttendBottomSheet isOpen={isOpen} onClose={close} pointColor={pointColor} />
+      <AttendBottomSheet isOpen={isOpen} onClose={close} pointColor={pointColor} id={id} />
     ));
   };
 
