@@ -10,7 +10,7 @@ interface PasswordModalProps {
   isOpen: boolean;
   onClose: () => void;
   password: string;
-  id: number;
+  id: string;
 }
 
 const PasswordModal = ({ isOpen, onClose, password, id }: PasswordModalProps) => {

@@ -7,6 +7,7 @@ import { Storage } from '@/apis/storage/storage';
 
 export const useLoginMutation = () => {
   const router = useRouter();
+  const invitationId = Storage.getItem('invitationId');
 
   const { mutate: loginMutate, ...restMutation } = useMutation({
     mutationFn: ({ code, provider }: PostLoginReq) => postLogin({ code, provider }),
@@ -14,12 +15,17 @@ export const useLoginMutation = () => {
       const { accessToken, refreshToken } = res;
       Storage.setItem(TOKEN.ACCESS, accessToken);
       Storage.setItem(TOKEN.REFRESH, refreshToken);
-      router.replace(ROUTES.HOME);
+
+      if (invitationId) {
+        router.replace(`${ROUTES.INVITATION}/${invitationId}`);
+      } else {
+        router.replace(ROUTES.HOME);
+      }
     },
     onError: () => {
       localStorage.clear();
       alert('로그인에 실패했습니다. 잠시후 시도해주세요.');
-      router.push(ROUTES.LOGIN);
+      router.replace(ROUTES.LOGIN);
     },
   });
 
@@ -32,6 +38,7 @@ export const useLogoutMutation = () => {
   const { mutate: logoutMutate, ...restMutation } = useMutation({
     mutationFn: (token: string) => postLogout(token),
     onSuccess: () => {
+      localStorage.clear();
       router.replace(ROUTES.LOGIN);
     },
     onError: () => {

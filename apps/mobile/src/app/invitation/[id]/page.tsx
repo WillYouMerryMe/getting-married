@@ -1,5 +1,6 @@
 'use client';
 
+import { Storage } from '@/apis/storage/storage';
 import Account from '@/components/invitation/Account/Account';
 import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
@@ -12,16 +13,20 @@ import StartBackground from '@/components/invitation/StartBackground/StartBackgr
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
 import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
 import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
+import { ROUTES, TOKEN } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { useCardDetailQuery } from '@/services/card/queries';
 import { color } from '@merried/design-system';
 import { Button, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const InvitationDetail = ({ params }: { params: { id: string } }) => {
   const startRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const invitationId = window.location.pathname.split('/').pop();
   const [showAttend, setShowAttend] = useState(false);
 
   const { data } = useCardDetailQuery(params.id);
@@ -35,6 +40,15 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
     obs.observe(startRef.current);
     return () => obs.disconnect();
   }, []);
+
+  useEffect(() => {
+    const token = Storage.getItem(TOKEN.ACCESS);
+    Storage.setItem('invitationId', invitationId ?? '');
+
+    if (!token) {
+      router.push(ROUTES.LOGIN);
+    }
+  }, [invitationId, router]);
 
   const weddingCardComponentMap = {
     INVITATION_MESSAGE: () =>
@@ -109,6 +123,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
             지하철: data?.locationGuide?.subwayDetail,
             자가용: data?.locationGuide?.parkingDetail,
           }}
+          pointColor={data?.invitationSetting.pointColor ?? ''}
         />
       ),
     ACCOUNT_INFO: () =>
@@ -216,7 +231,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
                   : ['']
             }
             font={data?.mainPageSetting.font ?? ''}
-            templateId={data?.templateId ?? '7'}
+            templateId={data?.templateId ?? ''}
           />
         </div>
         <StyledInvitation>
@@ -230,7 +245,9 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
           </Text>
         </StyledInvitation>
       </Column>
-      {showAttend && <AttendFloatButton />}
+      {showAttend && (
+        <AttendFloatButton pointColor={data?.invitationSetting.pointColor ?? ''} />
+      )}
     </AppLayout>
   );
 };

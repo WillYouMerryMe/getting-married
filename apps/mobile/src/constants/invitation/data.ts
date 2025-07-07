@@ -1,4 +1,4 @@
 export const BRAND = [
-  { src: '/images/IconTMap.svg', name: '티맵' },
+  { src: '/images/IconNaver.svg', name: '네이버지도' },
   { src: '/images/IconKakaoMap.svg', name: '카카오맵' },
 ];

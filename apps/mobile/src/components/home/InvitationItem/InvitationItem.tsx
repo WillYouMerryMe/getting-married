@@ -13,7 +13,7 @@ import { getDate } from '@/utils/getDate';
 import { getHour } from '@/utils/getHour';
 
 interface InvitationItemProps {
-  id: number;
+  id: string;
   title: string;
   updateAt: string;
 }
@@ -32,6 +32,14 @@ const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
 
   const handleMoveInvitation = () => {
     router.push(`${ROUTES.INVITATION}/${id}`);
+  };
+
+  const handleCopyUrl = () => {
+    const baseUrl = window.location.origin;
+    const invitationUrl = `${baseUrl}/invitation/${id}`;
+    navigator.clipboard.writeText(invitationUrl).then(() => {
+      alert('청첩장 URL이 복사되었습니다!');
+    });
   };
 
   return (
@@ -58,7 +66,7 @@ const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
             title="청첩장 확인"
             onClick={handleMoveInvitation}
           />
-          <Badge icon={IconBoldShare} title="URL 복사" onClick={() => {}} />
+          <Badge icon={IconBoldShare} title="URL 복사" onClick={handleCopyUrl} />
           {weddingDate && (
             <Badge
               icon={IconBoldList}

@@ -13,9 +13,15 @@ interface DirectionProps {
   address: string;
   detailAddress: string;
   methods?: Partial<Record<TransportType, string>>;
+  pointColor: string;
 }
 
-const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => {
+const Direction = ({
+  address,
+  detailAddress,
+  methods = {},
+  pointColor,
+}: DirectionProps) => {
   const entries = TRANSPORT_TYPES.filter((type) => !!methods[type]).map((type) => ({
     type,
     method: methods[type]!,
@@ -48,7 +54,7 @@ const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => 
             {detailAddress}
           </Text>
         </Column>
-        <ActionButton onClick={handleCopyAddress} background={color.pointYellow}>
+        <ActionButton onClick={handleCopyAddress} background={pointColor}>
           <Text fontType="Button3" color={color.G900}>
             복사하기
           </Text>
@@ -56,7 +62,7 @@ const Direction = ({ address, detailAddress, methods = {} }: DirectionProps) => 
       </Row>
       <Row width="100%" alignItems="center" gap={19}>
         {BRAND.map(({ src, name }) => (
-          <BrandButton key={name} src={src} name={name} onClick={() => {}} />
+          <BrandButton key={name} src={src} name={name as '네이버지도' | '카카오맵'} address={address} />
         ))}
       </Row>
       <Line />

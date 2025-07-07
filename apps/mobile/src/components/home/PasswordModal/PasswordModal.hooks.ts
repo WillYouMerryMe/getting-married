@@ -2,7 +2,7 @@ import { ROUTES } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export const useMasterPassword = (onClose: () => void, password: string, id: number) => {
+export const useMasterPassword = (onClose: () => void, password: string, id: string) => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();

@@ -22,14 +22,14 @@ interface StartBackgroundProps {
 }
 
 const templateComponentMap: Record<string, React.FC<StartBackgroundProps>> = {
-  '1': Template01,
-  '2': Template02,
-  '3': Template03,
-  '4': Template04,
-  '5': Template05,
-  '6': Template06,
-  '7': Template07,
-  '8': Template08,
+  'template_001': Template01,
+  'template_002': Template02,
+  'template_003': Template03,
+  'template_004': Template04,
+  'template_005': Template05,
+  'template_006': Template06,
+  'template_007': Template07,
+  'template_008': Template08,
 };
 
 const StartBackground = ({
@@ -75,7 +75,7 @@ const StyledStartBackground = styled.div<{ $backgroundImg: string; $templateId: 
   background-color: ${color.G0};
 
   ${(p) =>
-    p.$templateId !== '5' &&
+    p.$templateId !== 'template_005' &&
     `
       background-image: url(${p.$backgroundImg || '/guestbook.png'});
       background-position: center;
