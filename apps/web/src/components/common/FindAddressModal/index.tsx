@@ -21,8 +21,8 @@ const FindAddressModal = ({
 }: FindAddressModalProps) => {
   const findAddressModal = useOutsideClick(onClose);
 
-  const handleCompleteFindAddress = ({ address }: Address) => {
-    setValue(address);
+  const handleCompleteFindAddress = (data: Address) => {
+    setValue(`${data.address}/${data.buildingName}`);
     onClose();
   };
 

@@ -14,6 +14,8 @@ const Direction = () => {
   const { address, show, methods, isToggle } = useDirectionsValueStore();
   const { pointColor, invitationFont } = useInvitationSetupValueStore();
 
+  const [mainAddress, buildingName] = address.split('/');
+
   const entries = TRANSPORT_TYPES.filter((type) => {
     const hasMethod = !!methods?.[type];
     const shouldShow = show?.[type] !== false;
@@ -24,10 +26,10 @@ const Direction = () => {
   }));
 
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(address);
+    navigator.clipboard.writeText(mainAddress);
   };
 
-  if (!address || !isToggle) return null;
+  if (!mainAddress || !isToggle) return null;
 
   return (
     <StyledDirection>
@@ -41,15 +43,15 @@ const Direction = () => {
         >
           오시는 길
         </CustomText>
-        <KakaoMap address={address} />
+        <KakaoMap address={mainAddress} />
       </Column>
       <Row width="100%" alignItems="center" justifyContent="space-between">
         <Column gap={4} alignItems="flex-start">
           <Text fontType="P2" color={color.G80}>
-            {address}
+            {mainAddress}
           </Text>
           <Text fontType="H4" color={color.G900}>
-            지금은 없어용...
+            {buildingName}
           </Text>
         </Column>
         <ActionButton onClick={handleCopyAddress} background={pointColor}>
