@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import { postAccount } from './api';
-import { PostAccountReq } from '@/types/invitation/remote';
+import { postAccount, postIntention } from './api';
+import { PostAccountReq, PostIntentionReq } from '@/types/invitation/remote';
 import { useSetAccountStepStore } from '@/stores/invitation/accountStep';
 
 export const useAccount = () => {
@@ -18,4 +18,27 @@ export const useAccount = () => {
   });
 
   return { accountMutate, ...restMutate };
+};
+
+export const useIntention = () => {
+  const { mutate: intentionMutate, ...restMutate } = useMutation({
+    mutationFn: ({
+      cardId,
+      side,
+      name,
+      phoneNumber,
+      numberOfAttendees,
+      mealPreference,
+    }: PostIntentionReq) =>
+      postIntention({
+        cardId,
+        side,
+        name,
+        phoneNumber,
+        numberOfAttendees,
+        mealPreference,
+      }),
+  });
+
+  return { intentionMutate, ...restMutate };
 };
