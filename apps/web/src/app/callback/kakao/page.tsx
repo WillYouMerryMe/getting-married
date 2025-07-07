@@ -2,9 +2,9 @@
 
 import { useLoginMutation } from '@/services/auth/mutations';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
 
-const CallbackKakao = () => {
+const CallbackKakaoContent = () => {
   const searchParams = useSearchParams();
   const { loginMutate } = useLoginMutation();
   const alreadyRun = useRef(false);
@@ -17,7 +17,15 @@ const CallbackKakao = () => {
     }
   }, [searchParams, loginMutate]);
 
-  return <></>;
+  return <div>로그인 처리 중...</div>;
+};
+
+const CallbackKakao = () => {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <CallbackKakaoContent />
+    </Suspense>
+  );
 };
 
 export default CallbackKakao;
