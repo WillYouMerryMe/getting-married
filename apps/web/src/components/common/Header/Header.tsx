@@ -25,8 +25,7 @@ const Header = () => {
   const profileRef = useOutsideClick(profileDropdown.setFalse);
 
   const { createCardMutate } = useCreateCardMutation();
-
-  const param = usePostCardParams();
+  const buildPostCardParams = usePostCardParams();
 
   const handleOverlayLoginModal = () => {
     overlay.open(({ isOpen, close }) => <LoginModal isOpen={isOpen} onClose={close} />);
@@ -40,9 +39,10 @@ const Header = () => {
     router.push(ROUTES.MAIN);
   };
 
-  const handleSaveForm = useCallback(() => {
+  const handleSaveForm = useCallback(async () => {
+    const param = await buildPostCardParams();
     createCardMutate(param);
-  }, [param]);
+  }, [buildPostCardParams]);
 
   const { data: userData } = useUsers();
 
