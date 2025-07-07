@@ -10,9 +10,10 @@ import { useInput } from './AttendBottomSheet.hooks';
 interface AttendBottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
+  pointColor: string;
 }
 
-const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
+const AttendBottomSheet = ({ isOpen, onClose, pointColor }: AttendBottomSheetProps) => {
   const { handleCountChange, handleCountBlur, count } = useInput();
 
   return (
@@ -33,7 +34,7 @@ const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
                 { label: '신랑측', onClick: () => {} },
                 { label: '신부측', onClick: () => {} },
               ]}
-              pointColor={color.pointYellow}
+              pointColor={pointColor}
             />
             <Column gap={18}>
               <Input
@@ -69,14 +70,14 @@ const AttendBottomSheet = ({ isOpen, onClose }: AttendBottomSheetProps) => {
                   { label: '안함', onClick: () => {} },
                   { label: '미정', onClick: () => {} },
                 ]}
-                pointColor={color.pointYellow}
+                pointColor={pointColor}
               />
             </Column>
           </Column>
           <Button
             size="VERY_LARGE"
             onClick={() => {}}
-            pointColor={color.pointYellow}
+            pointColor={pointColor}
             width="100%"
           >
             <Text fontType="Button3" color={color.G900}>
