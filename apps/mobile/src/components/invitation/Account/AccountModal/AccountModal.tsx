@@ -6,16 +6,37 @@ import styled from 'styled-components';
 import ViewAccount from './ViewAccount/ViewAccount';
 import { Account } from '@/types/invitation/client';
 import AccountContent from './AccountContent/AccountContent';
+import { useEffect } from 'react';
 
 interface AccountModalProps {
   isOpen: boolean;
   onClose: () => void;
   accounts: Account[];
   type: string;
+  pointColor: string;
+  id: string;
 }
 
-const AccountModal = ({ isOpen, onClose, accounts, type }: AccountModalProps) => {
+const AccountModal = ({
+  isOpen,
+  onClose,
+  accounts,
+  type,
+  pointColor,
+  id,
+}: AccountModalProps) => {
   const accountStep = useAccountStepValueStore();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <BlurBackground $isOpen={isOpen}>
@@ -23,9 +44,14 @@ const AccountModal = ({ isOpen, onClose, accounts, type }: AccountModalProps) =>
         <SwitchCase
           value={accountStep}
           caseBy={{
-            의사여부: <ViewAccount onClose={onClose} />,
+            의사여부: <ViewAccount onClose={onClose} pointColor={pointColor} id={id} />,
             계좌번호: (
-              <AccountContent onClose={onClose} accounts={accounts} type={type} />
+              <AccountContent
+                onClose={onClose}
+                accounts={accounts}
+                type={type}
+                pointColor={pointColor}
+              />
             ),
           }}
         />

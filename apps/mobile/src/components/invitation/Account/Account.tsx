@@ -13,6 +13,7 @@ interface AccountProps {
   content: string;
   pointColor: string;
   font: string;
+  id: string;
 }
 
 const Account = ({
@@ -22,6 +23,7 @@ const Account = ({
   content,
   font,
   pointColor,
+  id,
 }: AccountProps) => {
   return (
     <StyledAccount>
@@ -35,10 +37,10 @@ const Account = ({
       </Column>
       <Column gap={24} width="100%">
         {groomAccounts && groomAccounts.some((a) => a.bank || a.account || a.name) && (
-          <AccountItem type="신랑" accounts={groomAccounts} pointColor={pointColor} />
+          <AccountItem type="신랑" accounts={groomAccounts} pointColor={pointColor} id={id} />
         )}
         {brideAccounts && brideAccounts.some((a) => a.bank || a.account || a.name) && (
-          <AccountItem type="신부" accounts={brideAccounts} pointColor={pointColor} />
+          <AccountItem type="신부" accounts={brideAccounts} pointColor={pointColor} id={id} />
         )}
       </Column>
     </StyledAccount>
