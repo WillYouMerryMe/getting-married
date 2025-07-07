@@ -12,6 +12,7 @@ import { styled } from 'styled-components';
 import DeleteModal from '../DeleteModal';
 import { useOverlay } from '@toss/use-overlay';
 import GuestSnapModal from '../GuestSnapModal';
+import PreviewModal from '../PreviewModal';
 
 interface Props {
   id: string;
@@ -39,7 +40,9 @@ const InvitationItem = ({ id, title, picture, updateAt }: Props) => {
   };
 
   const handleMailClick = () => {
-    // 청첩장 확인 모달
+    overlay.open(({ isOpen, close }) => (
+      <PreviewModal id={id} isOpen={isOpen} onClose={close} />
+    ));
   };
 
   const handleShareClick = () => {
