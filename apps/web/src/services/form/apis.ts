@@ -1,10 +1,24 @@
 import { married } from '@/apis/instance/instance';
 import { authorization } from '@/apis/token';
-import { PostCardReq } from '@/types/form/remote';
+import { GetCardListRes, PostCardReq } from '@/types/form/remote';
 import axios from 'axios';
 
 export const postCards = async (params: PostCardReq) => {
   const { data } = await married.post('/cards', params, authorization());
+
+  return data;
+};
+
+export const getCardsList = async () => {
+  const { data } = await married.get<GetCardListRes[]>('/cards/list', {
+    ...authorization(),
+  });
+
+  return data;
+};
+
+export const deleteCards = async (id: string) => {
+  const { data } = await married.delete(`/cards/${id}`, { ...authorization() });
 
   return data;
 };

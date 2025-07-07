@@ -1,3 +1,4 @@
+import { useDeleteCardMutation } from '@/services/form/mutations';
 import { color } from '@merried/design-system';
 import { IconDelete } from '@merried/icon';
 import { Column, DesktopButton, Row, Text } from '@merried/ui';
@@ -5,12 +6,20 @@ import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
 
 interface Props {
+  id: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const DeleteModal = ({ isOpen, onClose }: Props) => {
+const DeleteModal = ({ id, isOpen, onClose }: Props) => {
+  const { deleteCardMutate } = useDeleteCardMutation();
+
   const handleCloseModal = () => {
+    onClose();
+  };
+
+  const handleDeleteButtonClick = () => {
+    deleteCardMutate(id);
     onClose();
   };
 
@@ -35,7 +44,7 @@ const DeleteModal = ({ isOpen, onClose }: Props) => {
             onClick={handleCloseModal}
           />
         </Row>
-        <DesktopButton styleType="WARNING" size="LARGE">
+        <DesktopButton styleType="WARNING" size="LARGE" onClick={handleDeleteButtonClick}>
           삭제하기
         </DesktopButton>
       </StyledDeleteModal>
