@@ -20,7 +20,7 @@ const AttendFloatButton = ({ pointColor }: AttendFloatButtonProps) => {
 
   return (
     <StyledAttendFloatButton onClick={handleOpenBottomSheet}>
-      <ActionButton $poinColor={pointColor}>
+      <ActionButton $pointColor={pointColor}>
         <Text fontType="Button3" color={color.G900}>
           참석 의사 전달하기
         </Text>
@@ -44,13 +44,13 @@ const StyledAttendFloatButton = styled.div`
   z-index: 10;
 `;
 
-const ActionButton = styled.div<{ $poinColor: string }>`
+const ActionButton = styled.div<{ $pointColor: string }>`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   height: 42px;
   box-shadow:
     -2px 0px 6px 0px rgba(200, 200, 200, 0.25),
     3px 3px 6px 0px rgba(200, 200, 200, 0.25);
-  background-color: ${(p) => p.$poinColor};
+  background-color: ${(p) => p.$pointColor};
   padding: 14px 24px;
   border-radius: 999px;
 `;

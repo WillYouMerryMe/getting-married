@@ -231,7 +231,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
                   : ['']
             }
             font={data?.mainPageSetting.font ?? ''}
-            templateId={data?.templateId ?? '7'}
+            templateId={data?.templateId ?? ''}
           />
         </div>
         <StyledInvitation>
