@@ -247,7 +247,10 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
         </StyledInvitation>
       </Column>
       {showAttend && (
-        <AttendFloatButton pointColor={data?.invitationSetting.pointColor ?? ''} />
+        <AttendFloatButton
+          pointColor={data?.invitationSetting.pointColor ?? ''}
+          id={params.id}
+        />
       )}
     </AppLayout>
   );
