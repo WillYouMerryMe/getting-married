@@ -1,11 +1,13 @@
 'use client';
 
 import ButtonGroup from '@/components/common/ButtonGroup/ButtonGroup';
+import DesktopButtonGroup from '@/components/common/ButtonGroup/DesktopButtonGroup';
 import { color } from '@merried/design-system';
 import { IconDelete } from '@merried/icon';
-import { Button, Column, Row, Text } from '@merried/ui';
+import { Button, Column, Input, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
+import { useInput } from './EditModal.hooks';
 
 interface EditModalProps {
   isOpen: boolean;
@@ -13,6 +15,8 @@ interface EditModalProps {
 }
 
 const EditModal = ({ isOpen, onClose }: EditModalProps) => {
+  const { handleCountChange, handleCountBlur, count } = useInput();
+
   const handleCloseModal = () => {
     onClose();
   };
@@ -29,6 +33,18 @@ const EditModal = ({ isOpen, onClose }: EditModalProps) => {
           </div>
         </Row>
         <Column gap={24} width="100%">
+          <Input
+            label="참석인원"
+            size="LARGE"
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            min={1}
+            step={1}
+            value={count}
+            onChange={handleCountChange}
+            onBlur={handleCountBlur}
+          />
           <ButtonGroup
             title="참석 여부"
             buttons={[
@@ -43,15 +59,19 @@ const EditModal = ({ isOpen, onClose }: EditModalProps) => {
               { label: 'X', onClick: () => {} },
             ]}
           />
-          <ButtonGroup
+          <DesktopButtonGroup
             title="식사 여부"
             buttons={[
-              { label: 'O', onClick: () => {} },
-              { label: 'X', onClick: () => {} },
+              { label: '예정', onClick: () => {} },
+              { label: '안함', onClick: () => {} },
+              { label: '미정', onClick: () => {} },
             ]}
+            height="52px"
           />
         </Column>
-        <Button onClick={() => {}} styleType='SECOND' width="100%">닫기</Button>
+        <Button onClick={() => {}} styleType="WARNING" width="100%">
+          하객 삭제
+        </Button>
       </StyledEditModal>
     </BlurBackground>
   );
@@ -78,7 +98,7 @@ const StyledEditModal = styled.div`
     justifyContent: 'flex-start',
   })}
   width: 100%;
-  height: 510px;
+  height: 606px;
   background-color: ${color.G0};
   border-radius: 16px;
   padding: 32px 16px 24px 16px;
