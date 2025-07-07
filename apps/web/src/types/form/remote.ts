@@ -1,3 +1,5 @@
+import { Account } from "./client";
+
 export type InvitationSetting = {
   pointColor: string;
   font: string;
@@ -49,11 +51,7 @@ export type LocationGuide = {
   parkingDetail: string | null;
 };
 
-export type BankInfo = {
-  bankName: string;
-  accountNumber: string;
-  accountHolderName: string;
-};
+export type BankInfo = Account;
 
 export type AccountInfo = {
   title: string;
@@ -134,3 +132,5 @@ export type GetCardListRes = {
   picture: string;
   updateAt: string;
 };
+
+export type GetCardRes = PutCardReq;

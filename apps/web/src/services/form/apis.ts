@@ -1,6 +1,6 @@
 import { married } from '@/apis/instance/instance';
 import { authorization } from '@/apis/token';
-import { GetCardListRes, PostCardReq, PutCardReq } from '@/types/form/remote';
+import { GetCardListRes, GetCardRes, PostCardReq, PutCardReq } from '@/types/form/remote';
 import axios from 'axios';
 
 export const postCards = async (params: PostCardReq) => {
@@ -24,7 +24,7 @@ export const deleteCards = async (id: string) => {
 };
 
 export const getCards = async (id: string) => {
-  const { data } = await married.get(`/cards/${id}`, { ...authorization() });
+  const { data } = await married.get<GetCardRes>(`/cards/${id}`, { ...authorization() });
 
   return data;
 };
