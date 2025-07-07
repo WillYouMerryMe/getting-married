@@ -1,6 +1,4 @@
-'use client';
-
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CustomText from '@/components/common/CustomText/CustomText';
 import { color } from '@merried/design-system';
 import { IconLongArrow } from '@merried/icon';
@@ -20,6 +18,24 @@ const WeddingAlbum = () => {
   const prev = () => total > 0 && setCurrent((c) => (c - 1 + total) % total);
   const next = () => total > 0 && setCurrent((c) => (c + 1) % total);
 
+  const currentImageUrl = useMemo(() => {
+    if (!imageList || imageList.length === 0) return '';
+
+    const currentItem = imageList[current];
+    if (typeof currentItem === 'string') return currentItem;
+    return URL.createObjectURL(currentItem);
+  }, [imageList, current]);
+
+  useEffect(() => {
+    if (!imageList || imageList.length === 0) return;
+
+    const currentItem = imageList[current];
+    if (currentItem instanceof File) {
+      const url = URL.createObjectURL(currentItem);
+      return () => URL.revokeObjectURL(url);
+    }
+  }, [imageList, current]);
+
   if (!imageList || total === 0 || !isToggle) return null;
 
   return (
@@ -33,7 +49,7 @@ const WeddingAlbum = () => {
       >
         {title}
       </CustomText>
-      <AlbumImage src={imageList[current]} />
+      <AlbumImage src={currentImageUrl} />
       <Row width="100%" alignItems="center" justifyContent="space-between">
         <div onClick={prev}>
           <IconLongArrow width={32} height={32} direction="left" />
