@@ -25,4 +25,5 @@ export const KEY = {
   CARD_LIST: 'card-list',
   USER: 'user',
   CARD_DETAIL: 'card-detail',
+  ATTENDEE: 'attendee',
 };
