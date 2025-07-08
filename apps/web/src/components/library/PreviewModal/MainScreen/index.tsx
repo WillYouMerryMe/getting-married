@@ -26,6 +26,7 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
   return (
     <StyledMainScreen $imageUrl={picture}>
+      {id === '7' && <SvgOverlay src="/template7Backgroud.svg" alt="overlay" />}
       <TextOverlay id={id} text={lettering[0]} color={letteringColor} font={font} />
       <SubTextOverlay
         id={id}
@@ -64,4 +65,14 @@ const ScrollTriggerButton = styled.div`
   margin-bottom: 24px;
   cursor: pointer;
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
+`;
+
+const SvgOverlay = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 `;
