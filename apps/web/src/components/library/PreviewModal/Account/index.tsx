@@ -5,7 +5,7 @@ import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import AccountItem from './AccountItem';
 import { useCardsQuery } from '@/services/form/queries';
-import { Account, CustomFontType } from '@/types/form/client';
+import type { Account, CustomFontType } from '@/types/form/client';
 
 interface Props {
   id: string;
