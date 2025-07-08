@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { deleteCards, postCards, putCardsUpdate } from './apis';
+import { deleteCards, postCards, postGuestSnapshots, putCardsUpdate } from './apis';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { KEY, ROUTES } from '@/constants/common/constant';
 
@@ -52,4 +52,20 @@ export const usePutCardMutation = () => {
   });
 
   return { putCardMutate, ...restMutation };
+};
+
+export const usePostGuestSnapshot = (
+  cardId: string,
+  setStep: (step: 'PASSWORD' | 'LIST' | 'DETAIL') => void,
+  setImages: (imgs: string[]) => void
+) => {
+  const { mutate: postGuestSnapshotMutate, ...restMutation } = useMutation({
+    mutationFn: (password: string) => postGuestSnapshots(cardId, password),
+    onSuccess: (imgs) => {
+      setImages(imgs);
+      setStep('LIST');
+    },
+  });
+
+  return { postGuestSnapshotMutate, ...restMutation };
 };

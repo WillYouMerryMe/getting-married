@@ -31,7 +31,7 @@ const InvitationItem = ({ id, title, picture, updateAt }: Props) => {
   };
   const handleGuestSnapButtonClick = () => {
     overlay.open(({ isOpen, close }) => (
-      <GuestSnapModal isOpen={isOpen} onClose={close} />
+      <GuestSnapModal id={id} isOpen={isOpen} onClose={close} />
     ));
   };
 

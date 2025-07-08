@@ -29,8 +29,8 @@ export const getCards = async (id: string) => {
   return data;
 };
 
-export const getGuestSnapshots = async (cardId: string, password: string) => {
-  const { data } = await married.post(
+export const postGuestSnapshots = async (cardId: string, password: string) => {
+  const { data } = await married.post<string[]>(
     `/guestSnapshots`,
     { cardId, password },
     authorization()
