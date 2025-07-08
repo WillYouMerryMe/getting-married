@@ -29,6 +29,16 @@ export const getCards = async (id: string) => {
   return data;
 };
 
+export const getGuestSnapshots = async (cardId: string, password: string) => {
+  const { data } = await married.post(
+    `/guestSnapshots`,
+    { cardId, password },
+    authorization()
+  );
+
+  return data;
+};
+
 export const putCardsUpdate = async (params: PutCardReq) => {
   const { data } = await married.put('/cards/update', params, authorization());
 
