@@ -7,12 +7,14 @@ import { color } from '@merried/design-system';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
-const Invite = () => {
+const Invite = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
 
   const handleMoveManage = () => {
     router.push(ROUTES.MANAGE);
   };
+
+  console.log(params.id);
 
   return (
     <AppLayout
@@ -23,7 +25,7 @@ const Invite = () => {
       backgroundColor={color.G0}
     >
       <StyledInvite>
-        <InviteContent />
+        <InviteContent id={params.id} />
       </StyledInvite>
     </AppLayout>
   );

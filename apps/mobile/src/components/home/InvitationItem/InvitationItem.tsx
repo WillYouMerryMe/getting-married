@@ -2,7 +2,7 @@ import Badge from '@/components/common/Badge/Badge';
 import { ROUTES } from '@/constants/common/constant';
 import { color } from '@merried/design-system';
 import { IconBoldLetter, IconBoldList, IconBoldShare, IconFolder } from '@merried/icon';
-import { Column, Row, Text } from '@merried/ui';
+import { ActionButton, Column, Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useOverlay } from '@toss/use-overlay';
 import dayjs from 'dayjs';
@@ -42,24 +42,39 @@ const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
     });
   };
 
+  const handleMoveAttendee = () => {
+    router.push(`${ROUTES.INVITE}/${id}`);
+  };
+
   return (
     <StyledInvitationItem>
       <Background src="images/type01.svg" alt="초대장 배경" />
       <IconFolder width="100%" height={194.38} stroke={color.G30} />
       <ItemContent>
-        <Column gap={4}>
-          <Text fontType="H4" color={color.G900}>
-            {title}
-          </Text>
-          <Row gap={4}>
-            <Text fontType="P3" color={color.G80}>
-              {getDate(updateAt)}
+        <Row width="100%" justifyContent="space-between">
+          <Column gap={4}>
+            <Text fontType="H4" color={color.G900}>
+              {title}
             </Text>
-            <Text fontType="P3" color={color.G80}>
-              {getHour(updateAt)}
+            <Row gap={4}>
+              <Text fontType="P3" color={color.G80}>
+                {getDate(updateAt)}
+              </Text>
+              <Text fontType="P3" color={color.G80}>
+                {getHour(updateAt)}
+              </Text>
+            </Row>
+          </Column>
+          <ActionButton
+            onClick={handleMoveAttendee}
+            width={100}
+            background={color.primary2}
+          >
+            <Text fontType="Button3" color={color.primary}>
+              참석자 추가
             </Text>
-          </Row>
-        </Column>
+          </ActionButton>
+        </Row>
         <Row alignItems="center" gap={8}>
           <Badge
             icon={IconBoldLetter}
