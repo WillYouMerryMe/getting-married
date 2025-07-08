@@ -1,7 +1,13 @@
 import { useMutation } from '@tanstack/react-query';
-import { postAccount, postIntention } from './api';
-import { PostAccountReq, PostIntentionReq } from '@/types/invitation/remote';
+import { postAccount, postAttendee, postIntention } from './api';
+import {
+  PostAccountReq,
+  PostAttendeeReq,
+  PostIntentionReq,
+} from '@/types/invitation/remote';
 import { useSetAccountStepStore } from '@/stores/invitation/accountStep';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '@/constants/common/constant';
 
 export const useAccount = () => {
   const setAccountStep = useSetAccountStepStore();
@@ -41,4 +47,39 @@ export const useIntention = () => {
   });
 
   return { intentionMutate, ...restMutate };
+};
+
+export const useAttendeeMutation = () => {
+  const router = useRouter();
+
+  const { mutate: attendeeMutate, ...restMutate } = useMutation({
+    mutationFn: ({
+      cardId,
+      side,
+      name,
+      phoneNumber,
+      numberOfAttendees,
+      mealPreference,
+      isAttending,
+      hasSentGift,
+    }: PostAttendeeReq) =>
+      postAttendee({
+        cardId,
+        side,
+        name,
+        phoneNumber,
+        numberOfAttendees,
+        mealPreference,
+        isAttending,
+        hasSentGift,
+      }),
+    onSuccess: () => {
+      router.push(ROUTES.MANAGE);
+    },
+    onError: () => {
+      alert('잠시후 다시 시도해주세요.');
+    },
+  });
+
+  return { attendeeMutate, restMutate };
 };
