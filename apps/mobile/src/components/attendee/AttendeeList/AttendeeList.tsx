@@ -3,108 +3,23 @@ import styled from 'styled-components';
 import SearchInput from '../SearchInput/SearchInput';
 import { Column, Text } from '@merried/ui';
 import ListHeader from './ListHeader/ListHeader';
-import { Side } from '@/types/manage/client';
 import ListItem from './ListItem/ListItem';
 import { color } from '@merried/design-system';
 import { useState } from 'react';
-
-export const listData: {
-  id: string;
-  name: string;
-  side: Side;
-  count: number;
-  attend: boolean;
-  money: boolean;
-  meal: 'PLANNED' | 'SKIP' | 'UNDECIDED';
-}[] = [
-  {
-    id: '1',
-    name: '홍길동',
-    side: 'GROOM',
-    count: 3,
-    attend: true,
-    money: true,
-    meal: 'SKIP',
-  },
-  {
-    id: '2',
-    name: '홍이장군',
-    side: 'GROOM',
-    count: 3,
-    attend: true,
-    money: true,
-    meal: 'UNDECIDED',
-  },
-  {
-    id: '3',
-    name: '김영희',
-    side: 'BRIDE',
-    count: 2,
-    attend: true,
-    money: false,
-    meal: 'PLANNED',
-  },
-  {
-    id: '4',
-    name: '박철수',
-    side: 'GROOM',
-    count: 1,
-    attend: false,
-    money: false,
-    meal: 'PLANNED',
-  },
-  {
-    id: '5',
-    name: '이민호',
-    side: 'BRIDE',
-    count: 4,
-    attend: true,
-    money: true,
-    meal: 'PLANNED',
-  },
-  {
-    id: '6',
-    name: '최지우',
-    side: 'GROOM',
-    count: 2,
-    attend: false,
-    money: true,
-    meal: 'SKIP',
-  },
-  {
-    id: '7',
-    name: '장보리',
-    side: 'BRIDE',
-    count: 5,
-    attend: true,
-    money: false,
-    meal: 'UNDECIDED',
-  },
-  {
-    id: '8',
-    name: '오세훈',
-    side: 'GROOM',
-    count: 1,
-    attend: false,
-    money: true,
-    meal: 'UNDECIDED',
-  },
-  {
-    id: '9',
-    name: '오세훈2',
-    side: 'GROOM',
-    count: 1,
-    attend: false,
-    money: true,
-    meal: 'PLANNED',
-  },
-];
+import { useAttendee } from '@/services/attendee/queries';
 
 const AttendeeList = () => {
   const [search, setSearch] = useState('');
-  const isEmpty = listData.length === 0;
 
-  const searchNameData = listData.filter((item) =>
+  const { data } = useAttendee({
+    isAttendee: null,
+    hasSentGift: null,
+    isEating: null,
+  });
+
+  const isEmpty = data?.length === 0;
+
+  const searchNameData = data?.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -129,8 +44,17 @@ const AttendeeList = () => {
               </Text>
             </EmptyContainer>
           ) : (
-            searchNameData.map((attendee, index) => (
-              <ListItem key={`attendee-${index}`} {...attendee} />
+            searchNameData?.map((attendee, index) => (
+              <ListItem
+                key={`attendee-${index}`}
+                id={attendee.id}
+                name={attendee.name}
+                side={attendee.side}
+                count={attendee.numberOfAttendees}
+                attend={attendee.isAttending}
+                money={attendee.hasSentGift}
+                meal={attendee.mealPreference}
+              />
             ))
           )}
         </ListContent>
