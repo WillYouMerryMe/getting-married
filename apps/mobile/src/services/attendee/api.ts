@@ -4,6 +4,7 @@ import {
   GetAttendee,
   GetAttendeeParms,
   PostAccountReq,
+  PostAttendeeReq,
   PostIntentionReq,
 } from '@/types/invitation/remote';
 
@@ -45,6 +46,37 @@ export const getAttendee = async (
     ...authorization(),
     params: { isAttendee, isEating, hasSentGift },
   });
+
+  return data;
+};
+
+export const postAttendee = async ({
+  cardId,
+  side,
+  name,
+  phoneNumber,
+  numberOfAttendees,
+  mealPreference,
+  hasSentGift,
+  isAttending,
+}: PostAttendeeReq) => {
+  const { data } = await married.post(
+    '/attendees',
+    {},
+    {
+      ...authorization(),
+      params: {
+        cardId,
+        side,
+        name,
+        phoneNumber,
+        numberOfAttendees,
+        mealPreference,
+        hasSentGift,
+        isAttending,
+      },
+    }
+  );
 
   return data;
 };

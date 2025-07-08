@@ -15,6 +15,17 @@ export interface PostIntentionReq {
   mealPreference: 'PLANNED' | 'SKIP' | 'UNDECIDED';
 }
 
+export interface PostAttendeeReq {
+  cardId: string;
+  side: 'GROOM' | 'BRIDE';
+  name: string;
+  phoneNumber: string;
+  numberOfAttendees: number;
+  isAttending: boolean;
+  hasSentGift: boolean;
+  mealPreference: 'PLANNED' | 'SKIP' | 'UNDECIDED';
+}
+
 export type GetAttendee = Attendee[];
 
 export interface GetAttendeeParms {
