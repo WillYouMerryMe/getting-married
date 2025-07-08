@@ -99,10 +99,8 @@ const BlurBackground = styled.div<{ $isOpen: boolean }>`
   justify-content: center;
   position: fixed;
   inset: 0;
-  background: ${color.G30};
-  backdrop-filter: blur(10px);
+  background: ${color.G20};
   z-index: 1001;
-  padding: 0px 12px;
 `;
 
 const StyledPreview = styled.div`
