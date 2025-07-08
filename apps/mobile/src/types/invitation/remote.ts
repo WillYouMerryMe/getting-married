@@ -1,3 +1,5 @@
+import { Attendee } from './client';
+
 export interface PostAccountReq {
   cardId: string;
   name: string;
@@ -11,4 +13,12 @@ export interface PostIntentionReq {
   phoneNumber: string;
   numberOfAttendees: number;
   mealPreference: 'PLANNED' | 'SKIP' | 'UNDECIDED';
+}
+
+export type GetAttendee = Attendee[];
+
+export interface GetAttendeeParms {
+  isAttendee?: boolean | null;
+  hasSentGift?: boolean | null;
+  isEating?: boolean | null;
 }

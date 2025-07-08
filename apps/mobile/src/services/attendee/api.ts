@@ -1,5 +1,11 @@
 import { married } from '@/apis/instance/instance';
-import { PostAccountReq, PostIntentionReq } from '@/types/invitation/remote';
+import authorization from '@/apis/token/token';
+import {
+  GetAttendee,
+  GetAttendeeParms,
+  PostAccountReq,
+  PostIntentionReq,
+} from '@/types/invitation/remote';
 
 export const postAccount = async ({ cardId, name, phoneNumber }: PostAccountReq) => {
   const { data } = await married.post('/attendees/account', {
@@ -26,6 +32,18 @@ export const postIntention = async ({
     phoneNumber,
     numberOfAttendees,
     mealPreference,
+  });
+
+  return data;
+};
+
+export const getAttendee = async (
+  { isAttendee, isEating, hasSentGift }: GetAttendeeParms,
+  cardId: string
+) => {
+  const { data } = await married.get<GetAttendee>(`/attendees/${cardId}`, {
+    ...authorization(),
+    params: { isAttendee, isEating, hasSentGift },
   });
 
   return data;
