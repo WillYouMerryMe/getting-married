@@ -5,16 +5,7 @@ import { Column, DesktopButton, Text } from '@merried/ui';
 import { color } from '@merried/design-system';
 import { ROUTES } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
-
-const data = [
-  { id: '1', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '2', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '3', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '4', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '5', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '6', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-  { id: '7', title: '정말 귀여운 청접장', updateAt: '2025-06-30T05:07:41.620Z' },
-];
+import { useCardsListQuery } from '@/services/form/queries';
 
 const formatUpdateAt = (isoString: string) => {
   const date = new Date(isoString);
@@ -32,8 +23,9 @@ const InvitationList = () => {
   const handleMoveForm = () => {
     router.push(ROUTES.FORM);
   };
+  const { data: cardsListData = [] } = useCardsListQuery();
 
-  const isEmpty = data.length === 0;
+  const isEmpty = !cardsListData || cardsListData.length === 0;
 
   return (
     <Wrapper>
@@ -50,11 +42,12 @@ const InvitationList = () => {
         </EmptyState>
       ) : (
         <ScrollableList>
-          {data.map((item) => (
+          {cardsListData.map((item) => (
             <InvitationItem
               key={item.id}
               id={item.id}
               title={item.title}
+              picture={item.picture}
               updateAt={formatUpdateAt(item.updateAt)}
             />
           ))}

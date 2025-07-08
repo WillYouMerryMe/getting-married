@@ -1,12 +1,11 @@
 import { color } from '@merried/design-system';
-import { IconShortArrow } from '@merried/icon';
 import { Column, Row, Text, ToggleButton } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { styled } from 'styled-components';
-import Greeting from './Greeting';
 import { useRef } from 'react';
 import {
   MainScreen,
+  Greeting,
   CoupleInfo,
   WeddingCalender,
   WeddingAlbum,
@@ -102,28 +101,6 @@ const ScrollableArea = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
   }
-`;
-
-const HeroSection = styled.div`
-  width: 100%;
-  height: 812px;
-  background-image: url('/templateFull1.png');
-  background-size: cover;
-  background-position: center;
-  ${flex({ flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' })}
-  flex-shrink: 0;
-`;
-
-const ScrollTriggerButton = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.21);
-  backdrop-filter: blur(14.7px);
-  margin-bottom: 24px;
-  cursor: pointer;
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
 `;
 
 const ContentSection = styled.div`

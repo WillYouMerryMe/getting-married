@@ -14,7 +14,8 @@ export { default as GuestSnapOption } from './options/GuestSnapOption';
 export { default as UrlShareStyleOption } from './options/UrlShareStyleOption';
 export { default as Options } from './options';
 
-export { default as MainScreen } from './Preview/MainScreen'
+export { default as Greeting } from './Preview/Greeting';
+export { default as MainScreen } from './Preview/MainScreen';
 export { default as CoupleInfo } from './Preview/CoupleInfo';
 export { default as WeddingCalender } from './Preview/WeddingCalender';
 export { default as WeddingAlbum } from './Preview/WeddingAlbum';

@@ -11,4 +11,6 @@ export const TOKEN = {
 
 export const KEY = {
   USERS: 'useUsers',
+  CARDS: 'useCards',
+  CARDS_LIST: 'useCardsList',
 };

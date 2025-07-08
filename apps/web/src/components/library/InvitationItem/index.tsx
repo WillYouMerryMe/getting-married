@@ -12,22 +12,26 @@ import { styled } from 'styled-components';
 import DeleteModal from '../DeleteModal';
 import { useOverlay } from '@toss/use-overlay';
 import GuestSnapModal from '../GuestSnapModal';
+import PreviewModal from '../PreviewModal';
 
 interface Props {
   id: string;
   title: string;
+  picture: string;
   updateAt: string;
 }
 
-const InvitationItem = ({ id, title, updateAt }: Props) => {
+const InvitationItem = ({ id, title, picture, updateAt }: Props) => {
   const overlay = useOverlay();
 
   const handleOverlayDeleteModal = () => {
-    overlay.open(({ isOpen, close }) => <DeleteModal isOpen={isOpen} onClose={close} />);
+    overlay.open(({ isOpen, close }) => (
+      <DeleteModal id={id} isOpen={isOpen} onClose={close} />
+    ));
   };
   const handleGuestSnapButtonClick = () => {
     overlay.open(({ isOpen, close }) => (
-      <GuestSnapModal isOpen={isOpen} onClose={close} />
+      <GuestSnapModal id={id} isOpen={isOpen} onClose={close} />
     ));
   };
 
@@ -36,7 +40,9 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
   };
 
   const handleMailClick = () => {
-    // 청첩장 확인 모달
+    overlay.open(({ isOpen, close }) => (
+      <PreviewModal id={id} isOpen={isOpen} onClose={close} />
+    ));
   };
 
   const handleShareClick = () => {
@@ -45,7 +51,7 @@ const InvitationItem = ({ id, title, updateAt }: Props) => {
 
   return (
     <StyledInvitationItem>
-      <InvitationImage imageUrl="image" />
+      <InvitationImage imageUrl={picture} />
       <InvitationInfo>
         <Row width="100%" justifyContent="space-between" alignItems="center">
           <Column gap={4} alignItems="flex-start">
@@ -102,13 +108,14 @@ const StyledInvitationItem = styled.div`
 `;
 
 const InvitationImage = styled.div<{ imageUrl: string }>`
+  background-image: ${({ imageUrl }) => `url("${imageUrl}")`};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 115px;
   height: 248px;
-  aspect-ratio: 115 / 248;
-  flex-shrink: 0;
   border-radius: 8px;
-  border: 1px solid var(--Foundation-Grey-G30, #ededed);
-  background: url(${({ imageUrl }) => `url(${imageUrl})`}) lightgray 50% / cover no-repeat;
+  border: 1px solid ${color.G30};
 `;
 
 const InvitationInfo = styled.div`
