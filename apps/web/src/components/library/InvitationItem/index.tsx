@@ -13,16 +13,25 @@ import DeleteModal from '../DeleteModal';
 import { useOverlay } from '@toss/use-overlay';
 import GuestSnapModal from '../GuestSnapModal';
 import PreviewModal from '../PreviewModal';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '@/constants/common/constant';
+import { useApplyCardParams } from './Invitation.hook';
+import { useCardsQuery } from '@/services/form/queries';
 
 interface Props {
   id: string;
   title: string;
+  templateId: string;
   picture: string;
   updateAt: string;
 }
 
-const InvitationItem = ({ id, title, picture, updateAt }: Props) => {
+const InvitationItem = ({ id, title, templateId, picture, updateAt }: Props) => {
   const overlay = useOverlay();
+  const router = useRouter();
+
+  const { applyParams } = useApplyCardParams();
+  const { data } = useCardsQuery(id);
 
   const handleOverlayDeleteModal = () => {
     overlay.open(({ isOpen, close }) => (
@@ -36,7 +45,9 @@ const InvitationItem = ({ id, title, picture, updateAt }: Props) => {
   };
 
   const handleEditButtonClick = () => {
-    //수정 페이지
+    if (!data) return;
+    router.push(`${ROUTES.FORM}/${templateId}`);
+    applyParams(data);
   };
 
   const handleMailClick = () => {
