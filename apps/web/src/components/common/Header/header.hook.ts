@@ -13,7 +13,7 @@ import { useGuestbookValueStore } from '@/store/form/guestbook';
 import { useGuestSnapValueStore } from '@/store/form/guestSnap';
 import { useUrlShareStyleValueStore } from '@/store/form/urlShareStyle';
 import { useMainValueStore } from '@/store/form/main';
-import { getDownloadUrl, getPresigned, putPresigned } from '@/services/form/apis';
+import { getPresigned, putPresigned } from '@/services/form/apis';
 import { PostCardReq, PutCardReq } from '@/types/form/remote';
 
 export const usePostCardParams = () => {
@@ -32,6 +32,15 @@ export const usePostCardParams = () => {
   const guestSnap = useGuestSnapValueStore();
   const urlShareStyle = useUrlShareStyleValueStore();
   const componentOrder = useComponentOrderValueStore();
+
+  const getDownloadUrl = (presignedUrl: string) => {
+    const withoutQuery = presignedUrl.split('?')[0];
+    const fileKey = withoutQuery.replace(/^https:\/\/[^/]+\//, '');
+    const decodedFileKey = decodeURIComponent(fileKey);
+    const downloadableUrl = `${process.env.NEXT_PUBLIC_BASE_URL_FILE}/${decodedFileKey}`;
+
+    return downloadableUrl;
+  };
 
   const handleUploadFile = async (file: File | string): Promise<string> => {
     if (typeof file === 'string') return file;
