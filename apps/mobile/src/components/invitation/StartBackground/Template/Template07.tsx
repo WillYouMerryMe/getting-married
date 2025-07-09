@@ -41,6 +41,10 @@ const StyledTemplate07 = styled.div`
   width: 100%;
   height: 100vh;
   padding-bottom: 24px;
+  background-image: url('/images/template7Backgroud.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Circle = styled.div`
