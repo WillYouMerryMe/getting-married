@@ -14,7 +14,7 @@ import { useGuestSnapValueStore } from '@/store/form/guestSnap';
 import { useUrlShareStyleValueStore } from '@/store/form/urlShareStyle';
 import { useMainValueStore } from '@/store/form/main';
 import { getDownloadUrl, getPresigned, putPresigned } from '@/services/form/apis';
-import { PostCardReq } from '@/types/form/remote';
+import { PostCardReq, PutCardReq } from '@/types/form/remote';
 
 export const usePostCardParams = () => {
   const main = useMainValueStore();
@@ -42,7 +42,7 @@ export const usePostCardParams = () => {
     return downloadableUrl;
   };
 
-  const buildParams = async (): Promise<PostCardReq> => {
+  const buildParams = async (): Promise<PostCardReq | PutCardReq> => {
     const uploadedPicture = mainScreen.image?.[0]
       ? await handleUploadFile(mainScreen.image[0])
       : '';
@@ -51,7 +51,7 @@ export const usePostCardParams = () => {
       ? await Promise.all(galleryImage.imageList.map((file) => handleUploadFile(file)))
       : [];
 
-    return {
+    const baseParams = {
       title: main.title,
       templateId: main.templateId,
       invitationSetting: {
@@ -144,6 +144,15 @@ export const usePostCardParams = () => {
         order: index,
       })),
     };
+
+    if (main.id && main.id !== '') {
+      return {
+        id: main.id,
+        ...baseParams,
+      } as PutCardReq;
+    }
+
+    return baseParams as PostCardReq;
   };
 
   return buildParams;

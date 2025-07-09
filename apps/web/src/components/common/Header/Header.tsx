@@ -10,7 +10,7 @@ import { ROUTES } from '@/constants/common/constant';
 import { useUsers } from '@/services/user/queries';
 import { useBooleanState, useOutsideClick } from '@merried/hooks';
 import ProfileInfo from '../ProfileInfo';
-import { useCreateCardMutation } from '@/services/form/mutations';
+import { useCreateCardMutation, usePutCardMutation } from '@/services/form/mutations';
 import { usePostCardParams } from './header.hook';
 import { useCallback } from 'react';
 
@@ -25,6 +25,7 @@ const Header = () => {
   const profileRef = useOutsideClick(profileDropdown.setFalse);
 
   const { createCardMutate } = useCreateCardMutation();
+  const { putCardMutate } = usePutCardMutation();
   const buildPostCardParams = usePostCardParams();
 
   const handleOverlayLoginModal = () => {
@@ -41,8 +42,15 @@ const Header = () => {
 
   const handleSaveForm = useCallback(async () => {
     const param = await buildPostCardParams();
-    createCardMutate(param);
-  }, [buildPostCardParams]);
+
+    if ('id' in param) {
+      putCardMutate(param);
+      console.log('수정 작동');
+    } else {
+      createCardMutate(param);
+      console.log('생성 작동');
+    }
+  }, [buildPostCardParams, createCardMutate, putCardMutate]);
 
   const { data: userData } = useUsers();
 
