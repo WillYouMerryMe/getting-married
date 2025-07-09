@@ -2,12 +2,20 @@
 
 import InvitationList from '@/components/library/InvitationList';
 import AppLayout from '@/layouts/AppLayout';
+import { useResetFormStores } from '@/store/form/recoilReset';
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
 const Library = () => {
+  const { resetAllFormState } = useResetFormStores();
+
+  useEffect(() => {
+    resetAllFormState();
+  }, []);
+
   return (
     <AppLayout>
       <StyledLibrary>
