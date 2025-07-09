@@ -13,8 +13,8 @@ import { useGuestbookValueStore } from '@/store/form/guestbook';
 import { useGuestSnapValueStore } from '@/store/form/guestSnap';
 import { useUrlShareStyleValueStore } from '@/store/form/urlShareStyle';
 import { useMainValueStore } from '@/store/form/main';
-import { getDownloadUrl, getPresigned, putPresigned } from '@/services/form/apis';
-import { PostCardReq } from '@/types/form/remote';
+import { getPresigned, putPresigned } from '@/services/form/apis';
+import { PostCardReq, PutCardReq } from '@/types/form/remote';
 
 export const usePostCardParams = () => {
   const main = useMainValueStore();
@@ -33,7 +33,17 @@ export const usePostCardParams = () => {
   const urlShareStyle = useUrlShareStyleValueStore();
   const componentOrder = useComponentOrderValueStore();
 
-  const handleUploadFile = async (file: File): Promise<string> => {
+  const getDownloadUrl = (presignedUrl: string) => {
+    const withoutQuery = presignedUrl.split('?')[0];
+    const fileKey = withoutQuery.replace(/^https:\/\/[^/]+\//, '');
+    const decodedFileKey = decodeURIComponent(fileKey);
+    const downloadableUrl = `${process.env.NEXT_PUBLIC_BASE_URL_FILE}/${decodedFileKey}`;
+
+    return downloadableUrl;
+  };
+
+  const handleUploadFile = async (file: File | string): Promise<string> => {
+    if (typeof file === 'string') return file;
     const presignedUrl = await getPresigned(file.name);
     await putPresigned(file, presignedUrl);
     const downloadableUrl = await getDownloadUrl(presignedUrl);
@@ -41,7 +51,7 @@ export const usePostCardParams = () => {
     return downloadableUrl;
   };
 
-  const buildParams = async (): Promise<PostCardReq> => {
+  const buildParams = async (): Promise<PostCardReq | PutCardReq> => {
     const uploadedPicture = mainScreen.image?.[0]
       ? await handleUploadFile(mainScreen.image[0])
       : '';
@@ -50,7 +60,7 @@ export const usePostCardParams = () => {
       ? await Promise.all(galleryImage.imageList.map((file) => handleUploadFile(file)))
       : [];
 
-    return {
+    const baseParams = {
       title: main.title,
       templateId: main.templateId,
       invitationSetting: {
@@ -143,6 +153,15 @@ export const usePostCardParams = () => {
         order: index,
       })),
     };
+
+    if (main.id && main.id !== '') {
+      return {
+        id: main.id,
+        ...baseParams,
+      } as PutCardReq;
+    }
+
+    return baseParams as PostCardReq;
   };
 
   return buildParams;

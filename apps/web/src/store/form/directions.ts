@@ -9,7 +9,7 @@ interface DirectionsState {
   show: Record<TransportType, boolean>;
 }
 
-const defaultDirections: DirectionsState = {
+export const defaultDirections: DirectionsState = {
   isToggle: false,
   address: '',
   methods: {

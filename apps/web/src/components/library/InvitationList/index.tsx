@@ -47,6 +47,7 @@ const InvitationList = () => {
               key={item.id}
               id={item.id}
               title={item.title}
+              templateId={item.templateId}
               picture={item.picture}
               updateAt={formatUpdateAt(item.updateAt)}
             />

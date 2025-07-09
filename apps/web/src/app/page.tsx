@@ -3,12 +3,20 @@
 import Footer from '@/components/template/Footer';
 import TemplateGrid from '@/components/template/TemplateGrid';
 import AppLayout from '@/layouts/AppLayout';
+import { useResetFormStores } from '@/store/form/recoilReset';
 import { color } from '@merried/design-system';
 import { Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
 const Template = () => {
+  const { resetAllFormState } = useResetFormStores();
+
+  useEffect(() => {
+    resetAllFormState();
+  }, []);
+
   return (
     <AppLayout>
       <StyledTemplate>

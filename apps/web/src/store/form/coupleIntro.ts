@@ -1,12 +1,7 @@
+import { Profile } from '@/types/form/remote';
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
-export interface PersonIntro {
-  name: string;
-  fatherName: string;
-  isFatherDeceased: boolean;
-  motherName: string;
-  isMotherDeceased: boolean;
-}
+export type PersonIntro = Profile;
 
 export interface CoupleIntroState {
   isToggle: boolean;
@@ -22,7 +17,7 @@ const defaultPersonIntro: PersonIntro = {
   isMotherDeceased: false,
 };
 
-const defaultCoupleIntro: CoupleIntroState = {
+export const defaultCoupleIntro: CoupleIntroState = {
   isToggle: false,
   groom: defaultPersonIntro,
   bride: defaultPersonIntro,

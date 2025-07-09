@@ -6,7 +6,7 @@ interface GuestSnapState {
   password: string;
 }
 
-const defaultGuestSnap: GuestSnapState = {
+export const defaultGuestSnap: GuestSnapState = {
   isToggle: false,
   title: '',
   password: '',

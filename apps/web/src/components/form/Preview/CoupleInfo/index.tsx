@@ -12,11 +12,11 @@ const CoupleInfo = () => {
       gender: 'GROOM' as const,
       father: {
         name: coupleIntro.groom.fatherName || 'OOO',
-        isDeceased: coupleIntro.groom.isFatherDeceased,
+        isDeceased: coupleIntro.groom.isFatherDeceased ?? false,
       },
       mother: {
         name: coupleIntro.groom.motherName || 'OOO',
-        isDeceased: coupleIntro.groom.isMotherDeceased,
+        isDeceased: coupleIntro.groom.isMotherDeceased ?? false,
       },
     },
     {
@@ -24,11 +24,11 @@ const CoupleInfo = () => {
       gender: 'BRIDE' as const,
       father: {
         name: coupleIntro.bride.fatherName || 'OOO',
-        isDeceased: coupleIntro.bride.isFatherDeceased,
+        isDeceased: coupleIntro.bride.isFatherDeceased ?? false,
       },
       mother: {
         name: coupleIntro.bride.motherName || 'OOO',
-        isDeceased: coupleIntro.bride.isMotherDeceased,
+        isDeceased: coupleIntro.bride.isMotherDeceased ?? false,
       },
     },
   ];
