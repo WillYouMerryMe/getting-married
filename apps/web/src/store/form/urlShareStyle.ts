@@ -4,7 +4,7 @@ interface UrlShareStyleState {
   isToggle: boolean;
   title: string;
   message: string;
-  image: File[] | null;
+  image: (File | string)[] | null;
 }
 
 export const defaultUrlShareStyle: UrlShareStyleState = {

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const MAX_FILES = 19;
 
 const GuestSnapShotContent = () => {
-  const [image, setImage] = useState<File[] | null>(null);
+  const [image, setImage] = useState<(File | string)[] | null>(null);
 
   const count = image?.length ?? 0;
 

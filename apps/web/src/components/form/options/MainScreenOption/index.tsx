@@ -24,7 +24,7 @@ const MainScreenOption = ({ id }: Props) => {
     }));
   }, [letteringTextOptions, letteringFontOptions]);
 
-  const handleChange = (key: string) => (value: string | File[] | null) => {
+  const handleChange = (key: string) => (value: string | (File | string)[] | null) => {
     setMainScreenOption((prev) => ({ ...prev, [key]: value }));
   };
 
