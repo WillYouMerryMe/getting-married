@@ -6,7 +6,7 @@ interface GuestbookState {
   password: string;
 }
 
-const defaultGuestbook: GuestbookState = {
+export const defaultGuestbook: GuestbookState = {
   isToggle: false,
   title: '',
   password: '',

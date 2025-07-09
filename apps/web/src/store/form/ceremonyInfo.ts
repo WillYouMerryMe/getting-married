@@ -7,7 +7,7 @@ interface CeremonyInfoState {
   name: string;
 }
 
-const defaultCeremonyInfo: CeremonyInfoState = {
+export const defaultCeremonyInfo: CeremonyInfoState = {
   isToggle: false,
   calenderDate: new Date(),
   isCalendarVisible: false,

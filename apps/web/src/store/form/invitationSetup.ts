@@ -7,7 +7,7 @@ interface InvitationSetupState {
   invitationFont: CustomFontType;
 }
 
-const defaultInvitationSetup: InvitationSetupState = {
+export const defaultInvitationSetup: InvitationSetupState = {
   pointColor: color.pointYellow,
   invitationFont: 'Ownglyph Kundo',
 };

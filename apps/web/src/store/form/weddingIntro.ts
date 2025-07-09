@@ -6,7 +6,7 @@ interface WeddingIntroState {
   videoURL: string;
 }
 
-const defaultWeddingIntro: WeddingIntroState = {
+export const defaultWeddingIntro: WeddingIntroState = {
   isToggle: false,
   title: '',
   videoURL: '',

@@ -7,7 +7,7 @@ interface UrlShareStyleState {
   image: File[] | null;
 }
 
-const defaultUrlShareStyle: UrlShareStyleState = {
+export const defaultUrlShareStyle: UrlShareStyleState = {
   isToggle: false,
   title: '',
   message: '',

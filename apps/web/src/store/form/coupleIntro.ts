@@ -8,7 +8,7 @@ export interface PersonIntro {
   isMotherDeceased: boolean;
 }
 
-export interface CoupleIntroState {
+interface CoupleIntroState {
   isToggle: boolean;
   groom: PersonIntro;
   bride: PersonIntro;
@@ -22,7 +22,7 @@ const defaultPersonIntro: PersonIntro = {
   isMotherDeceased: false,
 };
 
-const defaultCoupleIntro: CoupleIntroState = {
+export const defaultCoupleIntro: CoupleIntroState = {
   isToggle: false,
   groom: defaultPersonIntro,
   bride: defaultPersonIntro,

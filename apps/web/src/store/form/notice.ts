@@ -6,7 +6,7 @@ interface NoticeState {
   message: string;
 }
 
-const defaultNotice: NoticeState = {
+export const defaultNotice: NoticeState = {
   isToggle: false,
   title: '',
   message: '',

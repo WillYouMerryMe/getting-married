@@ -5,7 +5,7 @@ interface MainState {
   templateId: string;
 }
 
-const defaultMain: MainState = {
+export const defaultMain: MainState = {
   title: '',
   templateId: '',
 };

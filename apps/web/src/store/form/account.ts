@@ -20,7 +20,7 @@ const defaultAccountDetail: AccountDetail = {
   accountHolderName: '',
 };
 
-const defaultAccountInfoState: AccountInfoState = {
+export const defaultAccountInfoState: AccountInfoState = {
   isToggle: false,
   title: '',
   message: '',

@@ -6,7 +6,7 @@ interface InvitationMessageState {
   message: string;
 }
 
-const defaultInvitationMessage = {
+export const defaultInvitationMessage = {
   isToggle: false,
   title: '',
   message: '',
