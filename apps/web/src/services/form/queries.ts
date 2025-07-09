@@ -13,7 +13,7 @@ export const useCardsListQuery = () => {
 
 export const useCardsQuery = (id: string) => {
   const { data, ...restQuery } = useQuery({
-    queryKey: [KEY.CARDS],
+    queryKey: [KEY.CARDS, id],
     queryFn: () => getCards(id),
   });
 
