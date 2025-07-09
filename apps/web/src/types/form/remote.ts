@@ -1,4 +1,4 @@
-import { Account } from "./client";
+import { Account } from './client';
 
 export type InvitationSetting = {
   pointColor: string;
@@ -129,6 +129,7 @@ export type PutCardReq = PostCardReq & { id: string };
 export type GetCardListRes = {
   id: string;
   title: string;
+  templateId: string;
   picture: string;
   updateAt: string;
 };
