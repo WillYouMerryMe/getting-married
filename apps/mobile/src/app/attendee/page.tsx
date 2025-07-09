@@ -29,6 +29,7 @@ const StyledAttendee = styled.div`
     justifyContent: 'flex-start',
   })}
   width: 100%;
+  height: 100vh;
   gap: 24px;
   padding: 71px 12px 115px;
 `;

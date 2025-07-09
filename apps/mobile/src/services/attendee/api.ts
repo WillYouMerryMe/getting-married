@@ -3,6 +3,7 @@ import authorization from '@/apis/token/token';
 import {
   GetAttendee,
   GetAttendeeParms,
+  PatchAttendeeParams,
   PostAccountReq,
   PostAttendeeReq,
   PostIntentionReq,
@@ -75,6 +76,31 @@ export const postAttendee = async ({
         hasSentGift,
         isAttending,
       },
+    }
+  );
+
+  return data;
+};
+
+export const deleteAttendee = async (id: string) => {
+  const { data } = await married.delete(`/attendees/${id}`, authorization());
+
+  return data;
+};
+
+export const patchAttendee = async ({
+  attendeeId,
+  numberOfAttendees,
+  isAttending,
+  hasSentGift,
+  mealPreference,
+}: PatchAttendeeParams) => {
+  const { data } = await married.patch(
+    '/attendees',
+    {},
+    {
+      ...authorization(),
+      params: { attendeeId, numberOfAttendees, isAttending, hasSentGift, mealPreference },
     }
   );
 

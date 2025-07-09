@@ -14,6 +14,7 @@ interface DesktopButtonGroupProps {
   buttons: ButtonItem[];
   pointColor?: string;
   height?: string;
+  active?: number | null;
 }
 
 const DesktopButtonGroup = ({
@@ -21,8 +22,11 @@ const DesktopButtonGroup = ({
   buttons,
   pointColor,
   height = '42px',
+  active,
 }: DesktopButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0);
+
+  const selected = active ?? selectedButton;
 
   return (
     <StyledButtonGroup>
@@ -35,13 +39,13 @@ const DesktopButtonGroup = ({
         {buttons.map((button, index) => (
           <DesktopButton
             key={index}
-            styleType={selectedButton === index ? 'DEFAULT' : 'SECOND'}
+            styleType={selected === index ? 'DEFAULT' : 'SECOND'}
             pointColor={pointColor}
             size="SMALL"
             width="100%"
             style={{ flex: 1, minWidth: 0, height: `${height}` }}
             onClick={() => {
-              setSelectedButton(index);
+              if (active == null) setSelectedButton(index);
               button.onClick();
             }}
           >

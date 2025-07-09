@@ -68,6 +68,7 @@ export default AttendeeList;
 const StyledAttendeeList = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
+  height: 100%;
   gap: 10px;
 `;
 
@@ -86,11 +87,13 @@ const ListContainer = styled.div`
 const ListContent = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center' })}
   width: 100%;
+  height: 100%;
   gap: 10px;
 `;
 
 const EmptyContainer = styled.div`
   ${flex({ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' })}
   width: 100%;
+  height: 100%;
   margin-top: 40%;
 `;

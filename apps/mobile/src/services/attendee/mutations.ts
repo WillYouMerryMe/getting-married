@@ -1,6 +1,13 @@
 import { useMutation } from '@tanstack/react-query';
-import { postAccount, postAttendee, postIntention } from './api';
 import {
+  deleteAttendee,
+  patchAttendee,
+  postAccount,
+  postAttendee,
+  postIntention,
+} from './api';
+import {
+  PatchAttendeeParams,
   PostAccountReq,
   PostAttendeeReq,
   PostIntentionReq,
@@ -81,5 +88,34 @@ export const useAttendeeMutation = () => {
     },
   });
 
-  return { attendeeMutate, restMutate };
+  return { attendeeMutate, ...restMutate };
+};
+
+export const useDeleteAttendee = () => {
+  const { mutate: deleteAttendeeMutate, ...restMutate } = useMutation({
+    mutationFn: (id: string) => deleteAttendee(id),
+  });
+
+  return { deleteAttendeeMutate, ...restMutate };
+};
+
+export const usePatchAttendee = () => {
+  const { mutate: patchAttendeeMutate, ...restMutate } = useMutation({
+    mutationFn: ({
+      attendeeId,
+      numberOfAttendees,
+      isAttending,
+      hasSentGift,
+      mealPreference,
+    }: PatchAttendeeParams) =>
+      patchAttendee({
+        attendeeId,
+        numberOfAttendees,
+        isAttending,
+        hasSentGift,
+        mealPreference,
+      }),
+  });
+
+  return { patchAttendeeMutate, ...restMutate };
 };
