@@ -17,7 +17,7 @@ import { useSetUrlShareStyleStore } from '@/store/form/urlShareStyle';
 import { useSetComponentOrderStore } from '@/store/form/orderState';
 import { Account, CustomFontType } from '@/types/form/client';
 
-export const useApplyCardParams = () => {
+export const useApplyCardParams = (id: string) => {
   const setMain = useSetMainStore();
   const setInvitationSetup = useSetInvitationSetupStore();
   const setMainScreen = useSetMainScreenStore();
@@ -35,7 +35,7 @@ export const useApplyCardParams = () => {
   const setComponentOrder = useSetComponentOrderStore();
 
   const applyParams = (data: PostCardReq) => {
-    setMain({ title: data.title, templateId: data.templateId });
+    setMain({ id: id, title: data.title, templateId: data.templateId });
 
     setInvitationSetup({
       pointColor: data.invitationSetting.pointColor,

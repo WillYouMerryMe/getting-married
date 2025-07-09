@@ -30,7 +30,7 @@ const InvitationItem = ({ id, title, templateId, picture, updateAt }: Props) => 
   const overlay = useOverlay();
   const router = useRouter();
 
-  const { applyParams } = useApplyCardParams();
+  const { applyParams } = useApplyCardParams(id);
   const { data } = useCardsQuery(id);
 
   const handleOverlayDeleteModal = () => {

@@ -1,11 +1,13 @@
 import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 interface MainState {
+  id: string | null;
   title: string;
   templateId: string;
 }
 
 export const defaultMain: MainState = {
+  id: null,
   title: '',
   templateId: '',
 };
