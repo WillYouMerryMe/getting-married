@@ -27,7 +27,7 @@ const WeddingCalender = ({
   weddingHallName,
   isCalendarVisible,
 }: WeddingCalenderProps) => {
-  const d = dayjs(date);
+  const d = dayjs(date).add(9, 'hour');
   const today = d.date();
 
   const firstDay = d.startOf('month').day();
