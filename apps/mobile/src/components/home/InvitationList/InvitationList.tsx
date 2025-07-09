@@ -31,6 +31,7 @@ const InvitationList = () => {
           id={item.id}
           title={item.title}
           updateAt={item.updateAt}
+          picture={item.picture}
         />
       ))}
     </ListContainer>

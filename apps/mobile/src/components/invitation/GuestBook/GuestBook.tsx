@@ -11,9 +11,10 @@ interface GuestBookProps {
   font: string;
   title: string;
   masterPassword: string;
+  id: string;
 }
 
-const GuestBook = ({ pointColor, font, title, masterPassword }: GuestBookProps) => {
+const GuestBook = ({ pointColor, font, title, masterPassword, id }: GuestBookProps) => {
   return (
     <StyledGuestBook>
       <Column width="100%" alignItems="center" gap={12}>
@@ -22,7 +23,7 @@ const GuestBook = ({ pointColor, font, title, masterPassword }: GuestBookProps) 
         </CustomText>
         <GuestBookList font={font} password={masterPassword} />
       </Column>
-      <WriteGuestBook pointColor={pointColor} />
+      <WriteGuestBook pointColor={pointColor} id={id} />
     </StyledGuestBook>
   );
 };

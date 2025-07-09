@@ -185,6 +185,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
           font={data?.invitationSetting.font ?? ''}
           title={data?.guestBook?.title ?? ''}
           masterPassword={data?.guestBook?.masterPassword ?? ''}
+          id={params.id}
         />
       ),
     GUEST_SNAPSHOTS: () =>

@@ -11,22 +11,33 @@ import styled from 'styled-components';
 import PasswordModal from '../PasswordModal/PasswordModal';
 import { getDate } from '@/utils/getDate';
 import { getHour } from '@/utils/getHour';
+import { useCardDetailQuery } from '@/services/card/queries';
 
 interface InvitationItemProps {
   id: string;
   title: string;
+  picture: string;
   updateAt: string;
 }
 
-const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
+const InvitationItem = ({ id, title, updateAt, picture }: InvitationItemProps) => {
   const router = useRouter();
   const overlay = useOverlay();
+  const { data } = useCardDetailQuery(id);
 
-  const weddingDate = dayjs().isSame(dayjs(updateAt), 'day');
+  const weddingDate = dayjs().isSame(
+    dayjs(data?.weddingInfo?.date).add(9, 'hour'),
+    'day'
+  );
 
   const handleMoveGuestBook = () => {
     overlay.open(({ isOpen, close }) => (
-      <PasswordModal isOpen={isOpen} onClose={close} password="1234" id={id} />
+      <PasswordModal
+        isOpen={isOpen}
+        onClose={close}
+        password={data?.guestBook?.masterPassword ?? ''}
+        id={id}
+      />
     ));
   };
 
@@ -48,7 +59,7 @@ const InvitationItem = ({ id, title, updateAt }: InvitationItemProps) => {
 
   return (
     <StyledInvitationItem>
-      <Background src="images/type01.svg" alt="초대장 배경" />
+      <Background src={picture} alt="초대장 배경" />
       <IconFolder width="100%" height={194.38} stroke={color.G30} />
       <ItemContent>
         <Row width="100%" justifyContent="space-between">

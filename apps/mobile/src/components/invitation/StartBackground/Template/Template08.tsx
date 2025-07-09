@@ -36,7 +36,7 @@ const Template08 = ({
           {lettering}
         </CustomText>
       </div>
-      <Column alignItems="center">
+      <Column alignItems="center" width="100%">
         <Row width="100%" alignItems="center" justifyContent="space-between">
           <CustomText
             fontType="Heir of Light OTF"
