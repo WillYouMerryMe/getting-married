@@ -6,8 +6,8 @@ import { useRef, useState, useEffect } from 'react';
 
 interface Props {
   size?: 'SMALL' | 'BIG';
-  value: File[] | null;
-  onChange: (files: File[] | null) => void;
+  value: (File | string)[] | null;
+  onChange: (files: (File | string)[] | null) => void;
   disabled?: boolean;
   maxFiles?: number;
   width?: CSSProperties['width'];
@@ -30,14 +30,16 @@ const InsertPhoto = ({
       return;
     }
 
-    const readers = value.map(
-      (file) =>
-        new Promise<string>((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
-          reader.readAsDataURL(file);
-        })
-    );
+    const readers = value.map((item) => {
+      if (typeof item === 'string') {
+        return Promise.resolve(item);
+      }
+      return new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.readAsDataURL(item);
+      });
+    });
 
     Promise.all(readers).then(setPreviews);
   }, [value]);
