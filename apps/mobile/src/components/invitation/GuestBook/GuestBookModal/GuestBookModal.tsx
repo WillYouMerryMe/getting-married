@@ -8,14 +8,22 @@ import ViewGuestBook from './ViewGuestBook/ViewGuestBook';
 import MasterPassword from './MasterPassword/MasterPassword';
 
 interface GuestBookModalProps {
+  id: string;
   isOpen: boolean;
   onClose: () => void;
-  name: string;
-  content: string;
   password: string;
+  cardId: string;
+  name: string;
 }
 
-const GuestBookModal = ({ isOpen, onClose, name, content, password }: GuestBookModalProps) => {
+const GuestBookModal = ({
+  id,
+  isOpen,
+  onClose,
+  password,
+  cardId,
+  name,
+}: GuestBookModalProps) => {
   const guestbook = useGuestBookStepValueStore();
 
   useBodyScrollLock(isOpen);
@@ -26,10 +34,10 @@ const GuestBookModal = ({ isOpen, onClose, name, content, password }: GuestBookM
         <SwitchCase
           value={guestbook}
           caseBy={{
-            '비밀번호 입력': <MasterPassword onClose={onClose} password={password} />,
-            '방명록 확인': (
-              <ViewGuestBook onClose={onClose} name={name} content={content} />
+            '비밀번호 입력': (
+              <MasterPassword onClose={onClose} password={password} cardId={cardId} />
             ),
+            '방명록 확인': <ViewGuestBook onClose={onClose} name={name} id={id} />,
           }}
         />
       </StyledGuestBookModal>

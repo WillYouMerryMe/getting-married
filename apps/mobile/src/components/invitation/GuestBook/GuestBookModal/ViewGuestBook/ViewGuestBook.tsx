@@ -1,3 +1,4 @@
+import { useGuestBookValueStore } from '@/stores/guestbook/guestBook';
 import { useSetGuestBookStepStore } from '@/stores/invitation/guestbookStep';
 import { color, font } from '@merried/design-system';
 import { IconDelete } from '@merried/icon';
@@ -8,15 +9,17 @@ import styled from 'styled-components';
 interface ViewGuestBookProps {
   onClose: () => void;
   name: string;
-  content: string;
+  id: string;
 }
 
-const ViewGuestBook = ({ onClose, name, content }: ViewGuestBookProps) => {
-  const setGuestBook = useSetGuestBookStepStore();
+const ViewGuestBook = ({ onClose, name, id }: ViewGuestBookProps) => {
+  const setGuestBookStep = useSetGuestBookStepStore();
+  const guestBook = useGuestBookValueStore();
+  const matched = guestBook.find((item) => item.id === id);
 
   const handleCloseModal = () => {
     onClose();
-    setGuestBook('비밀번호 입력');
+    setGuestBookStep('비밀번호 입력');
   };
 
   return (
@@ -30,7 +33,7 @@ const ViewGuestBook = ({ onClose, name, content }: ViewGuestBookProps) => {
         </div>
       </Row>
       <Column gap={32} width="100%">
-        <StyledContent>{content}</StyledContent>
+        <StyledContent>{matched?.content}</StyledContent>
         <Button onClick={handleCloseModal} size="LARGE" styleType="SECOND" width="100%">
           <Text fontType="Button3" color={color.G300}>
             닫기

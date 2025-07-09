@@ -3,7 +3,7 @@ import { TextData } from '@/types/guestbook/client';
 
 export const generateTexts = (
   container: HTMLElement,
-  texts: string[],
+  texts: string[] = [],
   count: number
 ): TextData[] => {
   const style = window.getComputedStyle(container);

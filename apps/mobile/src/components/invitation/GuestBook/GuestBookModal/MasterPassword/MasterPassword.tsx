@@ -8,11 +8,12 @@ import { useMasterPassword } from './MasterPassword.hooks';
 interface MasterPasswordProps {
   onClose: () => void;
   password: string;
+  cardId: string;
 }
 
-const MasterPassword = ({ onClose, password }: MasterPasswordProps) => {
+const MasterPassword = ({ onClose, password, cardId }: MasterPasswordProps) => {
   const { error, inputValue, handleCloseModal, handleInputChange, handlePasswordSubmit } =
-    useMasterPassword(onClose, password);
+    useMasterPassword(onClose, password, cardId);
 
   return (
     <StyledMasterpassword>

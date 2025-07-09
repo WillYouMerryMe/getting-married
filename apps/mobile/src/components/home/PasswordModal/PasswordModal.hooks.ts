@@ -1,11 +1,15 @@
 import { ROUTES } from '@/constants/common/constant';
+import { useGuestBook } from '@/services/guestbook/mutations';
+import { useSetGuestBookStore } from '@/stores/guestbook/guestBook';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const useMasterPassword = (onClose: () => void, password: string, id: string) => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
+  const { guestBookMutate } = useGuestBook(id);
   const router = useRouter();
+  const setGuestBook = useSetGuestBookStore();
 
   const handleCloseModal = () => {
     onClose();
@@ -18,7 +22,15 @@ export const useMasterPassword = (onClose: () => void, password: string, id: str
 
   const handlePasswordSubmit = () => {
     if (inputValue === password) {
-      router.push(`${ROUTES.GUESTBOOK}/${id}`);
+      guestBookMutate(
+        { password: password },
+        {
+          onSuccess: (data) => {
+            router.push(`${ROUTES.GUESTBOOK}/${id}`);
+            setGuestBook(data);
+          },
+        }
+      );
     } else {
       setError('비밀번호가 일치하지 않습니다.');
     }
