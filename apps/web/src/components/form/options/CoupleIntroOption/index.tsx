@@ -64,11 +64,11 @@ const CoupleIntroOption = () => {
           width={384}
           platform="DESKTOP"
           placeholder="아버지 이름을 입력해주세요"
-          value={coupleIntro.groom.fatherName}
+          value={coupleIntro.groom.fatherName ?? ''}
           onChange={handleInputChange('groom')}
         />
         <CheckBox
-          checked={coupleIntro.groom.isFatherDeceased}
+          checked={coupleIntro.groom.isFatherDeceased ?? false}
           onChange={handleCheckChange('groom', 'isFatherDeceased')}
           label="고인"
         />
@@ -82,11 +82,11 @@ const CoupleIntroOption = () => {
           width={384}
           platform="DESKTOP"
           placeholder="어머니 이름을 입력해주세요"
-          value={coupleIntro.groom.motherName}
+          value={coupleIntro.groom.motherName ?? ''}
           onChange={handleInputChange('groom')}
         />
         <CheckBox
-          checked={coupleIntro.groom.isMotherDeceased}
+          checked={coupleIntro.groom.isMotherDeceased ?? false}
           onChange={handleCheckChange('groom', 'isMotherDeceased')}
           label="고인"
         />
@@ -114,11 +114,11 @@ const CoupleIntroOption = () => {
           width={384}
           platform="DESKTOP"
           placeholder="아버지 이름을 입력해주세요"
-          value={coupleIntro.bride.fatherName}
+          value={coupleIntro.bride.fatherName ?? ''}
           onChange={handleInputChange('bride')}
         />
         <CheckBox
-          checked={coupleIntro.bride.isFatherDeceased}
+          checked={coupleIntro.bride.isFatherDeceased ?? false}
           onChange={handleCheckChange('bride', 'isFatherDeceased')}
           label="고인"
         />
@@ -132,11 +132,11 @@ const CoupleIntroOption = () => {
           width={384}
           platform="DESKTOP"
           placeholder="어머니 이름을 입력해주세요"
-          value={coupleIntro.bride.motherName}
+          value={coupleIntro.bride.motherName ?? ''}
           onChange={handleInputChange('bride')}
         />
         <CheckBox
-          checked={coupleIntro.bride.isMotherDeceased}
+          checked={coupleIntro.bride.isMotherDeceased ?? false}
           onChange={handleCheckChange('bride', 'isMotherDeceased')}
           label="고인"
         />
