@@ -2,6 +2,7 @@ import { useGuestBookCreate } from '@/services/guestbook/mutations';
 import { PostGuestBookCreateReq } from '@/types/guestbook/remote';
 import { Button, Column, Input, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -17,11 +18,13 @@ const WriteGuestBook = ({ pointColor, id }: WriteGuestBookProps) => {
     content: '',
   });
   const { guestBookCreate } = useGuestBookCreate();
+  const queryClient = useQueryClient();
 
   const handleGuestBookCreate = () => {
     guestBookCreate(guestbook, {
       onSuccess: () => {
         setGuestbook({ cardId: id, name: '', content: '' });
+        queryClient.invalidateQueries({ queryKey: ['guestbook', id] });
       },
     });
   };

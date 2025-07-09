@@ -3,6 +3,7 @@
 import GuestBookContent from '@/components/guestbook/GuestBookContent/GuestBookContent';
 import { ROUTES } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
+import { useGuestBookValueStore } from '@/stores/guestbook/guestBook';
 import { IconDelete } from '@merried/icon';
 import { flex } from '@merried/utils';
 import { useRouter } from 'next/navigation';
@@ -10,6 +11,7 @@ import styled from 'styled-components';
 
 const GuestBookDetail = () => {
   const router = useRouter();
+  const guestBook = useGuestBookValueStore();
 
   const handleMoveHome = () => {
     router.push(ROUTES.HOME);
@@ -23,7 +25,7 @@ const GuestBookDetail = () => {
             <IconDelete width={24} height={24} />
           </IconWrapper>
         </div>
-        <GuestBookContent />
+        <GuestBookContent guestBookItems={guestBook} />
       </StyledGuestBookDetail>
     </AppLayout>
   );

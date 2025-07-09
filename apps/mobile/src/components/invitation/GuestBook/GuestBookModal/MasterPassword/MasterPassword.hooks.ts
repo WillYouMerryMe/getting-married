@@ -1,10 +1,18 @@
+import { useGuestBook } from '@/services/guestbook/mutations';
+import { useSetGuestBookStore } from '@/stores/guestbook/guestBook';
 import { useSetGuestBookStepStore } from '@/stores/invitation/guestbookStep';
 import { useState } from 'react';
 
-export const useMasterPassword = (onClose: () => void, password: string) => {
-  const setGuestBook = useSetGuestBookStepStore();
+export const useMasterPassword = (
+  onClose: () => void,
+  password: string,
+  cardId: string
+) => {
+  const setGuestBookStep = useSetGuestBookStepStore();
   const [inputValue, setInputValue] = useState('');
+  const { guestBookMutate } = useGuestBook(cardId);
   const [error, setError] = useState('');
+  const setGuestBook = useSetGuestBookStore();
 
   const handleCloseModal = () => {
     onClose();
@@ -17,7 +25,16 @@ export const useMasterPassword = (onClose: () => void, password: string) => {
 
   const handlePasswordSubmit = () => {
     if (inputValue === password) {
-      setGuestBook('방명록 확인');
+      guestBookMutate(
+        { password: password },
+        {
+          onSuccess: (data) => {
+            setGuestBook(data);
+
+            setGuestBookStep('방명록 확인');
+          },
+        }
+      );
     } else {
       setError('비밀번호가 일치하지 않습니다.');
     }

@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { postGuestBookCreate } from './api';
+import { postGuestBook, postGuestBookCreate } from './api';
 import { PostGuestBookCreateReq } from '@/types/guestbook/remote';
 
 export const useGuestBookCreate = () => {
@@ -12,4 +12,12 @@ export const useGuestBookCreate = () => {
   });
 
   return { guestBookCreate, restMutate };
+};
+
+export const useGuestBook = (cardId: string) => {
+  const { mutate: guestBookMutate, ...restMutate } = useMutation({
+    mutationFn: ({ password }: { password: string }) => postGuestBook(cardId, password),
+  });
+
+  return { guestBookMutate, restMutate };
 };

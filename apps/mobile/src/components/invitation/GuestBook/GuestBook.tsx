@@ -21,7 +21,7 @@ const GuestBook = ({ pointColor, font, title, masterPassword, id }: GuestBookPro
         <CustomText fontType={font} color={color.G900} size={24} weight={400} line={100}>
           {title}
         </CustomText>
-        <GuestBookList font={font} password={masterPassword} />
+        <GuestBookList font={font} password={masterPassword} cardId={id} />
       </Column>
       <WriteGuestBook pointColor={pointColor} id={id} />
     </StyledGuestBook>
