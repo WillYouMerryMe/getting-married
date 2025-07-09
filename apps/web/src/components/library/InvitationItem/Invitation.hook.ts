@@ -78,7 +78,7 @@ export const useApplyCardParams = () => {
       setGalleryImage({
         isToggle: true,
         title: data.photoGallery.title,
-        imageList: [],
+        imageList: data.photoGallery.urls,
       });
     }
 

@@ -33,7 +33,8 @@ export const usePostCardParams = () => {
   const urlShareStyle = useUrlShareStyleValueStore();
   const componentOrder = useComponentOrderValueStore();
 
-  const handleUploadFile = async (file: File): Promise<string> => {
+  const handleUploadFile = async (file: File | string): Promise<string> => {
+    if (typeof file === 'string') return file;
     const presignedUrl = await getPresigned(file.name);
     await putPresigned(file, presignedUrl);
     const downloadableUrl = await getDownloadUrl(presignedUrl);
