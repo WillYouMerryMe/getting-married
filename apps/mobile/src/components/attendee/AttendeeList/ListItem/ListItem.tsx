@@ -22,7 +22,18 @@ const ListItem = ({ id, name, side, count, attend, money, meal }: ListItemProps)
   const overlay = useOverlay();
 
   const handleOverlayEditModal = () => {
-    overlay.open(({ isOpen, close }) => <EditModal isOpen={isOpen} onClose={close} />);
+    overlay.open(({ isOpen, close }) => (
+      <EditModal
+        isOpen={isOpen}
+        onClose={close}
+        name={name}
+        id={id}
+        count={count}
+        attend={attend}
+        money={money}
+        meal={meal}
+      />
+    ));
   };
 
   return (
