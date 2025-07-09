@@ -1,4 +1,5 @@
 import CustomText from '@/components/common/CustomText/CustomText';
+import { youtubeWatchToEmbed } from '@/utils/youtubeWatchToEmbed';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
@@ -13,7 +14,7 @@ const WeddingIntro = ({ url, title, font }: WeddingIntroProps) => (
     <CustomText fontType={font} color={color.G900} size={24} line={100} weight={400}>
       {title}
     </CustomText>
-    <WeddingVideo src={url} />
+    <WeddingVideo src={youtubeWatchToEmbed(url)} />
   </StyledWeddingIntro>
 );
 
