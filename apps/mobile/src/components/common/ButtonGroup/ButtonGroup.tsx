@@ -13,10 +13,13 @@ interface ButtonGroupProps {
   title?: string;
   buttons: ButtonItem[];
   pointColor?: string;
+  active?: number | null;
 }
 
-const ButtonGroup = ({ title, buttons, pointColor }: ButtonGroupProps) => {
+const ButtonGroup = ({ title, buttons, pointColor, active }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0);
+
+  const selected = active ?? selectedButton;
 
   return (
     <StyledButtonGroup>
@@ -29,13 +32,13 @@ const ButtonGroup = ({ title, buttons, pointColor }: ButtonGroupProps) => {
         {buttons.map((button, index) => (
           <Button
             key={index}
-            styleType={selectedButton === index ? 'DEFAULT' : 'SECOND'}
+            styleType={selected === index ? 'DEFAULT' : 'SECOND'}
             pointColor={pointColor}
             size="SMALL"
             width="100%"
             style={{ flex: 1, minWidth: 0 }}
             onClick={() => {
-              setSelectedButton(index);
+              if (active == null) setSelectedButton(index);
               button.onClick();
             }}
           >
