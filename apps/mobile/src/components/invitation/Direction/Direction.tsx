@@ -27,8 +27,10 @@ const Direction = ({
     method: methods[type]!,
   }));
 
+  const onlyFront = address.split('/')[0] || '';
+
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(address);
+    navigator.clipboard.writeText(onlyFront);
   };
 
   return (
@@ -43,12 +45,12 @@ const Direction = ({
         >
           오시는 길
         </CustomText>
-        <KakaoMap address={address} />
+        <KakaoMap address={onlyFront} />
       </Column>
       <Row width="100%" alignItems="center" justifyContent="space-between">
         <Column gap={4} alignItems="flex-start">
           <Text fontType="P2" color={color.G80}>
-            {address}
+            {onlyFront}
           </Text>
           <Text fontType="H4" color={color.G900}>
             {detailAddress}
@@ -62,7 +64,12 @@ const Direction = ({
       </Row>
       <Row width="100%" alignItems="center" gap={19}>
         {BRAND.map(({ src, name }) => (
-          <BrandButton key={name} src={src} name={name as '네이버지도' | '카카오맵'} address={address} />
+          <BrandButton
+            key={name}
+            src={src}
+            name={name as '네이버지도' | '카카오맵'}
+            address={onlyFront}
+          />
         ))}
       </Row>
       <Line />
