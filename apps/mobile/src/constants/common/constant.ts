@@ -26,4 +26,5 @@ export const KEY = {
   USER: 'user',
   CARD_DETAIL: 'card-detail',
   ATTENDEE: 'attendee',
+  GUESTBOOK: 'guestbook',
 };
