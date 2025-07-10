@@ -8,9 +8,10 @@ import GuestSnapShotContent from './GuestSnapShotContent/GuestSnapShotContent';
 interface GuestSnapShotProps {
   font: string;
   title: string;
+  id: string;
 }
 
-const GuestSnapShot = ({ font, title }: GuestSnapShotProps) => {
+const GuestSnapShot = ({ font, title, id }: GuestSnapShotProps) => {
   return (
     <StyledGuestSnapShot>
       <Column gap={12} alignItems="center">
@@ -23,7 +24,7 @@ const GuestSnapShot = ({ font, title }: GuestSnapShotProps) => {
           많은 참여 부탁드립니다.
         </CustomText>
       </Column>
-      <GuestSnapShotContent />
+      <GuestSnapShotContent id={id} />
     </StyledGuestSnapShot>
   );
 };
