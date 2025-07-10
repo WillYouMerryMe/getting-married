@@ -10,6 +10,23 @@ interface Template07Props {
 }
 
 const Template07 = ({ letteringColor, lettering, font }: Template07Props) => {
+  const TemplateFont: Record<string, { weight: number; line: number }> = {
+    BBB0003: { weight: 700, line: 105 },
+    'Ownglyph Kundo': { weight: 400, line: 105 },
+    Diphylleia: { weight: 400, line: 105 },
+    DOSGothic: { weight: 500, line: 105 },
+    KoreanCNMM: { weight: 400, line: 105 },
+    LeeSeoyun: { weight: 400, line: 105 },
+    MapoDacapo: { weight: 400, line: 105 },
+    'Ownglyph Baek Subin': { weight: 400, line: 105 },
+    'Nelna Yesam': { weight: 400, line: 105 },
+  };
+
+  const { weight, line } = TemplateFont[font] || {
+    weight: 400,
+    line: 100,
+  };
+
   return (
     <StyledTemplate07>
       <TextBox>
@@ -17,8 +34,9 @@ const Template07 = ({ letteringColor, lettering, font }: Template07Props) => {
           fontType={font}
           color={letteringColor}
           size={60}
-          weight={400}
-          line={105}
+          weight={weight}
+          line={line}
+          space="pre"
         >
           {lettering}
         </CustomText>
