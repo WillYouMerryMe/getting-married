@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
-import { postGuestSanpShot } from './api';
+import { postGuestSnapShot } from './api';
 import { PostGuestSnapShotReq } from '@/types/snapshot/remote';
 
 export const useGusetSnapShotMutation = () => {
   const { mutate: guestSnapShotMutate, ...restMutate } = useMutation({
     mutationFn: ({ cardId, urls }: PostGuestSnapShotReq) =>
-      postGuestSanpShot({ cardId, urls }),
+      postGuestSnapShot({ cardId, urls }),
     onSuccess: () => {
       alert('사진 전송이 완료되었습니다.');
     },

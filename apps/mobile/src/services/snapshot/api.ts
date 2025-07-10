@@ -3,7 +3,7 @@ import authorization from '@/apis/token/token';
 import { PostGuestSnapShotReq } from '@/types/snapshot/remote';
 import axios from 'axios';
 
-export const postGuestSanpShot = async ({ cardId, urls }: PostGuestSnapShotReq) => {
+export const postGuestSnapShot = async ({ cardId, urls }: PostGuestSnapShotReq) => {
   const { data } = await married.post('/guestSnapshots/create', { cardId, urls });
 
   return data;
