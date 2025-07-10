@@ -1,20 +1,38 @@
 import { color } from '@merried/design-system';
 import { Button, Column, InsertPhoto, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
-import { useState } from 'react';
 import styled from 'styled-components';
+import { usePostGuestSnapShot } from './GuestSnapShotContent.hooks';
+import { useGusetSnapShotMutation } from '@/services/snapshot/mutations';
+import { useCallback } from 'react';
 
 const MAX_FILES = 19;
 
-const GuestSnapShotContent = () => {
-  const [image, setImage] = useState<File[] | null>(null);
+interface GuestSnapShotContentProps {
+  id: string;
+}
+
+const GuestSnapShotContent = ({ id }: GuestSnapShotContentProps) => {
+  const { image, handleImageChange, buildParams } = usePostGuestSnapShot(id);
+  const { guestSnapShotMutate } = useGusetSnapShotMutation();
 
   const count = image?.length ?? 0;
+
+  const handeleUpload = useCallback(async () => {
+    const param = await buildParams();
+
+    guestSnapShotMutate(param);
+  }, [buildParams, guestSnapShotMutate]);
 
   return (
     <StyledGuestSnapShotContent>
       <Column gap={14} alignItems="stretch" width="100%">
-        <InsertPhoto size="BIG" value={image} onChange={setImage} maxFiles={MAX_FILES} />
+        <InsertPhoto
+          size="BIG"
+          value={image}
+          onChange={handleImageChange}
+          maxFiles={MAX_FILES}
+        />
         <Column gap={4}>
           <Text fontType="P3" color={color.G80}>
             · 1장당 100MB까지 업로드 가능합니다.
@@ -25,7 +43,7 @@ const GuestSnapShotContent = () => {
         </Column>
       </Column>
       <Button
-        onClick={() => {}}
+        onClick={handeleUpload}
         size="VERY_LARGE"
         width="100%"
         disabled={count === 0}

@@ -26,7 +26,6 @@ import styled from 'styled-components';
 const InvitationDetail = ({ params }: { params: { id: string } }) => {
   const startRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const invitationId = window.location.pathname.split('/').pop();
   const [showAttend, setShowAttend] = useState(false);
 
   const { data } = useCardDetailQuery(params.id);
@@ -43,12 +42,12 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
 
   useEffect(() => {
     const token = Storage.getItem(TOKEN.ACCESS);
-    Storage.setItem('invitationId', invitationId ?? '');
+    Storage.setItem('invitationId', params.id ?? '');
 
     if (!token) {
       router.push(ROUTES.LOGIN);
     }
-  }, [invitationId, router]);
+  }, [params.id, router]);
 
   const weddingCardComponentMap = {
     INVITATION_MESSAGE: () =>
@@ -193,6 +192,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
         <GuestSnapShot
           font={data?.invitationSetting.font ?? ''}
           title={data?.guestSnapshots?.title ?? ''}
+          id={params.id}
         />
       ),
     SHARE_URL_STYLE: () =>
