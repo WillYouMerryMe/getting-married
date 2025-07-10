@@ -84,6 +84,11 @@ married.interceptors.response.use(
         );
 
         const newAccessToken = res.data.accessToken;
+
+        if (!newAccessToken) {
+          alert('새로운 엑세스 토큰을 받지 못했습니다.');
+        }
+
         Storage.setItem(TOKEN.ACCESS, newAccessToken);
         married.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
         processQueue(null, newAccessToken);
