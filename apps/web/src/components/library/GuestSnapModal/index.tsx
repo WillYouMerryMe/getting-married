@@ -75,8 +75,21 @@ const GuestSnapModal = ({ id, isOpen, onClose }: Props) => {
     }
   };
 
-  const thumbnailGroup =
-    selectedIndex !== null ? images.slice(selectedIndex, selectedIndex + 8) : [];
+  const THUMBNAIL_LIMIT = 8;
+
+  const start =
+    selectedIndex !== null
+      ? Math.max(
+          0,
+          Math.min(
+            selectedIndex - Math.floor(THUMBNAIL_LIMIT / 2),
+            images.length - THUMBNAIL_LIMIT
+          )
+        )
+      : 0;
+
+  const end = Math.min(images.length, start + THUMBNAIL_LIMIT);
+  const thumbnailGroup = images.slice(start, end);
 
   return (
     <BlurBackground $isOpen={isOpen}>
@@ -180,8 +193,8 @@ const GuestSnapModal = ({ id, isOpen, onClose }: Props) => {
                   key={idx}
                   src={img}
                   alt={`썸네일 ${idx}`}
-                  onClick={() => setSelectedIndex(selectedIndex + idx)}
-                  $active={idx === 0}
+                  onClick={() => setSelectedIndex(start + idx)}
+                  $active={start + idx === selectedIndex}
                 />
               ))}
             </Row>
