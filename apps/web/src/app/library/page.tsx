@@ -44,6 +44,5 @@ const StyledLibrary = styled.div`
 const InvitationListWrapper = styled.div`
   flex: 1;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  ${flex({ flexDirection: 'column' })}
 `;
