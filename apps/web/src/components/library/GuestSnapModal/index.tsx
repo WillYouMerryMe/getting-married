@@ -48,13 +48,19 @@ const GuestSnapModal = ({ id, isOpen, onClose }: Props) => {
     setStep('LIST');
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    const imageUrl = images[selectedIndex!];
+    const response = await fetch(imageUrl, { mode: 'cors' });
+    const blob = await response.blob();
+
+    const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = images[selectedIndex!];
+    link.href = blobUrl;
     link.download = `guest_snap_${selectedIndex! + 1}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(blobUrl);
   };
 
   const handlePrev = () => {
