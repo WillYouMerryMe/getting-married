@@ -24,6 +24,20 @@ const Template05 = ({
   lettering,
   picture,
 }: Template05Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number }> = {
+    BBB0003: { size: 52, weight: 700 },
+    'Ownglyph Kundo': { size: 52, weight: 400 },
+    Diphylleia: { size: 52, weight: 400 },
+    DOSGothic: { size: 52, weight: 500 },
+    KoreanCNMM: { size: 52, weight: 400 },
+    LeeSeoyun: { size: 52, weight: 400 },
+    MapoDacapo: { size: 52, weight: 400 },
+    'Ownglyph Baek Subin': { size: 52, weight: 400 },
+    'White Angelica': { size: 52, weight: 400 },
+  };
+
+  const { size, weight } = TemplateFont[font] || { size: 32, weight: 400 };
+
   return (
     <StyledTemplate05>
       <WeddingPicture $picture={picture} />
@@ -31,10 +45,11 @@ const Template05 = ({
         <Column gap={24} alignItems="center">
           <CustomText
             fontType={font}
-            size={52}
-            weight={700}
+            size={size}
+            weight={weight}
             line={100}
             color={letteringColor}
+            space="pre"
           >
             {lettering}
           </CustomText>
