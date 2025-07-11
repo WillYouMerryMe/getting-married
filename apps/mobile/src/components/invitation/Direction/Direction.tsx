@@ -8,6 +8,7 @@ import BrandButton from '../BrandButton/BrandButton';
 import Transportation from './Transportation/Transportation';
 import { BRAND } from '@/constants/invitation/data';
 import { TRANSPORT_TYPES, TransportType } from '@/constants/invitation/constants';
+import { useToast } from '@/utils/useToast';
 
 interface DirectionProps {
   address: string;
@@ -22,6 +23,7 @@ const Direction = ({
   methods = {},
   pointColor,
 }: DirectionProps) => {
+  const { show } = useToast();
   const entries = TRANSPORT_TYPES.filter((type) => !!methods[type]).map((type) => ({
     type,
     method: methods[type]!,
@@ -30,7 +32,14 @@ const Direction = ({
   const onlyFront = address.split('/')[0] || '';
 
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(onlyFront);
+    navigator.clipboard
+      .writeText(onlyFront)
+      .then(() => {
+        show('복사했습니다', 'SUCCESS');
+      })
+      .catch(() => {
+        show('복사에 실패했습니다', 'ERROR');
+      });
   };
 
   return (

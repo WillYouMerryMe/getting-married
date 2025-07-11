@@ -4,10 +4,12 @@ import { postLogin, postLogout } from './api';
 import { useRouter } from 'next/navigation';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import { Storage } from '@/apis/storage/storage';
+import { useToast } from '@/utils/useToast';
 
 export const useLoginMutation = () => {
   const router = useRouter();
   const invitationId = Storage.getItem('invitationId');
+  const { show } = useToast();
 
   const { mutate: loginMutate, ...restMutation } = useMutation({
     mutationFn: ({ code, provider }: PostLoginReq) => postLogin({ code, provider }),
@@ -21,10 +23,11 @@ export const useLoginMutation = () => {
       } else {
         router.replace(ROUTES.HOME);
       }
+      show('로그인에 성공했습니다', 'SUCCESS');
     },
     onError: () => {
       localStorage.clear();
-      alert('로그인에 실패했습니다. 잠시후 시도해주세요.');
+      show('로그인에 실패했습니다', 'ERROR');
       router.replace(ROUTES.LOGIN);
     },
   });
@@ -34,16 +37,18 @@ export const useLoginMutation = () => {
 
 export const useLogoutMutation = () => {
   const router = useRouter();
+  const { show } = useToast();
 
   const { mutate: logoutMutate, ...restMutation } = useMutation({
     mutationFn: (token: string) => postLogout(token),
     onSuccess: () => {
       localStorage.clear();
       router.replace(ROUTES.LOGIN);
+      show('로그아웃에 성공했습니다', 'ERROR');
     },
     onError: () => {
       localStorage.clear();
-      alert('잠시후 다시 시도해주세요.');
+      show('로그아웃에 실패했습니다', 'ERROR');
     },
   });
 

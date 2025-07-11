@@ -45,5 +45,5 @@ export const usePostGuestSnapShot = (id: string) => {
     return baseParams as PostGuestSnapShotReq;
   };
 
-  return { image, handleImageChange, buildParams };
+  return { image, handleImageChange, buildParams, setImage };
 };
