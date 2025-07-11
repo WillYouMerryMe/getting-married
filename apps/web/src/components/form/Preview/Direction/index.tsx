@@ -46,11 +46,11 @@ const Direction = () => {
         <KakaoMap address={mainAddress} />
       </Column>
       <Row width="100%" alignItems="center" justifyContent="space-between">
-        <Column gap={4} alignItems="flex-start">
-          <Text fontType="P2" color={color.G80}>
+        <Column width="60%" gap={4} alignItems="flex-start">
+          <Text width="100%" whiteSpace="normal" fontType="P2" color={color.G80}>
             {mainAddress}
           </Text>
-          <Text fontType="H4" color={color.G900}>
+          <Text fontType="H4" whiteSpace="normal" color={color.G900}>
             {buildingName}
           </Text>
         </Column>

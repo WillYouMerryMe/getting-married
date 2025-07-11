@@ -63,13 +63,12 @@ const Direction = ({ data }: Props) => {
         </CustomText>
         <KakaoMap address={mainAddress} />
       </Column>
-
       <Row width="100%" alignItems="center" justifyContent="space-between">
-        <Column gap={4} alignItems="flex-start">
-          <Text fontType="P2" color={color.G80}>
+        <Column width="60%" gap={4} alignItems="flex-start">
+          <Text width="100%" whiteSpace="normal" fontType="P2" color={color.G80}>
             {mainAddress}
           </Text>
-          <Text fontType="H4" color={color.G900}>
+          <Text fontType="H4" whiteSpace="normal" color={color.G900}>
             {buildingName}
           </Text>
         </Column>
@@ -79,7 +78,6 @@ const Direction = ({ data }: Props) => {
           </Text>
         </ActionButton>
       </Row>
-
       <Row width="100%" alignItems="center" gap={19}>
         {BRAND.map(({ src, name }) => (
           <BrandButton
@@ -114,4 +112,31 @@ const Line = styled.div`
   width: 100%;
   height: 1px;
   background-color: ${color.G40};
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`;
+
+const TextContainer = styled.div`
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  & span {
+    white-space: normal;
+    word-break: break-word;
+  }
 `;
