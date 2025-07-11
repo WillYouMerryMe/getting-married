@@ -44,7 +44,12 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
   }, [image]);
 
   return (
-    <StyledMainScreen $id={id} $imageUrl={backgroundUrl}>
+    <StyledMainScreen>
+      <BackgroundImage
+        src={backgroundUrl || `/templateFull${id}.png`}
+        $isShrinked={id === '5'}
+        alt="main background"
+      />
       {id === '7' && <SvgOverlay src="/template7Backgroud.svg" alt="overlay" />}
       <TextOverlay
         id={id}
@@ -68,15 +73,25 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
 export default MainScreen;
 
-const StyledMainScreen = styled.div<{ $id: string; $imageUrl: string }>`
+const StyledMainScreen = styled.div`
   position: relative;
   width: 100%;
   height: 812px;
-  background-image: ${({ $imageUrl }) => `url(${$imageUrl})`};
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   ${flex({ flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' })}
   flex-shrink: 0;
+  background: ${color.G0};
+`;
+
+const BackgroundImage = styled.img<{ $isShrinked: boolean }>`
+  position: absolute;
+  top: ${({ $isShrinked }) => ($isShrinked ? '10px' : '0')};
+  left: 50%;
+  transform: translateX(-50%);
+  width: ${({ $isShrinked }) => ($isShrinked ? '94%' : '100%')};
+  height: ${({ $isShrinked }) => ($isShrinked ? '60%' : '100%')};
+  object-fit: cover;
+  z-index: 0;
 `;
 
 const ScrollTriggerButton = styled.div`
