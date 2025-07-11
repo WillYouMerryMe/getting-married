@@ -20,6 +20,25 @@ const Template03 = ({
   letteringColor,
   lettering,
 }: Template03Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number; line: number }> = {
+    BBB0003: { size: 75, weight: 700, line: 100 },
+    'Ownglyph Kundo': { size: 85, weight: 400, line: 100 },
+    Diphylleia: { size: 75, weight: 500, line: 100 },
+    DOSGothic: { size: 75, weight: 500, line: 100 },
+    KoreanCNMM: { size: 80, weight: 400, line: 100 },
+    LeeSeoyun: { size: 75, weight: 400, line: 100 },
+    MapoDacapo: { size: 80, weight: 400, line: 100 },
+    'Ownglyph Baek Subin': { size: 80, weight: 400, line: 100 },
+    'Nelna Yesam': { size: 80, weight: 400, line: 100 },
+    'White Angelica': { size: 80, weight: 400, line: 140 },
+  };
+
+  const { size, weight, line } = TemplateFont[font] || {
+    size: 32,
+    weight: 400,
+    line: 100,
+  };
+
   return (
     <StyledTemplate03>
       <Row width="100%" justifyContent="space-between" alignItems="center">
@@ -59,9 +78,10 @@ const Template03 = ({
           <CustomText
             fontType={font}
             color={letteringColor}
-            size={75}
-            weight={700}
-            line={100}
+            size={size}
+            weight={weight}
+            line={line}
+            space='pre'
           >
             {lettering}
           </CustomText>

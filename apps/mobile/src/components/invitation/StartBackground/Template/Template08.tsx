@@ -23,6 +23,17 @@ const Template08 = ({
   letteringColor,
   lettering,
 }: Template08Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number }> = {
+    BBB0003: { size: 110, weight: 700 },
+    'Ownglyph Kundo': { size: 110, weight: 400 },
+    Diphylleia: { size: 110, weight: 400 },
+    DOSGothic: { size: 110, weight: 500 },
+    KoreanCNMM: { size: 110, weight: 400 },
+    'White Angelica': { size: 110, weight: 400 },
+  };
+
+  const { weight } = TemplateFont[font] || { size: 32, weight: 400 };
+
   return (
     <StyledTemplate08>
       <div style={{ transform: 'rotate(-9.332deg)' }}>
@@ -30,8 +41,9 @@ const Template08 = ({
           fontType={font}
           color={letteringColor}
           size={110}
-          weight={700}
+          weight={weight}
           line={100}
+          space="pre"
         >
           {lettering}
         </CustomText>

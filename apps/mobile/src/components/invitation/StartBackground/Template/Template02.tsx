@@ -23,14 +23,29 @@ const Template02 = ({
   letteringColor,
   lettering,
 }: Template02Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number }> = {
+    'Ownglyph Kundo': { size: 32, weight: 400 },
+    Diphylleia: { size: 44, weight: 400 },
+    DOSGothic: { size: 32, weight: 500 },
+    KoreanCNMB: { size: 32, weight: 400 },
+    LeeSeoyun: { size: 32, weight: 400 },
+    MapoDacapo: { size: 32, weight: 400 },
+    'Ownglyph Baek Subin': { size: 32, weight: 400 },
+    'Nelna Yesam': { size: 32, weight: 400 },
+    'White Angelica': { size: 32, weight: 400 },
+  };
+
+  const { size, weight } = TemplateFont[font] || { size: 32, weight: 400 };
+
   return (
     <StyledTemplate02>
       <CustomText
         fontType={font}
-        size={32}
+        size={size}
         color={letteringColor}
-        weight={400}
+        weight={weight}
         line={100}
+        space="pre"
       >
         {lettering}
       </CustomText>

@@ -12,15 +12,35 @@ interface Template06Props {
 }
 
 const Template06 = ({ date, letteringColor, lettering, font }: Template06Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number; line: number }> = {
+    BBB0003: { size: 40, weight: 700, line: 110 },
+    'Ownglyph Kundo': { size: 40, weight: 400, line: 110 },
+    Diphylleia: { size: 40, weight: 400, line: 110 },
+    DOSGothic: { size: 40, weight: 500, line: 110 },
+    KoreanCNMM: { size: 80, weight: 400, line: 110 },
+    LeeSeoyun: { size: 40, weight: 400, line: 110 },
+    MapoDacapo: { size: 40, weight: 400, line: 110 },
+    'Ownglyph Baek Subin': { size: 40, weight: 400, line: 110 },
+    'Nelna Yesam': { size: 44, weight: 400, line: 120 },
+    'White Angelica': { size: 32, weight: 400, line: 130 },
+  };
+
+  const { size, weight, line } = TemplateFont[font] || {
+    size: 32,
+    weight: 400,
+    line: 100,
+  };
+
   return (
     <StyledTemplate06>
       <CenterBox>
         <CustomText
           fontType={font}
           color={letteringColor}
-          size={40}
-          weight={700}
-          line={110}
+          size={size}
+          weight={weight}
+          line={line}
+          space="pre"
         >
           {lettering}
         </CustomText>

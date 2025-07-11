@@ -23,6 +23,23 @@ const Template04 = ({
   letteringColor,
   lettering,
 }: Template04Props) => {
+  const TemplateFont: Record<string, { size: number; weight: number; line: number }> = {
+    'Ownglyph Kundo': { size: 48, weight: 400, line: 120 },
+    Diphylleia: { size: 40, weight: 400, line: 120 },
+    DOSGothic: { size: 40, weight: 500, line: 120 },
+    KoreanCNMM: { size: 40, weight: 400, line: 120 },
+    LeeSeoyun: { size: 40, weight: 400, line: 120 },
+    MapoDacapo: { size: 40, weight: 400, line: 120 },
+    'Ownglyph Baek Subin': { size: 48, weight: 400, line: 100 },
+    'Nelna Yesam': { size: 40, weight: 400, line: 120 },
+  };
+
+  const { size, weight, line } = TemplateFont[font] || {
+    size: 32,
+    weight: 400,
+    line: 100,
+  };
+
   return (
     <StyledTemplate04>
       <Column gap={8} alignItems="center">
@@ -58,9 +75,10 @@ const Template04 = ({
         <CustomText
           fontType={font}
           color={letteringColor}
-          size={48}
-          weight={400}
-          line={120}
+          size={size}
+          weight={weight}
+          line={line}
+          space="pre"
         >
           {lettering}
         </CustomText>
