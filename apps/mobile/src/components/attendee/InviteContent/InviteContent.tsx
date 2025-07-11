@@ -7,12 +7,15 @@ import { useInput } from './InviteContent.hooks';
 import { useState } from 'react';
 import { PostAttendeeReq } from '@/types/invitation/remote';
 import { useAttendeeMutation } from '@/services/attendee/mutations';
+import { AttendeeSchema } from '@/schemas/AttendeeSchema';
+import { useToast } from '@/utils/useToast';
 
 interface InviteContentProps {
   id: string;
 }
 
 const InviteContent = ({ id }: InviteContentProps) => {
+  const { show } = useToast();
   const { handleCountChange, handleCountBlur, count } = useInput();
   const { attendeeMutate } = useAttendeeMutation();
   const [attendee, setAttendee] = useState<PostAttendeeReq>({
@@ -27,7 +30,13 @@ const InviteContent = ({ id }: InviteContentProps) => {
   });
 
   const handleSubmitAttendee = () => {
-    attendeeMutate(attendee);
+    const result = AttendeeSchema.safeParse(attendee);
+
+    if (!result.success) {
+      show('참석자 추가에 실패했습니다', 'ERROR');
+    } else {
+      attendeeMutate(attendee);
+    }
   };
 
   return (

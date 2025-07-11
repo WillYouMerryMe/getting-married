@@ -1,3 +1,4 @@
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -12,10 +13,11 @@ interface BrandButtonProps {
 }
 
 const BrandButton = ({ src, name, address }: BrandButtonProps) => {
+  const { show } = useToast();
   const handleClick = useCallback(() => {
     if (typeof window === 'undefined') return;
     const geocoder = new window.kakao.maps.services.Geocoder();
-    
+
     geocoder.addressSearch(address, (result, status) => {
       if (status === window.kakao.maps.services.Status.OK && result.length > 0) {
         const { y, x } = result[0];
@@ -28,10 +30,10 @@ const BrandButton = ({ src, name, address }: BrandButtonProps) => {
           window.open(url, '_blank');
         }
       } else {
-        alert('주소를 찾을 수 없습니다.');
+        show('주소를 찾을 수 없습니다', 'ERROR');
       }
     });
-  }, [address, name]);
+  }, [address, name, show]);
 
   return (
     <StyledBrandButton onClick={handleClick}>

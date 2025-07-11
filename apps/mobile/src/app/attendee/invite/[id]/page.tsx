@@ -1,20 +1,21 @@
 'use client';
 
 import InviteContent from '@/components/attendee/InviteContent/InviteContent';
+import Toast from '@/components/common/Toast/Toast';
 import { ROUTES } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const Invite = ({ params }: { params: { id: string } }) => {
+  const { showToast, toastMessage, toastType } = useToast();
   const router = useRouter();
 
   const handleMoveManage = () => {
     router.push(ROUTES.MANAGE);
   };
-
-  console.log(params.id);
 
   return (
     <AppLayout
@@ -27,6 +28,7 @@ const Invite = ({ params }: { params: { id: string } }) => {
       <StyledInvite>
         <InviteContent id={params.id} />
       </StyledInvite>
+      {showToast && <Toast type={toastType}>{toastMessage}</Toast>}
     </AppLayout>
   );
 };

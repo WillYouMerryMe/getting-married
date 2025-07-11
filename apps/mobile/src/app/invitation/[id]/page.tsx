@@ -1,6 +1,7 @@
 'use client';
 
 import { Storage } from '@/apis/storage/storage';
+import Toast from '@/components/common/Toast/Toast';
 import Account from '@/components/invitation/Account/Account';
 import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
@@ -16,6 +17,7 @@ import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { useCardDetailQuery } from '@/services/card/queries';
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
 import { Button, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -24,6 +26,7 @@ import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const InvitationDetail = ({ params }: { params: { id: string } }) => {
+  const { showToast, toastMessage, toastType } = useToast();
   const startRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [showAttend, setShowAttend] = useState(false);
@@ -253,6 +256,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
           id={params.id}
         />
       )}
+      {showToast && <Toast type={toastType}>{toastMessage}</Toast>}
     </AppLayout>
   );
 };

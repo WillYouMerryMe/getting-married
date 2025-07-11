@@ -12,6 +12,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { KEY } from '@/constants/common/constant';
 import { PatchAttendeeParams } from '@/types/invitation/remote';
 import { useEffect, useState } from 'react';
+import { useToast } from '@/utils/useToast';
 
 interface EditModalProps {
   isOpen: boolean;
@@ -41,6 +42,7 @@ const EditModal = ({
     hasSentGift: money,
     mealPreference: meal,
   });
+  const { show } = useToast();
 
   const { deleteAttendeeMutate } = useDeleteAttendee();
   const { patchAttendeeMutate } = usePatchAttendee();
@@ -74,6 +76,10 @@ const EditModal = ({
             ],
           });
           onClose();
+          show('참석자 수정에 성공했습니다', 'SUCCESS');
+        },
+        onError: () => {
+          show('참석자 수정에 실패했습니다', 'ERROR');
         },
       }
     );
@@ -89,15 +95,14 @@ const EditModal = ({
           ],
         });
         onClose();
+        show('참석자 삭제에 성공했습니다', 'SUCCESS');
       },
       onError: () => {
-        alert('잠시후 다시 시도해주세요.');
+        show('참석자 삭제에 실패했습니다', 'ERROR');
         onClose();
       },
     });
   };
-
-  console.log(edit);
 
   return (
     <BlurBackground $isOpen={isOpen}>
