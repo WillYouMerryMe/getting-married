@@ -4,7 +4,7 @@ import { IconError, IconSuccess } from '@merried/icon';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { usePathname } from 'next/navigation';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import styled, { CSSProperties } from 'styled-components';
 
 interface ToastProps {
@@ -14,17 +14,9 @@ interface ToastProps {
 }
 
 const Toast = ({ children, width, type }: ToastProps) => {
-  const [visible, setVisible] = useState(true);
   const pathname = usePathname();
 
   const bottom = pathname.startsWith(ROUTES.INVITATION) ? '80px' : '120px';
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!visible) return null;
 
   return (
     <StyledToast $type={type} $bottom={bottom} style={{ width }}>
