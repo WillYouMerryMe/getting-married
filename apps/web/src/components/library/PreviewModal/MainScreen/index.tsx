@@ -23,7 +23,7 @@ const MainScreen = ({ data, onScrollClick }: Props) => {
   const calenderDate = data.weddingInfo?.date;
 
   return (
-    <StyledMainScreen $imageUrl={picture}>
+    <StyledMainScreen $imageUrl={picture || `/templateFull${templateId}.png`}>
       {templateId === '7' && <SvgOverlay src="/template7Backgroud.svg" alt="overlay" />}
       <TextOverlay
         id={templateId}
