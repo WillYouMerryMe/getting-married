@@ -51,8 +51,9 @@ const InvitationItem = ({ id, title, templateId, picture, updateAt }: Props) => 
   };
 
   const handleMailClick = () => {
+    if (!data) return;
     overlay.open(({ isOpen, close }) => (
-      <PreviewModal id={id} isOpen={isOpen} onClose={close} />
+      <PreviewModal data={data} isOpen={isOpen} onClose={close} />
     ));
   };
 

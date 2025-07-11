@@ -3,21 +3,19 @@ import { IconShortArrow } from '@merried/icon';
 import { flex } from '@merried/utils';
 import TextOverlay from './TextOverlay';
 import SubTextOverlay from './SubTextOverlay';
-import { useCeremonyInfoValueStore } from '@/store/form/ceremonyInfo';
 import { color } from '@merried/design-system';
-import { useCardsQuery } from '@/services/form/queries';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
   onScrollClick: () => void;
 }
 
-const MainScreen = ({ id, onScrollClick }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const MainScreen = ({ data, onScrollClick }: Props) => {
   if (!data) return null;
 
   const { picture, letteringColor, lettering, font } = data.mainPageSetting;
+  const templateId = data.templateId;
 
   const groom = data.groomProfile;
   const bride = data.brideProfile;
@@ -26,14 +24,19 @@ const MainScreen = ({ id, onScrollClick }: Props) => {
 
   return (
     <StyledMainScreen $imageUrl={picture}>
-      {id === '7' && <SvgOverlay src="/template7Backgroud.svg" alt="overlay" />}
-      <TextOverlay id={id} text={lettering[0]} color={letteringColor} font={font} />
+      {templateId === '7' && <SvgOverlay src="/template7Backgroud.svg" alt="overlay" />}
+      <TextOverlay
+        id={templateId}
+        text={lettering[0]}
+        color={letteringColor}
+        font={font}
+      />
       <SubTextOverlay
-        id={id}
+        id={templateId}
         groomName={groom?.name || 'OOO'}
         brideName={bride?.name || 'OOO'}
         dateStr={`${calenderDate}`}
-        color={id === '5' || id === '6' ? letteringColor : color.G0}
+        color={templateId === '5' || templateId === '6' ? letteringColor : color.G0}
       />
       <ScrollTriggerButton onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />

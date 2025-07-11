@@ -1,17 +1,15 @@
 import CustomText from '@/components/common/CustomText/CustomText';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const WeddingIntro = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const WeddingIntro = ({ data }: Props) => {
   if (!data || !data?.videoGallery) return null;
 
   const videoGallery = data.videoGallery;

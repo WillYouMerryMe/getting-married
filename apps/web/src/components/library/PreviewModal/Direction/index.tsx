@@ -7,16 +7,14 @@ import { ActionButton, Column, Row, Text } from '@merried/ui';
 import BrandButton from './BrandButton';
 import Transportation from './Transportation';
 import { TRANSPORT_TYPES, BRAND } from '@/constants/form/constants';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const Direction = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const Direction = ({ data }: Props) => {
   if (!data || !data.locationGuide) return null;
 
   const { address, isSubway, subwayDetail, isBus, busDetail, hasParking, parkingDetail } =

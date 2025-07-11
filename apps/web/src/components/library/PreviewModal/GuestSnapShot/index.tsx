@@ -4,16 +4,14 @@ import { Column } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import GuestSnapShotContent from './GuestSnapShotContent';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const GuestSnapShot = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const GuestSnapShot = ({ data }: Props) => {
   if (!data || !data?.guestSnapshots) return null;
 
   const guestSnapshots = data.guestSnapshots;
