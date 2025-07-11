@@ -62,7 +62,12 @@ const Direction = () => {
       </Row>
       <Row width="100%" alignItems="center" gap={19}>
         {BRAND.map(({ src, name }) => (
-          <BrandButton key={name} src={src} name={name} onClick={() => {}} />
+          <BrandButton
+            key={name}
+            src={src}
+            name={name as '네이버지도' | '카카오맵'}
+            address={mainAddress}
+          />
         ))}
       </Row>
       <Line />

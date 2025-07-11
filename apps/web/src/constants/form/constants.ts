@@ -51,7 +51,7 @@ export const GENDER_MAP = {
 } as const;
 
 export const BRAND = [
-  { src: '/IconTMap.svg', name: '티맵' },
+  { src: '/IconNaver.svg', name: '네이버지도' },
   { src: '/IconKakaoMap.svg', name: '카카오맵' },
 ];
 
