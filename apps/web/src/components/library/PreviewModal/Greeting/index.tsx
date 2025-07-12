@@ -1,16 +1,14 @@
 import { CustomText } from '@/components/common';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 import { color } from '@merried/design-system';
 import { Column } from '@merried/ui';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const Greeting = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const Greeting = ({ data }: Props) => {
   if (!data || !data?.invitationMessage) return null;
 
   const title = data.invitationMessage.title;

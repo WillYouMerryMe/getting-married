@@ -4,16 +4,14 @@ import { Column } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import AccountItem from './AccountItem';
-import { useCardsQuery } from '@/services/form/queries';
 import type { Account, CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const Account = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const Account = ({ data }: Props) => {
   if (!data || !data?.accountInfo) return null;
 
   const invitationFont = data.invitationSetting.font;

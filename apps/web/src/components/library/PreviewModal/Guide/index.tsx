@@ -2,16 +2,14 @@ import CustomText from '@/components/common/CustomText/CustomText';
 import { color } from '@merried/design-system';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const Guide = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const Guide = ({ data }: Props) => {
   if (!data || !data?.guestNotice) return null;
 
   const notice = data.guestNotice;

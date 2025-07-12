@@ -5,16 +5,14 @@ import styled from 'styled-components';
 import WriteGuestBook from './WriteGuestBook';
 import { Column } from '@merried/ui';
 import GuestBookList from './GuestBookList';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const GuestBook = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const GuestBook = ({ data }: Props) => {
   if (!data || !data?.guestBook) return null;
 
   const guestBook = data.guestBook;

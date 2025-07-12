@@ -1,7 +1,10 @@
+import PreviewModal from '@/components/library/PreviewModal';
 import { ROUTES } from '@/constants/common/constant';
+import { getTemplateById } from '@/constants/form/constants';
 import { color } from '@merried/design-system';
 import { DesktopButton, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { useOverlay } from '@toss/use-overlay';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
@@ -13,12 +16,19 @@ interface Props {
 }
 
 const TemplateItem = ({ id, path, title }: Props) => {
+  const overlay = useOverlay();
   const router = useRouter();
 
   const handleMoveFormPage = () => {
     router.push(`${ROUTES.FORM}/${id}`);
   };
 
+  const handlePreviewClick = () => {
+    const templateData = getTemplateById(String(id));
+    overlay.open(({ isOpen, close }) => (
+      <PreviewModal data={templateData} isOpen={isOpen} onClose={close} />
+    ));
+  };
   return (
     <StyledTemplateItem>
       <ImageWrapper>
@@ -35,9 +45,11 @@ const TemplateItem = ({ id, path, title }: Props) => {
           <Text fontType="P3" color={color.G0}>
             또는
           </Text>
-          <Text fontType="P3" color={color.G0} underline={true}>
-            청첩장 미리보기
-          </Text>
+          <div style={{ cursor: 'pointer' }} onClick={handlePreviewClick}>
+            <Text fontType="P3" color={color.G0} underline={true}>
+              청첩장 미리보기
+            </Text>
+          </div>
         </Overlay>
       </ImageWrapper>
       {title}
@@ -56,7 +68,6 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 284px;
   height: 615px;
-  cursor: pointer;
 `;
 
 const Overlay = styled.div`

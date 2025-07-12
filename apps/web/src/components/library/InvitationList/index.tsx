@@ -72,7 +72,7 @@ const EmptyState = styled.div`
 `;
 
 const ScrollableList = styled.div`
-  ${flex({ alignItems: 'center' })}
+  ${flex({ alignItems: 'flex-start' })}
   flex-wrap: wrap;
   gap: 20px 24px;
   overflow-y: auto;

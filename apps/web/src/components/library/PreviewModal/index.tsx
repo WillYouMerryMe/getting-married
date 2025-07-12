@@ -16,11 +16,11 @@ import GuestBook from './GuestBook';
 import GuestSnapShot from './GuestSnapShot';
 import UrlShareStyle from './UrlShareStyle';
 import MainScreen from './MainScreen';
-import { useCardsQuery } from '@/services/form/queries';
 import { IconDelete } from '@merried/icon';
+import { PutCardReq } from '@/types/form/remote';
 
 interface ComponentsProps {
-  id: string;
+  data: PutCardReq;
 }
 
 const PREVIEW_COMPONENTS: Record<string, React.FC<ComponentsProps>> = {
@@ -38,16 +38,14 @@ const PREVIEW_COMPONENTS: Record<string, React.FC<ComponentsProps>> = {
 };
 
 interface Props {
-  id: string;
+  data: PutCardReq;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const PreviewModal = ({ id, isOpen, onClose }: Props) => {
+const PreviewModal = ({ data, isOpen, onClose }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const { data } = useCardsQuery(id);
 
   const scrollToContent = () => {
     if (scrollRef.current && contentRef.current) {
@@ -73,14 +71,14 @@ const PreviewModal = ({ id, isOpen, onClose }: Props) => {
       />
       <StyledPreview>
         <ScrollableArea ref={scrollRef}>
-          <MainScreen id={id} onScrollClick={scrollToContent} />
+          <MainScreen data={data} onScrollClick={scrollToContent} />
 
           <ContentSection ref={contentRef}>
             {data?.componentOrders
               ?.sort((a, b) => a.order - b.order)
               .map(({ componentType }) => {
                 const Component = PREVIEW_COMPONENTS[componentType];
-                return Component ? <Component key={componentType} id={id} /> : null;
+                return Component ? <Component key={componentType} data={data} /> : null;
               })}
             <Text fontType="P4" color={color.G80}>
               COPYRIGHT Kangwon Park. All rights reserved.

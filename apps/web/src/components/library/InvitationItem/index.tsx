@@ -51,8 +51,9 @@ const InvitationItem = ({ id, title, templateId, picture, updateAt }: Props) => 
   };
 
   const handleMailClick = () => {
+    if (!data) return;
     overlay.open(({ isOpen, close }) => (
-      <PreviewModal id={id} isOpen={isOpen} onClose={close} />
+      <PreviewModal data={data} isOpen={isOpen} onClose={close} />
     ));
   };
 
@@ -62,7 +63,7 @@ const InvitationItem = ({ id, title, templateId, picture, updateAt }: Props) => 
 
   return (
     <StyledInvitationItem>
-      <InvitationImage imageUrl={picture} />
+      <InvitationImage imageUrl={picture || `/templateFull${templateId}.png`} />
       <InvitationInfo>
         <Row width="100%" justifyContent="space-between" alignItems="center">
           <Column gap={4} alignItems="flex-start">

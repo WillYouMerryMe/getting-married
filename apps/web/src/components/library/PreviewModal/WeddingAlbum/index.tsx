@@ -5,16 +5,14 @@ import { IconLongArrow } from '@merried/icon';
 import { Row, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
-import { useCardsQuery } from '@/services/form/queries';
 import { CustomFontType } from '@/types/form/client';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const WeddingAlbum = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const WeddingAlbum = ({ data }: Props) => {
   if (!data || !data?.photoGallery) return null;
 
   const { photoGallery, invitationSetting } = data;

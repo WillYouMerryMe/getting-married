@@ -5,17 +5,15 @@ import { IconOval } from '@merried/icon';
 import styled from 'styled-components';
 import { flex } from '@merried/utils';
 import { Column } from '@merried/ui';
-import { useCardsQuery } from '@/services/form/queries';
+import { PutCardReq } from '@/types/form/remote';
 
 dayjs.locale('ko');
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const WeddingCalender = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const WeddingCalender = ({ data }: Props) => {
   if (!data || !data?.weddingInfo) return null;
 
   const invitationSetting = data.invitationSetting;

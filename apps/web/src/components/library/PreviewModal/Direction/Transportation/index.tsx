@@ -1,4 +1,3 @@
-import { TRANSPORT_MAP } from '@/constants/form/constants';
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -14,7 +13,7 @@ const Transportation = ({ type, method }: TransportationProps) => {
     <div>
       <StyledTransportation>
         <Text fontType="H4" color={color.G900}>
-          {TRANSPORT_MAP[type]}
+          {type}
         </Text>
         <Text fontType="P2" color={color.G80} whiteSpace="pre-wrap">
           {method}
