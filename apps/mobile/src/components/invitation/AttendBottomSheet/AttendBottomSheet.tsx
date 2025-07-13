@@ -9,6 +9,8 @@ import { useInput } from './AttendBottomSheet.hooks';
 import { useIntention } from '@/services/attendee/mutations';
 import { useState } from 'react';
 import { PostIntentionReq } from '@/types/invitation/remote';
+import { useToast } from '@/utils/useToast';
+import { AttendeeSchema } from '@/schemas/AttendeeSchema';
 
 interface AttendBottomSheetProps {
   isOpen: boolean;
@@ -24,6 +26,7 @@ const AttendBottomSheet = ({
   id,
 }: AttendBottomSheetProps) => {
   const { handleCountChange, handleCountBlur, count } = useInput();
+  const { show } = useToast();
   const { intentionMutate } = useIntention();
   const [intention, setIntention] = useState<PostIntentionReq>({
     cardId: id,
@@ -35,14 +38,21 @@ const AttendBottomSheet = ({
   });
 
   const handleSubmitIntention = () => {
-    intentionMutate(intention, {
-      onSuccess: () => {
-        onClose();
-      },
-      onError: () => {
-        alert('잠시후 다시 시도해주세요.');
-      },
-    });
+    const result = AttendeeSchema.safeParse(intention);
+
+    if (!result.success) {
+      show('참석 의사 전송에 실패했습니다', 'ERROR');
+    } else {
+      intentionMutate(intention, {
+        onSuccess: () => {
+          show('참석 의사 전송에 성공했습니다', 'SUCCESS');
+          onClose();
+        },
+        onError: () => {
+          show('참석 의사 전송에 실패했습니다', 'ERROR');
+        },
+      });
+    }
   };
 
   return (

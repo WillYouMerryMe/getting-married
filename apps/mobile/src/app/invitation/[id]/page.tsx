@@ -1,6 +1,7 @@
 'use client';
 
 import { Storage } from '@/apis/storage/storage';
+import Toast from '@/components/common/Toast/Toast';
 import Account from '@/components/invitation/Account/Account';
 import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
 import CoupleInfo from '@/components/invitation/CoupleInfo/CoupleInfo';
@@ -9,6 +10,7 @@ import Greeting from '@/components/invitation/Greeting/Greeting';
 import GuestBook from '@/components/invitation/GuestBook/GuestBook';
 import GuestSnapShot from '@/components/invitation/GuestSnapShot/GuestSnapShot';
 import Guide from '@/components/invitation/Guide/Guide';
+import ShareURL from '@/components/invitation/ShareURL/ShareURL';
 import StartBackground from '@/components/invitation/StartBackground/StartBackground';
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
 import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
@@ -16,14 +18,17 @@ import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { useCardDetailQuery } from '@/services/card/queries';
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
-import { Button, Column, Text } from '@merried/ui';
+import { Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
+import { OpenGraph } from '@toss/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const InvitationDetail = ({ params }: { params: { id: string } }) => {
+  const { showToast, toastMessage, toastType } = useToast();
   const startRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [showAttend, setShowAttend] = useState(false);
@@ -197,21 +202,17 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
       ),
     SHARE_URL_STYLE: () =>
       data?.shareUrlStyle && (
-        <Column gap={8} alignItems="center">
-          <Button
-            onClick={() => {}}
-            size="MEDIUM"
+        <>
+          <ShareURL
             pointColor={data?.invitationSetting.pointColor ?? ''}
-            width={185}
-          >
-            <Text fontType="Button2">카카오톡으로 공유</Text>
-          </Button>
-          <Button onClick={() => {}} size="MEDIUM" styleType="SECOND" width={185}>
-            <Text fontType="Button2" color={color.G300}>
-              청첩장 링크 복사
-            </Text>
-          </Button>
-        </Column>
+            id={params.id}
+          />
+          <OpenGraph
+            title={data?.shareUrlStyle?.title}
+            description={data?.shareUrlStyle?.content}
+            imageUrl={data?.shareUrlStyle?.thumbnailUrl}
+          />
+        </>
       ),
   };
 
@@ -253,6 +254,7 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
           id={params.id}
         />
       )}
+      {showToast && <Toast type={toastType}>{toastMessage}</Toast>}
     </AppLayout>
   );
 };

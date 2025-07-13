@@ -15,9 +15,11 @@ import {
 import { useSetAccountStepStore } from '@/stores/invitation/accountStep';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants/common/constant';
+import { useToast } from '@/utils/useToast';
 
 export const useAccount = () => {
   const setAccountStep = useSetAccountStepStore();
+  const { show } = useToast();
 
   const { mutate: accountMutate, ...restMutate } = useMutation({
     mutationFn: ({ cardId, name, phoneNumber }: PostAccountReq) =>
@@ -26,7 +28,7 @@ export const useAccount = () => {
       setAccountStep('계좌번호');
     },
     onError: () => {
-      alert('잠시후 다시 시도해주시길 바랍니다.');
+      show('잠시후 다시 시도해주세요', 'ERROR');
     },
   });
 
@@ -58,6 +60,7 @@ export const useIntention = () => {
 
 export const useAttendeeMutation = () => {
   const router = useRouter();
+  const { show } = useToast();
 
   const { mutate: attendeeMutate, ...restMutate } = useMutation({
     mutationFn: ({
@@ -82,9 +85,10 @@ export const useAttendeeMutation = () => {
       }),
     onSuccess: () => {
       router.push(ROUTES.MANAGE);
+      show('참석자 추가에 성공했습니다', 'SUCCESS');
     },
     onError: () => {
-      alert('잠시후 다시 시도해주세요.');
+      show('참석자 추가에 실패했습니다', 'ERROR');
     },
   });
 

@@ -12,6 +12,8 @@ import PasswordModal from '../PasswordModal/PasswordModal';
 import { getDate } from '@/utils/getDate';
 import { getHour } from '@/utils/getHour';
 import { useCardDetailQuery } from '@/services/card/queries';
+import { useToast } from '@/utils/useToast';
+import { OpenGraph } from '@toss/react';
 
 interface InvitationItemProps {
   id: string;
@@ -24,6 +26,7 @@ const InvitationItem = ({ id, title, updateAt, picture }: InvitationItemProps) =
   const router = useRouter();
   const overlay = useOverlay();
   const { data } = useCardDetailQuery(id);
+  const { show } = useToast();
 
   const weddingDate = dayjs().isSame(
     dayjs(data?.weddingInfo?.date).add(9, 'hour'),
@@ -48,9 +51,14 @@ const InvitationItem = ({ id, title, updateAt, picture }: InvitationItemProps) =
   const handleCopyUrl = () => {
     const baseUrl = window.location.origin;
     const invitationUrl = `${baseUrl}/invitation/${id}`;
-    navigator.clipboard.writeText(invitationUrl).then(() => {
-      alert('청첩장 URL이 복사되었습니다!');
-    });
+    navigator.clipboard
+      .writeText(invitationUrl)
+      .then(() => {
+        show('복사했습니다', 'SUCCESS');
+      })
+      .catch(() => {
+        show('복사에 실패했습니다', 'ERROR');
+      });
   };
 
   const handleMoveAttendee = () => {

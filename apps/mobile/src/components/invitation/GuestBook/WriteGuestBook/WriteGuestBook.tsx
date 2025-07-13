@@ -1,5 +1,7 @@
+import { GuestBookSchema } from '@/schemas/GuestBookSchema';
 import { useGuestBookCreate } from '@/services/guestbook/mutations';
 import { PostGuestBookCreateReq } from '@/types/guestbook/remote';
+import { useToast } from '@/utils/useToast';
 import { Button, Column, Input, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { useQueryClient } from '@tanstack/react-query';
@@ -19,14 +21,21 @@ const WriteGuestBook = ({ pointColor, id }: WriteGuestBookProps) => {
   });
   const { guestBookCreate } = useGuestBookCreate();
   const queryClient = useQueryClient();
+  const { show } = useToast();
 
   const handleGuestBookCreate = () => {
-    guestBookCreate(guestbook, {
-      onSuccess: () => {
-        setGuestbook({ cardId: id, name: '', content: '' });
-        queryClient.invalidateQueries({ queryKey: ['guestbook', id] });
-      },
-    });
+    const result = GuestBookSchema.safeParse(guestbook);
+
+    if (result.success) {
+      guestBookCreate(guestbook, {
+        onSuccess: () => {
+          setGuestbook({ cardId: id, name: '', content: '' });
+          queryClient.invalidateQueries({ queryKey: ['guestbook', id] });
+        },
+      });
+    } else {
+      show('방명록 작성에 실패했습니다', 'ERROR');
+    }
   };
 
   return (

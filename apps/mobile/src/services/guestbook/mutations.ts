@@ -1,16 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
 import { postGuestBook, postGuestBookCreate } from './api';
 import { PostGuestBookCreateReq } from '@/types/guestbook/remote';
+import { useToast } from '@/utils/useToast';
 
 export const useGuestBookCreate = () => {
+  const { show } = useToast();
   const { mutate: guestBookCreate, ...restMutate } = useMutation({
     mutationFn: ({ cardId, name, content }: PostGuestBookCreateReq) =>
       postGuestBookCreate({ cardId, name, content }),
     onSuccess: () => {
-      alert('방명록 작성이 완료되었습니다.');
+      show('방명록 작성에 성공했습니다', 'SUCCESS');
     },
     onError: () => {
-      alert('잠시후 다시 시도해주세요.');
+      show('방명록 작성에 실패했습니다', 'ERROR');
     },
   });
 

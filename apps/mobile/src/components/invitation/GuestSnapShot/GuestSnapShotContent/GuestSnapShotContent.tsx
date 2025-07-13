@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { usePostGuestSnapShot } from './GuestSnapShotContent.hooks';
 import { useGusetSnapShotMutation } from '@/services/snapshot/mutations';
 import { useCallback } from 'react';
+import { useToast } from '@/utils/useToast';
 
 const MAX_FILES = 19;
 
@@ -13,16 +14,22 @@ interface GuestSnapShotContentProps {
 }
 
 const GuestSnapShotContent = ({ id }: GuestSnapShotContentProps) => {
-  const { image, handleImageChange, buildParams } = usePostGuestSnapShot(id);
+  const { image, handleImageChange, buildParams, setImage } = usePostGuestSnapShot(id);
   const { guestSnapShotMutate } = useGusetSnapShotMutation();
+  const { show } = useToast();
 
   const count = image?.length ?? 0;
 
   const handeleUpload = useCallback(async () => {
     const param = await buildParams();
 
-    guestSnapShotMutate(param);
-  }, [buildParams, guestSnapShotMutate]);
+    guestSnapShotMutate(param, {
+      onSuccess: () => {
+        show('사전 전송에 성공했습니다', 'SUCCESS');
+        setImage([]);
+      },
+    });
+  }, [buildParams, guestSnapShotMutate, setImage, show]);
 
   return (
     <StyledGuestSnapShotContent>

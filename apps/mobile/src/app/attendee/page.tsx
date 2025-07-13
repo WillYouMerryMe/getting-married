@@ -1,13 +1,17 @@
 'use client';
 
 import AttendeeList from '@/components/attendee/AttendeeList/AttendeeList';
+import Toast from '@/components/common/Toast/Toast';
 import AppLayout from '@/layouts/AppLayout';
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 
 const Attendee = () => {
+  const { showToast, toastMessage, toastType } = useToast();
+
   return (
     <AppLayout footer backgroundColor={color.G0}>
       <StyledAttendee>
@@ -16,6 +20,7 @@ const Attendee = () => {
         </Text>
         <AttendeeList />
       </StyledAttendee>
+      {showToast && <Toast type={toastType}>{toastMessage}</Toast>}
     </AppLayout>
   );
 };
