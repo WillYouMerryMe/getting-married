@@ -3,7 +3,16 @@ import { authorization } from '@/apis/token';
 import { PostLoginReq, PostLoginRes } from '@/types/auth/remote';
 
 export const postLogin = async ({ code, provider }: PostLoginReq) => {
-  const { data } = await married.post<PostLoginRes>('/auth/login', { code, provider });
+  const redirectUri =
+    provider === 'NAVER'
+      ? process.env.NEXT_PUBLIC_NAVER_REDIRECT
+      : process.env.NEXT_PUBLIC_KAKAO_REDIRECT;
+
+  const { data } = await married.post<PostLoginRes>('/auth/login', {
+    code,
+    provider,
+    redirectUri,
+  });
 
   return data;
 };
