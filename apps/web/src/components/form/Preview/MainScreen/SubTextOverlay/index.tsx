@@ -60,6 +60,6 @@ const TextElement = styled.div<{
     `}
   ${({ $id, config }) => getTemplateFontStyle(`template${$id}`, config.font)}
   ${({ $color }) => `color: ${$color};`}
-  white-space: pre-line;
+  white-space: pre;
   ${({ $center }) => $center && 'text-align: center;'}
 `;
