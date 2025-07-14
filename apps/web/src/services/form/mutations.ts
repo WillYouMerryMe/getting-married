@@ -27,11 +27,11 @@ export const useDeleteCardMutation = () => {
   const { mutate: deleteCardMutate, ...restMutation } = useMutation({
     mutationFn: (id: string) => deleteCards(id),
     onSuccess: () => {
-      alert('카드가 성공적으로 삭제되었습니다.');
+      showToast('청첩장이 삭제되었습니다.', 'SUCCESS');
       queryClient.invalidateQueries({ queryKey: [KEY.CARDS_LIST] });
     },
     onError: () => {
-      alert('카드 삭제에 실패했습니다.');
+      showToast('청첩장이 삭제되지 않았습니다.', 'ERROR');
     },
   });
 
@@ -44,11 +44,11 @@ export const usePutCardMutation = () => {
   const { mutate: putCardMutate, ...restMutation } = useMutation({
     mutationFn: putCardsUpdate,
     onSuccess: () => {
-      alert('카드가 성공적으로 수정되었습니다.');
+      showToast('청첩장이 수정되었습니다.', 'SUCCESS');
       router.push(ROUTES.LIBRARY);
     },
     onError: () => {
-      alert('카드 수정에 실패했습니다.');
+      showToast('청첩장이 수정되지 않았습니다.', 'ERROR');
     },
   });
 

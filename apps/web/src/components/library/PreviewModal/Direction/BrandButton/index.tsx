@@ -1,3 +1,4 @@
+import { showToast } from '@/utils';
 import { color } from '@merried/design-system';
 import { Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -28,7 +29,7 @@ const BrandButton = ({ src, name, address }: BrandButtonProps) => {
           window.open(url, '_blank');
         }
       } else {
-        alert('주소를 찾을 수 없습니다.');
+        showToast('주소를 찾을 수 없습니다', 'ERROR');
       }
     });
   }, [address, name]);
