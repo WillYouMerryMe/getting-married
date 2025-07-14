@@ -107,7 +107,7 @@ const templateBase: Omit<PutCardReq, 'templateId' | 'mainPageSetting'> = {
   },
   videoGallery: {
     title: '견우와 직녀',
-    url: 'https://www.youtube.com/watch?v=c5AZXAYH77w',
+    url: '',
   },
   locationGuide: {
     address: '강원특별자치도 고성군 간성읍 수성로22번길 13-3/오작교',
