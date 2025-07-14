@@ -13,7 +13,6 @@ import { getDate } from '@/utils/getDate';
 import { getHour } from '@/utils/getHour';
 import { useCardDetailQuery } from '@/services/card/queries';
 import { useToast } from '@/utils/useToast';
-import { OpenGraph } from '@toss/react';
 
 interface InvitationItemProps {
   id: string;

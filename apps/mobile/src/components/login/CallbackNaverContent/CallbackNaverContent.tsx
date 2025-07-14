@@ -1,19 +1,21 @@
 import { useLoginMutation } from '@/services/auth/mutations';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 const CallbackNaverContent = () => {
   const searchParams = useSearchParams();
   const { loginMutate } = useLoginMutation();
   const alreadyRun = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const code = searchParams.get('code');
     if (code && !alreadyRun.current) {
       alreadyRun.current = true;
-      loginMutate({ code, provider: 'NAVER' });
+      const url = window.location.origin;
+      loginMutate({ code, provider: 'NAVER', redirectUri: `${url}${pathname}` });
     }
-  }, [searchParams, loginMutate]);
+  }, [searchParams, loginMutate, pathname]);
 
   return <></>;
 };
