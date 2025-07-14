@@ -12,7 +12,8 @@ export const useLoginMutation = () => {
   const { show } = useToast();
 
   const { mutate: loginMutate, ...restMutation } = useMutation({
-    mutationFn: ({ code, provider }: PostLoginReq) => postLogin({ code, provider }),
+    mutationFn: ({ code, provider, redirectUri }: PostLoginReq) =>
+      postLogin({ code, provider, redirectUri }),
     onSuccess: (res) => {
       const { accessToken, refreshToken } = res;
       Storage.setItem(TOKEN.ACCESS, accessToken);
