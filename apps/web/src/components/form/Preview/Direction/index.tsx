@@ -46,11 +46,11 @@ const Direction = () => {
         <KakaoMap address={mainAddress} />
       </Column>
       <Row width="100%" alignItems="center" justifyContent="space-between">
-        <Column gap={4} alignItems="flex-start">
-          <Text fontType="P2" color={color.G80}>
+        <Column width="60%" gap={4} alignItems="flex-start">
+          <Text width="100%" whiteSpace="normal" fontType="P2" color={color.G80}>
             {mainAddress}
           </Text>
-          <Text fontType="H4" color={color.G900}>
+          <Text fontType="H4" whiteSpace="normal" color={color.G900}>
             {buildingName}
           </Text>
         </Column>
@@ -62,7 +62,12 @@ const Direction = () => {
       </Row>
       <Row width="100%" alignItems="center" gap={19}>
         {BRAND.map(({ src, name }) => (
-          <BrandButton key={name} src={src} name={name} onClick={() => {}} />
+          <BrandButton
+            key={name}
+            src={src}
+            name={name as '네이버지도' | '카카오맵'}
+            address={mainAddress}
+          />
         ))}
       </Row>
       <Line />

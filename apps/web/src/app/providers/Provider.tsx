@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { GlobalStyle } from '@merried/design-system';
 import { RecoilRoot } from 'recoil';
 import { OverlayProvider } from '@toss/use-overlay';
+import { ToastProvider } from './ToastProvider';
 
 interface ProviderProps {
   children: ReactNode;
@@ -12,10 +13,12 @@ interface ProviderProps {
 const Provider = ({ children }: ProviderProps) => {
   return (
     <RecoilRoot>
-      <OverlayProvider>
-        <GlobalStyle />
-        {children}
-      </OverlayProvider>
+      <ToastProvider>
+        <OverlayProvider>
+          <GlobalStyle />
+          {children}
+        </OverlayProvider>
+      </ToastProvider>
     </RecoilRoot>
   );
 };

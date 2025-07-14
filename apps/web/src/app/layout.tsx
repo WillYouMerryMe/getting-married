@@ -6,6 +6,9 @@ import StyledComponentsRegistry from './providers/StyledComponentsProvider';
 export const metadata = {
   title: '우리 결혼할래요?',
   description: '우리 결혼할래요? 의 웹사이트 입니다.',
+  icons: {
+    icon: '/LogoFull.svg',
+  },
 };
 
 interface Props {

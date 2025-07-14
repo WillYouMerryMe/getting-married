@@ -26,5 +26,5 @@ const StyledText = styled.div<{ $id: string; $font: string; $color: string }>`
   position: absolute;
   width: 100%;
   text-align: center;
-  white-space: pre-line;
+  white-space: pre;
 `;

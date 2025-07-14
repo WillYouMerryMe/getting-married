@@ -1,14 +1,12 @@
 import { color } from '@merried/design-system';
 import { Button, Column, Text } from '@merried/ui';
-import { useCardsQuery } from '@/services/form/queries';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const UrlShareStyle = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const UrlShareStyle = ({ data }: Props) => {
   if (!data || !data?.shareUrlStyle) return null;
 
   const pointColor = data.invitationSetting.pointColor;

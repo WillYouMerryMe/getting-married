@@ -33,6 +33,8 @@ export const usePostCardParams = () => {
   const urlShareStyle = useUrlShareStyleValueStore();
   const componentOrder = useComponentOrderValueStore();
 
+  const nullIfEmpty = (value: string | undefined | null) => (value === '' ? null : value);
+
   const getDownloadUrl = (presignedUrl: string) => {
     const withoutQuery = presignedUrl.split('?')[0];
     const fileKey = withoutQuery.replace(/^https:\/\/[^/]+\//, '');
@@ -61,14 +63,14 @@ export const usePostCardParams = () => {
       : [];
 
     const baseParams = {
-      title: main.title,
+      title: nullIfEmpty(main.title),
       templateId: main.templateId,
       invitationSetting: {
         pointColor: invitationSetup.pointColor,
         font: invitationSetup.invitationFont,
       },
       mainPageSetting: {
-        picture: uploadedPicture,
+        picture: nullIfEmpty(uploadedPicture),
         font: mainScreen.letteringFont,
         lettering: [mainScreen.letteringText],
         letteringColor: mainScreen.letteringColor,

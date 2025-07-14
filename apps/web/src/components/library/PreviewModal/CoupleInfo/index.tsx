@@ -1,15 +1,13 @@
 import { flex } from '@merried/utils';
 import styled from 'styled-components';
 import CoupleInfoItem from './CoupleInfoItem';
-import { useCardsQuery } from '@/services/form/queries';
+import { PutCardReq } from '@/types/form/remote';
 
 interface Props {
-  id: string;
+  data: PutCardReq;
 }
 
-const CoupleInfo = ({ id }: Props) => {
-  const { data } = useCardsQuery(id);
-
+const CoupleInfo = ({ data }: Props) => {
   if (!data || !data?.groomProfile || !data?.brideProfile) return null;
 
   const groom = data.groomProfile;
