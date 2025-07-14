@@ -43,7 +43,7 @@ const MainScreen = ({ data, onScrollClick }: Props) => {
         dateStr={`${calenderDate}`}
         color={templateId === '5' || templateId === '6' ? letteringColor : color.G0}
       />
-      <ScrollTriggerButton onClick={onScrollClick}>
+      <ScrollTriggerButton $isId5={templateId === '5'} onClick={onScrollClick}>
         <IconShortArrow width={16} height={16} />
       </ScrollTriggerButton>
     </StyledMainScreen>
@@ -73,12 +73,13 @@ const BackgroundImage = styled.img<{ $isShrinked: boolean }>`
   z-index: 0;
 `;
 
-const ScrollTriggerButton = styled.div`
+const ScrollTriggerButton = styled.div<{ $isId5?: boolean }>`
   width: 44px;
   height: 44px;
   border-radius: 99px;
   border: 1px solid rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.21);
+  background: ${({ $isId5 }) =>
+    $isId5 ? 'rgba(200, 200, 200, 0.61)' : 'rgba(255, 255, 255, 0.21)'};
   backdrop-filter: blur(14.7px);
   margin-bottom: 24px;
   cursor: pointer;
