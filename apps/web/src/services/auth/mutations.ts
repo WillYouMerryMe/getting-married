@@ -3,6 +3,7 @@ import { deleteWithdraw, postLogin, postLogout } from './apis';
 import { Storage } from '@/apis/storage/storage';
 import { ROUTES, TOKEN } from '@/constants/common/constant';
 import { useRouter } from 'next/navigation';
+import { showToast } from '@/utils';
 
 export const useLoginMutation = () => {
   const router = useRouter();
@@ -13,11 +14,13 @@ export const useLoginMutation = () => {
       Storage.setItem(TOKEN.REFRESH, refreshToken);
       Storage.setItem('type', provider);
       router.replace(ROUTES.MAIN);
+      showToast('로그인에 성공했습니다.', 'SUCCESS');
     },
     onError: (error) => {
       Storage.clear();
       console.error('로그인 중 에러 발생:', error);
       router.replace(ROUTES.MAIN);
+      showToast('로그인에 실패했습니다.', 'ERROR');
     },
   });
 

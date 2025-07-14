@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import { deleteCards, postCards, postGuestSnapshots, putCardsUpdate } from './apis';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { KEY, ROUTES } from '@/constants/common/constant';
+import { showToast } from '@/utils';
 
 export const useCreateCardMutation = () => {
   const router = useRouter();
@@ -9,11 +10,11 @@ export const useCreateCardMutation = () => {
   const { mutate: createCardMutate, ...restMutation } = useMutation({
     mutationFn: postCards,
     onSuccess: () => {
-      alert('카드가 성공적으로 생성되었습니다.');
+      showToast('청첩장이 생성되었습니다.', 'SUCCESS');
       router.push(ROUTES.LIBRARY);
     },
     onError: () => {
-      alert('카드 생성에 실패했습니다.');
+      showToast('청첩장이 생성되지 않았습니다.', 'ERROR');
     },
   });
 
