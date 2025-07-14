@@ -3,6 +3,7 @@ import { deleteCards, postCards, postGuestSnapshots, putCardsUpdate } from './ap
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { KEY, ROUTES } from '@/constants/common/constant';
 import { showToast } from '@/utils';
+import { AxiosError } from 'axios';
 
 export const useCreateCardMutation = () => {
   const router = useRouter();
@@ -13,8 +14,14 @@ export const useCreateCardMutation = () => {
       showToast('청첩장이 생성되었습니다.', 'SUCCESS');
       router.push(ROUTES.LIBRARY);
     },
-    onError: () => {
-      showToast('청첩장이 생성되지 않았습니다.', 'ERROR');
+    onError: (error: AxiosError) => {
+      const statusCode = error.response?.status;
+
+      if (statusCode === 400) {
+        showToast('필수 정보를 입력해주세요.', 'ERROR');
+      } else {
+        showToast('청첩장이 생성되지 않았습니다.', 'ERROR');
+      }
     },
   });
 
