@@ -4,6 +4,7 @@ import { useAttendee } from '@/services/attendee/queries';
 import { useAttendeeValueStore } from '@/stores/shop/attendee';
 import { useSetShopStepStore } from '@/stores/shop/shopStep';
 import { Gift, Meal, Paid, Status } from '@/types/shop/client';
+import { useToast } from '@/utils/useToast';
 import { color } from '@merried/design-system';
 import { Button, Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
@@ -14,6 +15,7 @@ const Send = () => {
   const attendee = useAttendeeValueStore();
   const setShopStep = useSetShopStepStore();
   const router = useRouter();
+  const { show } = useToast();
 
   const attendeeStatus = attendee.status === 'ATTEND' ? true : false;
   const attendeeGift = attendee.paid === 'PAID' ? true : false;
@@ -27,6 +29,7 @@ const Send = () => {
 
   const handleSendGift = () => {
     router.push(ROUTES.HOME);
+    show('답례품이 발송되었습니다');
     setShopStep('답례품목록');
   };
 
