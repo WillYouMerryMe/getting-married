@@ -63,5 +63,5 @@ const StyledWeddingAlbum = styled.div`
 const AlbumImage = styled.div<{ src: string }>`
   width: 100%;
   height: 100%;
-  background: url(${(p) => p.src}) center/cover no-repeat;
+  background: url(${(p) => encodeURI(p.src)}) center/cover no-repeat;
 `;

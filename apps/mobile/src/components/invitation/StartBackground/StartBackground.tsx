@@ -78,7 +78,7 @@ const StyledStartBackground = styled.div<{ $backgroundImg: string; $templateId: 
   ${(p) =>
     p.$templateId !== '5' &&
     `
-      background-image: url(${p.$backgroundImg || '/guestbook.png'});
+      background-image: url('${encodeURI(p.$backgroundImg || "/guestbook.png")}');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
