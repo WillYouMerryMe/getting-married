@@ -72,8 +72,8 @@ const EmptyState = styled.div`
 `;
 
 const ScrollableList = styled.div`
-  ${flex({ alignItems: 'flex-start' })}
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 588px);
   gap: 20px 24px;
   overflow-y: auto;
   height: 100%;
