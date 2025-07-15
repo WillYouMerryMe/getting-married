@@ -8,7 +8,6 @@ import { useToast } from '@/utils/useToast';
 
 export const useLoginMutation = () => {
   const router = useRouter();
-  const invitationId = Storage.getItem('invitationId');
   const { show } = useToast();
 
   const { mutate: loginMutate, ...restMutation } = useMutation({
@@ -18,12 +17,7 @@ export const useLoginMutation = () => {
       const { accessToken, refreshToken } = res;
       Storage.setItem(TOKEN.ACCESS, accessToken);
       Storage.setItem(TOKEN.REFRESH, refreshToken);
-
-      if (invitationId) {
-        router.replace(`${ROUTES.INVITATION}/${invitationId}`);
-      } else {
-        router.replace(ROUTES.HOME);
-      }
+      router.replace(ROUTES.HOME);
       show('로그인에 성공했습니다', 'SUCCESS');
     },
     onError: () => {

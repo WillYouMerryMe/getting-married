@@ -1,6 +1,5 @@
 'use client';
 
-import { Storage } from '@/apis/storage/storage';
 import Toast from '@/components/common/Toast/Toast';
 import Account from '@/components/invitation/Account/Account';
 import AttendFloatButton from '@/components/invitation/AttendFloatButton/AttendFloatButton';
@@ -15,7 +14,6 @@ import StartBackground from '@/components/invitation/StartBackground/StartBackgr
 import WeddingAlbum from '@/components/invitation/WeddingAlbum/WeddingAlbum';
 import WeddingCalender from '@/components/invitation/WeddingCalender/WeddingCalender';
 import WeddingIntro from '@/components/invitation/WeddingIntro/WeddingIntro';
-import { ROUTES, TOKEN } from '@/constants/common/constant';
 import AppLayout from '@/layouts/AppLayout';
 import { useCardDetailQuery } from '@/services/card/queries';
 import { useToast } from '@/utils/useToast';
@@ -23,14 +21,12 @@ import { color } from '@merried/design-system';
 import { Column, Text } from '@merried/ui';
 import { flex } from '@merried/utils';
 import { OpenGraph } from '@toss/react';
-import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const InvitationDetail = ({ params }: { params: { id: string } }) => {
   const { showToast, toastMessage, toastType } = useToast();
   const startRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const [showAttend, setShowAttend] = useState(false);
 
   const { data } = useCardDetailQuery(params.id);
@@ -44,15 +40,6 @@ const InvitationDetail = ({ params }: { params: { id: string } }) => {
     obs.observe(startRef.current);
     return () => obs.disconnect();
   }, []);
-
-  useEffect(() => {
-    const token = Storage.getItem(TOKEN.ACCESS);
-    Storage.setItem('invitationId', params.id ?? '');
-
-    if (!token) {
-      router.push(ROUTES.LOGIN);
-    }
-  }, [params.id, router]);
 
   const weddingCardComponentMap = {
     INVITATION_MESSAGE: () =>
