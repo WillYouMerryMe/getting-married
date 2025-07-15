@@ -26,6 +26,10 @@ const AccountContent = ({ onClose, accounts, type, pointColor }: AccountContentP
     navigator.clipboard.writeText(textToCopy);
   };
 
+  const validAccounts = accounts.filter(
+    (a) => a.bank?.trim() || a.account?.trim() || a.name?.trim()
+  );
+
   return (
     <StyledAccountContent>
       <Row alignItems="flex-start" justifyContent="space-between">
@@ -38,24 +42,30 @@ const AccountContent = ({ onClose, accounts, type, pointColor }: AccountContentP
       </Row>
       <Column gap={40}>
         <Column gap={24}>
-          {accounts.map(({ bank, account, name }, i) => (
-            <Row key={i} width="100%" justifyContent="space-between">
-              <Column gap={8} width="100%">
-                <Text fontType="P2" color={color.G900}>
-                  {bank} {account}
-                </Text>
-                <Text fontType="P2" color={color.G900}>
-                  {name}
-                </Text>
-              </Column>
-              <ActionButton
-                onClick={() => handleCopyAccount(bank, account)}
-                background={pointColor}
-              >
-                복사하기
-              </ActionButton>
-            </Row>
-          ))}
+          {validAccounts.length > 0 ? (
+            validAccounts.map(({ bank, account, name }, i) => (
+              <Row key={i} width="100%" justifyContent="space-between">
+                <Column gap={8} width="100%">
+                  <Text fontType="P2" color={color.G900}>
+                    {bank} {account}
+                  </Text>
+                  <Text fontType="P2" color={color.G900}>
+                    {name}
+                  </Text>
+                </Column>
+                <ActionButton
+                  onClick={() => handleCopyAccount(bank, account)}
+                  background={pointColor}
+                >
+                  복사하기
+                </ActionButton>
+              </Row>
+            ))
+          ) : (
+            <Text fontType="P2" color={color.G500}>
+              등록된 계좌가 없습니다.
+            </Text>
+          )}
         </Column>
         <Button onClick={handleCloseModal} size="LARGE" width="100%" styleType="SECOND">
           <Text fontType="Button3" color={color.G300}>
