@@ -115,7 +115,7 @@ const GuestSnapModal = ({ id, isOpen, onClose }: Props) => {
                 />
               </Row>
               <Input
-                label="레이블"
+                label="마스터 비밀번호"
                 platform="DESKTOP"
                 placeholder="입력해주세요"
                 value={password}
